@@ -11,3 +11,6 @@ Site e painel do Pedro Design.
 
 ## Publicação
 A Hostinger puxa este repositório automaticamente (hPanel → Avançado → Git). Cada push na branch `main` atualiza o site.
+
+## Cache
+Imagens, fontes e áudios ficam em cache por 1 ano. Para trocar um arquivo, use um nome novo (ex.: `foto-v2.webp`).

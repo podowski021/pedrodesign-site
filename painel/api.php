@@ -151,7 +151,7 @@ if ($a === 'lead') {
     });
     $cfg = mail_cfg();
     if (!empty($cfg['pass']) && ($cfg['notifyLeads'] ?? true)) {
-        $svcN = ['lp' => 'Landing page', 'art' => 'Artes', 'both' => 'Landing page + artes'][$svc];
+        $svcN = ['lp' => 'Página', 'art' => 'Artes', 'both' => 'Página + artes'][$svc];
         $txt = "Novo pedido pelo site pedrodesign.store\n\nNome: " . ($nome ?: '-') . "\nWhatsApp: " . ($zap ?: '-') . "\nInteresse: $svcN\nIdioma do site: " . ($b['lang'] ?? '-') . "\n\nMensagem:\n" . ($msg ?: '-') . "\n\nO contato já está no painel: https://pedrodesign.store/painel/";
         try { smtp_send($cfg, [$cfg['notify'] ?? $cfg['user']], 'Novo lead: ' . ($nome ?: 'sem nome') . " · $svcN", $txt, mail_html($txt)); } catch (Throwable $e) { /* o lead já foi salvo */ }
     }
