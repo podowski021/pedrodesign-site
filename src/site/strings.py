@@ -373,3 +373,7 @@ T.update({
 'stat_15':x('marcas que já confiaram no meu trabalho','brands that have trusted my work','marcas que ya confiaron en mi trabajo','marques qui m’ont déjà fait confiance','brand che si sono già affidati a me','Marken, die mir bereits vertraut haben'),
 'stat_247':x('de suporte, inclusive fim de semana','support, weekends included','de soporte, incluso fines de semana','de support, week-end compris','di supporto, anche nel weekend','Support, auch am Wochenende'),
 })
+
+T.update({
+'ab_f2':x('Cada detalhe revisado antes de ir ao ar','Every detail reviewed before going live','Cada detalle revisado antes de publicar','Chaque détail vérifié avant la mise en ligne','Ogni dettaglio rivisto prima della pubblicazione','Jedes Detail geprüft, bevor es live geht'),
+})

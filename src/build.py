@@ -59,11 +59,11 @@ site = site.replace('/_blob/...', '/assets/arquivo.webp')
 assert '/_blob/' not in site
 
 UR = 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2190-2199, U+2212, U+2215, U+2713, U+2715, U+2726, U+FEFF, U+FFFD'
-FONTS = ("@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 900;font-display:swap;src:url(/assets/fonts/montserrat.woff2) format('woff2');unicode-range:%s}" % UR) + ("@font-face{font-family:'Montserrat';font-style:italic;font-weight:300 900;font-display:swap;src:url(/assets/fonts/montserrat-italic.woff2) format('woff2');unicode-range:%s}" % UR)
+FONTS = ''.join(["@font-face{font-family:'%s';font-style:%s;font-weight:%s;font-display:swap;src:url(/assets/fonts/%s) format('woff2');unicode-range:%s}" % (f, st, w, fn, UR) for f, st, w, fn in [('Inter', 'normal', '400 700', 'inter.woff2'), ('Newsreader', 'normal', '300 600', 'newsreader.woff2'), ('Newsreader', 'italic', '300 600', 'newsreader-italic.woff2')]])
 GF = re.compile(r'<link rel="preconnect" href="https://fonts\.googleapis\.com">\s*<link href="https://fonts\.googleapis\.com/css2[^"]*" rel="stylesheet">')
 assert GF.search(site)
 site = GF.sub('', site)
-desc = 'Páginas sob medida, de alto padrão, com a primeira versão em 24h. Atendo o mundo inteiro, em qualquer idioma e moeda, com nota fiscal.'
+desc = 'Páginas sob medida, de alto padrão, com a primeira versão em 24h. Atendo o mundo inteiro, em qualquer idioma e moeda.'
 head = f'''<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pedro Design · Páginas sob medida de alto padrão</title>
@@ -71,7 +71,7 @@ head = f'''<meta charset="utf-8">
 <link rel="canonical" href="{DOMAIN}/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="theme-color" content="#07080D">
+<meta name="theme-color" content="#06101F">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{DOMAIN}/">
 <meta property="og:title" content="Pedro Design · Páginas sob medida de alto padrão">
@@ -79,8 +79,9 @@ head = f'''<meta charset="utf-8">
 <meta property="og:image" content="{DOMAIN}/assets/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pedro Design", "legalName": "Pedro Nascimento da Costa Design Gráfico Ltda.", "taxID": "63.543.207/0001-22", "url": DOMAIN, "telephone": "+55 45 97400-0755", "areaServed": "Worldwide", "address": {"@type": "PostalAddress", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "addressCountry": "BR"}}, ensure_ascii=False)}</script>
-<link rel="preload" href="/assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pedro Design", "url": DOMAIN, "telephone": "+55 45 97400-0755", "areaServed": "Worldwide", "address": {"@type": "PostalAddress", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "addressCountry": "BR"}}, ensure_ascii=False)}</script>
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <style>{FONTS}</style>
 <script defer src="/support.js"></script>'''
 site = re.sub(r'<meta charset="utf-8">\s*<title>.*?</title>\s*<script src="\./support\.js"></script>', lambda m: head, site, count=1, flags=re.S)
@@ -88,7 +89,7 @@ assert 'og:image' in site
 assert 'fonts.googleapis' not in site
 open(os.path.join(OUT, 'index.html'), 'w').write(site)
 os.makedirs(os.path.join(OUT, 'assets/fonts'))
-for n in ['montserrat.woff2', 'montserrat-italic.woff2']:
+for n in ['inter.woff2', 'newsreader.woff2', 'newsreader-italic.woff2']:
     shutil.copyfile(os.path.join(SRC, 'fonts', n), os.path.join(OUT, 'assets/fonts', n))
 shutil.copyfile(os.path.join(HERE, 'support.js'), os.path.join(OUT, 'support.js'))
 
@@ -108,7 +109,7 @@ headp, bodyp = pn[:i], pn[i:]
 headp = headp.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', '')
 headp = re.sub(r'<link rel="preconnect" href="https://fonts\.googleapis\.com">\s*<link href="https://fonts\.googleapis\.com/css2[^"]*" rel="stylesheet">', lambda m: '<style>' + FONTS + '</style>', headp)
 assert 'fonts.googleapis' not in headp
-headp = headp.replace("--f-display:'Bricolage Grotesque'", "--f-display:'Montserrat'").replace("--f-body:'DM Sans'", "--f-body:'Montserrat'").replace("--f-serif:'Instrument Serif',Georgia,serif", "--f-serif:'Montserrat',system-ui,sans-serif")
+headp = headp.replace("--f-display:'Bricolage Grotesque'", "--f-display:'Newsreader'").replace("--f-body:'DM Sans'", "--f-body:'Inter'").replace("--f-serif:'Instrument Serif',Georgia,serif", "--f-serif:'Newsreader',Georgia,serif")
 j = bodyp.index('<script src="https://cdnjs')
 bodyp = bodyp[:j] + shim + '\n' + bodyp[j:]
 doc = ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
@@ -126,6 +127,8 @@ for n, dst in [('root.htaccess', '.htaccess'), ('painel.htaccess', 'painel/.htac
     shutil.copyfile(os.path.join(SRC, n), os.path.join(OUT, dst))
 os.makedirs(os.path.join(OUT, 'links'), exist_ok=True)
 shutil.copyfile(os.path.join(HERE, 'links', 'index.html'), os.path.join(OUT, 'links', 'index.html'))
+for _n in ['pedro-avatar.webp', 'pedro-design-logo-mono.svg']:
+    shutil.copyfile(os.path.join(HERE, 'media', _n), os.path.join(OUT, 'assets', _n))
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)
 print('ok', len(used), 'assets', round(tot / 1e6, 2), 'MB')

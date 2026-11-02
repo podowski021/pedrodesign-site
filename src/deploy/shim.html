@@ -1,18 +1,18 @@
 <style>
-#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#07080D;color:#F5F6FA;font-family:'Montserrat',system-ui,sans-serif}
+#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#06101F;color:#EEEAE1;font-family:'Inter',system-ui,sans-serif}
 #gate[hidden]{display:none}
-#gate form{width:min(380px,100%);display:flex;flex-direction:column;gap:14px;padding:30px 26px;border-radius:24px;background:#0E1018;border:1px solid rgba(245,241,232,.12);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
-#gate h1{margin:0;font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.02em}
+#gate form{width:min(380px,100%);display:flex;flex-direction:column;gap:14px;padding:30px 26px;border-radius:24px;background:#0B1A30;border:1px solid rgba(245,241,232,.12);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+#gate h1{margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:26px;letter-spacing:-.02em}
 #gate p{margin:0;color:#A9A39A;font-size:14px;line-height:1.5}
-#gate input{padding:14px 16px;border-radius:14px;border:1px solid rgba(245,241,232,.2);background:#07080D!important;color:#F5F6FA!important;-webkit-text-fill-color:#F5F6FA;font:inherit;font-size:16px}
-#gate button{padding:15px;border:0;border-radius:999px;background:linear-gradient(90deg,#FF6019,#E0317F 38%,#B718CF 58%,#3418FF);color:#FFFFFF;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+#gate input{padding:14px 16px;border-radius:14px;border:1px solid rgba(245,241,232,.2);background:#06101F!important;color:#EEEAE1!important;-webkit-text-fill-color:#EEEAE1;font:inherit;font-size:16px}
+#gate button{padding:15px;border:0;border-radius:999px;background:#D2B77E;color:#07111F;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
 #gate button:disabled{opacity:.6}
 #gate .err{color:#FF7AA2;font-size:14px;min-height:1em}
 #gate img{width:170px;height:auto;margin-bottom:6px}
 #bOut{margin-left:8px}
 </style>
 <div id="gate" hidden><form id="gateF" autocomplete="on">
-  <img src="/assets/pedro-design-logo.svg" alt="Pedro Design">
+  <img src="/assets/pedro-design-logo-mono.svg" alt="Pedro Design">
   <h1 id="gateT">Entrar no painel</h1>
   <p id="gateP">Digite sua senha para ver propostas, financeiro, contatos e projetos.</p>
   <input type="text" name="username" value="pedro" autocomplete="username" hidden>

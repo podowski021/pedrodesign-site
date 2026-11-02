@@ -25,5 +25,8 @@ Prévia local: `php -S 127.0.0.1:8790` na raiz (o painel precisa de PHP).
 - Usar **"páginas"**, nunca "landing pages".
 - Regra das 24h: a **primeira versão** (não a final) é entregue em 24h, contadas só quando **pagamento e briefing** estiverem ambos enviados.
 - A cada atualização: revisar o site inteiro (computador e celular, os 6 idiomas) procurando erros e inconsistências e corrigir antes de entregar.
-- Estilo: alto padrão, editorial. Fonte Montserrat (títulos peso 600, destaque em itálico 400). Fundo #07080D. Degradê da marca (`#FF6019 → #E0317F → #B718CF → #3418FF`) só no título principal e nos botões; destaques das seções em prateado (`.grad-s`). Seções numeradas "§ 01".
-- Contato: WhatsApp +55 45 97400-0755 · equipe@pedrodesign.com · CNPJ 63.543.207/0001-22 (Pedro Nascimento da Costa Design Gráfico Ltda., Rio de Janeiro/RJ).
+- Estilo: muito alto padrão, editorial, que transmite autoridade. Fundo azul-marinho (#06101F) com aurora animada discreta e granulado. Títulos em **Newsreader** (serifada, peso 400, destaque em itálico 300 dourado/marfim); textos em **Inter**. Acento **champanhe/dourado** (#D2B77E) nos botões e detalhes; texto marfim #EEEAE1. Nada de cores vibrantes/degradê colorido na interface (o logo usa a versão monocromática dourada `pedro-design-logo-mono.svg`). Seções numeradas "§ 01".
+- Não falar de nota fiscal, empresa, CNPJ ou razão social no site nem na árvore de links.
+- Logos dos clientes ficam nas cores originais.
+- Árvore de links em `src/links/index.html` (publicada em `/links/`), mesmo estilo do site.
+- Contato: WhatsApp +55 45 97400-0755 · equipe@pedrodesign.com.

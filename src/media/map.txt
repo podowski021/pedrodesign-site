@@ -95,3 +95,6 @@ fb286c3c53efef882441dc33ebd89017 es.svg image/svg+xml
 fb5495a502a01679d215a65f167d5c2c mp09-b.webp image/webp
 fb910eddf69b42753718d9ee08147a19 cap-desk.webp image/webp
 fd0d87ed6f8b0d46b887aa6acdb5bc32 gni-painel-login.webp image/webp
+d4d79a52e751dd6137c6b0d218e76efa pedro-design-logo-mono.svg image/svg+xml
+31a1ffda44f2e9a9ee88a85f0a746a6b pedro-sobre.webp image/webp
+0c7c6d1283d9e16687ad53547127b78e pedro-avatar.webp image/webp
