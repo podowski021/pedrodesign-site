@@ -124,6 +124,8 @@ for n in ['favicon.svg', 'apple-touch-icon.png', 'og.jpg', 'px.gif']:
 for n, dst in [('root.htaccess', '.htaccess'), ('painel.htaccess', 'painel/.htaccess'), ('robots.txt', 'robots.txt'),
                ('README.md', 'README.md'), ('gitignore', '.gitignore'), ('404.html', '404.html')]:
     shutil.copyfile(os.path.join(SRC, n), os.path.join(OUT, dst))
-open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url></urlset>\n')
+os.makedirs(os.path.join(OUT, 'links'), exist_ok=True)
+shutil.copyfile(os.path.join(HERE, 'links', 'index.html'), os.path.join(OUT, 'links', 'index.html'))
+open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)
 print('ok', len(used), 'assets', round(tot / 1e6, 2), 'MB')
