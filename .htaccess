@@ -1,3 +1,6 @@
+# fontes do site (não públicas)
+RedirectMatch 404 ^/(src|CLAUDE\.md)(/|$)
+
 # Pedro Design — configurações do servidor (Hostinger / LiteSpeed / Apache)
 Options -Indexes
 DirectoryIndex index.html index.php

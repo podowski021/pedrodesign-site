@@ -1,0 +1,85 @@
+<style>
+#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#07080D;color:#F5F6FA;font-family:'Montserrat',system-ui,sans-serif}
+#gate[hidden]{display:none}
+#gate form{width:min(380px,100%);display:flex;flex-direction:column;gap:14px;padding:30px 26px;border-radius:24px;background:#0E1018;border:1px solid rgba(245,241,232,.12);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+#gate h1{margin:0;font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.02em}
+#gate p{margin:0;color:#A9A39A;font-size:14px;line-height:1.5}
+#gate input{padding:14px 16px;border-radius:14px;border:1px solid rgba(245,241,232,.2);background:#07080D!important;color:#F5F6FA!important;-webkit-text-fill-color:#F5F6FA;font:inherit;font-size:16px}
+#gate button{padding:15px;border:0;border-radius:999px;background:linear-gradient(90deg,#FF6019,#E0317F 38%,#B718CF 58%,#3418FF);color:#FFFFFF;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+#gate button:disabled{opacity:.6}
+#gate .err{color:#FF7AA2;font-size:14px;min-height:1em}
+#gate img{width:170px;height:auto;margin-bottom:6px}
+#bOut{margin-left:8px}
+</style>
+<div id="gate" hidden><form id="gateF" autocomplete="on">
+  <img src="/assets/pedro-design-logo.svg" alt="Pedro Design">
+  <h1 id="gateT">Entrar no painel</h1>
+  <p id="gateP">Digite sua senha para ver propostas, financeiro, contatos e projetos.</p>
+  <input type="text" name="username" value="pedro" autocomplete="username" hidden>
+  <input id="gateI" type="password" placeholder="Senha" autocomplete="current-password" required minlength="8">
+  <input id="gateI2" type="password" placeholder="Repita a senha" autocomplete="new-password" hidden>
+  <div class="err" id="gateE" role="alert"></div>
+  <button id="gateB" type="submit">Entrar</button>
+</form></div>
+<script>
+(()=>{
+const API='/painel/api.php';
+async function call(a,body){
+  const r=await fetch(API+'?a='+a,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Painel':'1'},body:JSON.stringify(body||{})});
+  const j=await r.json().catch(()=>({}));
+  if(r.status===401&&a!=='login'){showGate(false);throw Object.assign(new Error('auth'),{code:'auth'})}
+  if(!r.ok)throw Object.assign(new Error(j.error||'erro'),{status:r.status});
+  return j;
+}
+/* ---------- login ---------- */
+let ready,resolveReady;ready=new Promise(r=>resolveReady=r);
+const g=document.getElementById('gate'),gi=document.getElementById('gateI'),gi2=document.getElementById('gateI2'),ge=document.getElementById('gateE'),gb=document.getElementById('gateB');
+let setupMode=false;
+function showGate(setup){
+  setupMode=setup;g.hidden=false;
+  document.getElementById('gateT').textContent=setup?'Crie sua senha':'Entrar no painel';
+  document.getElementById('gateP').textContent=setup?'Primeiro acesso: escolha uma senha com pelo menos 8 caracteres. Ela fica salva só no seu servidor.':'Digite sua senha para ver propostas, financeiro, contatos e projetos.';
+  gi.autocomplete=setup?'new-password':'current-password';gi2.hidden=!setup;gi2.required=setup;gb.textContent=setup?'Criar senha e entrar':'Entrar';
+  setTimeout(()=>gi.focus(),50);
+}
+document.getElementById('gateF').onsubmit=async e=>{
+  e.preventDefault();ge.textContent='';
+  if(setupMode&&gi.value!==gi2.value){ge.textContent='As senhas não são iguais.';return}
+  gb.disabled=true;
+  try{await call(setupMode?'setup':'login',{pass:gi.value});g.hidden=true;gi.value=gi2.value='';resolveReady();refreshAll()}
+  catch(err){ge.textContent=err.message==='auth'?'Senha incorreta':err.message}
+  finally{gb.disabled=false}
+};
+fetch(API+'?a=me',{credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(j.logged)resolveReady();else showGate(!!j.setup)}).catch(()=>{ge.textContent='Sem conexão com o servidor.';showGate(false)});
+
+/* ---------- banco (mesma interface do painel) ---------- */
+const subs={};
+async function refresh(col){
+  if(!subs[col]||!subs[col].length)return;
+  try{const j=await call('list',{col});const snap={docs:j.docs.map(d=>({id:d.id,data:()=>d.data}))};subs[col].forEach(s=>s.cb(snap))}
+  catch(e){if(e.code!=='auth')subs[col].forEach(s=>s.err&&s.err(e))}
+}
+function refreshAll(){Object.keys(subs).forEach(refresh)}
+setInterval(()=>{if(document.visibilityState==='visible'&&g.hidden)refreshAll()},30000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&g.hidden)refreshAll()});
+function docRef(col,id){return{
+  id,
+  get:async()=>{const j=await call('get',{col,id});return{exists:j.exists,id,data:()=>j.data||{}}},
+  set:async d=>{await call('set',{col,id,data:d});refresh(col)},
+  update:async d=>{await call('update',{col,id,data:d});refresh(col)},
+  delete:async()=>{await call('delete',{col,id});refresh(col)}
+}}
+const db={
+  collection:col=>({
+    add:async d=>{const j=await call('add',{col,data:d});refresh(col);return{id:j.id}},
+    doc:id=>docRef(col,id),
+    onSnapshot:(cb,err)=>{(subs[col]=subs[col]||[]).push({cb,err});refresh(col);return()=>{subs[col]=subs[col].filter(s=>s.cb!==cb)}}
+  }),
+  doc:path=>{const [c,i]=path.split('/');return docRef(c,i)}
+};
+const downloads={save:async({filename,data})=>{const u=URL.createObjectURL(data);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}};
+window.claude={use:async n=>{if(n==='downloads')return downloads;await ready;if(n==='db')return db;throw new Error('indisponível')}};
+window.__mail={get:()=>call('mailget'),set:d=>call('mailset',d),send:d=>call('mailsend',d)};
+window.__painelLogout=async()=>{try{await call('logout')}catch(e){}location.reload()};
+})();
+</script>

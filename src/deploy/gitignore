@@ -1,0 +1,5 @@
+painel/data/
+.DS_Store
+src/.build/
+pedrodesign-site.zip
+__pycache__/

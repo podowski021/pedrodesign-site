@@ -9,8 +9,16 @@ Site e painel do Pedro Design.
   - No primeiro acesso a `/painel`, você cria a senha.
   - O formulário do site também cria um contato novo no painel (origem: site).
 
+## Como editar
+Tudo é editado em `src/` (veja `CLAUDE.md`). Depois:
+
+```bash
+python3 src/build.py   # monta o site e o painel
+bash src/zip.sh        # gera pedrodesign-site.zip
+```
+
 ## Publicação
-A Hostinger puxa este repositório automaticamente (hPanel → Avançado → Git). Cada push na branch `main` atualiza o site.
+Suba o `pedrodesign-site.zip` na `public_html` da Hostinger (substituindo os arquivos) e clique em **Limpar cache**.
 
 ## Cache
 Imagens, fontes e áudios ficam em cache por 1 ano. Para trocar um arquivo, use um nome novo (ex.: `foto-v2.webp`).
