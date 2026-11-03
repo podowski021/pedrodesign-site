@@ -31,7 +31,7 @@
   <link rel="preload" href="../assets/fonts/Nohemi-Medium.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="../assets/fonts/Nohemi-Black.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611031515">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611031555">
 
   <script type="application/ld+json">
   {
@@ -123,7 +123,7 @@
           </a>
 
           <h1 class="display hero__titulo revela" id="titulo-vet" style="--atraso:.08s">
-            Clínica veterinária e <span class="rosa">pet shop</span>
+            <span class="l1">Clínica</span> <span class="l2">veterinária e</span> <span class="l3">pet shop</span>
           </h1>
 
           <p class="hero__sub revela" style="--atraso:.16s"><strong>Consultas, vacinas, exames, cirurgias e especialidades</strong> para cães e gatos. E um <strong>pet shop completo</strong> para levar o que seu pet precisa na saída.</p>
@@ -178,7 +178,7 @@
       <div class="container">
         <div class="secao__topo revela">
           <p class="olho">Nossos serviços</p>
-          <h2 class="display secao__titulo" id="titulo-servicos">Tudo o que a saúde do seu pet <span class="rosa">precisa</span></h2>
+          <h2 class="display secao__titulo" id="titulo-servicos"><span class="l1">Tudo o que a saúde</span> <span class="l2">do seu pet</span> <span class="l3">precisa</span></h2>
           <p class="secao__sub">Do <strong>primeiro check-up do filhote</strong> ao <strong>acompanhamento do pet idoso</strong>. Escolha o serviço e fale direto com a nossa equipe.</p>
         </div>
 
@@ -231,10 +231,10 @@
     <section class="secao" aria-label="A Meu Pet em números" style="padding-block:clamp(64px,8vw,100px) 0">
       <div class="container">
         <ul class="numeros">
-          <li class="numero revela"><strong data-contar="2019" data-de="2000">2019</strong><span>o ano em que abrimos as portas</span></li>
-          <li class="numero revela" style="--atraso:.08s"><strong data-contar="100" data-sufixo="%">100%</strong><span>corpo clínico próprio</span></li>
-          <li class="numero revela" style="--atraso:.16s"><strong data-contar="2" data-sufixo=" em 1">2 em 1</strong><span>clínica e pet shop no mesmo endereço</span></li>
-          <li class="numero revela" style="--atraso:.24s"><strong data-contar="2">2</strong><span>unidades em Cascavel</span></li>
+          <li class="numero revela"><i class="numero__ico"><svg aria-hidden="true"><use href="#s-calendario"/></svg></i><strong data-contar="2019" data-de="2000">2019</strong><span>o ano em que abrimos as portas</span></li>
+          <li class="numero revela" style="--atraso:.08s"><i class="numero__ico"><svg aria-hidden="true"><use href="#s-equipe"/></svg></i><strong data-contar="100" data-sufixo="%">100%</strong><span>corpo clínico próprio</span></li>
+          <li class="numero revela" style="--atraso:.16s"><i class="numero__ico"><svg aria-hidden="true"><use href="#s-loja"/></svg></i><strong data-contar="2" data-sufixo=" em 1">2 em 1</strong><span>clínica e pet shop no mesmo endereço</span></li>
+          <li class="numero revela" style="--atraso:.24s"><i class="numero__ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></i><strong data-contar="2">2</strong><span>unidades em Cascavel</span></li>
         </ul>
       </div>
     </section>
@@ -244,22 +244,27 @@
       <div class="container">
         <div class="emergencia__caixa revela">
           <span class="sirene" aria-hidden="true"></span>
-          <div>
-            <p class="olho" style="color:var(--tinta)">Agendamento</p>
-            <h2 class="display" id="titulo-agendamento">Seu pet precisa de cuidado? Fale com a gente.</h2>
-            <p>Chame no WhatsApp para agendar consulta, vacina ou exame e tirar suas dúvidas com a nossa equipe.</p>
+          <div class="patas-fundo" aria-hidden="true"></div>
+          <figure class="emergencia__foto" aria-hidden="true">
+            <div class="orelhas"><div class="orelhas__img"><img src="../assets/img/clinica-paciente.jpg" alt="" width="520" height="520" loading="lazy"></div></div>
+            <span class="emergencia__selo"><svg aria-hidden="true"><use href="#s-esteto"/></svg>Corpo clínico próprio</span>
+          </figure>
+          <div class="emergencia__texto">
+            <p class="olho">Agendamento</p>
+            <h2 class="display" id="titulo-agendamento"><span class="l1">Seu pet precisa</span> <span class="l2">de cuidado?</span> <span class="l3">Fale com a gente.</span></h2>
+            <p class="secao__sub">Chame no WhatsApp para <strong>agendar consulta, vacina ou exame</strong> e tirar suas dúvidas com a nossa equipe.</p>
           </div>
-          <div class="emergencia__acoes">
-            <a class="btn btn--verde" href="https://wa.me/5545991554460?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener" data-evento="whatsapp" data-unidade="clinica" data-local="bloco_agendamento">
-              <svg aria-hidden="true"><use href="#i-wpp"/></svg> Agendar pelo WhatsApp
+          <div class="emergencia__painel">
+            <p class="emergencia__painel-tit">Escolha como falar</p>
+            <a class="acao acao--verde" href="https://wa.me/5545991554460?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener" data-evento="whatsapp" data-unidade="clinica" data-local="bloco_agendamento">
+              <i><svg aria-hidden="true"><use href="#i-wpp-f"/></svg></i><span><strong>Agendar pelo WhatsApp</strong><small>Resposta rápida da equipe</small></span><svg class="acao__seta" aria-hidden="true"><use href="#i-seta"/></svg>
             </a>
-            <a class="btn btn--roxo" href="tel:+5545991554460" data-evento="ligacao" data-unidade="clinica" data-local="bloco_agendamento">
-              <svg aria-hidden="true"><use href="#i-tel"/></svg> Ligar para a clínica
+            <a class="acao" href="tel:+5545991554460" data-evento="ligacao" data-unidade="clinica" data-local="bloco_agendamento">
+              <i><svg aria-hidden="true"><use href="#i-tel"/></svg></i><span><strong>Ligar para a clínica</strong><small>(45) 99155-4460</small></span><svg class="acao__seta" aria-hidden="true"><use href="#i-seta"/></svg>
             </a>
-            <a class="btn btn--roxo" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="mapa" data-unidade="clinica" data-local="bloco_agendamento">
-              <svg aria-hidden="true"><use href="#i-pin"/></svg> Como chegar
+            <a class="acao" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="mapa" data-unidade="clinica" data-local="bloco_agendamento">
+              <i><svg aria-hidden="true"><use href="#i-pin"/></svg></i><span><strong>Como chegar</strong><small>R. Manaus, 2839 – Cancelli</small></span><svg class="acao__seta" aria-hidden="true"><use href="#i-seta"/></svg>
             </a>
-            <p class="emergencia__fone">WhatsApp e telefone: <strong>(45) 99155-4460</strong></p>
           </div>
         </div>
       </div>
@@ -281,7 +286,7 @@
 
         <div class="revela" style="--atraso:.1s">
           <p class="olho">Estrutura e equipe</p>
-          <h2 class="display secao__titulo" id="titulo-estrutura">A segunda casa do <span class="rosa">seu pet</span></h2>
+          <h2 class="display secao__titulo" id="titulo-estrutura"><span class="l1">A segunda</span> <span class="l2">casa do</span> <span class="l3">seu pet</span></h2>
           <p class="secao__sub"><strong>Estrutura moderna, equipamentos atualizados</strong> e um ambiente acolhedor, pensado para o seu pet se sentir seguro.</p>
           <ul class="lista-check">
             <li><span><strong>Corpo clínico próprio</strong><br>Veterinários da casa, que acompanham seu pet de perto.</span></li>
@@ -318,7 +323,7 @@
           </div>
           <div>
             <p class="olho">Spa &amp; Resort · Centro</p>
-            <h2 class="display" id="titulo-outra">Além da saúde, todo o bem-estar do seu pet.</h2>
+            <h2 class="display" id="titulo-outra"><span class="l1">Além da saúde,</span> <span class="l2">todo o bem-estar</span> <span class="l3">do seu pet.</span></h2>
             <p>No Meu Pet Spa &amp; Resort, no Centro, seu pet brinca, nada na piscina, descansa e fica lindo, com fotos e vídeos para você todos os dias e consultório veterinário no local.</p>
             <ul class="servicos" aria-label="Serviços do Spa & Resort">
               <li>Daycare &amp; Creche</li>
@@ -336,11 +341,22 @@
     </section>
 
     <!-- ===================== FAQ (lilás) ===================== -->
+    <section class="secao avaliacoes" aria-labelledby="titulo-aval">
+      <div class="container">
+        <div class="aval revela">
+          <div class="aval__topo"><svg class="aval__g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A12 12 0 0 1 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg><div><p class="olho">Avaliações no Google</p><h2 class="display" id="titulo-aval"><span class="l1">Quem</span> <span class="l2">confia,</span> <span class="l3">recomenda.</span></h2></div></div>
+          <div class="aval__nota"><strong>4,8</strong><span><span class="aval__estrelas" aria-hidden="true">★★★★★</span><small>142 avaliações no Google</small></span></div>
+          <p class="secao__sub">Veja o que os tutores contam sobre a <strong>Meu Pet Clínica Veterinária</strong> no Google, e deixe a sua avaliação também.</p>
+          <a class="btn btn--rosa" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="avaliacoes" data-unidade="clinica">Ver avaliações no Google</a>
+        </div>
+      </div>
+    </section>
+
     <section class="secao fundo-lilas" id="duvidas" aria-labelledby="titulo-faq">
       <div class="container">
         <div class="secao__topo secao__topo--centro revela">
           <p class="olho">Dúvidas frequentes</p>
-          <h2 class="display secao__titulo" id="titulo-faq">Perguntas <span class="rosa">frequentes</span></h2>
+          <h2 class="display secao__titulo" id="titulo-faq"><span class="l1">Perguntas</span> <span class="l3">frequentes</span></h2>
         </div>
         <div class="faq revela">
           <details>
@@ -368,7 +384,7 @@
       <div class="container contato__grid">
         <div class="revela">
           <p class="olho">Contato</p>
-          <h2 class="display secao__titulo" id="titulo-contato">Confie no Meu Pet para cuidar de <span class="rosa">quem você ama.</span></h2>
+          <h2 class="display secao__titulo" id="titulo-contato"><span class="l1">Confie no Meu Pet</span> <span class="l2">para cuidar de</span> <span class="l3">quem você ama.</span></h2>
           <ul class="contato__lista">
             <li><svg aria-hidden="true"><use href="#i-wpp-f"/></svg><span><small>WhatsApp e telefone</small><a href="https://wa.me/5545991554460?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener" data-evento="whatsapp" data-unidade="clinica" data-local="contato">(45) 99155-4460</a></span></li>
             <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span><small>Endereço</small><a href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="mapa" data-unidade="clinica" data-local="contato">R. Manaus, 2839 – Cancelli, Cascavel – PR</a></span></li>
@@ -379,13 +395,13 @@
           </div>
         </div>
 
-        <a class="mapa-card revela" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="mapa" data-unidade="clinica" data-local="mapa" style="--atraso:.1s">
-          <svg class="mapa-card__pino" aria-hidden="true"><use href="#i-pin"/></svg>
+        <div class="mapa-card mapa-card--real revela" style="--atraso:.1s">
+          <iframe src="https://maps.google.com/maps?q=Cl%C3%ADnica%20Veterin%C3%A1ria%2024h%20%7C%20Meu%20Pet%2C%20R.%20Manaus%2C%202839%20-%20Cancelli%2C%20Cascavel%20-%20PR&amp;z=16&amp;hl=pt-BR&amp;output=embed" title="Mapa: Meu Pet Clínica Veterinária" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           <span class="mapa-card__info">
             <span><strong>Meu Pet Clínica Veterinária</strong><span>R. Manaus, 2839 – Cancelli</span></span>
-            <span class="btn btn--roxo">Abrir no Google Maps</span>
+            <a class="btn btn--roxo" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterin%C3%A1ria+24h+%7C+Meu+Pet/@-24.9437173,-53.4735953,17z/data=!4m6!3m5!1s0x94f3d375dc4ee2d5:0x1fbeac1d1f9afd42!8m2!3d-24.9437222!4d-53.4687297!16s%2Fg%2F11h1fzp4z5" target="_blank" rel="noopener" data-evento="mapa" data-unidade="clinica" data-local="mapa">Abrir no Google Maps</a>
           </span>
-        </a>
+        </div>
       </div>
     </section>
   </main>

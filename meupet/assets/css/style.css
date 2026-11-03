@@ -1103,3 +1103,93 @@ body, button, input, select, textarea { font-family: "Poppins", system-ui, -appl
 strong, b { font-weight: 600; }
 h1, h2, h3, h4, .display, .est-card__txt strong, .letreiro, .numero strong, .figurinha, .etapa__num { font-family: "Nohemi", system-ui, sans-serif; }
 .unidade__titulo { font-size: clamp(1.7rem, 2.9vw, 2.35rem); }
+
+/* ================= Agendamento (Clínica) — redesenho ================= */
+.emergencia__caixa { grid-template-columns: minmax(0,.78fr) minmax(0,1.25fr) minmax(0,1fr); gap: clamp(24px, 3.2vw, 44px); align-items: center; padding: clamp(28px, 4vw, 52px); isolation: isolate; }
+.emergencia__caixa .patas-fundo { position: absolute; inset: 0; z-index: -1; opacity: .12; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 512 512'%3E%3Cg fill='%23ffffff' transform='translate(60 60) scale(.36) rotate(-18 256 256)'%3E%3Cellipse cx='256' cy='340' rx='150' ry='130'/%3E%3Cellipse cx='86' cy='196' rx='58' ry='76'/%3E%3Cellipse cx='186' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='326' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='426' cy='196' rx='58' ry='76'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px; }
+.emergencia__foto { position: relative; margin: 0; }
+.emergencia__foto .orelhas { aspect-ratio: 1 / 1.08; padding: 8px; transform: rotate(-3deg); filter: drop-shadow(6px 7px 0 var(--tinta)); }
+.emergencia__foto .orelhas__img img { object-position: 50% 40%; }
+.emergencia__selo { position: absolute; left: 50%; bottom: -14px; translate: -50% 0; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 9px 14px; border-radius: 999px; background: var(--tinta); color: var(--branco); font-size: .82rem; font-weight: 600; box-shadow: 0 10px 20px -8px rgba(0,0,0,.5); }
+.emergencia__selo svg { width: 16px; height: 16px; color: var(--lilas); }
+.emergencia__texto .olho { color: var(--tinta); }
+.emergencia__texto .olho::before { background: var(--branco); }
+.emergencia__caixa .display { font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1; }
+.display .roxo-claro { color: var(--lilas); }
+.emergencia__texto .secao__sub { margin: 18px 0 0; color: var(--branco); font-size: 1.05rem; line-height: 1.6; max-width: 40ch; }
+.emergencia__painel { position: relative; display: grid; gap: 10px; padding: 18px; background: var(--branco); color: var(--tinta); border: 3px solid var(--tinta); border-radius: 22px; box-shadow: 7px 8px 0 var(--tinta); }
+.emergencia__painel-tit { margin: 2px 4px 4px; font-size: .74rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--roxo); }
+.acao { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 16px; background: var(--lilas-claro); color: var(--tinta); text-decoration: none; border: 2px solid transparent; transition: transform .3s var(--ease), border-color .3s, background .3s; }
+.acao:hover { transform: translateX(4px); border-color: var(--tinta); }
+.acao i { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--roxo); color: var(--branco); }
+.acao i svg { width: 20px; height: 20px; }
+.acao span { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+.acao strong { font-weight: 600; font-size: .98rem; }
+.acao small { font-size: .82rem; color: #5b4a72; margin-top: 2px; }
+.acao__seta { flex: none; width: 18px; height: 18px; color: var(--roxo); transition: transform .3s var(--ease); }
+.acao:hover .acao__seta { transform: translateX(3px); }
+.acao--verde { background: #25d366; }
+.acao--verde i { background: var(--tinta); }
+.acao--verde small { color: rgba(38,16,67,.78); }
+.acao--verde .acao__seta { color: var(--tinta); }
+@media (max-width: 1060px) { .emergencia__caixa { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .emergencia__foto { display: none; } }
+@media (max-width: 760px) { .emergencia__caixa { grid-template-columns: 1fr; } .emergencia__texto .secao__sub { max-width: none; } }
+
+/* ================= Números (Clínica) — redesenho ================= */
+.numeros { gap: 20px; }
+.numero { position: relative; overflow: hidden; isolation: isolate; text-align: left; padding: 22px 22px 24px; border-radius: 24px; border: 3px solid var(--tinta); box-shadow: 7px 8px 0 var(--tinta); background: var(--lilas); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.numero:nth-child(2), .numero:nth-child(4) { background: var(--rosa); }
+.numero:nth-child(odd) { transform: rotate(-1.2deg); }
+.numero:nth-child(even) { transform: rotate(1.2deg); }
+.numero:hover { transform: translate(-3px, -4px) rotate(0deg); box-shadow: 11px 13px 0 var(--tinta); }
+.numero::after { content: ""; position: absolute; right: -18px; bottom: -22px; width: 110px; height: 110px; z-index: -1; opacity: .16; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cellipse cx='256' cy='340' rx='150' ry='130'/%3E%3Cellipse cx='86' cy='196' rx='58' ry='76'/%3E%3Cellipse cx='186' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='326' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='426' cy='196' rx='58' ry='76'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cellipse cx='256' cy='340' rx='150' ry='130'/%3E%3Cellipse cx='86' cy='196' rx='58' ry='76'/%3E%3Cellipse cx='186' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='326' cy='92' rx='62' ry='84'/%3E%3Cellipse cx='426' cy='196' rx='58' ry='76'/%3E%3C/svg%3E") center / contain no-repeat;
+  color: var(--branco); transform: rotate(-18deg); }
+.numero__ico { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 14px; border-radius: 14px; background: var(--branco); color: var(--roxo); border: 2px solid var(--tinta); box-shadow: 3px 3px 0 var(--tinta); }
+.numero__ico svg { width: 22px; height: 22px; }
+.numero strong, .numero:nth-child(2) strong, .numero:nth-child(4) strong { display: block; font-family: "Nohemi", system-ui, sans-serif; font-weight: 900; font-size: clamp(2.4rem, 4.2vw, 3.3rem); line-height: 1; color: var(--branco); letter-spacing: -.01em;
+  text-shadow: .088em .062em 0 #0F0201, -.088em .062em 0 #0F0201, 0 .15em 0 #0F0201, 0 -.026em 0 #0F0201, .062em .124em 0 #0F0201, -.062em .124em 0 #0F0201, .062em 0 0 #0F0201, -.062em 0 0 #0F0201, .08em .1em 0 #0F0201, -.08em .1em 0 #0F0201, .08em .025em 0 #0F0201, -.08em .025em 0 #0F0201; }
+.numero span { margin-top: 12px; font-size: .95rem; font-weight: 600; line-height: 1.4; color: var(--tinta); }
+@media (max-width: 760px) { .numero:nth-child(odd), .numero:nth-child(even) { transform: none; } .numero { padding: 18px; } }
+
+/* ================= Mapa real do Google ================= */
+.mapa-card--real { background: #e8e2f5; padding: 0; min-height: 380px; }
+.mapa-card--real iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.9); }
+.mapa-card--real .mapa-card__info { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 1; box-shadow: 5px 6px 0 var(--tinta); }
+
+/* ================= Avaliações no Google ================= */
+.avaliacoes { padding-block: clamp(56px, 7vw, 96px) 0; }
+.aval { position: relative; display: grid; justify-items: center; text-align: center; gap: 14px; padding: clamp(28px, 4vw, 48px); background: var(--branco); color: var(--tinta); border: 3px solid var(--tinta); border-radius: var(--raio); box-shadow: 10px 12px 0 var(--tinta); }
+.aval__topo { display: flex; align-items: center; gap: 18px; text-align: left; }
+.aval__g { flex: none; width: 64px; height: 64px; padding: 10px; border-radius: 18px; background: #fff; border: 3px solid var(--tinta); box-shadow: 4px 5px 0 var(--tinta); }
+.aval .olho { margin-bottom: 8px; color: var(--roxo); }
+.aval .display { font-size: clamp(1.9rem, 3.6vw, 2.8rem); color: var(--lilas); }
+.aval__estrelas { font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: .12em; color: #FBBC05; text-shadow: 2px 3px 0 var(--tinta); }
+.aval .secao__sub { margin: 0; max-width: 52ch; color: #4b3a63; }
+@media (max-width: 760px) { .aval__topo { flex-direction: column; text-align: center; } }
+.aval__nota { display: flex; align-items: center; gap: 16px; padding: 12px 22px; border-radius: 20px; background: var(--lilas-claro); border: 2px solid var(--tinta); }
+.aval__nota > strong { font-family: "Nohemi", sans-serif; font-weight: 900; font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; color: var(--branco); text-shadow: .088em .062em 0 #0F0201, -.088em .062em 0 #0F0201, 0 .15em 0 #0F0201, 0 -.026em 0 #0F0201, .062em .124em 0 #0F0201, -.062em .124em 0 #0F0201, .08em .1em 0 #0F0201, -.08em .1em 0 #0F0201, .08em .025em 0 #0F0201, -.08em .025em 0 #0F0201; }
+.aval__nota > span { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+.aval__nota .aval__estrelas { font-size: 1.6rem; line-height: 1; }
+.aval__nota small { font-size: .92rem; font-weight: 600; color: var(--roxo); }
+/* agendamento: mais espaço para o título */
+.emergencia__caixa { grid-template-columns: minmax(0,.62fr) minmax(0,1.38fr) minmax(0,.95fr); }
+.emergencia__caixa .display { font-size: clamp(1.9rem, 3vw, 2.7rem); }
+@media (max-width: 1060px) { .emergencia__caixa { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width: 760px) { .emergencia__caixa { grid-template-columns: 1fr; } }
+
+/* ---------- regra de cor dos títulos em 3 linhas: roxinho · branco · rosinha ---------- */
+.display .l1, .display .l2, .display .l3 { display: block; }
+.display .l1 { color: var(--lilas); }
+.display .l2 { color: var(--branco); }
+.display .l3 { color: var(--rosa); }
+/* celular: cada linha do título cabe inteira */
+@media (max-width: 430px) {
+  .display .l1, .display .l2, .display .l3, .hero__titulo .linha { white-space: nowrap; }
+  .secao__titulo { font-size: min(33.6px, 8.1vw); }
+  .hero__titulo { font-size: min(40px, 9.4vw); }
+  #titulo-home { font-size: min(40px, 8.2vw); }
+}
