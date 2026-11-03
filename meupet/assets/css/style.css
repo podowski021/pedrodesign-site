@@ -669,7 +669,7 @@ button { font: inherit; cursor: pointer; }
 .letreiro__trilha svg { width: 26px; height: 26px; color: var(--tinta); flex: none; }
 .letreiro--lilas .letreiro__trilha svg { color: var(--rosa); }
 @keyframes letreiro { to { transform: translateX(-50%); } }
-.letreiro:hover .letreiro__trilha { animation-play-state: paused; }
+/* letreiro não pausa no hover */
 
 /* selo circular girando */
 .selo-giro { position: absolute; z-index: 3; width: 128px; height: 128px; right: -18px; bottom: 22px; }
