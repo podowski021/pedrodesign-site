@@ -136,6 +136,8 @@ button { font: inherit; cursor: pointer; }
 .marca__clinica { height: 44px; width: auto; }
 .marca__div { width: 1.5px; height: 34px; background: rgba(255,255,255,.7); }
 .marca__spa { height: 30px; width: auto; }
+.marca__unid { height: 60px; width: auto; }
+@media (max-width: 760px) { .marca__unid { height: 48px; } }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav__link {
   padding: .55em .95em;
@@ -1001,3 +1003,16 @@ main, .rodape { overflow-x: clip; }
   .suites figure { aspect-ratio: 3 / 4; }
   .suites figure:first-child { aspect-ratio: auto; }
 }
+
+/* ajustes: fotos sem corte — quadros no mesmo formato das fotos */
+.colagem figure:nth-child(3) { aspect-ratio: 16 / 9; }
+.colagem figure:nth-child(3) img { object-position: 50% 50%; }
+.gatil__mini img { aspect-ratio: 3 / 4; }
+.gatil__fotos .orelhas { aspect-ratio: 3 / 4; max-width: 420px; }
+.gatil__fotos .orelhas__img img { object-position: 50% 50%; }
+.suites { grid-template-rows: auto auto; min-height: 0; align-items: start; }
+.suites figure { aspect-ratio: 3 / 4; }
+.suites figure:first-child { aspect-ratio: 3 / 4; }
+.unidade .orelhas { aspect-ratio: 16 / 11; }
+.est-card img { aspect-ratio: 3 / 4; object-fit: cover; }
+@media (max-width: 760px) { .suites figure:first-child { aspect-ratio: 3 / 4; grid-column: span 2; max-width: 420px; justify-self: center; width: 100%; } }
