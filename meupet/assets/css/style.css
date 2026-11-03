@@ -1193,3 +1193,15 @@ h1, h2, h3, h4, .display, .est-card__txt strong, .letreiro, .numero strong, .fig
   .hero__titulo { font-size: min(40px, 9.4vw); }
   #titulo-home { font-size: min(40px, 8.2vw); }
 }
+/* moldura de gato no padrão da marca: borda branca grossa, orelhas altas */
+.orelhas, .hero__foto .orelhas, .emergencia__foto .orelhas { padding: 4.4% !important; }
+.orelhas__img img { object-position: 50% 62%; }
+
+/* faixa de ossinhos: padrão oficial (PSD padraopattern) */
+.ossos { height: 72px; background-color: #7555B3; background-image: url("../img/padrao-ossos.svg"); background-size: 100px 90px; background-repeat: repeat; }
+@keyframes anda { to { background-position: 100px 0; } }
+.ossos { animation: anda 6s linear infinite; }
+@media (max-width: 760px) { .ossos { height: 56px; background-size: 80px 72px; } @keyframes anda { to { background-position: 80px 0; } } }
+.hero__titulo .linha.l1, .display .l1 { color: var(--lilas) !important; }
+.hero__titulo .linha.l2, .display .l2 { color: var(--branco) !important; }
+.display .l3 { color: var(--rosa) !important; }
