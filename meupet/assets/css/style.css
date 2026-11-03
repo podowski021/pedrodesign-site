@@ -1036,3 +1036,8 @@ main, .rodape { overflow-x: clip; }
 /* rodapé: todos os ícones no mesmo tamanho */
 .rodape__insta svg, .rodape li svg { width: 20px; height: 20px; flex: none; }
 .rodape li svg { margin-top: 2px; }
+/* hotel: grade 2x2 com 4 fotos, sem buracos */
+.suites, .suites figure:first-child { grid-template-columns: 1fr 1fr; }
+.suites { grid-template-rows: auto; }
+.suites figure, .suites figure:first-child { grid-row: auto; grid-column: auto; aspect-ratio: 3 / 4; max-width: none; width: auto; justify-self: stretch; }
+@media (max-width: 760px) { .suites figure:first-child { grid-column: auto; max-width: none; } }
