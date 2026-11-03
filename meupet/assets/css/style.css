@@ -1033,3 +1033,6 @@ main, .rodape { overflow-x: clip; }
 @media (max-width: 760px) { .est-card__txt span { -webkit-line-clamp: 3; line-clamp: 3; min-height: calc(3 * 1.45em); } }
 
 .horarios .dica { margin-bottom: 0; }
+/* rodapé: todos os ícones no mesmo tamanho */
+.rodape__insta svg, .rodape li svg { width: 20px; height: 20px; flex: none; }
+.rodape li svg { margin-top: 2px; }
