@@ -1205,10 +1205,3 @@ h1, h2, h3, h4, .display, .est-card__txt strong, .letreiro, .numero strong, .fig
 .hero__titulo .linha.l1, .display .l1 { color: var(--lilas) !important; }
 .hero__titulo .linha.l2, .display .l2 { color: var(--branco) !important; }
 .display .l3 { color: var(--rosa) !important; }
-/* títulos em largura total (o tamanho exato é calculado no main.js) */
-.secao__topo { max-width: none; }
-.secao__sub { max-width: 62ch; }
-.secao__topo--centro .secao__sub { margin-inline: auto; }
-.display:has(.l1) , .hero__titulo:has(.linha) { max-width: none !important; text-wrap: nowrap; }
-.aval__topo { flex-direction: column; text-align: center; width: 100%; }
-.aval__topo > div { width: 100%; }

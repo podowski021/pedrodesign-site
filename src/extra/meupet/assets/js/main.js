@@ -106,31 +106,3 @@
     nums.forEach(function (n) { io.observe(n); });
   }
 })();
-
-/* Títulos ocupam o máximo da largura disponível: a linha mais longa enche a coluna */
-(function () {
-  var MAX = { H1: 132, H2: 118 };
-  function fit() {
-    document.querySelectorAll('.display').forEach(function (h) {
-      var lines = h.querySelectorAll('.l1, .l2, .l3, .linha');
-      if (!lines.length) return;
-      var box = h.parentElement.clientWidth;
-      if (!box) return;
-      h.style.fontSize = '100px';
-      var widest = 0;
-      lines.forEach(function (l) {
-        var d = l.style.display; l.style.display = 'inline-block'; l.style.whiteSpace = 'nowrap';
-        widest = Math.max(widest, l.getBoundingClientRect().width);
-        l.style.display = d;
-      });
-      if (!widest) { h.style.fontSize = ''; return; }
-      var size = 100 * (box * 0.95) / (widest + 100 * 0.1);
-      size = Math.max(26, Math.min(MAX[h.tagName] || 96, size));
-      h.style.fontSize = size.toFixed(1) + 'px';
-      lines.forEach(function (l) { l.style.whiteSpace = 'nowrap'; });
-    });
-  }
-  var t; function later() { clearTimeout(t); t = setTimeout(fit, 80); }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); else window.addEventListener('load', fit);
-  fit(); window.addEventListener('resize', later);
-})();
