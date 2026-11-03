@@ -130,5 +130,22 @@ shutil.copyfile(os.path.join(HERE, 'links', 'index.html'), os.path.join(OUT, 'li
 for _n in ['pedro-avatar.webp', 'pedro-design-logo-mono.svg']:
     shutil.copyfile(os.path.join(HERE, 'media', _n), os.path.join(OUT, 'assets', _n))
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
+# ---------- modo "em desenvolvimento" ----------
+# Enquanto existir o arquivo src/EM_DESENVOLVIMENTO, o site publica só a página "em desenvolvimento"
+# (o site completo continua guardado em src/; o painel segue funcionando). Para voltar: apague o arquivo e rode o build.
+if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
+    KEEP_ASSETS = {'fonts', 'favicon.svg', 'apple-touch-icon.png', 'og.jpg', 'pedro-design-logo-mono.svg'}
+    for n in os.listdir(os.path.join(OUT, 'assets')):
+        if n not in KEEP_ASSETS:
+            q = os.path.join(OUT, 'assets', n); shutil.rmtree(q) if os.path.isdir(q) else os.remove(q)
+    for q in ['links', 'support.js']:
+        q = os.path.join(OUT, q)
+        if os.path.isdir(q): shutil.rmtree(q)
+        elif os.path.exists(q): os.remove(q)
+    shutil.copyfile(os.path.join(HERE, 'soon', 'index.html'), os.path.join(OUT, 'index.html'))
+    with open(os.path.join(OUT, '.htaccess'), 'a') as f:
+        f.write('\n# em desenvolvimento: links antigos voltam para a página inicial\nRedirectMatch 302 ^/links/?$ /\n')
+    open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url></urlset>\n')
+    print('MODO EM DESENVOLVIMENTO')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)
 print('ok', len(used), 'assets', round(tot / 1e6, 2), 'MB')

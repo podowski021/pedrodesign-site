@@ -20,6 +20,9 @@ Publicar: subir o zip na `public_html` da Hostinger (substituindo) e clicar em *
 
 Prévia local: `php -S 127.0.0.1:8790` na raiz (o painel precisa de PHP).
 
+## Modo "em desenvolvimento"
+Enquanto existir `src/EM_DESENVOLVIMENTO`, o build publica só `src/soon/index.html` (página "em desenvolvimento"), mantém o painel e remove o resto (o site completo continua em `src/`). Para voltar ao site completo: apagar `src/EM_DESENVOLVIMENTO` e rodar o build.
+
 ## Regras do Pedro (obrigatórias)
 - Textos sobre o trabalho dele: sempre **primeira pessoa do singular** ("trabalhou comigo", "eu entrego"), nunca "nós".
 - Usar **"páginas"**, nunca "landing pages".

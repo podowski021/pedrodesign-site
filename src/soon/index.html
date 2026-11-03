@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pedro Design · Em desenvolvimento</title>
+<meta name="description" content="Meu novo site está em desenvolvimento. Enquanto isso, fale comigo pelo WhatsApp.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#06101F">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pedrodesign.store/">
+<meta property="og:title" content="Pedro Design · Em desenvolvimento">
+<meta property="og:description" content="Meu novo site está em desenvolvimento. Enquanto isso, fale comigo pelo WhatsApp.">
+<meta property="og:image" content="https://pedrodesign.store/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/inter.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:300 600;font-display:swap;src:url(/assets/fonts/newsreader.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:300 600;font-display:swap;src:url(/assets/fonts/newsreader-italic.woff2) format('woff2')}
+:root{color-scheme:dark;--tx:#EEEAE1;--mut:#9AA2B3;--gold:#D2B77E;--navy:#07111F;--line:rgba(232,228,218,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#06101F;color:var(--tx);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;background:radial-gradient(130% 90% at 50% -20%,#11264D 0%,#0A1833 40%,#06101F 72%,#040A15 100%)}
+.au{position:absolute;border-radius:50%;will-change:transform}
+.a1{width:90vmax;height:90vmax;left:-40vmax;top:-45vmax;background:radial-gradient(circle,rgba(40,80,170,.34),rgba(40,80,170,0) 62%);animation:au1 24s ease-in-out infinite alternate}
+.a2{width:70vmax;height:70vmax;right:-35vmax;bottom:-30vmax;background:radial-gradient(circle,rgba(40,70,150,.24),rgba(40,70,150,0) 62%);animation:au2 30s ease-in-out infinite alternate}
+.a3{width:50vmax;height:50vmax;left:30vw;top:40vh;background:radial-gradient(circle,rgba(210,183,126,.07),rgba(210,183,126,0) 62%);animation:au3 36s ease-in-out infinite alternate}
+@keyframes au1{to{transform:translate3d(20vw,12vh,0) scale(1.1)}}
+@keyframes au2{to{transform:translate3d(-18vw,-14vh,0) scale(.9)}}
+@keyframes au3{to{transform:translate3d(-16vw,-12vh,0) scale(1.15)}}
+.grain{position:absolute;inset:0;opacity:.07;background-size:160px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:max(40px,env(safe-area-inset-top)) 24px max(40px,env(safe-area-inset-bottom));text-align:center}
+.logo{width:min(230px,60vw);height:auto}
+.tag{display:inline-flex;align-items:center;gap:12px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(210,183,126,.9);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(44px,8vw,96px);line-height:1;letter-spacing:-.02em;max-width:900px}
+h1 em{font-weight:300;background:linear-gradient(100deg,#F3E6C2,#D2B77E 50%,#A8884E);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+p{margin:0;max-width:520px;font-size:17px;line-height:1.65;color:var(--mut)}
+.line{width:64px;height:1px;background:var(--gold);opacity:.6}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s,border-color .3s}
+.btn:hover{transform:translateY(-2px)}
+.b1{background:var(--gold);color:var(--navy)}
+.b2{border:1px solid var(--line);color:var(--tx)}
+.b2:hover{border-color:rgba(210,183,126,.5)}
+.fade{opacity:0;animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+footer{position:fixed;left:0;right:0;bottom:max(18px,env(safe-area-inset-bottom));z-index:1;text-align:center;font-size:12px;color:#8E97AA}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="au a1"></span><span class="au a2"></span><span class="au a3"></span><span class="grain"></span></div>
+<main>
+<img class="logo fade" src="/assets/pedro-design-logo-mono.svg" alt="Pedro Design" width="230" height="42" style="animation-delay:.05s">
+<span class="tag fade" style="animation-delay:.2s"><i></i>Em desenvolvimento</span>
+<h1 class="fade" style="animation-delay:.3s">Algo novo está <em>sendo construído.</em></h1>
+<div class="line fade" style="animation-delay:.45s"></div>
+<p class="fade" style="animation-delay:.5s">Estou preparando meu novo site com o mesmo cuidado que coloco em cada página que entrego. Enquanto isso, fale comigo direto.</p>
+<div class="cta fade" style="animation-delay:.65s">
+<a class="btn b1" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vim%20pelo%20seu%20site." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Falar no WhatsApp</a>
+<a class="btn b2" href="mailto:equipe@pedrodesign.com">equipe@pedrodesign.com</a>
+</div>
+</main>
+<footer>© 2026 Pedro Design</footer>
+</body>
+</html>
