@@ -127,6 +127,11 @@ for n, dst in [('root.htaccess', '.htaccess'), ('painel.htaccess', 'painel/.htac
     shutil.copyfile(os.path.join(SRC, n), os.path.join(OUT, dst))
 os.makedirs(os.path.join(OUT, 'links'), exist_ok=True)
 shutil.copyfile(os.path.join(HERE, 'links', 'index.html'), os.path.join(OUT, 'links', 'index.html'))
+# páginas extras publicadas como estão (ex.: /meupet/) — também ficam no ar no modo em desenvolvimento
+_ex = os.path.join(HERE, 'extra')
+if os.path.isdir(_ex):
+    for _d in os.listdir(_ex):
+        shutil.copytree(os.path.join(_ex, _d), os.path.join(OUT, _d), dirs_exist_ok=True)
 for _n in ['pedro-avatar.webp', 'pedro-design-logo-mono.svg']:
     shutil.copyfile(os.path.join(HERE, 'media', _n), os.path.join(OUT, 'assets', _n))
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
