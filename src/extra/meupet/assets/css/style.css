@@ -136,8 +136,8 @@ button { font: inherit; cursor: pointer; }
 .marca__clinica { height: 44px; width: auto; }
 .marca__div { width: 1.5px; height: 34px; background: rgba(255,255,255,.7); }
 .marca__spa { height: 30px; width: auto; }
-.marca__unid { height: 60px; width: auto; }
-@media (max-width: 760px) { .marca__unid { height: 48px; } }
+.marca__unid { height: 46px; width: auto; }
+@media (max-width: 760px) { .marca__unid { height: 38px; } }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav__link {
   padding: .55em .95em;
@@ -209,12 +209,12 @@ button { font: inherit; cursor: pointer; }
 .ossos {
   height: 46px;
   background-color: var(--roxo-medio);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='46' viewBox='0 0 56 46'%3E%3Cg fill='%23bd9dfb'%3E%3Cpath transform='translate(14 14) rotate(-35 8 4)' d='M3 0a3 3 0 0 1 2.6 4.5h4.8A3 3 0 1 1 13 9a3 3 0 1 1-2.6 4.5H5.6A3 3 0 1 1 3 9a3 3 0 0 1 0-9z' /%3E%3Cpath transform='translate(40 32) rotate(35 8 4) scale(.8)' d='M3 0a3 3 0 0 1 2.6 4.5h4.8A3 3 0 1 1 13 9a3 3 0 1 1-2.6 4.5H5.6A3 3 0 1 1 3 9a3 3 0 0 1 0-9z' /%3E%3C/g%3E%3C/svg%3E");
-  background-size: 56px 46px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='46' viewBox='0 0 64 46'%3E%3Cdefs%3E%3Cg id='b'%3E%3Ccircle cx='3.2' cy='3' r='3'/%3E%3Ccircle cx='3.2' cy='9' r='3'/%3E%3Ccircle cx='20.8' cy='3' r='3'/%3E%3Ccircle cx='20.8' cy='9' r='3'/%3E%3Crect x='3.2' y='3.6' width='17.6' height='4.8' rx='1.2'/%3E%3C/g%3E%3C/defs%3E%3Cg fill='%23bd9dfb'%3E%3Cuse href='%23b' transform='translate(6 9) rotate(-18 12 6)'/%3E%3Cuse href='%23b' transform='translate(36 25) rotate(18 12 6)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 46px;
   animation: anda 30s linear infinite;
   border-block: 3px solid var(--tinta);
 }
-@keyframes anda { to { background-position: 560px 0; } }
+@keyframes anda { to { background-position: 640px 0; } }
 
 /* ---------- Unidades (Home) ---------- */
 .unidades { padding: clamp(8px, 2vw, 20px) 0 clamp(70px, 9vw, 120px); }
@@ -1016,3 +1016,20 @@ main, .rodape { overflow-x: clip; }
 .unidade .orelhas { aspect-ratio: 16 / 11; }
 .est-card img { aspect-ratio: 3 / 4; object-fit: cover; }
 @media (max-width: 760px) { .suites figure:first-child { aspect-ratio: 3 / 4; grid-column: span 2; max-width: 420px; justify-self: center; width: 100%; } }
+
+/* letreiro reto (sem inclinação) */
+.letreiro, .letreiro--lilas { transform: none; margin: 0; }
+/* fotos do banho e tosa: sem faixa branca (a 2ª foto descida esticava a 1ª) */
+.tosa__fotos { align-items: start; }
+.tosa__fotos img { display: block; }
+/* cards da estrutura: texto sempre com 2 linhas */
+.est-card__txt span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; line-height: 1.45; min-height: calc(2 * 1.45em); }
+/* check-in: base das duas colunas alinhada */
+.checkin__grid { align-items: stretch; }
+.horarios { display: flex; flex-direction: column; gap: 14px; }
+.horarios .dica { margin-top: auto; }
+.trazer { display: flex; flex-direction: column; justify-content: center; }
+/* cards da estrutura no celular: 3 linhas, sem cortar */
+@media (max-width: 760px) { .est-card__txt span { -webkit-line-clamp: 3; line-clamp: 3; min-height: calc(3 * 1.45em); } }
+
+.horarios .dica { margin-bottom: 0; }
