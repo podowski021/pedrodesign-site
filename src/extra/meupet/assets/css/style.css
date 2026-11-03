@@ -1041,3 +1041,19 @@ main, .rodape { overflow-x: clip; }
 .suites { grid-template-rows: auto; }
 .suites figure, .suites figure:first-child { grid-row: auto; grid-column: auto; aspect-ratio: 3 / 4; max-width: none; width: auto; justify-self: stretch; }
 @media (max-width: 760px) { .suites figure:first-child { grid-column: auto; max-width: none; } }
+
+/* ---------- Efeito dos títulos (do PSD "estilo_de_fontes") ----------
+   Nohemi Black · sombra projetada sólida (#0F0201, 100%, ângulo 90°, distância 12px, propagação 100%, tamanho 17px)
+   convertida em em: deslocamento .062em para baixo e expansão de .088em em volta da letra.
+   Chanfro suave: realce branco 29% em cima. */
+:root { --sombra-titulo: #0F0201; }
+.display, .unidade__titulo,
+.fundo-claro .display, .fundo-lilas .display, .fundo-coral .display,
+.fundo-claro .outra__caixa .display, .fundo-claro .unidade .display {
+  font-weight: 900;
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow: 0.088em 0.062em 0 var(--sombra-titulo), 0.085em 0.085em 0 var(--sombra-titulo), 0.076em 0.106em 0 var(--sombra-titulo), 0.062em 0.124em 0 var(--sombra-titulo), 0.044em 0.138em 0 var(--sombra-titulo), 0.023em 0.147em 0 var(--sombra-titulo), 0.000em 0.150em 0 var(--sombra-titulo), -0.023em 0.147em 0 var(--sombra-titulo), -0.044em 0.138em 0 var(--sombra-titulo), -0.062em 0.124em 0 var(--sombra-titulo), -0.076em 0.106em 0 var(--sombra-titulo), -0.085em 0.085em 0 var(--sombra-titulo), -0.088em 0.062em 0 var(--sombra-titulo), -0.085em 0.039em 0 var(--sombra-titulo), -0.076em 0.018em 0 var(--sombra-titulo), -0.062em -0.000em 0 var(--sombra-titulo), -0.044em -0.014em 0 var(--sombra-titulo), -0.023em -0.023em 0 var(--sombra-titulo), -0.000em -0.026em 0 var(--sombra-titulo), 0.023em -0.023em 0 var(--sombra-titulo), 0.044em -0.014em 0 var(--sombra-titulo), 0.062em -0.000em 0 var(--sombra-titulo), 0.076em 0.018em 0 var(--sombra-titulo), 0.085em 0.039em 0 var(--sombra-titulo), 0 0.062em 0 var(--sombra-titulo);
+}
+.fundo-claro .display, .fundo-lilas .display { color: var(--lilas); }
+.hero__titulo .destaque { text-shadow: none; }
