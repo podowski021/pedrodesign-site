@@ -13,7 +13,7 @@
 @font-face {
   font-family: "Nohemi";
   src: url("../fonts/Nohemi-Medium.woff") format("woff");
-  font-weight: 500 900;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -63,6 +63,35 @@ button { font: inherit; cursor: pointer; }
 
 .container { width: min(100% - 2 * var(--gutter), var(--largura)); margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ---------- Título "display" no estilo da apresentação ---------- */
 .display {
@@ -1057,3 +1086,13 @@ main, .rodape { overflow-x: clip; }
 }
 .fundo-claro .display, .fundo-lilas .display { color: var(--lilas); }
 .hero__titulo .destaque { text-shadow: none; }
+/* Nohemi Black é mais larga: título do hero do Spa volta a 3 linhas */
+@media (min-width: 761px) { .hero-piscina__texto { max-width: 680px; } .hero-piscina .hero__titulo { max-width: 15ch; } }
+@font-face { font-family: "Poppins"; src: url("../fonts/Poppins-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../fonts/Poppins-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("../fonts/Poppins-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+/* subtítulos: Poppins Regular, palavras-chave em SemiBold */
+.hero__sub, .secao__sub { font-family: "Poppins", system-ui, sans-serif; font-weight: 400; letter-spacing: 0; }
+.hero__sub strong, .secao__sub strong { font-weight: 600; }
+/* títulos: sempre Nohemi */
+h1, h2, h3, .display { font-family: "Nohemi", system-ui, sans-serif; }
