@@ -232,6 +232,7 @@ footer a{text-decoration:none}
 .who span{font-style:italic}
 @media (max-width:480px){.btn.big{font-size:15px;padding-left:20px}.btn.big .wi{white-space:normal;line-height:1.2;gap:10px}.btn.big .wi svg{width:22px;height:22px;flex:none}}
 /* faixa final */
+.close .la{width:min(780px,88vw);margin:0 auto clamp(60px,7vw,110px);aspect-ratio:1470/660}
 .close{padding:clamp(80px,10vw,150px) 0 clamp(40px,5vw,70px);overflow:hidden}
 .mqx{border-block:1px solid var(--ink);padding:clamp(18px,2.4vw,34px) 0;overflow:hidden}
 .mqt{display:flex;align-items:center;width:max-content;animation:mq 34s linear infinite}
@@ -400,6 +401,7 @@ header{animation:hdIn 1s var(--ease) both}
   </section>
 
   <section class="close" aria-label="Pedro Design">
+    <div class="wrap"><div class="la" data-logo-animada></div></div>
     <div class="mqx"><div class="mqt"><span class="mi" data-i="mq">Sua marca no <span class="o">próximo nível</span></span><span class="ms" aria-hidden="true">✦</span><span class="mi" data-i="mq">Sua marca no <span class="o">próximo nível</span></span><span class="ms" aria-hidden="true">✦</span><span class="mi" data-i="mq">Sua marca no <span class="o">próximo nível</span></span><span class="ms" aria-hidden="true">✦</span><span class="mi" data-i="mq">Sua marca no <span class="o">próximo nível</span></span><span class="ms" aria-hidden="true">✦</span></div></div>
   </section>
 </main>
@@ -577,5 +579,6 @@ header{animation:hdIn 1s var(--ease) both}
   });
 })();
 </script>
+<script src="assets/logo-animada.js" defer></script>
 </body>
 </html>
