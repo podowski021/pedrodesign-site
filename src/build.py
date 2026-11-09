@@ -147,9 +147,14 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
         q = os.path.join(OUT, q)
         if os.path.isdir(q): shutil.rmtree(q)
         elif os.path.exists(q): os.remove(q)
-    shutil.copyfile(os.path.join(HERE, 'soon', 'index.html'), os.path.join(OUT, 'index.html'))
+    # página inicial = página de apresentação (src/extra/apresentacao), com os arquivos servidos de /apresentacao/assets/
+    import re as _re
+    _ap = open(os.path.join(HERE, 'extra', 'apresentacao', 'index.html'), encoding='utf-8').read()
+    _ap = _re.sub(r'(?<=["\'(])assets/', '/apresentacao/assets/', _ap)
+    _ap = _ap.replace(DOMAIN + '/apresentacao/', DOMAIN + '/')
+    open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(_ap)
     with open(os.path.join(OUT, '.htaccess'), 'a') as f:
-        f.write('\n# em desenvolvimento: links antigos voltam para a página inicial\nRedirectMatch 302 ^/links/?$ /\n')
+        f.write('\n# links antigos voltam para a página inicial\nRedirectMatch 302 ^/links/?$ /\nRedirectMatch 301 ^/apresentacao/?$ /\n')
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url></urlset>\n')
     print('MODO EM DESENVOLVIMENTO')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)

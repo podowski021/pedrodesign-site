@@ -23,15 +23,17 @@ Prévia local: `php -S 127.0.0.1:8790` na raiz (o painel precisa de PHP).
 ## Páginas extras
 `src/extra/<pasta>/` é publicado como está em `/<pasta>/` (ex.: `src/extra/meupet/` → pedrodesign.store/meupet/, com `/meupet/spa/` e `/meupet/vet/`). Continua no ar mesmo no modo em desenvolvimento. Use caminhos relativos dentro dessas páginas.
 
-## Modo "em desenvolvimento"
-Enquanto existir `src/EM_DESENVOLVIMENTO`, o build publica só `src/soon/index.html` (página "em desenvolvimento"), mantém o painel e remove o resto (o site completo continua em `src/`). Para voltar ao site completo: apagar `src/EM_DESENVOLVIMENTO` e rodar o build.
+## Página inicial atual (apresentação)
+Enquanto existir `src/EM_DESENVOLVIMENTO`, a página inicial (`/`) é a **página de apresentação** de `src/extra/apresentacao/index.html`: o build copia esse arquivo para a raiz trocando `assets/` por `/apresentacao/assets/`. `/apresentacao/` redireciona (301) para `/`. O painel continua; o site antigo (navy/dourado) fica guardado em `src/` sem ser publicado (`src/soon/` não é mais usado). Para voltar ao site antigo completo: apagar `src/EM_DESENVOLVIMENTO` e rodar o build.
+
+Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mona Sans** (títulos Black 900 em caixa alta, destaque em itálico Light 300 laranja); logo animada `assets/logo-animada-v4.js` (`data-logo-animada`, `data-loop`, `data-intervalo`, `data-globo`); 6 idiomas automáticos pelo idioma do aparelho (dicionário `T` no script). Arquivos de imagem/fonte ficam em cache por 1 ano: ao trocar um arquivo, salve com **nome novo**. Preço: páginas a partir de R$ 1.000.
 
 ## Regras do Pedro (obrigatórias)
 - Textos sobre o trabalho dele: sempre **primeira pessoa do singular** ("trabalhou comigo", "eu entrego"), nunca "nós".
 - Usar **"páginas"**, nunca "landing pages".
 - Regra das 24h: a **primeira versão** (não a final) é entregue em 24h, contadas só quando **pagamento e briefing** estiverem ambos enviados.
 - A cada atualização: revisar o site inteiro (computador e celular, os 6 idiomas) procurando erros e inconsistências e corrigir antes de entregar.
-- Estilo: muito alto padrão, editorial, que transmite autoridade. Fundo azul-marinho (#06101F) com aurora animada discreta e granulado. Títulos em **Newsreader** (serifada, peso 400, destaque em itálico 300 dourado/marfim); textos em **Inter**. Acento **champanhe/dourado** (#D2B77E) nos botões e detalhes; texto marfim #EEEAE1. Nada de cores vibrantes/degradê colorido na interface (o logo usa a versão monocromática dourada `pedro-design-logo-mono.svg`). Seções numeradas "§ 01".
+- Estilo do site antigo (guardado em `src/site/`): muito alto padrão, editorial, que transmite autoridade. Fundo azul-marinho (#06101F) com aurora animada discreta e granulado. Títulos em **Newsreader** (serifada, peso 400, destaque em itálico 300 dourado/marfim); textos em **Inter**. Acento **champanhe/dourado** (#D2B77E) nos botões e detalhes; texto marfim #EEEAE1. Nada de cores vibrantes/degradê colorido na interface (o logo usa a versão monocromática dourada `pedro-design-logo-mono.svg`). Seções numeradas "§ 01".
 - Não falar de nota fiscal, empresa, CNPJ ou razão social no site nem na árvore de links.
 - Logos dos clientes ficam nas cores originais.
 - Árvore de links em `src/links/index.html` (publicada em `/links/`), mesmo estilo do site.

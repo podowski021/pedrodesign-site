@@ -199,12 +199,12 @@ footer a{text-decoration:none}
 
 /* números */
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(40px,5vw,72px)}
-.nm{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(220px,19vw,270px);padding:clamp(22px,2.2vw,30px);border-radius:24px;overflow:hidden;transition:transform .7s var(--ease),opacity .9s var(--ease)}
-.nm:hover{transform:translateY(-6px)}
-.nm .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.nm b{font-weight:900;font-size:clamp(56px,5.4vw,84px);line-height:.85;letter-spacing:-.05em;white-space:nowrap}
-.nm b .o{font-weight:300;font-style:italic;letter-spacing:-.02em;padding:0 .03em}
-.nm p{margin:0;max-width:24ch;font-size:15px;line-height:1.45}
+.kpi{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(220px,19vw,270px);padding:clamp(22px,2.2vw,30px);border-radius:24px;overflow:hidden;transition:transform .7s var(--ease),opacity .9s var(--ease)}
+.kpi:hover{transform:translateY(-6px)}
+.kpi .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.kpi b{font-weight:900;font-size:clamp(56px,5.4vw,84px);line-height:.85;letter-spacing:-.05em;white-space:nowrap}
+.kpi b .o{font-weight:300;font-style:italic;letter-spacing:-.02em;padding:0 .03em}
+.kpi p{margin:0;max-width:24ch;font-size:15px;line-height:1.45}
 .n1{background:var(--ink);color:var(--paper)}
 .n1 p{color:#9C9993}
 .n1 b{color:var(--paper)}
@@ -230,7 +230,7 @@ footer a{text-decoration:none}
 @keyframes msg{to{left:calc(100% - 8px)}}
 .link em{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);font-style:normal;font-size:11px;font-weight:600}
 .n3:hover .link img{filter:none}
-@media (max-width:900px){.nums{grid-template-columns:1fr}.nm{min-height:0;gap:26px}.nm b{font-size:64px}}
+@media (max-width:900px){.nums{grid-template-columns:1fr}.kpi{min-height:0;gap:26px}.kpi b{font-size:64px}}
 @media (prefers-reduced-motion:reduce){.ring .fg{stroke-dashoffset:0}.dots i{background:var(--acc)}}
 /* tipografia: contraste de pesos e itálico */
 .disp{font-weight:900}
@@ -372,9 +372,9 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
         </figure>
       </div>
       <div class="nums">
-        <div class="nm n1 rv"><div class="top"><b>+<span class="cnt" data-to="15">15</span></b><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i></span></div><p data-i="k1">marcas que já confiaram no meu trabalho</p></div>
-        <div class="nm n2 rv" style="--d:.08s"><div class="top"><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27"/></svg></div><p data-i="k2">sob medida, sem modelos prontos</p></div>
-        <div class="nm n3 rv" style="--d:.16s"><div class="top"><b>1<span class="o">:</span>1</b><span class="link" aria-hidden="true"><img src="assets/avatar-2.webp" alt="" width="44" height="44"><i class="ln"><i></i></i><em data-i="you">Você</em></span></div><p data-i="k3">você fala direto comigo, sem intermediários</p></div>
+        <div class="kpi n1 rv"><div class="top"><b>+<span class="cnt" data-to="15">15</span></b><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i></span></div><p data-i="k1">marcas que já confiaram no meu trabalho</p></div>
+        <div class="kpi n2 rv" style="--d:.08s"><div class="top"><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27"/></svg></div><p data-i="k2">sob medida, sem modelos prontos</p></div>
+        <div class="kpi n3 rv" style="--d:.16s"><div class="top"><b>1<span class="o">:</span>1</b><span class="link" aria-hidden="true"><img src="assets/avatar-2.webp" alt="" width="44" height="44"><i class="ln"><i></i></i><em data-i="you">Você</em></span></div><p data-i="k3">você fala direto comigo, sem intermediários</p></div>
       </div>
     </div>
     <div class="band" aria-label="Marcas que já trabalharam comigo">
