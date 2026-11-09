@@ -233,7 +233,9 @@ footer a{text-decoration:none}
 @media (max-width:560px){.pp{padding:12px;border-radius:18px}.pp .au{padding:10px 12px;gap:10px}.pp .au button:first-child{width:42px;height:42px}.pp .au .sp{min-width:42px;padding:0 6px}.pp .au time{min-width:30px}}
 .pp .au{background:#1C1C1B}
 .qt .wpp{display:block;width:100%;max-width:454px;height:auto;border-radius:14px}
-.qt .who{flex-direction:row}
+.qt .qn{display:flex;align-items:baseline;gap:10px;padding:2px 4px 0;font-size:15px}
+.qt .qn strong{font-weight:600}
+.qt .qn span{font-size:13px;font-style:italic;color:#8E8B84}
 /* números */
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(40px,5vw,72px)}
 .kpi{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(220px,19vw,270px);padding:clamp(22px,2.2vw,30px);border-radius:24px;overflow:hidden;transition:transform .7s var(--ease),opacity .9s var(--ease)}
@@ -305,7 +307,7 @@ footer a{text-decoration:none}
 @media (max-width:820px){.lg{width:104px}.lg-f{width:150px}}
 
 /* animações */
-.prog{position:fixed;left:0;top:0;z-index:60;width:100vw;height:3px;background:var(--acc);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
+.prog{position:fixed;left:0;top:0;z-index:60;width:100%;height:3px;background:var(--acc);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
 header{animation:hdIn 1s var(--ease) both}
 @keyframes hdIn{from{transform:translateY(-100%)}}
 .photo{clip-path:inset(100% 0 0 0 round 22px);animation:phIn 1.4s .25s var(--ease) forwards}
@@ -335,12 +337,9 @@ header{animation:hdIn 1s var(--ease) both}
 .btn{will-change:transform}
 .btn .ic{transition:transform .55s var(--ease)}
 @media (prefers-reduced-motion:reduce){.photo{clip-path:none}.wd>span{transform:none}.card li,.pj .meta,.card .btn.big{opacity:1!important;transform:none!important}.pj .fr{clip-path:none}.prog{display:none}}
-/* barra de rolagem */
-::-webkit-scrollbar{width:12px;height:12px}
-::-webkit-scrollbar-track{background:var(--paper)}
-::-webkit-scrollbar-thumb{background:var(--ink);border-radius:999px;border:3px solid var(--paper)}
-::-webkit-scrollbar-thumb:hover{background:var(--acc)}
-@supports not selector(::-webkit-scrollbar){html{scrollbar-color:var(--ink) var(--paper);scrollbar-width:thin}}
+/* barra de rolagem lateral escondida: a barra laranja do topo indica o progresso */
+html{scrollbar-width:none}
+::-webkit-scrollbar{width:0;height:0;background:transparent}
 /* botão flutuante do WhatsApp */
 .wa{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:12px;padding:6px 6px 6px 6px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 18px 40px -14px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06) inset;transform:translateY(140%);opacity:0;transition:transform .7s var(--ease),opacity .5s,padding .5s var(--ease)}
 .wa.on{transform:none;opacity:1}
@@ -484,7 +483,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
           <div class="pp"><div class="who"><img src="assets/emerson.webp" alt="" width="54" height="54"><div><strong>Emerson</strong><span data-i="cli">Cliente</span></div></div>
             <div class="au" data-src="assets/fb-3-v.m4a"><button type="button" data-ia="a3" aria-label="Ouvir o áudio do Emerson"><svg aria-hidden="true"><use href="#play"/></svg></button><div class="wv" aria-hidden="true"></div><time>0:08</time><button type="button" class="sp" data-ia="spd" aria-label="Velocidade do áudio">1x</button></div>
           </div>
-          <figure class="pp qt"><img class="wpp" src="assets/joao-print.webp" alt="Mensagem do João Cericato no WhatsApp: Indico por prazer. Trabalho bem feito." width="454" height="184" loading="lazy"><figcaption class="who"><img src="assets/joao.webp" alt="" width="54" height="54"><div><strong>João Cericato</strong><span>@jcericato</span></div></figcaption></figure>
+          <figure class="pp qt"><img class="wpp" src="assets/joao-print.webp" alt="Mensagem do João Cericato no WhatsApp: Indico por prazer. Trabalho bem feito." width="454" height="184" loading="lazy"><figcaption class="qn"><strong>João Cericato</strong><span>@jcericato</span></figcaption></figure>
         </div>
       </div>
     </div>
