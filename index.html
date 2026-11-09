@@ -232,6 +232,13 @@ footer a{text-decoration:none}
 .ring .bg{stroke:rgba(255,255,255,.28)}
 .ring .fg{stroke:#fff;stroke-linecap:round;stroke-dasharray:169.65;stroke-dashoffset:169.65;transition:stroke-dashoffset 1.8s cubic-bezier(.22,1,.36,1) .3s}
 .n2.in .ring .fg{stroke-dashoffset:0}
+.ring{overflow:visible}
+.ring .sat{transform-origin:32px 32px;opacity:0;transition:opacity .5s 2s}
+.ring .sat circle{fill:#fff;stroke:var(--acc);stroke-width:3}
+.n2.in .ring .sat{opacity:1;animation:sat 3.2s linear 2s infinite}
+@keyframes sat{to{transform:rotate(360deg)}}
+.n2.in .ring{animation:rp 3.2s ease-in-out 2s infinite}
+@keyframes rp{50%{transform:rotate(-90deg) scale(1.06)}}
 .n3{background:var(--paper2)}
 .n3 b .o{color:var(--acc);font-style:normal;font-weight:900;padding:0 .02em}
 .n3 p{color:var(--ink2)}
@@ -385,7 +392,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
       </div>
       <div class="nums">
         <div class="kpi n1 rv"><div class="top"><b>+<span class="cnt" data-to="30">30</span></b><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i><i style="--i:24"></i><i style="--i:25"></i><i style="--i:26"></i><i style="--i:27"></i><i style="--i:28"></i><i style="--i:29"></i></span></div><p data-i="k1">marcas que já confiaram no meu trabalho</p></div>
-        <div class="kpi n2 rv" style="--d:.08s"><div class="top"><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27"/></svg></div><p data-i="k2">sob medida, sem modelos prontos</p></div>
+        <div class="kpi n2 rv" style="--d:.08s"><div class="top"><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27"/><g class="sat"><circle cx="59" cy="32" r="5"/></g></svg></div><p data-i="k2">sob medida, sem modelos prontos</p></div>
         <div class="kpi n3 rv" style="--d:.16s"><div class="top"><b>1<span class="o">:</span>1</b><span class="link" aria-hidden="true"><img src="/apresentacao/assets/avatar-2.webp" alt="" width="44" height="44"><i class="ln"><i></i></i><em data-i="you">Você</em></span></div><p data-i="k3">você fala direto comigo, sem intermediários</p></div>
       </div>
     </div>
