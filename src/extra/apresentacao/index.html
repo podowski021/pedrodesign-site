@@ -97,16 +97,7 @@ header.sc{background:rgba(239,237,231,.86);backdrop-filter:blur(12px);-webkit-ba
 .photo .stamp{position:absolute;right:10px;top:10px;width:132px;height:132px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.25))}
 .photo .stamp svg{width:100%;height:100%}
 @keyframes spin{to{transform:rotate(360deg)}}
-.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--ink)}
-.nums div{padding:22px 22px 4px 0;border-right:1px solid var(--line)}
-.nums div+div{padding-left:22px}
-.nums div:last-child{border-right:0}
-.nums b{display:block;font-weight:800;font-size:clamp(33.1px,3.6vw,51.8px);line-height:.9;letter-spacing:-.01em}
-.nums b .o{color:var(--acc)}
-.nums b .o{display:inline;margin:0;font-size:inherit;color:var(--acc)}
-.nums div>span{display:block;margin-top:10px;font-size:13.5px;color:var(--mut);line-height:1.4;max-width:20ch}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr;grid-template-areas:"t" "p" "s"}.photo{aspect-ratio:16/11;max-height:none}.hero h1{font-size:clamp(46.1px,9.8vw,86.4px)}.nums div{padding-right:12px}.nums div+div{padding-left:12px}.nums b{font-size:clamp(27.4px,7.9vw,40.3px)}.nums div>span{font-size:12.5px}}
-
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;grid-template-areas:"t" "p" "s"}.photo{aspect-ratio:16/11;max-height:none}.hero h1{font-size:clamp(46.1px,9.8vw,86.4px)}}
 /* faixa de clientes */
 .band{margin-top:clamp(70px,8vw,120px);background:var(--ink);color:var(--paper);padding:30px 0;overflow:hidden}
 .band .tr{display:flex;align-items:center;gap:70px;width:max-content;animation:mq 50s linear infinite}
@@ -206,15 +197,47 @@ footer a{text-decoration:none}
 /* whatsapp fixo */
 
 
+/* números */
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(40px,5vw,72px)}
+.nm{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(220px,19vw,270px);padding:clamp(22px,2.2vw,30px);border-radius:24px;overflow:hidden;transition:transform .7s var(--ease),opacity .9s var(--ease)}
+.nm:hover{transform:translateY(-6px)}
+.nm .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.nm b{font-weight:900;font-size:clamp(56px,5.4vw,84px);line-height:.85;letter-spacing:-.05em;white-space:nowrap}
+.nm b .o{font-weight:300;font-style:italic;letter-spacing:-.02em;padding:0 .03em}
+.nm p{margin:0;max-width:24ch;font-size:15px;line-height:1.45}
+.n1{background:var(--ink);color:var(--paper)}
+.n1 p{color:#9C9993}
+.n1 b{color:var(--paper)}
+.dots{display:grid;grid-template-columns:repeat(5,9px);gap:7px;padding-top:6px}
+.dots i{width:9px;height:9px;border-radius:50%;background:#2E2E2C;transition:background .35s,transform .5s var(--ease);transition-delay:calc(var(--i)*90ms + .5s)}
+.n1.in .dots i{background:var(--acc)}
+.n1:hover .dots i{transform:scale(1.25);transition-delay:calc(var(--i)*25ms)}
+.n2{background:var(--acc);color:#fff}
+.n2 b .o{color:#fff}
+.n2 p{color:rgba(255,255,255,.88)}
+.ring{flex:none;width:72px;height:72px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:6}
+.ring .bg{stroke:rgba(255,255,255,.28)}
+.ring .fg{stroke:#fff;stroke-linecap:round;stroke-dasharray:169.65;stroke-dashoffset:169.65;transition:stroke-dashoffset 1.8s cubic-bezier(.22,1,.36,1) .3s}
+.n2.in .ring .fg{stroke-dashoffset:0}
+.n3{background:var(--paper2)}
+.n3 b .o{color:var(--acc);font-style:normal;font-weight:900;padding:0 .02em}
+.n3 p{color:var(--ink2)}
+.link{flex:none;display:flex;align-items:center;padding-top:6px}
+.link img{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+.link .ln{position:relative;width:46px;height:2px;margin:0 4px;background:repeating-linear-gradient(90deg,var(--ink) 0 4px,transparent 4px 8px);opacity:.5}
+.link .ln i{position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--acc);animation:msg 1.8s ease-in-out infinite alternate}
+@keyframes msg{to{left:calc(100% - 8px)}}
+.link em{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);font-style:normal;font-size:11px;font-weight:600}
+.n3:hover .link img{filter:none}
+@media (max-width:900px){.nums{grid-template-columns:1fr}.nm{min-height:0;gap:26px}.nm b{font-size:64px}}
+@media (prefers-reduced-motion:reduce){.ring .fg{stroke-dashoffset:0}.dots i{background:var(--acc)}}
 /* tipografia: contraste de pesos e itálico */
 .disp{font-weight:900}
 .disp .o{font-weight:300;font-style:italic;text-transform:none;letter-spacing:-.04em;padding-right:.04em}
 .disp .o.dot{font-weight:900;font-style:normal;padding:0}
 .txt b{font-weight:600;color:var(--ink)}
 .fb .txt{font-weight:300;font-style:italic;font-size:clamp(18px,1.6vw,22px);line-height:1.5}
-.nums b{font-weight:900}
-.nums b .o{font-weight:900;font-style:normal}
-.nums div>span{font-weight:400}
 .pj strong{font-weight:800}
 .pj .c em{font-style:italic;font-weight:500}
 .photo .tag span{font-weight:600}
@@ -267,7 +290,6 @@ header{animation:hdIn 1s var(--ease) both}
 @keyframes bar{to{transform:scaleY(.45)}}
 .btn{will-change:transform}
 .btn .ic{transition:transform .55s var(--ease)}
-.nums b{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.photo{clip-path:none}.wd>span{transform:none}.card li,.pj .meta,.card .btn.big{opacity:1!important;transform:none!important}.pj .fr{clip-path:none}.prog{display:none}}
 /* barra de rolagem */
 ::-webkit-scrollbar{width:12px;height:12px}
@@ -349,10 +371,10 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
           <figcaption class="tag"><em>P</em><span>Pedro Nascimento<small>Designer</small></span></figcaption>
         </figure>
       </div>
-      <div class="nums rv">
-                <div><b>+<span class="cnt" data-to="15">15</span></b><span data-i="k1">marcas que já confiaram no meu trabalho</span></div>
-        <div><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><span data-i="k2">sob medida, sem modelos prontos</span></div>
-        <div><b>1<span class="o">:</span>1</b><span data-i="k3">você fala direto comigo, sem intermediários</span></div>
+      <div class="nums">
+        <div class="nm n1 rv"><div class="top"><b>+<span class="cnt" data-to="15">15</span></b><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i></span></div><p data-i="k1">marcas que já confiaram no meu trabalho</p></div>
+        <div class="nm n2 rv" style="--d:.08s"><div class="top"><b><span class="cnt" data-to="100">100</span><span class="o">%</span></b><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27"/></svg></div><p data-i="k2">sob medida, sem modelos prontos</p></div>
+        <div class="nm n3 rv" style="--d:.16s"><div class="top"><b>1<span class="o">:</span>1</b><span class="link" aria-hidden="true"><img src="assets/avatar-2.webp" alt="" width="44" height="44"><i class="ln"><i></i></i><em data-i="you">Você</em></span></div><p data-i="k3">você fala direto comigo, sem intermediários</p></div>
       </div>
     </div>
     <div class="band" aria-label="Marcas que já trabalharam comigo">
@@ -451,7 +473,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
   function O(s){return '<span class="o">'+s+'</span>'}
   function L(a){return '<li>'+a.join('</li><li>')+'</li>'}
   var T={
-  en:{fw1:'Talk to me',spd:'Playback speed',n3:'Pricing',h2l:'Your '+O('custom')+' page',of:'Starting at',on:'Final price based on the size of the project',ol:L(['Flawless on mobile and desktop','Copy written to sell','Highlighted WhatsApp button','Pixel and Google Analytics set up','Revision rounds included']),
+  en:{you:'You',fw1:'Talk to me',spd:'Playback speed',n3:'Pricing',h2l:'Your '+O('custom')+' page',of:'Starting at',on:'Final price based on the size of the project',ol:L(['Flawless on mobile and desktop','Copy written to sell','Highlighted WhatsApp button','Pixel and Google Analytics set up','Revision rounds included']),
     _t:'Pedro Design · Custom web pages',_d:'Custom web pages with exclusive design. See the projects, the feedback and the plans.',
     n1:'Projects',n2:'Feedback',live:'Booking new projects',kind:'Custom web pages',
     h1a:'Pages that',h1b:'sell '+O('for'),h1c:'your brand'+O('.'),
@@ -464,7 +486,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stars',a1:'Play the first voice message',a2:'Play the second voice message',wa:'Message me on WhatsApp',
     
     wa0:"Hi Pedro! I saw your presentation and I'd like a page.",},
-  es:{fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Inversión',h2l:'Tu página '+O('a medida')+'',of:'Desde',on:'Precio final según el tamaño del proyecto',ol:L(['Perfecta en móvil y ordenador','Textos pensados para vender','Botón de WhatsApp destacado','Pixel y Google Analytics instalados','Rondas de ajustes incluidas']),
+  es:{you:'Tú',fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Inversión',h2l:'Tu página '+O('a medida')+'',of:'Desde',on:'Precio final según el tamaño del proyecto',ol:L(['Perfecta en móvil y ordenador','Textos pensados para vender','Botón de WhatsApp destacado','Pixel y Google Analytics instalados','Rondas de ajustes incluidas']),
     _t:'Pedro Design · Páginas a medida',_d:'Páginas a medida con diseño exclusivo. Mira los proyectos, las opiniones y los planes.',
     n1:'Proyectos',n2:'Opiniones',live:'Agenda abierta para nuevos proyectos',kind:'Páginas a medida',
     h1a:'Páginas que',h1b:'venden '+O('por'),h1c:'tu marca'+O('.'),
@@ -477,7 +499,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 estrellas',a1:'Escuchar el primer audio',a2:'Escuchar el segundo audio',wa:'Escríbeme por WhatsApp',
     
     wa0:'¡Hola, Pedro! Vi tu presentación y quiero una página.',},
-  fr:{fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Tarif',h2l:'Votre page '+O('sur mesure')+'',of:'À partir de',on:'Prix final selon la taille du projet',ol:L(['Parfaite sur mobile et ordinateur','Textes pensés pour vendre','Bouton WhatsApp mis en avant','Pixel et Google Analytics installés','Séries de retouches incluses']),
+  fr:{you:'Vous',fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Tarif',h2l:'Votre page '+O('sur mesure')+'',of:'À partir de',on:'Prix final selon la taille du projet',ol:L(['Parfaite sur mobile et ordinateur','Textes pensés pour vendre','Bouton WhatsApp mis en avant','Pixel et Google Analytics installés','Séries de retouches incluses']),
     _t:'Pedro Design · Pages sur mesure',_d:'Pages sur mesure au design exclusif. Découvrez les projets, les avis et les formules.',
     n1:'Projets',n2:'Avis',live:'Agenda ouvert aux nouveaux projets',kind:'Pages sur mesure',
     h1a:'Des pages',h1b:'qui vendent',h1c:'votre '+O('marque')+O('.'),
@@ -490,7 +512,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 étoiles',a1:'Écouter le premier message',a2:'Écouter le deuxième message',wa:'Écrivez-moi sur WhatsApp',
     
     wa0:'Bonjour Pedro ! J’ai vu votre présentation et je voudrais une page.',},
-  it:{fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Prezzo',h2l:'La tua pagina '+O('su misura')+'',of:'A partire da',on:'Prezzo finale in base alla dimensione del progetto',ol:L(['Perfetta su smartphone e computer','Testi pensati per vendere','Pulsante WhatsApp in evidenza','Pixel e Google Analytics installati','Giri di modifiche inclusi']),
+  it:{you:'Tu',fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Prezzo',h2l:'La tua pagina '+O('su misura')+'',of:'A partire da',on:'Prezzo finale in base alla dimensione del progetto',ol:L(['Perfetta su smartphone e computer','Testi pensati per vendere','Pulsante WhatsApp in evidenza','Pixel e Google Analytics installati','Giri di modifiche inclusi']),
     _t:'Pedro Design · Pagine su misura',_d:'Pagine su misura con design esclusivo. Guarda i progetti, i feedback e i piani.',
     n1:'Progetti',n2:'Feedback',live:'Agenda aperta per nuovi progetti',kind:'Pagine su misura',
     h1a:'Pagine che',h1b:'vendono '+O('per'),h1c:'il tuo brand'+O('.'),
@@ -503,7 +525,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stelle',a1:'Ascolta il primo vocale',a2:'Ascolta il secondo vocale',wa:'Scrivimi su WhatsApp',
     
     wa0:'Ciao Pedro! Ho visto la tua presentazione e vorrei una pagina.',},
-  de:{fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Preis',h2l:'Ihre Seite '+O('nach Maß'),of:'Ab',on:'Endpreis je nach Größe des Projekts',ol:L(['Perfekt auf Handy und Computer','Verkaufsstarke Texte','Hervorgehobener WhatsApp-Button','Pixel und Google Analytics eingerichtet','Korrekturrunden inklusive']),
+  de:{you:'Sie',fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Preis',h2l:'Ihre Seite '+O('nach Maß'),of:'Ab',on:'Endpreis je nach Größe des Projekts',ol:L(['Perfekt auf Handy und Computer','Verkaufsstarke Texte','Hervorgehobener WhatsApp-Button','Pixel und Google Analytics eingerichtet','Korrekturrunden inklusive']),
     _t:'Pedro Design · Maßgeschneiderte Webseiten',_d:'Maßgeschneiderte Webseiten mit exklusivem Design. Projekte, Feedback und Pakete.',
     n1:'Projekte',n2:'Feedback',live:'Offen für neue Projekte',kind:'Maßgeschneiderte Webseiten',
     h1a:'Seiten, die',h1b:O('für Sie'),h1c:'verkaufen'+O('.'),
