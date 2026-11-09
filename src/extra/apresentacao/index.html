@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pedro Design · Páginas sob medida</title>
-<meta name="description" content="Páginas sob medida, com primeira versão em 24h. Veja os projetos, os feedbacks e os planos.">
+<meta name="description" content="Páginas sob medida, com design exclusivo. Veja os projetos, os feedbacks e os planos.">
 <link rel="canonical" href="https://pedrodesign.store/apresentacao/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#EFEDE7">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pedrodesign.store/apresentacao/">
 <meta property="og:title" content="Pedro Design · Páginas sob medida">
-<meta property="og:description" content="Projetos, feedbacks e planos. Primeira versão da sua página em 24h.">
+<meta property="og:description" content="Páginas sob medida, com design exclusivo. Projetos, feedbacks e planos.">
 <meta property="og:image" content="https://pedrodesign.store/assets/og.jpg">
 <link rel="preload" href="assets/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -90,7 +90,7 @@ header.sc{background:rgba(239,237,231,.86);backdrop-filter:blur(12px);-webkit-ba
 .photo .stamp svg{width:100%;height:100%;animation:spin 18s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .photo .stamp b{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;color:var(--acc)}
-.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--ink)}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--ink)}
 .nums div{padding:22px 22px 4px 0;border-right:1px solid var(--line)}
 .nums div+div{padding-left:22px}
 .nums div:last-child{border-right:0}
@@ -98,7 +98,7 @@ header.sc{background:rgba(239,237,231,.86);backdrop-filter:blur(12px);-webkit-ba
 .nums b .o{color:var(--acc)}
 .nums b .o{display:inline;margin:0;font-size:inherit;color:var(--acc)}
 .nums div>span{display:block;margin-top:10px;font-size:13.5px;color:var(--mut);line-height:1.4;max-width:20ch}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-grid .side{order:2}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.nums div:nth-child(3){padding-left:0}.nums div:nth-child(2){border-right:0}.nums div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-grid .side{order:2}.nums div{padding-right:12px}.nums div+div{padding-left:12px}.nums b{font-size:clamp(38px,11vw,56px)}.nums div>span{font-size:12.5px}}
 
 /* faixa de clientes */
 .band{margin-top:clamp(70px,8vw,120px);background:var(--ink);color:var(--paper);padding:30px 0;overflow:hidden}
@@ -223,10 +223,10 @@ footer a{text-decoration:none}
   <div class="wrap nav">
     <a href="#topo" aria-label="Pedro Design · início"><img src="assets/logo-preto.svg" alt="Pedro Design" width="150" height="27"></a>
     <nav aria-label="Menu">
-      <a class="l" href="#projetos">Projetos</a>
-      <a class="l" href="#feedbacks">Feedbacks</a>
-      <a class="l" href="#planos">Planos</a>
-      <a class="btn" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener">WhatsApp<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+      <a class="l" href="#projetos" data-i="n1">Projetos</a>
+      <a class="l" href="#feedbacks" data-i="n2">Feedbacks</a>
+      <a class="l" href="#planos" data-i="n3">Planos</a>
+      <a class="btn" data-wa="wa0" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener">WhatsApp<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
     </nav>
   </div>
 </header>
@@ -234,27 +234,26 @@ footer a{text-decoration:none}
 <main id="topo">
   <section class="hero">
     <div class="wrap">
-      <div class="hero-top"><span class="live"><i></i>Agenda aberta para novos projetos</span><span>Páginas sob medida · Brasil e exterior</span></div>
-      <h1 class="disp"><span><span>Páginas que</span></span><span><span>vendem <span class="o">pela</span></span></span><span><span>sua marca<span class="o">.</span></span></span></h1>
+      <div class="hero-top"><span class="live"><i></i><span data-i="live">Agenda aberta para novos projetos</span></span><span data-i="kind">Páginas sob medida</span></div>
+      <h1 class="disp"><span><span data-i="h1a">Páginas que</span></span><span><span data-i="h1b">vendem <span class="o">pela</span></span></span><span><span data-i="h1c">sua marca<span class="o">.</span></span></span></h1>
       <div class="hero-grid">
         <div class="side rv">
-          <p class="txt">Eu sou o Pedro. Desenho e desenvolvo páginas que passam confiança no primeiro segundo e transformam visita em cliente. Sem modelo pronto: cada projeto é feito do zero, comigo do começo ao fim.</p>
+          <p class="txt" data-i="hp">Eu sou o Pedro. Desenho e desenvolvo páginas que passam confiança no primeiro segundo e transformam visita em cliente. Sem modelo pronto: cada projeto é feito do zero, comigo do começo ao fim.</p>
           <div class="ctas">
-            <a class="btn acc" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener">Quero minha página<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
-            <a class="btn ghost" href="#projetos">Ver projetos<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+            <a class="btn acc" data-wa="wa0" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener"><span data-i="c1">Quero minha página</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+            <a class="btn ghost" href="#projetos"><span data-i="c2">Ver projetos</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
           </div>
         </div>
         <figure class="photo rv" style="--d:.1s;margin:0">
           <img src="assets/pedro-sobre.webp" alt="Pedro Nascimento, designer" width="880" height="1100" fetchpriority="high">
-          <span class="stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="cc" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><circle cx="50" cy="50" r="49" fill="#EFEDE7"/><text font-family="Archivo" font-size="10.5" font-weight="700" letter-spacing="2.2" fill="#0D0D0D"><textPath href="#cc" textLength="236">PRIMEIRA VERSÃO EM 24H · SOB MEDIDA ·</textPath></text></svg><b>★</b></span>
+          <span class="stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="cc" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><circle cx="50" cy="50" r="49" fill="#EFEDE7"/><text font-family="Archivo" font-size="10.5" font-weight="700" letter-spacing="2.2" fill="#0D0D0D"><textPath href="#cc" textLength="236" data-i="stamp">DESIGN SOB MEDIDA · ALTO PADRÃO ·</textPath></text></svg><b>★</b></span>
           <figcaption class="tag"><em>P</em><span>Pedro Nascimento<small>Designer · Pedro Design</small></span></figcaption>
         </figure>
       </div>
       <div class="nums rv">
-        <div><b>24<span class="o">h</span>*</b><span>para a primeira versão da sua página</span></div>
-        <div><b>+15</b><span>marcas que já confiaram no meu trabalho</span></div>
-        <div><b>100<span class="o">%</span></b><span>sob medida, sem modelos prontos</span></div>
-        <div><b>1<span class="o">:</span>1</b><span>você fala direto comigo, sem intermediários</span></div>
+                <div><b>+15</b><span data-i="k1">marcas que já confiaram no meu trabalho</span></div>
+        <div><b>100<span class="o">%</span></b><span data-i="k2">sob medida, sem modelos prontos</span></div>
+        <div><b>1<span class="o">:</span>1</b><span data-i="k3">você fala direto comigo, sem intermediários</span></div>
       </div>
     </div>
     <div class="band" aria-label="Marcas que já trabalharam comigo">
@@ -268,16 +267,16 @@ footer a{text-decoration:none}
   <section class="s" id="projetos">
     <div class="wrap">
       <div class="s-head">
-        <div><span class="lab rv"><b>01</b>Projetos</span><h2 class="disp rv" style="--d:.06s">Páginas <span class="o">no ar</span></h2></div>
-        <p class="txt rv" style="--d:.12s">Passe o mouse em cada projeto para ver a página. Clique para abrir o site.</p>
+        <div><span class="lab rv"><b>01</b><span data-i="n1">Projetos</span></span><h2 class="disp rv" style="--d:.06s" data-i="h2p">Páginas <span class="o">no ar</span></h2></div>
+        <p class="txt rv" style="--d:.12s" data-i="pp">Passe o mouse em cada projeto para ver a página. Clique para abrir o site.</p>
       </div>
       <div class="list">
-        <a class="row rv" href="https://goianonairlanda.com" target="_blank" rel="noopener" data-img="assets/gni-desk-card.webp"><span class="i">01</span><strong>Goiano na Irlanda</strong><span class="c"><em>Captação de leads</em>Intercâmbio · goianonairlanda.com</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/gni-desk-card.webp" alt="" loading="lazy" width="720" height="3151"></span></a>
-        <a class="row rv" href="https://powerdieseloficial.com/" target="_blank" rel="noopener" data-img="assets/pd-card.webp"><span class="i">02</span><strong>Power Diesel</strong><span class="c"><em>Institucional</em>Peças diesel · powerdieseloficial.com</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/pd-card.webp" alt="" loading="lazy" width="720" height="4102"></span></a>
-        <a class="row rv" href="https://viciandoce.com.br/" target="_blank" rel="noopener" data-img="assets/vc-card.webp"><span class="i">03</span><strong>Viciandoce</strong><span class="c"><em>Pedidos online</em>Confeitaria · viciandoce.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/vc-card.webp" alt="" loading="lazy" width="720" height="4870"></span></a>
-        <a class="row rv" href="https://yadperfumaria.com.br/" target="_blank" rel="noopener" data-img="assets/yad-card.webp"><span class="i">04</span><strong>YAD Perfumaria</strong><span class="c"><em>Catálogo</em>Perfumaria · yadperfumaria.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/yad-card.webp" alt="" loading="lazy" width="720" height="4405"></span></a>
-        <a class="row rv" href="https://www.loftymachine.com.br/" target="_blank" rel="noopener" data-img="assets/lofty-card.webp"><span class="i">05</span><strong>Lofty Machine</strong><span class="c"><em>Institucional</em>Agência · loftymachine.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/lofty-card.webp" alt="" loading="lazy" width="720" height="5470"></span></a>
-        <a class="row rv" href="https://franquia.capanemaescapamentos.com.br/unidades/" target="_blank" rel="noopener" data-img="assets/cap-card.webp"><span class="i">06</span><strong>Capanema</strong><span class="c"><em>Mapa de unidades</em>Franquia · capanemaescapamentos.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/cap-card.webp" alt="" loading="lazy" width="720" height="616"></span></a>
+        <a class="row rv" href="https://goianonairlanda.com" target="_blank" rel="noopener" data-img="assets/gni-desk-card.webp"><span class="i">01</span><strong>Goiano na Irlanda</strong><span class="c"><span data-i="r1"><em>Captação de leads</em>Intercâmbio</span> · goianonairlanda.com</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/gni-desk-card.webp" alt="" loading="lazy" width="720" height="3151"></span></a>
+        <a class="row rv" href="https://powerdieseloficial.com/" target="_blank" rel="noopener" data-img="assets/pd-card.webp"><span class="i">02</span><strong>Power Diesel</strong><span class="c"><span data-i="r2"><em>Institucional</em>Peças diesel</span> · powerdieseloficial.com</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/pd-card.webp" alt="" loading="lazy" width="720" height="4102"></span></a>
+        <a class="row rv" href="https://viciandoce.com.br/" target="_blank" rel="noopener" data-img="assets/vc-card.webp"><span class="i">03</span><strong>Viciandoce</strong><span class="c"><span data-i="r3"><em>Pedidos online</em>Confeitaria</span> · viciandoce.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/vc-card.webp" alt="" loading="lazy" width="720" height="4870"></span></a>
+        <a class="row rv" href="https://yadperfumaria.com.br/" target="_blank" rel="noopener" data-img="assets/yad-card.webp"><span class="i">04</span><strong>YAD Perfumaria</strong><span class="c"><span data-i="r4"><em>Catálogo</em>Perfumaria</span> · yadperfumaria.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/yad-card.webp" alt="" loading="lazy" width="720" height="4405"></span></a>
+        <a class="row rv" href="https://www.loftymachine.com.br/" target="_blank" rel="noopener" data-img="assets/lofty-card.webp"><span class="i">05</span><strong>Lofty Machine</strong><span class="c"><span data-i="r5"><em>Institucional</em>Agência</span> · loftymachine.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/lofty-card.webp" alt="" loading="lazy" width="720" height="5470"></span></a>
+        <a class="row rv" href="https://franquia.capanemaescapamentos.com.br/unidades/" target="_blank" rel="noopener" data-img="assets/cap-card.webp"><span class="i">06</span><strong>Capanema</strong><span class="c"><span data-i="r6"><em>Mapa de unidades</em>Franquia</span> · capanemaescapamentos.com.br</span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span><span class="shot"><img src="assets/cap-card.webp" alt="" loading="lazy" width="720" height="616"></span></a>
       </div>
     </div>
   </section>
@@ -286,15 +285,15 @@ footer a{text-decoration:none}
     <div class="wrap">
       <div class="fb">
         <div class="rv">
-          <span class="lab"><b>02</b>Feedbacks</span>
-          <h2 class="disp">Quem contrata, <span class="o">recomenda</span></h2>
-          <p class="txt">Prefiro deixar quem já trabalhou comigo falar. Dá o play nos áudios que recebi depois da entrega.</p>
-          <div class="who"><img src="assets/ricardo.webp" alt="" width="54" height="54"><div><strong>Ricardo Agro</strong><span>Goiano na Irlanda</span><span class="st" aria-label="5 estrelas">★★★★★</span></div></div>
+          <span class="lab"><b>02</b><span data-i="n2">Feedbacks</span></span>
+          <h2 class="disp" data-i="h2f">Quem contrata, <span class="o">recomenda</span></h2>
+          <p class="txt" data-i="pf">Prefiro deixar quem já trabalhou comigo falar. Dá o play nos áudios que recebi depois da entrega.</p>
+          <div class="who"><img src="assets/ricardo.webp" alt="" width="54" height="54"><div><strong>Ricardo Agro</strong><span>Goiano na Irlanda</span><span class="st" data-ia="stars" aria-label="5 estrelas">★★★★★</span></div></div>
         </div>
         <div class="aus rv" style="--d:.1s">
-          <p class="au-l">Áudios reais do cliente</p>
-          <div class="au" data-src="assets/fb-1.mp4"><button type="button" aria-label="Ouvir o primeiro áudio"><svg aria-hidden="true"><use href="#play"/></svg></button><div class="wv" aria-hidden="true"></div><time>0:08</time></div>
-          <div class="au" data-src="assets/fb-2.mp4"><button type="button" aria-label="Ouvir o segundo áudio"><svg aria-hidden="true"><use href="#play"/></svg></button><div class="wv" aria-hidden="true"></div><time>0:14</time></div>
+          <p class="au-l" data-i="aul">Áudios reais do cliente</p>
+          <div class="au" data-src="assets/fb-1.mp4"><button type="button" data-ia="a1" aria-label="Ouvir o primeiro áudio"><svg aria-hidden="true"><use href="#play"/></svg></button><div class="wv" aria-hidden="true"></div><time>0:08</time></div>
+          <div class="au" data-src="assets/fb-2.mp4"><button type="button" data-ia="a2" aria-label="Ouvir o segundo áudio"><svg aria-hidden="true"><use href="#play"/></svg></button><div class="wv" aria-hidden="true"></div><time>0:14</time></div>
         </div>
       </div>
     </div>
@@ -303,47 +302,46 @@ footer a{text-decoration:none}
   <section class="s" id="planos" style="padding-top:0">
     <div class="wrap">
       <div class="s-head">
-        <div><span class="lab rv"><b>03</b>Planos</span><h2 class="disp rv" style="--d:.06s">Escolha <span class="o">o seu</span></h2></div>
-        <p class="txt rv" style="--d:.12s">Todos os planos têm design exclusivo e a primeira versão em 24h.* O que muda é o tamanho do projeto e o acompanhamento.</p>
+        <div><span class="lab rv"><b>03</b><span data-i="n3">Planos</span></span><h2 class="disp rv" style="--d:.06s" data-i="h2l">Escolha <span class="o">o seu</span></h2></div>
+        <p class="txt rv" style="--d:.12s" data-i="pl">Todos os planos têm design exclusivo, feito do zero para a sua marca. O que muda é o tamanho do projeto e o acompanhamento.</p>
       </div>
       <div class="plans">
         <article class="plan rv">
-          <div class="top"><span class="nm">Plano 01</span></div>
-          <h3>Essencial</h3>
-          <p class="for">Uma página bonita e direta, pronta para receber contatos.</p>
-          <div class="pr"><b>Sob consulta</b><span>Valor fechado conforme o projeto</span></div>
-          <ul><li>Página única com até 5 seções</li><li>Design exclusivo, sem modelo pronto</li><li>Perfeita no celular e no computador</li><li>Botão de WhatsApp em destaque</li><li>1 rodada de ajustes</li></ul>
-          <a class="btn ghost" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Essencial." target="_blank" rel="noopener">Quero o Essencial<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+          <div class="top"><span class="nm"><span data-i="plab">Plano</span> 01</span></div>
+          <h3 data-i="n_e">Essencial</h3>
+          <p class="for" data-i="ef">Uma página bonita e direta, pronta para receber contatos.</p>
+          <div class="pr"><b data-i="pr1">Sob consulta</b><span data-i="pr2">Valor fechado conforme o projeto</span></div>
+          <ul data-i="el"><li>Página única com até 5 seções</li><li>Design exclusivo, sem modelo pronto</li><li>Perfeita no celular e no computador</li><li>Botão de WhatsApp em destaque</li><li>1 rodada de ajustes</li></ul>
+          <a class="btn ghost" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Essencial." data-wa="ew" target="_blank" rel="noopener"><span data-i="eb">Quero o Essencial</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
         </article>
         <article class="plan dark rv" style="--d:.08s">
-          <div class="top"><span class="nm">Plano 02</span><span class="hl">Mais escolhido</span></div>
-          <h3>Profissional</h3>
-          <p class="for">Para marcas que querem vender mais e se destacar da concorrência.</p>
-          <div class="pr"><b>Sob consulta</b><span>Valor fechado conforme o projeto</span></div>
-          <ul><li>Tudo do Essencial</li><li>Até 10 seções, com animações</li><li>Textos pensados para vender</li><li>Formulário de contato e SEO básico</li><li>Pixel e Google Analytics instalados</li><li>2 rodadas de ajustes</li></ul>
-          <a class="btn acc" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Profissional." target="_blank" rel="noopener">Quero o Profissional<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+          <div class="top"><span class="nm"><span data-i="plab">Plano</span> 02</span><span class="hl" data-i="hl">Mais escolhido</span></div>
+          <h3 data-i="n_p">Profissional</h3>
+          <p class="for" data-i="pf2">Para marcas que querem vender mais e se destacar da concorrência.</p>
+          <div class="pr"><b data-i="pr1">Sob consulta</b><span data-i="pr2">Valor fechado conforme o projeto</span></div>
+          <ul data-i="pl2"><li>Tudo do Essencial</li><li>Até 10 seções, com animações</li><li>Textos pensados para vender</li><li>Formulário de contato e SEO básico</li><li>Pixel e Google Analytics instalados</li><li>2 rodadas de ajustes</li></ul>
+          <a class="btn acc" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Profissional." data-wa="pw" target="_blank" rel="noopener"><span data-i="pb">Quero o Profissional</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
         </article>
         <article class="plan rv" style="--d:.16s">
-          <div class="top"><span class="nm">Plano 03</span></div>
-          <h3>Premium</h3>
-          <p class="for">Projeto completo, com recursos sob medida e acompanhamento de perto.</p>
-          <div class="pr"><b>Sob consulta</b><span>Valor fechado conforme o projeto</span></div>
-          <ul><li>Tudo do Profissional</li><li>Seções ilimitadas e páginas extras</li><li>Versão em outros idiomas</li><li>Catálogo, galeria ou painel sob medida</li><li>SEO avançado e alta performance</li><li>Ajustes até a aprovação final</li></ul>
-          <a class="btn ghost" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Premium." target="_blank" rel="noopener">Quero o Premium<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+          <div class="top"><span class="nm"><span data-i="plab">Plano</span> 03</span></div>
+          <h3 data-i="n_m">Premium</h3>
+          <p class="for" data-i="mf">Projeto completo, com recursos sob medida e acompanhamento de perto.</p>
+          <div class="pr"><b data-i="pr1">Sob consulta</b><span data-i="pr2">Valor fechado conforme o projeto</span></div>
+          <ul data-i="ml"><li>Tudo do Profissional</li><li>Seções ilimitadas e páginas extras</li><li>Versão em outros idiomas</li><li>Catálogo, galeria ou painel sob medida</li><li>SEO avançado e alta performance</li><li>Ajustes até a aprovação final</li></ul>
+          <a class="btn ghost" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Tenho%20interesse%20no%20plano%20Premium." data-wa="mw" target="_blank" rel="noopener"><span data-i="mb">Quero o Premium</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
         </article>
       </div>
-      <p class="note">*A primeira versão é entregue em 24h, contadas a partir do pagamento e do briefing enviados.</p>
     </div>
   </section>
 
   <section class="end">
     <div class="wrap">
-      <span class="lab rv"><b>04</b>Vamos conversar</span>
-      <h2 class="disp rv" style="--d:.06s">Sua marca<br>no <span class="o">próximo nível</span></h2>
+      <span class="lab rv"><b>04</b><span data-i="n4">Vamos conversar</span></span>
+      <h2 class="disp rv" style="--d:.06s" data-i="h2e">Sua marca<br>no <span class="o">próximo nível</span></h2>
       <div class="end-grid">
-        <p class="txt rv">Me chame no WhatsApp, conte sobre o seu negócio e eu te mostro o caminho ideal para a sua página.</p>
+        <p class="txt rv" data-i="pe">Me chame no WhatsApp, conte sobre o seu negócio e eu te mostro o caminho ideal para a sua página.</p>
         <div class="ctas rv" style="--d:.08s">
-          <a class="btn acc" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener">Chamar no WhatsApp<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
+          <a class="btn acc" data-wa="wa0" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener"><span data-i="c3">Chamar no WhatsApp</span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
           <a class="btn ghost" href="mailto:equipe@pedrodesign.com">equipe@pedrodesign.com<span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
         </div>
       </div>
@@ -353,10 +351,136 @@ footer a{text-decoration:none}
 
 <footer><div class="wrap"><img src="assets/logo-preto.svg" alt="Pedro Design" width="118" height="21"><span>© 2026 Pedro Design · <a href="https://wa.me/5545974000755" target="_blank" rel="noopener">+55 45 97400-0755</a></span></div></footer>
 
-<a class="wa" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+<a class="wa" data-wa="wa0" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener" data-ia="wa" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 <div class="prev" id="prev" aria-hidden="true"><img alt=""></div>
 
 <script>
+// idioma automático conforme o idioma do aparelho do cliente (pt é o padrão do HTML)
+(function(){
+  function O(s){return '<span class="o">'+s+'</span>'}
+  function L(a){return '<li>'+a.join('</li><li>')+'</li>'}
+  var T={
+  en:{n_e:'Essential',n_p:'Professional',n_m:'Premium',_t:'Pedro Design · Custom web pages',_d:'Custom web pages with exclusive design. See the projects, the feedback and the plans.',
+    n1:'Projects',n2:'Feedback',n3:'Plans',n4:"Let's talk",live:'Booking new projects',kind:'Custom web pages',
+    h1a:'Pages that',h1b:'sell '+O('for'),h1c:'your brand'+O('.'),
+    hp:"I'm Pedro. I design and build pages that earn trust in the first second and turn visitors into clients. No templates: every project is made from scratch, with me from start to finish.",
+    c1:'I want my page',c2:'See projects',c3:'Message me on WhatsApp',stamp:'CUSTOM DESIGN · HIGH END ·',
+    k1:'brands that have trusted my work',k2:'custom made, no templates',k3:'you talk directly to me, no middlemen',
+    h2p:'Pages '+O('live'),pp:'Hover over each project to see the page. Click to open the site.',
+    r1:'<em>Lead generation</em>Study abroad',r2:'<em>Corporate</em>Diesel parts',r3:'<em>Online orders</em>Bakery',r4:'<em>Catalog</em>Perfumery',r5:'<em>Corporate</em>Agency',r6:'<em>Store locator</em>Franchise',
+    h2f:'Clients who hire me, '+O('recommend me'),pf:'I prefer to let the people who have worked with me speak. Press play on the voice messages I received after delivery.',
+    aul:'Real client voice messages (in Portuguese)',stars:'5 stars',a1:'Play the first voice message',a2:'Play the second voice message',wa:'Message me on WhatsApp',
+    h2l:'Choose '+O('yours'),pl:'Every plan has an exclusive design, made from scratch for your brand. What changes is the size of the project and the level of support.',
+    plab:'Plan',hl:'Most popular',pr1:'On request',pr2:'Fixed price based on the project',
+    
+    ef:'A beautiful, straightforward page, ready to receive contacts.',
+    el:L(['Single page with up to 5 sections','Exclusive design, no templates','Flawless on mobile and desktop','Highlighted WhatsApp button','1 round of revisions']),eb:'I want Essential',
+    pf2:'For brands that want to sell more and stand out from the competition.',
+    pl2:L(['Everything in Essential','Up to 10 sections, with animations','Copy written to sell','Contact form and basic SEO','Pixel and Google Analytics set up','2 rounds of revisions']),pb:'I want Professional',
+    mf:'A complete project, with custom features and close support.',
+    ml:L(['Everything in Professional','Unlimited sections and extra pages','Versions in other languages','Custom catalog, gallery or dashboard','Advanced SEO and high performance','Revisions until final approval']),mb:'I want Premium',
+    h2e:'Your brand<br>at the '+O('next level'),pe:'Message me on WhatsApp, tell me about your business and I will show you the ideal path for your page.',
+    wa0:"Hi Pedro! I saw your presentation and I'd like a page.",ew:"Hi Pedro! I'm interested in the Essential plan.",pw:"Hi Pedro! I'm interested in the Professional plan.",mw:"Hi Pedro! I'm interested in the Premium plan."},
+  es:{n_e:'Esencial',n_p:'Profesional',n_m:'Premium',_t:'Pedro Design · Páginas a medida',_d:'Páginas a medida con diseño exclusivo. Mira los proyectos, las opiniones y los planes.',
+    n1:'Proyectos',n2:'Opiniones',n3:'Planes',n4:'Hablemos',live:'Agenda abierta para nuevos proyectos',kind:'Páginas a medida',
+    h1a:'Páginas que',h1b:'venden '+O('por'),h1c:'tu marca'+O('.'),
+    hp:'Soy Pedro. Diseño y desarrollo páginas que transmiten confianza desde el primer segundo y convierten visitas en clientes. Sin plantillas: cada proyecto se hace desde cero, conmigo de principio a fin.',
+    c1:'Quiero mi página',c2:'Ver proyectos',c3:'Escríbeme por WhatsApp',stamp:'DISEÑO A MEDIDA · ALTO NIVEL ·',
+    k1:'marcas que ya confiaron en mi trabajo',k2:'a medida, sin plantillas',k3:'hablas directamente conmigo, sin intermediarios',
+    h2p:'Páginas '+O('en línea'),pp:'Pasa el ratón sobre cada proyecto para ver la página. Haz clic para abrir el sitio.',
+    r1:'<em>Captación de leads</em>Intercambio',r2:'<em>Institucional</em>Repuestos diésel',r3:'<em>Pedidos online</em>Pastelería',r4:'<em>Catálogo</em>Perfumería',r5:'<em>Institucional</em>Agencia',r6:'<em>Mapa de locales</em>Franquicia',
+    h2f:'Quien contrata, '+O('recomienda'),pf:'Prefiero que hable quien ya trabajó conmigo. Dale play a los audios que recibí después de la entrega.',
+    aul:'Audios reales del cliente (en portugués)',stars:'5 estrellas',a1:'Escuchar el primer audio',a2:'Escuchar el segundo audio',wa:'Escríbeme por WhatsApp',
+    h2l:'Elige '+O('el tuyo'),pl:'Todos los planes tienen diseño exclusivo, hecho desde cero para tu marca. Lo que cambia es el tamaño del proyecto y el acompañamiento.',
+    plab:'Plan',hl:'El más elegido',pr1:'A consultar',pr2:'Precio cerrado según el proyecto',
+    
+    ef:'Una página bonita y directa, lista para recibir contactos.',
+    el:L(['Página única con hasta 5 secciones','Diseño exclusivo, sin plantillas','Perfecta en móvil y ordenador','Botón de WhatsApp destacado','1 ronda de ajustes']),eb:'Quiero el Esencial',
+    pf2:'Para marcas que quieren vender más y destacarse de la competencia.',
+    pl2:L(['Todo lo del Esencial','Hasta 10 secciones, con animaciones','Textos pensados para vender','Formulario de contacto y SEO básico','Pixel y Google Analytics instalados','2 rondas de ajustes']),pb:'Quiero el Profesional',
+    mf:'Proyecto completo, con recursos a medida y acompañamiento cercano.',
+    ml:L(['Todo lo del Profesional','Secciones ilimitadas y páginas extra','Versión en otros idiomas','Catálogo, galería o panel a medida','SEO avanzado y alto rendimiento','Ajustes hasta la aprobación final']),mb:'Quiero el Premium',
+    h2e:'Tu marca<br>al '+O('siguiente nivel'),pe:'Escríbeme por WhatsApp, cuéntame sobre tu negocio y te muestro el camino ideal para tu página.',
+    wa0:'¡Hola, Pedro! Vi tu presentación y quiero una página.',ew:'¡Hola, Pedro! Me interesa el plan Esencial.',pw:'¡Hola, Pedro! Me interesa el plan Profesional.',mw:'¡Hola, Pedro! Me interesa el plan Premium.'},
+  fr:{n_e:'Essentiel',n_p:'Pro',n_m:'Premium',_t:'Pedro Design · Pages sur mesure',_d:'Pages sur mesure au design exclusif. Découvrez les projets, les avis et les formules.',
+    n1:'Projets',n2:'Avis',n3:'Formules',n4:'Parlons-en',live:'Agenda ouvert aux nouveaux projets',kind:'Pages sur mesure',
+    h1a:'Des pages',h1b:'qui vendent',h1c:'votre '+O('marque')+O('.'),
+    hp:'Je suis Pedro. Je conçois et développe des pages qui inspirent confiance dès la première seconde et transforment les visiteurs en clients. Aucun modèle : chaque projet est créé de zéro, avec moi du début à la fin.',
+    c1:'Je veux ma page',c2:'Voir les projets',c3:'Écrivez-moi sur WhatsApp',stamp:'DESIGN SUR MESURE · HAUT DE GAMME ·',
+    k1:'marques qui m’ont fait confiance',k2:'sur mesure, sans modèle',k3:'vous parlez directement avec moi, sans intermédiaire',
+    h2p:'Pages '+O('en ligne'),pp:'Survolez chaque projet pour voir la page. Cliquez pour ouvrir le site.',
+    r1:'<em>Génération de leads</em>Études à l’étranger',r2:'<em>Institutionnel</em>Pièces diesel',r3:'<em>Commandes en ligne</em>Pâtisserie',r4:'<em>Catalogue</em>Parfumerie',r5:'<em>Institutionnel</em>Agence',r6:'<em>Carte des points de vente</em>Franchise',
+    h2f:'Ils m’engagent, '+O('ils me recommandent'),pf:'Je préfère laisser parler ceux qui ont travaillé avec moi. Écoutez les messages vocaux reçus après la livraison.',
+    aul:'Vrais messages vocaux du client (en portugais)',stars:'5 étoiles',a1:'Écouter le premier message',a2:'Écouter le deuxième message',wa:'Écrivez-moi sur WhatsApp',
+    h2l:'Choisissez '+O('la vôtre'),pl:'Toutes les formules ont un design exclusif, créé de zéro pour votre marque. Ce qui change, c’est la taille du projet et l’accompagnement.',
+    plab:'Formule',hl:'La plus choisie',pr1:'Sur devis',pr2:'Prix fixe selon le projet',
+    
+    ef:'Une page belle et directe, prête à recevoir des contacts.',
+    el:L(['Page unique jusqu’à 5 sections','Design exclusif, sans modèle','Parfaite sur mobile et ordinateur','Bouton WhatsApp mis en avant','1 série de retouches']),eb:'Je veux l’Essentiel',
+    pf2:'Pour les marques qui veulent vendre plus et se démarquer de la concurrence.',
+    pl2:L(['Tout l’Essentiel','Jusqu’à 10 sections, avec animations','Textes pensés pour vendre','Formulaire de contact et SEO de base','Pixel et Google Analytics installés','2 séries de retouches']),pb:'Je veux le Pro',
+    mf:'Projet complet, avec des fonctions sur mesure et un suivi de près.',
+    ml:L(['Tout le Pro','Sections illimitées et pages en plus','Version en d’autres langues','Catalogue, galerie ou tableau de bord sur mesure','SEO avancé et haute performance','Retouches jusqu’à validation finale']),mb:'Je veux le Premium',
+    h2e:'Votre marque<br>au '+O('niveau supérieur'),pe:'Écrivez-moi sur WhatsApp, parlez-moi de votre activité et je vous montre la meilleure voie pour votre page.',
+    wa0:'Bonjour Pedro ! J’ai vu votre présentation et je voudrais une page.',ew:'Bonjour Pedro ! La formule Essentiel m’intéresse.',pw:'Bonjour Pedro ! La formule Pro m’intéresse.',mw:'Bonjour Pedro ! La formule Premium m’intéresse.'},
+  it:{n_e:'Essenziale',n_p:'Pro',n_m:'Premium',_t:'Pedro Design · Pagine su misura',_d:'Pagine su misura con design esclusivo. Guarda i progetti, i feedback e i piani.',
+    n1:'Progetti',n2:'Feedback',n3:'Piani',n4:'Parliamone',live:'Agenda aperta per nuovi progetti',kind:'Pagine su misura',
+    h1a:'Pagine che',h1b:'vendono '+O('per'),h1c:'il tuo brand'+O('.'),
+    hp:'Sono Pedro. Progetto e sviluppo pagine che trasmettono fiducia dal primo secondo e trasformano le visite in clienti. Nessun modello: ogni progetto nasce da zero, con me dall’inizio alla fine.',
+    c1:'Voglio la mia pagina',c2:'Vedi i progetti',c3:'Scrivimi su WhatsApp',stamp:'DESIGN SU MISURA · ALTO LIVELLO ·',
+    k1:'brand che si sono fidati del mio lavoro',k2:'su misura, senza modelli',k3:'parli direttamente con me, senza intermediari',
+    h2p:'Pagine '+O('online'),pp:'Passa il mouse su ogni progetto per vedere la pagina. Clicca per aprire il sito.',
+    r1:'<em>Lead generation</em>Studio all’estero',r2:'<em>Istituzionale</em>Ricambi diesel',r3:'<em>Ordini online</em>Pasticceria',r4:'<em>Catalogo</em>Profumeria',r5:'<em>Istituzionale</em>Agenzia',r6:'<em>Mappa dei punti vendita</em>Franchising',
+    h2f:'Chi mi sceglie, '+O('mi consiglia'),pf:'Preferisco far parlare chi ha già lavorato con me. Ascolta i vocali che ho ricevuto dopo la consegna.',
+    aul:'Vocali reali del cliente (in portoghese)',stars:'5 stelle',a1:'Ascolta il primo vocale',a2:'Ascolta il secondo vocale',wa:'Scrivimi su WhatsApp',
+    h2l:'Scegli '+O('il tuo'),pl:'Tutti i piani hanno un design esclusivo, creato da zero per il tuo brand. Cambiano la dimensione del progetto e l’assistenza.',
+    plab:'Piano',hl:'Il più scelto',pr1:'Su richiesta',pr2:'Prezzo fisso in base al progetto',
+    
+    ef:'Una pagina bella e diretta, pronta a ricevere contatti.',
+    el:L(['Pagina unica fino a 5 sezioni','Design esclusivo, senza modelli','Perfetta su smartphone e computer','Pulsante WhatsApp in evidenza','1 giro di modifiche']),eb:'Voglio l’Essenziale',
+    pf2:'Per i brand che vogliono vendere di più e distinguersi dalla concorrenza.',
+    pl2:L(['Tutto dell’Essenziale','Fino a 10 sezioni, con animazioni','Testi pensati per vendere','Modulo di contatto e SEO di base','Pixel e Google Analytics installati','2 giri di modifiche']),pb:'Voglio il Pro',
+    mf:'Progetto completo, con funzioni su misura e assistenza da vicino.',
+    ml:L(['Tutto del Pro','Sezioni illimitate e pagine extra','Versione in altre lingue','Catalogo, galleria o pannello su misura','SEO avanzata e alte prestazioni','Modifiche fino all’approvazione finale']),mb:'Voglio il Premium',
+    h2e:'Il tuo brand<br>al '+O('livello successivo'),pe:'Scrivimi su WhatsApp, raccontami della tua attività e ti mostro la strada ideale per la tua pagina.',
+    wa0:'Ciao Pedro! Ho visto la tua presentazione e vorrei una pagina.',ew:'Ciao Pedro! Mi interessa il piano Essenziale.',pw:'Ciao Pedro! Mi interessa il piano Pro.',mw:'Ciao Pedro! Mi interessa il piano Premium.'},
+  de:{n_e:'Essential',n_p:'Professional',n_m:'Premium',_t:'Pedro Design · Maßgeschneiderte Webseiten',_d:'Maßgeschneiderte Webseiten mit exklusivem Design. Projekte, Feedback und Pakete.',
+    n1:'Projekte',n2:'Feedback',n3:'Pakete',n4:'Lass uns reden',live:'Offen für neue Projekte',kind:'Maßgeschneiderte Webseiten',
+    h1a:'Seiten, die',h1b:O('für Sie'),h1c:'verkaufen'+O('.'),
+    hp:'Ich bin Pedro. Ich gestalte und entwickle Seiten, die ab der ersten Sekunde Vertrauen schaffen und Besucher zu Kunden machen. Keine Vorlagen: Jedes Projekt entsteht von Grund auf, mit mir von Anfang bis Ende.',
+    c1:'Meine Seite anfragen',c2:'Projekte ansehen',c3:'Auf WhatsApp schreiben',stamp:'INDIVIDUELLES DESIGN · PREMIUM ·',
+    k1:'Marken, die meiner Arbeit vertraut haben',k2:'maßgeschneidert, ohne Vorlagen',k3:'Sie sprechen direkt mit mir, ohne Vermittler',
+    h2p:'Seiten '+O('online'),pp:'Fahren Sie mit der Maus über ein Projekt, um die Seite zu sehen. Klicken Sie, um sie zu öffnen.',
+    r1:'<em>Lead-Generierung</em>Auslandsstudium',r2:'<em>Unternehmensseite</em>Dieselteile',r3:'<em>Online-Bestellungen</em>Konditorei',r4:'<em>Katalog</em>Parfümerie',r5:'<em>Unternehmensseite</em>Agentur',r6:'<em>Standortkarte</em>Franchise',
+    h2f:'Wer mich bucht, '+O('empfiehlt mich'),pf:'Ich lasse lieber die sprechen, die schon mit mir gearbeitet haben. Hören Sie die Sprachnachrichten, die ich nach der Lieferung bekommen habe.',
+    aul:'Echte Sprachnachrichten des Kunden (auf Portugiesisch)',stars:'5 Sterne',a1:'Erste Sprachnachricht anhören',a2:'Zweite Sprachnachricht anhören',wa:'Auf WhatsApp schreiben',
+    h2l:'Wählen Sie '+O('Ihres'),pl:'Alle Pakete haben ein exklusives Design, von Grund auf für Ihre Marke gemacht. Unterschiedlich sind die Größe des Projekts und die Betreuung.',
+    plab:'Paket',hl:'Am beliebtesten',pr1:'Auf Anfrage',pr2:'Festpreis je nach Projekt',
+    
+    ef:'Eine schöne, klare Seite, bereit für Anfragen.',
+    el:L(['Einzelseite mit bis zu 5 Abschnitten','Exklusives Design, ohne Vorlagen','Perfekt auf Handy und Computer','Hervorgehobener WhatsApp-Button','1 Korrekturrunde']),eb:'Essential anfragen',
+    pf2:'Für Marken, die mehr verkaufen und sich von der Konkurrenz abheben wollen.',
+    pl2:L(['Alles aus Essential','Bis zu 10 Abschnitte, mit Animationen','Verkaufsstarke Texte','Kontaktformular und SEO-Grundlagen','Pixel und Google Analytics eingerichtet','2 Korrekturrunden']),pb:'Professional anfragen',
+    mf:'Komplettes Projekt mit individuellen Funktionen und enger Betreuung.',
+    ml:L(['Alles aus Professional','Unbegrenzte Abschnitte und Zusatzseiten','Version in weiteren Sprachen','Individueller Katalog, Galerie oder Dashboard','Erweitertes SEO und hohe Performance','Korrekturen bis zur finalen Freigabe']),mb:'Premium anfragen',
+    h2e:'Ihre Marke<br>auf dem '+O('nächsten Level'),pe:'Schreiben Sie mir auf WhatsApp, erzählen Sie von Ihrem Unternehmen und ich zeige Ihnen den idealen Weg für Ihre Seite.',
+    wa0:'Hallo Pedro! Ich habe Ihre Präsentation gesehen und möchte eine Seite.',ew:'Hallo Pedro! Ich interessiere mich für das Paket Essential.',pw:'Hallo Pedro! Ich interessiere mich für das Paket Professional.',mw:'Hallo Pedro! Ich interessiere mich für das Paket Premium.'}
+  };
+  var q=(location.search.match(/[?&]lang=(\w\w)/)||[])[1];
+  var ls=q?[q]:(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'pt']);
+  var lg=null;
+  for(var i=0;i<ls.length&&!lg;i++){var c=String(ls[i]).slice(0,2).toLowerCase();if(c==='pt'||T[c])lg=c}
+  lg=lg||'en'; // idioma não suportado: inglês
+  if(lg==='pt')return;
+  var t=T[lg];
+  document.documentElement.lang=lg;
+  document.title=t._t;
+  var md=document.querySelector('meta[name=description]');if(md)md.content=t._d;
+  document.querySelectorAll('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(t[k]!=null)e.innerHTML=t[k]});
+  document.querySelectorAll('[data-ia]').forEach(function(e){var k=e.getAttribute('data-ia');if(t[k])e.setAttribute('aria-label',t[k])});
+  document.querySelectorAll('[data-wa]').forEach(function(e){var k=e.getAttribute('data-wa');if(t[k])e.href='https://wa.me/5545974000755?text='+encodeURIComponent(t[k])});
+})();
+
 (function(){
   var hd=document.getElementById('hd');
   function sc(){hd.classList.toggle('sc',scrollY>20)} sc(); addEventListener('scroll',sc,{passive:true});
