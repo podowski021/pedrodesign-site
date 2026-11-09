@@ -197,6 +197,12 @@ footer a{text-decoration:none}
 /* whatsapp fixo */
 
 
+/* parceria Movex nos projetos */
+.mvx{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:5px 10px 5px 11px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:12px;font-style:italic;color:var(--mut);transition:box-shadow .3s,color .3s}
+.mvx img{height:9px;width:auto;opacity:.75;transition:opacity .3s}
+.mvx svg{width:11px;height:11px;opacity:.6}
+.mvx:hover,.mvx:focus-visible{box-shadow:inset 0 0 0 1px var(--ink);color:var(--ink)}
+.mvx:hover img{opacity:1}
 /* números */
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(40px,5vw,72px)}
 .kpi{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(220px,19vw,270px);padding:clamp(22px,2.2vw,30px);border-radius:24px;overflow:hidden;transition:transform .7s var(--ease),opacity .9s var(--ease)}
@@ -402,11 +408,11 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
         </a>
         <a class="pj rv" style="--d:0.00s" href="https://viciandoce.com.br/" target="_blank" rel="noopener">
           <span class="fr"><span class="bar"><i></i><i></i><i></i><em>viciandoce.com.br</em></span><span class="vp"><img src="/apresentacao/assets/vc-card.webp" alt="Viciandoce" loading="lazy" width="720" height="4870"></span></span>
-          <span class="meta"><span class="i">03</span><span class="nm"><strong>Viciandoce</strong><span class="c" data-i="r3"><em>Pedidos online</em>Confeitaria</span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
+          <span class="meta"><span class="i">03</span><span class="nm"><strong>Viciandoce</strong><span class="c" data-i="r3"><em>Pedidos online</em>Confeitaria</span><span class="mvx" role="link" tabindex="0" data-href="https://movex.ag" aria-label="Movex (movex.ag)"><span data-i="mvx">em parceria com</span><img src="/apresentacao/assets/movex-preto.svg" alt="Movex" width="54" height="10"><svg aria-hidden="true"><use href="#up"/></svg></span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
         </a>
         <a class="pj rv" style="--d:0.08s" href="https://yadperfumaria.com.br/" target="_blank" rel="noopener">
           <span class="fr"><span class="bar"><i></i><i></i><i></i><em>yadperfumaria.com.br</em></span><span class="vp"><img src="/apresentacao/assets/yad-card.webp" alt="YAD Perfumaria" loading="lazy" width="720" height="4405"></span></span>
-          <span class="meta"><span class="i">04</span><span class="nm"><strong>YAD Perfumaria</strong><span class="c" data-i="r4"><em>Catálogo</em>Perfumaria</span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
+          <span class="meta"><span class="i">04</span><span class="nm"><strong>YAD Perfumaria</strong><span class="c" data-i="r4"><em>Catálogo</em>Perfumaria</span><span class="mvx" role="link" tabindex="0" data-href="https://movex.ag" aria-label="Movex (movex.ag)"><span data-i="mvx">em parceria com</span><img src="/apresentacao/assets/movex-preto.svg" alt="Movex" width="54" height="10"><svg aria-hidden="true"><use href="#up"/></svg></span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
         </a>
         <a class="pj rv" style="--d:0.00s" href="https://www.loftymachine.com.br/" target="_blank" rel="noopener">
           <span class="fr"><span class="bar"><i></i><i></i><i></i><em>loftymachine.com.br</em></span><span class="vp"><img src="/apresentacao/assets/lofty-card.webp" alt="Lofty Machine" loading="lazy" width="720" height="5470"></span></span>
@@ -414,7 +420,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
         </a>
         <a class="pj rv" style="--d:0.08s" href="https://franquia.capanemaescapamentos.com.br/unidades/" target="_blank" rel="noopener">
           <span class="fr"><span class="bar"><i></i><i></i><i></i><em>capanemaescapamentos.com.br</em></span><span class="vp"><img src="/apresentacao/assets/cap-card.webp" alt="Capanema" loading="lazy" width="720" height="616"></span></span>
-          <span class="meta"><span class="i">06</span><span class="nm"><strong>Capanema</strong><span class="c" data-i="r6"><em>Mapa de unidades</em>Franquia</span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
+          <span class="meta"><span class="i">06</span><span class="nm"><strong>Capanema</strong><span class="c" data-i="r6"><em>Mapa de unidades</em>Franquia</span><span class="mvx" role="link" tabindex="0" data-href="https://movex.ag" aria-label="Movex (movex.ag)"><span data-i="mvx">em parceria com</span><img src="/apresentacao/assets/movex-preto.svg" alt="Movex" width="54" height="10"><svg aria-hidden="true"><use href="#up"/></svg></span></span><span class="go"><svg aria-hidden="true"><use href="#up"/></svg></span></span>
         </a>
       </div>
     </div>
@@ -473,7 +479,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
   function O(s){return '<span class="o">'+s+'</span>'}
   function L(a){return '<li>'+a.join('</li><li>')+'</li>'}
   var T={
-  en:{you:'You',fw1:'Talk to me',spd:'Playback speed',n3:'Pricing',h2l:'Your '+O('custom')+' page',of:'Starting at',on:'Final price based on the size of the project',ol:L(['Flawless on mobile and desktop','Copy written to sell','Highlighted WhatsApp button','Pixel and Google Analytics set up','Revision rounds included']),
+  en:{mvx:'in partnership with',you:'You',fw1:'Talk to me',spd:'Playback speed',n3:'Pricing',h2l:'Your '+O('custom')+' page',of:'Starting at',on:'Final price based on the size of the project',ol:L(['Flawless on mobile and desktop','Copy written to sell','Highlighted WhatsApp button','Pixel and Google Analytics set up','Revision rounds included']),
     _t:'Pedro Design · Custom web pages',_d:'Custom web pages with exclusive design. See the projects, the feedback and the plans.',
     n1:'Projects',n2:'Feedback',live:'Booking new projects',kind:'Custom web pages',
     h1a:'Pages that',h1b:'sell '+O('for'),h1c:'your brand'+O('.'),
@@ -486,7 +492,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stars',a1:'Play the first voice message',a2:'Play the second voice message',wa:'Message me on WhatsApp',
     
     wa0:"Hi Pedro! I saw your presentation and I'd like a page.",},
-  es:{you:'Tú',fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Inversión',h2l:'Tu página '+O('a medida')+'',of:'Desde',on:'Precio final según el tamaño del proyecto',ol:L(['Perfecta en móvil y ordenador','Textos pensados para vender','Botón de WhatsApp destacado','Pixel y Google Analytics instalados','Rondas de ajustes incluidas']),
+  es:{mvx:'en alianza con',you:'Tú',fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Inversión',h2l:'Tu página '+O('a medida')+'',of:'Desde',on:'Precio final según el tamaño del proyecto',ol:L(['Perfecta en móvil y ordenador','Textos pensados para vender','Botón de WhatsApp destacado','Pixel y Google Analytics instalados','Rondas de ajustes incluidas']),
     _t:'Pedro Design · Páginas a medida',_d:'Páginas a medida con diseño exclusivo. Mira los proyectos, las opiniones y los planes.',
     n1:'Proyectos',n2:'Opiniones',live:'Agenda abierta para nuevos proyectos',kind:'Páginas a medida',
     h1a:'Páginas que',h1b:'venden '+O('por'),h1c:'tu marca'+O('.'),
@@ -499,7 +505,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 estrellas',a1:'Escuchar el primer audio',a2:'Escuchar el segundo audio',wa:'Escríbeme por WhatsApp',
     
     wa0:'¡Hola, Pedro! Vi tu presentación y quiero una página.',},
-  fr:{you:'Vous',fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Tarif',h2l:'Votre page '+O('sur mesure')+'',of:'À partir de',on:'Prix final selon la taille du projet',ol:L(['Parfaite sur mobile et ordinateur','Textes pensés pour vendre','Bouton WhatsApp mis en avant','Pixel et Google Analytics installés','Séries de retouches incluses']),
+  fr:{mvx:'en partenariat avec',you:'Vous',fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Tarif',h2l:'Votre page '+O('sur mesure')+'',of:'À partir de',on:'Prix final selon la taille du projet',ol:L(['Parfaite sur mobile et ordinateur','Textes pensés pour vendre','Bouton WhatsApp mis en avant','Pixel et Google Analytics installés','Séries de retouches incluses']),
     _t:'Pedro Design · Pages sur mesure',_d:'Pages sur mesure au design exclusif. Découvrez les projets, les avis et les formules.',
     n1:'Projets',n2:'Avis',live:'Agenda ouvert aux nouveaux projets',kind:'Pages sur mesure',
     h1a:'Des pages',h1b:'qui vendent',h1c:'votre '+O('marque')+O('.'),
@@ -512,7 +518,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 étoiles',a1:'Écouter le premier message',a2:'Écouter le deuxième message',wa:'Écrivez-moi sur WhatsApp',
     
     wa0:'Bonjour Pedro ! J’ai vu votre présentation et je voudrais une page.',},
-  it:{you:'Tu',fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Prezzo',h2l:'La tua pagina '+O('su misura')+'',of:'A partire da',on:'Prezzo finale in base alla dimensione del progetto',ol:L(['Perfetta su smartphone e computer','Testi pensati per vendere','Pulsante WhatsApp in evidenza','Pixel e Google Analytics installati','Giri di modifiche inclusi']),
+  it:{mvx:'in collaborazione con',you:'Tu',fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Prezzo',h2l:'La tua pagina '+O('su misura')+'',of:'A partire da',on:'Prezzo finale in base alla dimensione del progetto',ol:L(['Perfetta su smartphone e computer','Testi pensati per vendere','Pulsante WhatsApp in evidenza','Pixel e Google Analytics installati','Giri di modifiche inclusi']),
     _t:'Pedro Design · Pagine su misura',_d:'Pagine su misura con design esclusivo. Guarda i progetti, i feedback e i piani.',
     n1:'Progetti',n2:'Feedback',live:'Agenda aperta per nuovi progetti',kind:'Pagine su misura',
     h1a:'Pagine che',h1b:'vendono '+O('per'),h1c:'il tuo brand'+O('.'),
@@ -525,7 +531,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stelle',a1:'Ascolta il primo vocale',a2:'Ascolta il secondo vocale',wa:'Scrivimi su WhatsApp',
     
     wa0:'Ciao Pedro! Ho visto la tua presentazione e vorrei una pagina.',},
-  de:{you:'Sie',fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Preis',h2l:'Ihre Seite '+O('nach Maß'),of:'Ab',on:'Endpreis je nach Größe des Projekts',ol:L(['Perfekt auf Handy und Computer','Verkaufsstarke Texte','Hervorgehobener WhatsApp-Button','Pixel und Google Analytics eingerichtet','Korrekturrunden inklusive']),
+  de:{mvx:'in Partnerschaft mit',you:'Sie',fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Preis',h2l:'Ihre Seite '+O('nach Maß'),of:'Ab',on:'Endpreis je nach Größe des Projekts',ol:L(['Perfekt auf Handy und Computer','Verkaufsstarke Texte','Hervorgehobener WhatsApp-Button','Pixel und Google Analytics eingerichtet','Korrekturrunden inklusive']),
     _t:'Pedro Design · Maßgeschneiderte Webseiten',_d:'Maßgeschneiderte Webseiten mit exklusivem Design. Projekte, Feedback und Pakete.',
     n1:'Projekte',n2:'Feedback',live:'Offen für neue Projekte',kind:'Maßgeschneiderte Webseiten',
     h1a:'Seiten, die',h1b:O('für Sie'),h1c:'verkaufen'+O('.'),
@@ -603,6 +609,11 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     var ho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target.classList.contains('hero')){past=!e.isIntersecting||e.intersectionRatio<.35}else{e.isIntersecting?hide.add(e.target):hide.delete(e.target)}});upd()},{threshold:[0,.35]});
     ['.hero','.btn.big','footer'].forEach(function(s){var el=document.querySelector(s);if(el)ho.observe(el)});
   }else if(wa)wa.classList.add('on');
+  // selo "em parceria com Movex": abre movex.ag sem abrir o projeto
+  document.querySelectorAll('.mvx').forEach(function(m){
+    function go(e){e.preventDefault();e.stopPropagation();window.open(m.getAttribute('data-href'),'_blank','noopener')}
+    m.addEventListener('click',go);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')go(e)});
+  });
   var els=document.querySelectorAll('.rv');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(e){io.observe(e)})}else els.forEach(function(e){e.classList.add('in')});
   // título do topo: ocupa a largura da coluna sem quebrar linha (qualquer idioma)
