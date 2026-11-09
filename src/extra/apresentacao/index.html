@@ -99,7 +99,10 @@ header.sc{background:rgba(239,237,231,.86);backdrop-filter:blur(12px);-webkit-ba
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr;grid-template-areas:"t" "p" "s"}.photo{aspect-ratio:16/11;max-height:none}.hero h1{font-size:clamp(46.1px,9.8vw,86.4px)}}
 /* faixa de clientes */
-.band{margin-top:clamp(70px,8vw,120px);background:var(--ink);color:var(--paper);padding:30px 0;overflow:hidden}
+.band{position:relative;margin-top:clamp(70px,8vw,120px);background:var(--ink);color:var(--paper);padding:30px 0;overflow:hidden}
+.band::before,.band::after{content:"";position:absolute;top:0;bottom:0;z-index:2;width:clamp(80px,22vw,340px);pointer-events:none}
+.band::before{left:0;background:linear-gradient(90deg,var(--ink) 15%,rgba(13,13,13,0))}
+.band::after{right:0;background:linear-gradient(270deg,var(--ink) 15%,rgba(13,13,13,0))}
 .band .tr{display:flex;align-items:center;gap:70px;width:max-content;animation:mq 50s linear infinite}
 .band img{height:34px;width:auto}
 .band img.t{height:44px}
