@@ -53,7 +53,7 @@ ExpiresByType application/x-javascript "access plus 30 days"
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 <FilesMatch "\.(html)$">
-Header set Cache-Control "public, max-age=0, s-maxage=300"
+Header set Cache-Control "no-cache, must-revalidate"
 </FilesMatch>
 <FilesMatch "^support\.js$">
 Header set Cache-Control "public, max-age=2592000"
