@@ -150,8 +150,8 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
     # página inicial = página de apresentação (src/extra/apresentacao), com os arquivos servidos de /apresentacao/assets/
     import re as _re
     _ap = open(os.path.join(HERE, 'extra', 'apresentacao', 'index.html'), encoding='utf-8').read()
-    _ap = _re.sub(r'(?<=["\'(])assets/', '/apresentacao/assets/', _ap)
-    _ap = _ap.replace(DOMAIN + '/apresentacao/', DOMAIN + '/')
+    _ap = _re.sub(r'(?<=["\'(\s,])assets/', '/apresentacao/assets/', _ap)
+    _ap = _ap.replace('"' + DOMAIN + '/apresentacao/"', '"' + DOMAIN + '/"')
     open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(_ap)
     with open(os.path.join(OUT, '.htaccess'), 'a') as f:
         f.write('\n# links antigos voltam para a página inicial\nRedirectMatch 302 ^/links/?$ /\nRedirectMatch 301 ^/apresentacao/?$ /\n')

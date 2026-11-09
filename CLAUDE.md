@@ -26,7 +26,7 @@ Prévia local: `php -S 127.0.0.1:8790` na raiz (o painel precisa de PHP).
 ## Página inicial atual (apresentação)
 Enquanto existir `src/EM_DESENVOLVIMENTO`, a página inicial (`/`) é a **página de apresentação** de `src/extra/apresentacao/index.html`: o build copia esse arquivo para a raiz trocando `assets/` por `/apresentacao/assets/`. `/apresentacao/` redireciona (301) para `/`. O painel continua; o site antigo (navy/dourado) fica guardado em `src/` sem ser publicado (`src/soon/` não é mais usado). Para voltar ao site antigo completo: apagar `src/EM_DESENVOLVIMENTO` e rodar o build.
 
-Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mona Sans** (títulos Black 900 em caixa alta, destaque em itálico Light 300 laranja); logo animada `assets/logo-animada-v4.js` (`data-logo-animada`, `data-loop`, `data-intervalo`, `data-globo`); 6 idiomas automáticos pelo idioma do aparelho (dicionário `T` no script). Arquivos de imagem/fonte ficam em cache por 1 ano: ao trocar um arquivo, salve com **nome novo**. Preço: páginas a partir de R$ 1.000.
+Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mona Sans** (títulos Black 900 em caixa alta, destaque em itálico Light 300 laranja); logo animada `assets/logo-animada-v5.js` (`data-logo-animada`, `data-loop`, `data-intervalo`, `data-globo`); 6 idiomas automáticos pelo idioma do aparelho (dicionário `T` no script). Arquivos de imagem/fonte ficam em cache por 1 ano: ao trocar um arquivo, salve com **nome novo**. Preço: páginas a partir de R$ 1.000.
 
 ## Regras do Pedro (obrigatórias)
 - Textos sobre o trabalho dele: sempre **primeira pessoa do singular** ("trabalhou comigo", "eu entrego"), nunca "nós".

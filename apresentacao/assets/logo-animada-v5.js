@@ -78,8 +78,11 @@ const setT=function(t){
 if(G){tg.style.display='none';shg.style.display='none';dl.forEach(e=>e.style.display='none');svg.setAttribute('viewBox',(C[0]-1.45*R)+' '+(C[1]-1.45*R)+' '+(2.9*R)+' '+(2.9*R));svg.setAttribute('aria-hidden','true');svg.removeAttribute('role')}
 const DUR=5.2,loop=box.dataset.loop==='true',GAP=Math.max(0,parseFloat(box.dataset.intervalo||'1.5'));
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){setT(G?3.3:DUR);return;}
-setT(0);let t0=null,run=false;
-function frame(now){if(t0===null)t0=now;let t=(now-t0)/1000;if(loop){if(SYNC.t0===null)SYNC.t0=now;t=((now-SYNC.t0)/1000)%(DUR+GAP)}setT(G?t:Math.min(t,DUR));if(G||t<DUR||loop)requestAnimationFrame(frame);}
+setT(0);let t0=null,run=false,vis=true,done=false;
+if('IntersectionObserver'in window){new IntersectionObserver(e=>{vis=e[0].isIntersecting},{rootMargin:'80px'}).observe(box)}
+function frame(now){if(t0===null)t0=now;let t=(now-t0)/1000;if(loop){if(SYNC.t0===null)SYNC.t0=now;t=((now-SYNC.t0)/1000)%(DUR+GAP)}
+ if(vis){if(!G&&t>=DUR){if(!done){setT(DUR);done=true}}else{done=false;setT(t)}}
+ if(G||t<DUR||loop)requestAnimationFrame(frame);}
 function start(){if(run)return;run=true;requestAnimationFrame(frame);}
 if(loop){start()}else if('IntersectionObserver'in window){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){start();io.disconnect();}},{threshold:.35});io.observe(box);}else start();
 }

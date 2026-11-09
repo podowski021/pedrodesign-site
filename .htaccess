@@ -43,13 +43,14 @@ ExpiresByType image/jpeg "access plus 1 year"
 ExpiresByType image/png "access plus 1 year"
 ExpiresByType image/svg+xml "access plus 1 year"
 ExpiresByType video/mp4 "access plus 1 year"
+ExpiresByType audio/mp4 "access plus 1 year"
 ExpiresByType font/woff2 "access plus 1 year"
 ExpiresByType application/javascript "access plus 30 days"
 ExpiresByType application/x-javascript "access plus 30 days"
 </IfModule>
 
 <IfModule mod_headers.c>
-<FilesMatch "\.(webp|jpe?g|png|svg|mp4|woff2)$">
+<FilesMatch "\.(webp|jpe?g|png|svg|mp4|m4a|woff2)$|^logo-animada-v[0-9]+\.js$">
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 <FilesMatch "\.(html)$">
@@ -65,6 +66,7 @@ Header set Access-Control-Allow-Origin "*"
 
 AddType image/webp .webp
 AddType video/mp4 .mp4
+AddType audio/mp4 .m4a
 AddType image/svg+xml .svg
 AddType font/woff2 .woff2
 
