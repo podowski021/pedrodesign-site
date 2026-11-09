@@ -48,20 +48,22 @@ function globe(rot,tilt){let f='',b='';const ct=Math.cos(tilt),st=Math.sin(tilt)
  return [f,b]}
 function ell(o,k,t,half){const a=o.rot*Math.PI/180;let d='';const n=80;for(let i=0;i<=n;i++){const th=half===0?i/n*Math.PI:Math.PI+i/n*Math.PI; // 0:back(top half) 1:front
  const x=Math.cos(th)*o.rx*R*k,y=-Math.sin(th)*o.ry*R*k;d+=(i?'L':'M')+(C[0]+x*Math.cos(a)-y*Math.sin(a)).toFixed(1)+' '+(C[1]+x*Math.sin(a)+y*Math.cos(a)).toFixed(1)}return d}
+const G=box.dataset.globo==='true';
 const setT=function(t){
+ const tf=G?Math.min(t,3.3):t;
  // circle
  const cs=t<.15?0:back3(p(t,.15,1.05));
  cg.setAttribute('transform',`translate(${C[0]} ${C[1]}) scale(${Math.max(cs,0.0001)}) rotate(${(1-p(t,.15,1.2))*-40}) translate(${-C[0]} ${-C[1]})`);
  // globe lines
- const ga=p(t,.6,1.3)*(1-p(t,3.6,4.6));
+ const ga=p(t,.6,1.3)*(1-p(tf,3.6,4.6));
  const [f,b]=globe(t*0.9+0.3,0.38); gFront.setAttribute('d',f);gBack.setAttribute('d',b);
  gFront.setAttribute('stroke-opacity',.7*ga);gBack.setAttribute('stroke-opacity',.25*ga);
  // orbits
- orbs.forEach((o,i)=>{const st=.75+i*.15;const k=eo(p(t,st,st+.9))*(1-.25*eio(p(t,3.5,4.5)));const oa=p(t,st,st+.5)*(1-p(t,3.6,4.5));
+ orbs.forEach((o,i)=>{const st=.75+i*.15;const k=eo(p(t,st,st+.9))*(1-.25*eio(p(tf,3.5,4.5)));const oa=p(t,st,st+.5)*(1-p(tf,3.6,4.5));
   o.bk.setAttribute('d',ell(o,k,t,0));o.fr.setAttribute('d',ell(o,k,t,1));o.bk.setAttribute('opacity',oa);o.fr.setAttribute('opacity',oa);
   const th=o.ph+t*o.sp*2.2, a=o.rot*Math.PI/180, x=Math.cos(th)*o.rx*R*k,y=-Math.sin(th)*o.ry*R*k;
   const px=C[0]+x*Math.cos(a)-y*Math.sin(a),py=C[1]+x*Math.sin(a)+y*Math.cos(a);const fr=Math.sin(th)<0;
-  const dk=eo(p(t,st+.2,st+.7))*(1-eio(p(t,3.4,4.2)));
+  const dk=eo(p(t,st+.2,st+.7))*(1-eio(p(tf,3.4,4.2)));
   [o.db,o.df].forEach(d=>{d.setAttribute('cx',px);d.setAttribute('cy',py);d.setAttribute('r',o.r*dk)});
   o.df.setAttribute('opacity',fr?1:0);o.db.setAttribute('opacity',fr?0:1);});
  // PEDRO
@@ -72,10 +74,11 @@ const setT=function(t){
  // shine
  const sq=eio(p(t,3.7,4.6));shine.setAttribute('x',-100+sq*1700);shine.setAttribute('opacity',sq>0&&sq<1?1:0);
 };
-const DUR=5.2,loop=box.dataset.loop==='true';
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){setT(DUR);return;}
+if(G){tg.style.display='none';shg.style.display='none';dl.forEach(e=>e.style.display='none');svg.setAttribute('viewBox',(C[0]-1.45*R)+' '+(C[1]-1.45*R)+' '+(2.9*R)+' '+(2.9*R));svg.setAttribute('aria-hidden','true');svg.removeAttribute('role')}
+const DUR=5.2,loop=box.dataset.loop==='true',GAP=Math.max(0,parseFloat(box.dataset.intervalo||'1.5'));
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){setT(G?3.3:DUR);return;}
 setT(0);let t0=null,run=false;
-function frame(now){if(t0===null)t0=now;let t=(now-t0)/1000;if(loop&&t>DUR+1.5){t0=now;t=0}setT(Math.min(t,DUR));if(t<DUR||loop)requestAnimationFrame(frame);}
+function frame(now){if(t0===null)t0=now;let t=(now-t0)/1000;if(loop&&t>DUR+GAP){t0=now;t=0}setT(G?t:Math.min(t,DUR));if(G||t<DUR||loop)requestAnimationFrame(frame);}
 function start(){if(run)return;run=true;requestAnimationFrame(frame);}
 if('IntersectionObserver'in window){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){start();io.disconnect();}},{threshold:.35});io.observe(box);}else start();
 }
