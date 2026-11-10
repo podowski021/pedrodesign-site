@@ -34,7 +34,7 @@ function data_dir(): string {
 function out($v, int $code = 200): never { http_response_code($code); echo json_encode($v, JSON_UNESCAPED_UNICODE); exit; }
 function body(): array {
     $raw = file_get_contents('php://input') ?: '';
-    if (strlen($raw) > 8_000_000) out(['error' => 'Muito grande'], 413);
+    if (strlen($raw) > (($_GET['a'] ?? '') === 'vf' ? 30_000_000 : 8_000_000)) out(['error' => 'Muito grande'], 413);
     $j = json_decode($raw, true);
     return is_array($j) ? $j : [];
 }

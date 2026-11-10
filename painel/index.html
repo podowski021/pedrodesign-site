@@ -335,6 +335,7 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
 .vf-hi .im svg{width:26px;height:26px}
 .vf-hi b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .vf-hi small{font-size:11.5px;color:var(--dim)}
+.vf-live[hidden]{display:none}
 .vf-live{display:flex;gap:22px;align-items:flex-start;margin-bottom:14px}
 .vf-scan{flex:none;width:92px;height:92px;position:relative}
 .vf-scan svg{width:100%;height:100%;animation:vfMove 2.6s var(--ease) infinite}
@@ -370,6 +371,7 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
 .vf-src a:hover{background:var(--fg);color:var(--bg)}
 .vf-src a span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 .vf-src img{width:14px;height:14px;border-radius:3px}
+.vf-src a.nc{border-style:dashed;color:var(--muted)}
 .vf-mt{display:flex;flex-direction:column;gap:8px}
 .vf-mt div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
 .vf-mt div:first-child{border-top:0}
@@ -573,14 +575,14 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
   </defs></svg>
   <div class="head"><div class="vf-brand">
     <svg class="vf-logo" aria-hidden="true"><use href="#vfMark"/></svg>
-    <div><h1 id="t-vf">Verificador de <em>informações</em></h1><p class="sub">Coloque imagens, um vídeo ou um link. Eu leio tudo, pesquiso na web, confiro as fontes e digo se é verdadeiro, enganoso ou falso, sempre com os links para você conferir.</p></div>
+    <div><h1 id="t-vf">Verificador de <em>informações</em></h1><p class="sub">Coloque imagens, um vídeo ou um link. Eu leio tudo, pesquiso no Google, confiro as fontes e digo se é verdadeiro, enganoso ou falso, sempre com os links para você conferir. Grátis.</p></div>
   </div></div>
 
   <div class="vf-cfg" id="vfCfg" hidden>
     <div class="vf-card">
       <h3>Conectar a IA</h3>
-      <p class="h">O verificador usa a IA da Anthropic (Claude) com pesquisa na web. Crie uma chave em <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a> (em <b>API Keys</b>), coloque crédito na conta e cole a chave aqui. Ela fica guardada só no servidor do seu site e nunca aparece de novo no navegador.</p>
-      <form class="vf-keyf" id="vfKeyF"><input id="vfKey" type="password" placeholder="sk-ant-…" autocomplete="off" spellcheck="false"><button class="btn b-y" type="submit">Salvar chave</button></form>
+      <p class="h">O verificador usa o <b>plano gratuito</b> da IA do Google (Gemini) com a Pesquisa Google. Não pede cartão. Entre em <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> com sua conta Google, clique em <b>Criar chave de API</b> e cole aqui. A chave fica guardada só no servidor do seu site e nunca aparece de novo no navegador.</p><p class="h" style="margin-top:-6px">No plano grátis o Google pode usar o que você envia para melhorar os produtos dele, então evite mandar documentos pessoais.</p>
+      <form class="vf-keyf" id="vfKeyF"><input id="vfKey" type="password" placeholder="AIza…" autocomplete="off" spellcheck="false"><button class="btn b-y" type="submit">Salvar chave</button></form>
       <p class="vf-err" id="vfKeyE" role="alert"></p>
     </div>
   </div>
@@ -597,11 +599,11 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
         <label class="f">Link (post, notícia, vídeo do YouTube, TikTok…)<input id="vfLink" type="url" inputmode="url" placeholder="https://"></label>
         <label class="f">Texto, legenda ou o que você quer conferir (opcional)<textarea id="vfTxt" rows="3" placeholder="Ex.: esse dado de que 70% das empresas fecham em 2 anos é verdade?"></textarea></label>
         <div class="vf-go">
-          <div class="seg" id="vfModel" role="group" aria-label="Profundidade"><button type="button" data-m="claude-sonnet-5-5" aria-pressed="true">Rápido</button><button type="button" data-m="claude-opus-5-5">Mais profundo</button></div>
+          <div class="seg" id="vfModel" role="group" aria-label="Profundidade"><button type="button" data-m="rapido" aria-pressed="true">Rápido</button><button type="button" data-m="profundo">Mais profundo</button></div>
           <button class="btn b-y" id="vfRun" type="button"><svg width="18" height="18" aria-hidden="true"><use href="#vfMark"/></svg>Verificar</button>
         </div>
         <p class="vf-err" id="vfErr" role="alert"></p>
-        <p class="vf-foot">IA conectada · chave terminando em <b id="vfLast4">····</b> · <button type="button" class="lnk" id="vfChange">trocar</button></p>
+        <p class="vf-foot">IA grátis do Google conectada · chave terminando em <b id="vfLast4">····</b> · <button type="button" class="lnk" id="vfChange">trocar</button></p>
       </div>
 
       <div class="vf-card vf-hist">
@@ -1126,6 +1128,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
   var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
   var safeUrl=function(u){u=String(u||'');return /^https?:\/\//i.test(u)?u:''};
   var host=function(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return ''}};
+  var dURI=function(x){try{return decodeURIComponent(x)}catch(e){return x}};
   var fav=function(u){var h=host(u);return h?'https://icons.duckduckgo.com/ip3/'+h+'.ico':''};
   var post=function(a,b){return fetch(API+a,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Painel':'1'},body:JSON.stringify(b||{})})};
   var V={verdadeiro:['Verdadeiro','#0F8A5F','ok'],quase_verdadeiro:['Quase verdadeiro','#5FB98E','ok'],enganoso:['Enganoso','#FF4F1A','warn'],fora_de_contexto:['Fora de contexto','#FF7A3D','warn'],
@@ -1136,7 +1139,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
     warn:'<path d="M26 12 V30" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><circle cx="26" cy="39" r="3.4" fill="currentColor"/>',
     q:'<path d="M19 19 a7 7 0 1 1 10 6.3 c-2 1-3 2.4-3 4.7 v1" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="26" cy="39" r="3.2" fill="currentColor"/>'};
   var pill=function(k){var v=vInfo(k);return '<span class="vf-pill'+(v[3]?' lt':'')+'" style="--c:'+v[1]+'">'+esc(v[0])+'</span>'};
-  var files=[],model='claude-sonnet-5-5',running=false,loaded=false,hist=[];
+  var files=[],model='rapido',running=false,loaded=false,hist=[];
 
   /* ---------- configuração ---------- */
   function status(){return post('vfstatus').then(function(r){return r.json()}).then(function(j){
@@ -1172,6 +1175,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
       .catch(function(er){files.splice(files.indexOf(it),1);draw();$('#vfErr').textContent=er.message})}
   function addVideo(file){if(files.some(function(f){return f.tipo==='vid'})){$('#vfErr').textContent='Envie um vídeo por vez.';return}
     var it={tipo:'vid',nome:file.name||'vídeo',wait:true,quadros:[]};files.push(it);draw();
+    if(file.size<=14e6){var fr=new FileReader();fr.onload=function(){it.raw={mt:file.type||'video/mp4',b64:String(fr.result).split(',')[1]}};fr.readAsDataURL(file)}
     var v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.src=URL.createObjectURL(file);
     var fail=function(){files.splice(files.indexOf(it),1);draw();$('#vfErr').textContent='Não consegui ler esse vídeo neste navegador. Tente pelo Safari/Chrome ou envie prints das partes importantes.'};
     v.onerror=fail;
@@ -1198,13 +1202,13 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
     var imgs=files.filter(function(f){return f.tipo==='img'}),vid=files.filter(function(f){return f.tipo==='vid'})[0];
     if(!imgs.length&&!vid&&!link&&!txt){$('#vfErr').textContent='Coloque uma imagem, um vídeo, um link ou um texto.';return}
     var meta=imgs.map(function(f){var m=f.meta||{},o=[];for(var k in m)o.push(k+': '+m[k]);return f.nome+' ('+f.dim+')'+(o.length?' → '+o.join('; '):' → sem metadados (comum em prints e fotos de redes sociais)')});
-    if(vid)meta.push(vid.nome+' → vídeo de '+vid.dur+' s');
+    if(vid)meta.push(vid.nome+' → vídeo de '+vid.dur+' s'+(vid.raw?'':' (grande demais para mandar inteiro: foram enviados só quadros, sem áudio)'));
     var body={model:model,link:link,texto:txt,meta:meta.join('\n'),nome:(files[0]&&files[0].nome)||link||txt.slice(0,80),
-      imagens:imgs.map(function(f){return{mt:'image/jpeg',b64:f.data.split(',')[1]}}),quadros:vid?vid.quadros.map(function(d){return{mt:'image/jpeg',b64:d.split(',')[1]}}):[],
+      imagens:imgs.map(function(f){return{mt:'image/jpeg',b64:f.data.split(',')[1]}}),quadros:vid&&!vid.raw?vid.quadros.map(function(d){return{mt:'image/jpeg',b64:d.split(',')[1]}}):[],video:vid&&vid.raw?vid.raw:null,
       miniaturas:files.map(function(f){return f.thumb}).filter(Boolean).slice(0,4)};
     running=true;$('#vfRun').disabled=true;$('#vfRes').innerHTML='';$('#vfSteps').innerHTML='';$('#vfLiveT').textContent='Verificando…';$('#vfLive').hidden=false;
     $('#vfLive').scrollIntoView({behavior:'smooth',block:'start'});
-    step('início',(imgs.length?imgs.length+' imagem(ns) ':'')+(vid?'· vídeo com '+vid.quadros.length+' quadros ':'')+(link?'· '+host(link)+' ':'')+(txt?'· texto':''));
+    step('início',(imgs.length?imgs.length+' imagem(ns) ':'')+(vid?(vid.raw?'· vídeo com áudio ':'· vídeo (sem áudio, '+vid.quadros.length+' quadros) '):'')+(link?'· '+host(link)+' ':'')+(txt?'· texto':''));
     var n=0,txtShown=false,done=false;
     fetch(API+'vf',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Painel':'1'},body:JSON.stringify(body)}).then(function(r){
       if(!r.ok||!/event-stream/.test(r.headers.get('content-type')||''))return r.json().then(function(j){throw new Error(j.error||('Erro '+r.status))});
@@ -1214,6 +1218,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
           var e;try{e=JSON.parse(l)}catch(er){continue}
           if(e.t==='passo')step('etapa',e.m);
           else if(e.t==='previa'){if(e.p&&(e.p.titulo||e.p.descricao))step('link',(e.p.site?e.p.site+': ':'')+(e.p.titulo||e.p.descricao).slice(0,140))}
+          else if(e.t==='pensa')step('analisando',e.m);
           else if(e.t==='busca'){n++;$('#vfLiveT').textContent='Pesquisando ('+n+')…';step('pesquisa',e.q)}
           else if(e.t==='abre')step('abrindo',host(e.u)+' '+(e.u||'').replace(/^https?:\/\/[^/]+/,'').slice(0,80));
           else if(e.t==='achou'){}
@@ -1229,7 +1234,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
 
   /* ---------- resultado ---------- */
   function srcLinks(a){a=(a||[]).filter(function(s){return safeUrl(s.url)});if(!a.length)return '';
-    return '<div class="vf-src">'+a.map(function(s){return '<a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener noreferrer"><img src="'+esc(fav(s.url))+'" alt="" loading="lazy" onerror="this.remove()"><span>'+esc(s.veiculo||s.titulo||host(s.url))+'</span></a>'}).join('')+'</div>'}
+    return '<div class="vf-src">'+a.map(function(s){return '<a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener noreferrer"'+(s.conferido===false?' class="nc" title="Esse link não apareceu na pesquisa: confira antes de usar"':'')+'><img src="'+esc(fav(s.url))+'" alt="" loading="lazy" onerror="this.remove()"><span>'+esc(s.veiculo||s.titulo||host(s.url))+(s.conferido===false?' · não conferido':'')+'</span></a>'}).join('')+'</div>'}
   var CONF={alta:3,media:2,baixa:1};var ACC=function(x){return {media:'média'}[x]||x};
   var DIZ={sim:'Diz isso',nao:'Não diz isso',em_parte:'Diz em parte',nao_encontrado:'Não encontrado'};
   function show(rec,id){
@@ -1248,9 +1253,9 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
       +((rec.miniaturas||[]).length?'<p class="h" style="margin:12px 0 8px">Busca reversa da imagem (de onde ela saiu primeiro):</p><div class="vf-acts"><a class="mini" href="https://lens.google.com/" target="_blank" rel="noopener">Google Lens</a><a class="mini" href="https://tineye.com/" target="_blank" rel="noopener">TinEye</a><a class="mini" href="https://yandex.com/images/" target="_blank" rel="noopener">Yandex</a></div>':'')+'</div>';
     h+='<div class="vf-cl">'+left+'</div><div class="vf-cl">'+right+'</div></div>';
     var all=(rec.fontes||[]).filter(function(s){return safeUrl(s.url)});
-    if(all.length)h+='<div class="vf-card"><h3>Tudo o que foi consultado ('+all.length+')</h3><div class="vf-all">'+all.map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer"><img src="'+esc(fav(s.url))+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><span>'+esc(s.titulo||host(s.url))+'<small>'+esc(host(s.url))+(s.idade?' · '+esc(s.idade):'')+'</small></span></a>'}).join('')+'</div></div>';
+    if(all.length)h+='<div class="vf-card"><h3>Tudo o que foi consultado ('+all.length+')</h3><div class="vf-all">'+all.map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer"><img src="'+esc(fav(s.url))+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><span>'+esc(s.titulo&&s.titulo!==host(s.url)?s.titulo:dURI((s.url.replace(/^https?:\/\/[^/]+/,'')||'/').slice(0,90)))+'<small>'+esc(host(s.url))+(s.idade?' · '+esc(s.idade):'')+'</small></span></a>'}).join('')+'</div></div>';
     var u=rec.uso||{};
-    h+='<div class="vf-acts"><button class="mini" type="button" id="vfCopy">Copiar resumo</button><button class="mini dg" type="button" data-vfdel="'+esc(id)+'">Excluir</button><span class="h" style="font-size:12px;color:var(--dim);align-self:center">'+new Date(rec.quando).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})+' · '+(rec.modelo==='claude-opus-5-5'?'mais profundo':'rápido')+(u.buscas?' · '+u.buscas+(u.buscas===1?' pesquisa':' pesquisas'):'')+'</span></div>';
+    h+='<div class="vf-acts"><button class="mini" type="button" id="vfCopy">Copiar resumo</button><button class="mini dg" type="button" data-vfdel="'+esc(id)+'">Excluir</button><span class="h" style="font-size:12px;color:var(--dim);align-self:center">'+new Date(rec.quando).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})+' · '+(rec.modelo==='profundo'?'mais profundo':'rápido')+(u.buscas?' · '+u.buscas+(u.buscas===1?' pesquisa':' pesquisas'):'')+'</span></div>';
     h+='</div>';
     $('#vfRes').innerHTML=h;
     $('#vfCopy').onclick=function(){var t=v[0].toUpperCase()+': '+(r.titulo||'')+'\n\n'+(r.resumo||'')+'\n'+(r.afirmacoes||[]).map(function(a){return '\n• '+a.texto+' → '+vInfo(a.veredito)[0]+'\n  '+a.explicacao+(a.fontes||[]).filter(function(s){return safeUrl(s.url)}).map(function(s){return '\n  '+s.url}).join('')}).join('\n');

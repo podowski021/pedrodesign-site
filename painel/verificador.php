@@ -1,24 +1,27 @@
 <?php
 /* Verificador de informações do painel.
    Recebe imagens (e quadros de vídeo), um link e/ou um texto, manda para a IA com pesquisa na web
-   e devolve, ao vivo, o que ela está pesquisando e o resultado final. Cada verificação fica salva
-   em ../painel-data/verificacoes.json. A chave da IA fica em ../painel-data/ia.json (nunca volta para o navegador). */
+   e devolve, ao vivo, o que ela está pensando/pesquisando e o resultado final. Usa o plano GRATUITO do
+   Google Gemini (gemini-2.5-flash + Pesquisa Google + leitura de links). Cada verificação fica salva
+   em ../painel-data/verificacoes.json. A chave fica em ../painel-data/ia.json (nunca volta para o navegador). */
 declare(strict_types=1);
 
-const VF_MODELS = ['claude-sonnet-5-5' => 'Rápido', 'claude-opus-5-5' => 'Mais profundo'];
+/* modo => orçamento de raciocínio */
+const VF_MODELS = ['rapido' => 'Rápido', 'profundo' => 'Mais profundo'];
+const VF_MODEL = 'gemini-2.5-flash';
 
 function vf_cfg(): array { return jread(data_dir() . '/ia.json'); }
 
 function vf_status(): never {
     $c = vf_cfg();
-    out(['configured' => !empty($c['key']), 'last4' => !empty($c['key']) ? substr($c['key'], -4) : '', 'model' => $c['model'] ?? 'claude-sonnet-5-5', 'models' => VF_MODELS]);
+    out(['configured' => !empty($c['key']), 'last4' => !empty($c['key']) ? substr($c['key'], -4) : '', 'model' => isset(VF_MODELS[$c['model'] ?? '']) ? $c['model'] : 'rapido', 'models' => VF_MODELS]);
 }
 
 function vf_set(array $b): never {
     $c = vf_cfg();
     $k = trim((string)($b['key'] ?? ''));
     if ($k !== '') {
-        if (!preg_match('/^sk-ant-[A-Za-z0-9_\-]{20,}$/', $k)) out(['error' => 'Essa chave não parece uma chave da Anthropic (começa com sk-ant-).'], 400);
+        if (!preg_match('/^AIza[A-Za-z0-9_\-]{30,}$/', $k)) out(['error' => 'Essa chave não parece uma chave do Google AI Studio (começa com AIza).'], 400);
         $c['key'] = $k;
     }
     if (!empty($b['remove'])) unset($c['key']);
@@ -88,7 +91,7 @@ Como trabalhar:
 2. Pesquise na web cada afirmação importante. Prefira fontes primárias (órgãos oficiais, dados públicos, artigos científicos, o próprio autor) e agências de checagem (Lupa, Aos Fatos, Estadão Verifica, Fato ou Fake, AFP Checamos, Reuters Fact Check, Snopes, Full Fact). Abra as páginas quando precisar confirmar números.
 3. Confira as fontes citadas no próprio material: elas existem? dizem mesmo aquilo? são confiáveis? O dado está atualizado ou é antigo?
 4. Procure sinais de manipulação: montagem, corte que muda o sentido, imagem gerada por IA, foto antiga reaproveitada, data/local trocados, print falso de notícia ou de rede social.
-5. Seja honesto sobre o que não deu para confirmar. Não invente fontes nem links: use apenas URLs que você realmente encontrou na pesquisa.
+5. Seja honesto sobre o que não deu para confirmar. Não invente fontes nem links: use apenas endereços de páginas que você realmente encontrou na pesquisa (o endereço da própria página, não de redirecionamento).
 
 Quando terminar a pesquisa, responda SOMENTE com o resultado neste formato, entre as tags, em português do Brasil:
 <resultado>
@@ -117,16 +120,32 @@ TXT;
 /* manda um evento simples para o navegador */
 function vf_emit(array $e): void { echo 'data: ' . json_encode($e, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n\n"; @ob_flush(); @flush(); }
 
+/* os links da Pesquisa Google vêm como redirecionamento: descobre o endereço real (em paralelo) */
+function vf_resolve(array $urls): array {
+    $mh = curl_multi_init(); $hs = []; $out = [];
+    foreach (array_slice(array_unique($urls), 0, 30) as $u) {
+        if (!str_contains($u, 'grounding-api-redirect')) { $out[$u] = $u; continue; }
+        $h = curl_init($u);
+        curl_setopt_array($h, [CURLOPT_NOBODY => true, CURLOPT_FOLLOWLOCATION => false, CURLOPT_TIMEOUT => 8, CURLOPT_RETURNTRANSFER => true]);
+        curl_multi_add_handle($mh, $h); $hs[$u] = $h;
+    }
+    do { $st = curl_multi_exec($mh, $run); if ($run) curl_multi_select($mh, 1); } while ($run && $st === CURLM_OK);
+    foreach ($hs as $u => $h) { $loc = (string)curl_getinfo($h, CURLINFO_REDIRECT_URL); $out[$u] = $loc ?: $u; curl_multi_remove_handle($mh, $h); curl_close($h); }
+    curl_multi_close($mh);
+    return $out;
+}
+
 function vf_run(array $b): never {
     $cfg = vf_cfg();
     if (empty($cfg['key'])) out(['error' => 'Configure a chave da IA primeiro.'], 400);
-    $model = isset(VF_MODELS[$b['model'] ?? '']) ? $b['model'] : ($cfg['model'] ?? 'claude-sonnet-5-5');
+    $modo = isset(VF_MODELS[$b['model'] ?? '']) ? $b['model'] : ($cfg['model'] ?? 'rapido');
     $imgs = array_slice(is_array($b['imagens'] ?? null) ? $b['imagens'] : [], 0, 10);
     $frames = array_slice(is_array($b['quadros'] ?? null) ? $b['quadros'] : [], 0, 10);
+    $video = is_array($b['video'] ?? null) ? $b['video'] : null;
     $link = trim((string)($b['link'] ?? ''));
     if ($link !== '' && !preg_match('~^https?://~i', $link)) $link = 'https://' . $link;
     $b['link'] = $link;
-    if (!$imgs && !$frames && $link === '' && trim((string)($b['texto'] ?? '')) === '') out(['error' => 'Envie uma imagem, um vídeo, um link ou um texto.'], 400);
+    if (!$imgs && !$frames && !$video && $link === '' && trim((string)($b['texto'] ?? '')) === '') out(['error' => 'Envie uma imagem, um vídeo, um link ou um texto.'], 400);
 
     @set_time_limit(0); ignore_user_abort(true);
     while (ob_get_level()) @ob_end_clean();
@@ -137,20 +156,25 @@ function vf_run(array $b): never {
     @ini_set('zlib.output_compression', '0');
     echo ':' . str_repeat(' ', 2048) . "\n\n"; @flush();
 
-    $content = [];
-    $add = function (array $im) use (&$content) {
+    $parts = []; $nVid = 0;
+    $add = function (array $im) use (&$parts) {
         $mt = (string)($im['mt'] ?? 'image/jpeg'); $d = (string)($im['b64'] ?? '');
         if (!in_array($mt, ['image/jpeg', 'image/png', 'image/webp', 'image/gif'], true) || $d === '' || strlen($d) > 7_000_000) return;
-        $content[] = ['type' => 'image', 'source' => ['type' => 'base64', 'media_type' => $mt, 'data' => $d]];
+        $parts[] = ['inline_data' => ['mime_type' => $mt, 'data' => $d]];
     };
     foreach ($imgs as $im) $add($im);
+    if ($video && preg_match('~^video/(mp4|mpeg|quicktime|webm|x-msvideo|x-flv|3gpp|mov)$~', (string)($video['mt'] ?? '')) && strlen((string)($video['b64'] ?? '')) < 20_000_000) {
+        $parts[] = ['inline_data' => ['mime_type' => $video['mt'] === 'video/mov' ? 'video/quicktime' : $video['mt'], 'data' => (string)$video['b64']]]; $nVid = 1; $frames = [];
+    }
     foreach ($frames as $im) $add($im);
 
     $prev = [];
+    $yt = $link !== '' && preg_match('~^https?://(www\.|m\.)?(youtube\.com/(watch|shorts/)|youtu\.be/)~i', $link);
+    if ($yt) $parts[] = ['file_data' => ['file_uri' => $link]];
     if ($link !== '') {
-        vf_emit(['t' => 'passo', 'm' => 'Lendo a prévia do link…']);
+        vf_emit(['t' => 'passo', 'm' => $yt ? 'Assistindo ao vídeo do YouTube…' : 'Lendo a prévia do link…']);
         $prev = vf_preview($link);
-        if (!empty($prev['imagem'])) {
+        if (!empty($prev['imagem']) && !$yt) {
             $iu = $prev['imagem']; if (str_starts_with($iu, '//')) $iu = 'https:' . $iu;
             [$raw, $type] = vf_get($iu, 4_500_000);
             $type = strtolower(trim(explode(';', $type)[0]));
@@ -158,95 +182,86 @@ function vf_run(array $b): never {
         }
         if ($prev) vf_emit(['t' => 'previa', 'p' => array_diff_key($prev, ['_img' => 1])]);
     }
-    $content[] = ['type' => 'text', 'text' => vf_prompt($b, $prev, count($imgs), count($frames))];
+    $prompt = vf_prompt($b, $prev, count($imgs), count($frames));
+    if ($nVid) $prompt = str_replace('Hoje é ', "(Anexei o vídeo inteiro, com áudio: considere também o que é falado.)\nHoje é ", $prompt);
+    if ($yt) $prompt = str_replace('Hoje é ', "(O vídeo do YouTube do link está anexado, com áudio: considere também o que é falado.)\nHoje é ", $prompt);
+    $parts[] = ['text' => $prompt];
 
-    $messages = [['role' => 'user', 'content' => $content]];
-    $tools = [
-        ['type' => 'web_search_20250305', 'name' => 'web_search', 'max_uses' => $model === 'claude-opus-5-5' ? 14 : 9],
-        ['type' => 'web_fetch_20250910', 'name' => 'web_fetch', 'max_uses' => 6, 'max_content_tokens' => 12000],
-    ];
-    $base = rtrim((string)($cfg['base'] ?? 'https://api.anthropic.com'), '/');
-    $final = ''; $sources = []; $usage = ['in' => 0, 'out' => 0, 'buscas' => 0]; $err = '';
+    $req = ['contents' => [['role' => 'user', 'parts' => $parts]],
+            'tools' => [['google_search' => new stdClass()], ['url_context' => new stdClass()]],
+            'generationConfig' => ['temperature' => 0.3, 'maxOutputTokens' => 20000,
+                'thinkingConfig' => ['thinkingBudget' => $modo === 'profundo' ? 12000 : 3000, 'includeThoughts' => true]]];
+    $model = (string)($cfg['gemini_model'] ?? VF_MODEL);
+    $base = rtrim((string)($cfg['base'] ?? 'https://generativelanguage.googleapis.com'), '/');
+    $final = ''; $chunks = []; $queries = []; $usage = ['in' => 0, 'out' => 0, 'buscas' => 0]; $err = ''; $sse = ''; $seenQ = []; $seenU = [];
+    vf_emit(['t' => 'passo', 'm' => 'Analisando o material…']);
 
-    for ($turn = 0; $turn < 4; $turn++) {
-        $blocks = []; $stop = ''; $sse = '';
-        $payload = json_encode(['model' => $model, 'max_tokens' => 8000, 'stream' => true, 'tools' => $tools, 'messages' => $messages], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        $ch = curl_init($base . '/v1/messages');
-        $handle = function (string $ev, array $d) use (&$blocks, &$stop, &$usage, &$sources, &$err) {
-            switch ($d['type'] ?? $ev) {
-                case 'message_start': $usage['in'] += (int)($d['message']['usage']['input_tokens'] ?? 0); break;
-                case 'content_block_start':
-                    $cb = $d['content_block']; $i = (int)$d['index'];
-                    if (($cb['type'] ?? '') === 'server_tool_use') $cb['_json'] = '';
-                    if (($cb['type'] ?? '') === 'web_search_tool_result' && is_array($cb['content'] ?? null)) {
-                        $n = 0;
-                        foreach ($cb['content'] as $r) if (($r['type'] ?? '') === 'web_search_result') { $sources[$r['url']] = ['titulo' => $r['title'] ?? '', 'url' => $r['url'], 'idade' => $r['page_age'] ?? '']; $n++; }
-                        vf_emit(['t' => 'achou', 'n' => $n]);
-                    }
-                    if (($cb['type'] ?? '') === 'web_fetch_tool_result') {
-                        $u = $cb['content']['url'] ?? ''; if ($u) $sources[$u] = $sources[$u] ?? ['titulo' => $cb['content']['content']['title'] ?? '', 'url' => $u, 'idade' => ''];
-                    }
-                    $blocks[$i] = $cb; break;
-                case 'content_block_delta':
-                    $i = (int)$d['index']; $dl = $d['delta'];
-                    if (($dl['type'] ?? '') === 'text_delta') { $blocks[$i]['text'] = ($blocks[$i]['text'] ?? '') . $dl['text']; vf_emit(['t' => 'txt', 'd' => $dl['text']]); }
-                    elseif (($dl['type'] ?? '') === 'input_json_delta') $blocks[$i]['_json'] = ($blocks[$i]['_json'] ?? '') . $dl['partial_json'];
-                    elseif (($dl['type'] ?? '') === 'citations_delta') $blocks[$i]['citations'][] = $dl['citation'];
-                    break;
-                case 'content_block_stop':
-                    $i = (int)$d['index'];
-                    if (($blocks[$i]['type'] ?? '') === 'server_tool_use') {
-                        $in = json_decode($blocks[$i]['_json'] ?: '{}', true) ?: new stdClass(); $blocks[$i]['input'] = $in; unset($blocks[$i]['_json']);
-                        if ($blocks[$i]['name'] === 'web_search') { $usage['buscas']++; vf_emit(['t' => 'busca', 'q' => $in['query'] ?? '']); }
-                        else vf_emit(['t' => 'abre', 'u' => $in['url'] ?? '']);
-                    }
-                    break;
-                case 'message_delta': $stop = $d['delta']['stop_reason'] ?? $stop; $usage['out'] += (int)($d['usage']['output_tokens'] ?? 0); break;
-                case 'error': $err = $d['error']['message'] ?? 'Erro da IA'; break;
-            }
-        };
-        curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_POSTFIELDS => $payload, CURLOPT_TIMEOUT => 600, CURLOPT_CONNECTTIMEOUT => 15,
-            CURLOPT_HTTPHEADER => ['content-type: application/json', 'x-api-key: ' . $cfg['key'], 'anthropic-version: 2023-06-01', 'anthropic-beta: web-fetch-2025-09-10'],
-            CURLOPT_WRITEFUNCTION => function ($c, $chunk) use (&$sse, $handle) {
-                $sse .= $chunk;
-                while (($p = strpos($sse, "\n\n")) !== false) {
-                    $raw = substr($sse, 0, $p); $sse = substr($sse, $p + 2);
-                    $ev = ''; $data = '';
-                    foreach (explode("\n", $raw) as $l) { if (str_starts_with($l, 'event:')) $ev = trim(substr($l, 6)); elseif (str_starts_with($l, 'data:')) $data .= substr($l, 5); }
-                    $j = json_decode(trim($data), true);
-                    if (is_array($j)) $handle($ev, $j);
-                }
-                return strlen($chunk);
-            }]);
-        curl_exec($ch);
-        $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $cerr = curl_error($ch); curl_close($ch);
-        if ($code !== 200) {
-            $j = json_decode($sse, true);
-            $m = $j['error']['message'] ?? ($cerr ?: "Erro $code");
-            if ($code === 401) $m = 'A chave da IA está errada ou foi desativada.';
-            if ($code === 400 && stripos($m, 'credit') !== false) $m = 'Acabaram os créditos da conta da IA. Coloque crédito em console.anthropic.com.';
-            if ($code === 429) $m = 'Muitas verificações seguidas. Espere um minuto e tente de novo.';
-            if ($code === 529 || $code === 503) $m = 'A IA está sobrecarregada agora. Tente de novo em alguns minutos.';
-            $err = $m; break;
+    $handle = function (array $d) use (&$final, &$chunks, &$queries, &$usage, &$err, &$seenQ, &$seenU) {
+        if (isset($d['error'])) { $err = $d['error']['message'] ?? 'Erro da IA'; return; }
+        $c = $d['candidates'][0] ?? [];
+        foreach ($c['content']['parts'] ?? [] as $p) {
+            if (!isset($p['text'])) continue;
+            if (!empty($p['thought'])) {
+                /* resumo do raciocínio: mostra só o título de cada etapa */
+                if (preg_match_all('/\*\*([^*\n]{4,90})\*\*/', $p['text'], $m)) foreach ($m[1] as $t) vf_emit(['t' => 'pensa', 'm' => trim($t)]);
+            } else { $final .= $p['text']; vf_emit(['t' => 'txt', 'd' => $p['text']]); }
         }
-        if ($err) break;
-        ksort($blocks);
-        foreach ($blocks as $bl) if (($bl['type'] ?? '') === 'text') $final .= $bl['text'];
-        if ($stop !== 'pause_turn') break;
-        /* a pesquisa foi longa: continua de onde parou */
-        $clean = array_map(function ($bl) { unset($bl['_json']); if (($bl['type'] ?? '') === 'text' && empty($bl['citations'])) unset($bl['citations']); return $bl; }, array_values($blocks));
-        $messages[] = ['role' => 'assistant', 'content' => $clean];
-        vf_emit(['t' => 'passo', 'm' => 'Continuando a pesquisa…']);
+        $g = $c['groundingMetadata'] ?? [];
+        foreach ($g['webSearchQueries'] ?? [] as $q) if (!isset($seenQ[$q])) { $seenQ[$q] = 1; $queries[] = $q; $usage['buscas']++; vf_emit(['t' => 'busca', 'q' => $q]); }
+        foreach ($g['groundingChunks'] ?? [] as $gc) if (!empty($gc['web']['uri'])) $chunks[$gc['web']['uri']] = $gc['web']['title'] ?? '';
+        foreach ($c['urlContextMetadata']['urlMetadata'] ?? [] as $um) { $u = $um['retrievedUrl'] ?? ''; if ($u && !isset($seenU[$u])) { $seenU[$u] = 1; vf_emit(['t' => 'abre', 'u' => $u]); if (($um['urlRetrievalStatus'] ?? '') === 'URL_RETRIEVAL_STATUS_SUCCESS') $chunks[$u] = $chunks[$u] ?? ''; } }
+        if (isset($d['usageMetadata'])) { $usage['in'] = (int)($d['usageMetadata']['promptTokenCount'] ?? 0); $usage['out'] = (int)($d['usageMetadata']['candidatesTokenCount'] ?? 0) + (int)($d['usageMetadata']['thoughtsTokenCount'] ?? 0); }
+        if (($c['finishReason'] ?? '') === 'SAFETY') $err = 'O Google bloqueou a análise desse conteúdo por segurança.';
+    };
+    $ch = curl_init($base . '/v1beta/models/' . rawurlencode($model) . ':streamGenerateContent?alt=sse');
+    curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_POSTFIELDS => json_encode($req, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), CURLOPT_TIMEOUT => 600, CURLOPT_CONNECTTIMEOUT => 15,
+        CURLOPT_HTTPHEADER => ['content-type: application/json', 'x-goog-api-key: ' . $cfg['key']],
+        CURLOPT_WRITEFUNCTION => function ($c, $chunk) use (&$sse, $handle) {
+            $sse .= str_replace("\r\n", "\n", $chunk);
+            while (($p = strpos($sse, "\n\n")) !== false) {
+                $raw = substr($sse, 0, $p); $sse = substr($sse, $p + 2); $data = '';
+                foreach (explode("\n", $raw) as $l) if (str_starts_with($l, 'data:')) $data .= substr($l, 5);
+                $j = json_decode(trim($data), true);
+                if (is_array($j)) $handle($j);
+            }
+            return strlen($chunk);
+        }]);
+    curl_exec($ch);
+    $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $cerr = curl_error($ch); curl_close($ch);
+    if ($code !== 200) {
+        $j = json_decode($sse, true); if (isset($j[0])) $j = $j[0];
+        $m = $j['error']['message'] ?? ($cerr ?: "Erro $code");
+        if ($code === 400 && stripos($m, 'API key') !== false) $m = 'A chave do Google está errada. Gere outra em aistudio.google.com/apikey.';
+        elseif ($code === 403) $m = 'O Google recusou a chave (permissão). Gere outra em aistudio.google.com/apikey.';
+        elseif ($code === 429) $m = 'Chegou no limite gratuito do Google por agora (por minuto ou por dia). Espere um pouco e tente de novo; o limite renova sozinho.';
+        elseif ($code === 404) $m = 'O modelo gratuito mudou de nome no Google. Me avise para eu atualizar o verificador.';
+        elseif ($code === 413 || stripos($m, 'size') !== false) $m = 'O arquivo ficou grande demais. Tente um vídeo mais curto ou prints.';
+        elseif ($code >= 500) $m = 'O Google está instável agora. Tente de novo em alguns minutos.';
+        $err = $m;
     }
-
     if ($err) { vf_emit(['t' => 'erro', 'm' => $err]); exit; }
+
     $res = null;
-    if (preg_match('/<resultado>\s*(\{.*\})\s*<\/resultado>/s', $final, $r) || preg_match('/(\{.*"veredito".*\})/s', $final, $r)) $res = json_decode($r[1], true);
+    if (preg_match('/<resultado>\s*(?:```(?:json)?)?\s*(\{.*\})\s*(?:```)?\s*<\/resultado>/s', $final, $r) || preg_match('/(\{.*"veredito".*\})/s', $final, $r)) $res = json_decode($r[1], true);
     if (!is_array($res)) { vf_emit(['t' => 'erro', 'm' => 'A IA não devolveu o resultado no formato esperado. Tente de novo.', 'bruto' => mb_substr($final, 0, 4000)]); exit; }
 
-    $rec = ['quando' => date('c'), 'modelo' => $model, 'link' => $link, 'texto' => mb_substr((string)($b['texto'] ?? ''), 0, 2000),
-            'nome' => mb_substr((string)($b['nome'] ?? ''), 0, 200), 'miniaturas' => array_slice(array_filter(array_map(fn($x) => is_string($x) && strlen($x) < 60000 && str_starts_with($x, 'data:image/') ? $x : null, (array)($b['miniaturas'] ?? []))), 0, 4),
-            'previa' => array_diff_key($prev, ['_img' => 1]), 'resultado' => $res, 'fontes' => array_values($sources), 'uso' => $usage];
+    /* fontes consultadas com o endereço real; marca links da resposta que não apareceram na pesquisa */
+    vf_emit(['t' => 'passo', 'm' => 'Conferindo os links das fontes…']);
+    $real = vf_resolve(array_keys($chunks));
+    $sources = []; $hosts = [];
+    foreach ($chunks as $u => $t) { $ru = $real[$u] ?? $u; $h = strtolower(preg_replace('/^www\./', '', (string)parse_url($ru, PHP_URL_HOST))); if ($h) $hosts[$h] = 1; $sources[$ru] = ['titulo' => $t, 'url' => $ru, 'idade' => '']; }
+    $chk = function (&$lst) use ($hosts) {
+        if (!is_array($lst)) { $lst = []; return; }
+        foreach ($lst as &$f) { if (!is_array($f) || empty($f['url'])) continue; $h = strtolower(preg_replace('/^www\./', '', (string)parse_url((string)$f['url'], PHP_URL_HOST)));
+            $ok = false; foreach ($hosts as $k => $_) if ($h === $k || str_ends_with($h, '.' . $k) || str_ends_with($k, '.' . $h)) { $ok = true; break; }
+            $f['conferido'] = $ok; }
+    };
+    if (is_array($res['afirmacoes'] ?? null)) foreach ($res['afirmacoes'] as &$a) $chk($a['fontes']);
+    unset($a);
+
+    $rec = ['quando' => date('c'), 'modelo' => $modo, 'link' => $link, 'texto' => mb_substr((string)($b['texto'] ?? ''), 0, 2000),
+            'nome' => mb_substr((string)($b['nome'] ?? ''), 0, 200), 'miniaturas' => array_slice(array_values(array_filter(array_map(fn($x) => is_string($x) && strlen($x) < 60000 && str_starts_with($x, 'data:image/') ? $x : null, (array)($b['miniaturas'] ?? [])))), 0, 4),
+            'previa' => array_diff_key($prev, ['_img' => 1]), 'resultado' => $res, 'fontes' => array_values($sources), 'buscas' => $queries, 'uso' => $usage];
     $id = new_id();
     jmod(data_dir() . '/verificacoes.json', function (&$d) use ($id, $rec) { $d[$id] = $rec; if (count($d) > 300) $d = array_slice($d, -300, null, true); });
     vf_emit(['t' => 'fim', 'id' => $id, 'r' => $rec]);
