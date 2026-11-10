@@ -396,34 +396,31 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
 .vf-acts a.mini{text-decoration:none;color:var(--fg)}
 
 /* ---------- proposta em 1 página ---------- */
-.pg.px{height:1123px;min-height:0;padding:56px 60px 0;background:#EFEDE7;color:#0D0D0D;font-family:'Mona Sans',system-ui,sans-serif;display:flex;flex-direction:column}
+.pg.px{flex:none;height:1123px;min-height:0;padding:56px 60px 0;background:#EFEDE7;color:#0D0D0D;font-family:'Mona Sans',system-ui,sans-serif;display:flex;flex-direction:column}
 .px-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:22px;border-bottom:1.5px solid #0D0D0D}
 .px-meta{text-align:right;font-size:12px;line-height:1.6;color:#4F4D49}.px-meta b{color:#0D0D0D;font-weight:600}
-.px-hero{padding:40px 0 34px}
-.px-eb{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#D93D0B}
-.px-nm{font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.04em;margin-top:10px;word-break:break-word}
-.px-tt{font-style:italic;font-weight:300;font-size:30px;line-height:1.1;color:#D93D0B;letter-spacing:-.03em;margin-top:8px}
-.px-rs{font-size:14.5px;line-height:1.55;color:#3A3936;max-width:560px;margin:16px 0 0}
-.px-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;flex:1;min-height:0}
-.px-h{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E6B65;margin-bottom:12px}
-.px-sc{list-style:none;margin:0;padding:0}
-.px-sc li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:14px;line-height:1.4}
-.px-sc.sm li{padding:7px 0;font-size:12.5px}
-.px-sc li i{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:#FF4F1A;position:relative}
-.px-sc li i:after{content:"";position:absolute;left:6px;top:3.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-.px-obs{margin-top:14px;font-size:12.5px;line-height:1.5;color:#4F4D49}.px-obs b{color:#0D0D0D;font-weight:600}
-.px-side{display:flex;flex-direction:column;gap:12px}
-.px-box{padding:16px 18px;border-radius:18px;background:#F8F7F3;border:1px solid rgba(13,13,13,.1)}
-.px-box .px-h{margin-bottom:6px}
-.px-pz{font-weight:600;font-size:16px;line-height:1.35}
-.px-inv{padding:20px 20px 12px;border-radius:20px;background:#0D0D0D;color:#EFEDE7}
-.px-inv .px-h{color:rgba(239,237,231,.6);margin-bottom:6px}
-.px-v{font-weight:900;font-size:42px;letter-spacing:-.04em;line-height:1;color:#FF4F1A;margin-bottom:12px}
-.px-py{padding:9px 0;border-top:1px solid rgba(239,237,231,.14);font-size:12px;color:rgba(239,237,231,.72);line-height:1.35}
-.px-py b{display:block;font-size:15px;font-weight:600;color:#EFEDE7}
-.px-pk{font-weight:600;font-size:17px;word-break:break-all}
-.px-fv{font-size:11px;color:#6E6B65;margin-top:3px}
-.px-next{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;padding:20px 22px;border-radius:20px;background:#FF4F1A;color:#fff}
+.px-hero{padding:46px 0 34px}
+.px-nm{font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.04em;word-break:break-word}
+.px-tt{font-style:italic;font-weight:300;font-size:30px;line-height:1.1;color:#D93D0B;letter-spacing:-.03em;margin-top:10px}
+.px-rs{font-size:15px;line-height:1.55;color:#3A3936;max-width:580px;margin:16px 0 0}
+.px-h{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E6B65;margin-bottom:8px}
+.px-inv{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);border-radius:24px;background:#0D0D0D;color:#EFEDE7;overflow:hidden}
+.px-vl{padding:26px 26px 18px}
+.px-inv .px-h{color:rgba(239,237,231,.6)}
+.px-v{font-weight:900;font-size:52px;letter-spacing:-.045em;line-height:1;color:#FF4F1A;margin-bottom:14px}
+.px-py{padding:8px 0;border-top:1px solid rgba(239,237,231,.14);font-size:12px;color:rgba(239,237,231,.7);line-height:1.35}
+.px-py b{display:block;font-size:14.5px;font-weight:600;color:#EFEDE7}
+.px-pix{padding:26px 24px;background:#1A1A19;border-left:1px solid rgba(239,237,231,.1);display:flex;flex-direction:column}
+.px-cx{width:120px;height:auto;margin:6px 0 16px}
+.px-pk{font-weight:900;font-size:30px;letter-spacing:-.03em;line-height:1;word-break:break-all}
+.px-fv{font-size:12.5px;line-height:1.5;color:rgba(239,237,231,.7);margin-top:12px}.px-fv b{color:#EFEDE7;font-weight:600}
+.px-low{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;padding:30px 4px 0;flex:1;min-height:0}
+.px-sc{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
+.px-sc li{break-inside:avoid;position:relative;padding:0 0 7px 14px;font-size:12.5px;line-height:1.4;color:#3A3936}
+.px-sc li:before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:#FF4F1A}
+.px-obs{margin-top:8px;font-size:12px;line-height:1.5;color:#4F4D49}.px-obs b{color:#0D0D0D;font-weight:600}
+.px-pz{font-size:13px;font-weight:600;line-height:1.4}
+.px-next{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 22px;border-radius:20px;background:#FF4F1A;color:#fff}
 .px-nt{font-weight:900;text-transform:uppercase;font-size:20px;letter-spacing:-.02em}
 .px-nx{font-size:13.5px;line-height:1.45;margin-top:4px;max-width:420px}
 .px-ct{flex:none;text-align:right;font-size:12.5px;line-height:1.5}.px-ct b{display:block;font-size:15px;font-weight:600}
@@ -512,7 +509,7 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
           <button type="button" class="chip" data-p="6x" aria-pressed="true">Até 6x sem juros</button>
           <button type="button" class="chip" data-p="10x" aria-pressed="true">Até 10x com juros</button>
         </div>
-        <label class="f">Chave Pix<input id="pix" placeholder="CNPJ, e-mail, telefone ou chave aleatória"><span style="font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--dim)">Fica salva para as próximas propostas.</span></label>
+        <label class="f" hidden>Chave Pix<input id="pix" placeholder="45974000755"><span style="font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--dim)">Fica salva para as próximas propostas.</span></label>
         <div class="row">
           <label class="f">Desconto à vista (%)<input id="dsc" inputmode="decimal" placeholder="0"></label>
           <label class="f">Validade (dias)<input id="vld" inputmode="numeric" value="7"></label>
@@ -793,9 +790,9 @@ const addDays=(iso,n)=>{const d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+
 
 /* ---------- proposal copy (3 languages) ---------- */
 const TX={
- pt:{prop:'Proposta comercial',for:'Preparada para',date:'Data',valid:'Válida até',no:'Nº',scope:'Escopo',scopeH:'O que está <em>incluso</em>',steps:'Prazo e etapas',stepsH:'Como vamos <em>trabalhar</em>',total:'Prazo',inv:'Investimento',invH:'Valor e <em>pagamento</em>',tot:'Valor total do projeto',vista:'À vista',vistaS:'via Pix ou transferência',x6:'Até 6x sem juros',x6S:'no cartão de crédito',x10:'Até 10x',x10S:'com juros da operadora',disc:'de desconto',pix:'Pagamento via Pix',pixH:'Chave Pix',fav:'Favorecido',payNote:'O pagamento é de 100% antes do início do projeto. O prazo só começa a contar quando o pagamento estiver confirmado e o briefing enviado; se faltar um dos dois, ele ainda não corre.',v1:'Primeira versão em 24h',v1T:'O prazo de 24 horas é para a primeira versão da página, completa e funcionando. A partir dela fazemos juntos os ajustes até a versão final.',obs:'Observações',next:'Próximo passo',nextT:'Aprovou? Me responde no WhatsApp que eu já envio o contrato e os dados para pagamento.',nextP:'Aprovou? Me responde no WhatsApp que eu já envio o contrato. Depois do Pix, é só me mandar o comprovante.',mSub:'Proposta {n} · Pedro Design',mHi:'Olá, {c}!',mBody:'Segue em anexo a proposta de {t}, preparada sob medida para você.\n\nSe tiver qualquer dúvida, é só responder este e-mail ou me chamar no WhatsApp +55 45 97400-0755.',mBye:'Um abraço,\nPedro\nPedro Design',svc:{lp:'Página sob medida',art:'Artes para Instagram',both:'Página + artes'},cover:'Uma proposta feita sob medida para',contact:'Contato',guar:'Contrato assinado · Nota fiscal · Suporte vitalício'},
- en:{prop:'Business proposal',for:'Prepared for',date:'Date',valid:'Valid until',no:'No.',scope:'Scope',scopeH:"What's <em>included</em>",steps:'Timeline',stepsH:"How we'll <em>work</em>",total:'Deadline',inv:'Investment',invH:'Price and <em>payment</em>',tot:'Total project price',vista:'Upfront',vistaS:'bank transfer',x6:'Up to 6 installments',x6S:'interest-free, credit card',x10:'Up to 10 installments',x10S:'with card interest',disc:'discount',pix:'Payment via Pix (Brazil)',pixH:'Pix key',fav:'Payee',payNote:'Payment is 100% before the project starts. The timeline only starts once payment is confirmed and the briefing is sent; if either is missing, the clock has not started yet.',v1:'First version in 24h',v1T:'The 24-hour timeline is for the first version of your page, complete and working. From there we make the adjustments together until the final version.',obs:'Notes',next:'Next step',nextT:"Approved? Reply on WhatsApp and I'll send the contract and payment details right away.",nextP:"Approved? Reply on WhatsApp and I'll send the contract. After the Pix, just send me the receipt.",mSub:'Proposal {n} · Pedro Design',mHi:'Hi {c},',mBody:"Please find attached the proposal for {t}, tailored for you.\n\nIf you have any questions, just reply to this email or message me on WhatsApp at +55 45 97400-0755.",mBye:'Best regards,\nPedro\nPedro Design',svc:{lp:'Custom web page',art:'Instagram graphics',both:'Web page + graphics'},cover:'A proposal tailored for',contact:'Contact',guar:'Signed contract · Official invoice · Lifetime support'},
- es:{prop:'Propuesta comercial',for:'Preparada para',date:'Fecha',valid:'Válida hasta',no:'N.º',scope:'Alcance',scopeH:'Qué está <em>incluido</em>',steps:'Plazo y etapas',stepsH:'Cómo vamos a <em>trabajar</em>',total:'Plazo',inv:'Inversión',invH:'Valor y <em>pago</em>',tot:'Valor total del proyecto',vista:'Pago único',vistaS:'por transferencia',x6:'Hasta 6 cuotas',x6S:'sin intereses, con tarjeta',x10:'Hasta 10 cuotas',x10S:'con intereses de la tarjeta',disc:'de descuento',pix:'Pago por Pix (Brasil)',pixH:'Clave Pix',fav:'Beneficiario',payNote:'El pago es del 100% antes de iniciar el proyecto. El plazo solo empieza a contar cuando el pago está confirmado y el briefing enviado; si falta uno de los dos, aún no corre.',v1:'Primera versión en 24h',v1T:'El plazo de 24 horas es para la primera versión de la página, completa y funcionando. A partir de ella hacemos juntos los ajustes hasta la versión final.',obs:'Observaciones',next:'Próximo paso',nextT:'¿Aprobado? Respóndeme por WhatsApp y te envío el contrato y los datos de pago.',nextP:'¿Aprobado? Respóndeme por WhatsApp y te envío el contrato. Después del Pix, solo envíame el comprobante.',mSub:'Propuesta {n} · Pedro Design',mHi:'¡Hola, {c}!',mBody:'Te envío adjunta la propuesta de {t}, preparada a tu medida.\n\nSi tienes cualquier duda, responde este correo o escríbeme por WhatsApp al +55 45 97400-0755.',mBye:'Un abrazo,\nPedro\nPedro Design',svc:{lp:'Página a medida',art:'Diseños para Instagram',both:'Página + diseños'},cover:'Una propuesta a medida para',contact:'Contacto',guar:'Contrato firmado · Factura oficial · Soporte de por vida'}
+ pt:{prop:'Proposta comercial',for:'Preparada para',date:'Data',valid:'Válida até',no:'Nº',scope:'Escopo',scopeH:'O que está <em>incluso</em>',steps:'Prazo e etapas',stepsH:'Como vamos <em>trabalhar</em>',total:'Prazo',inv:'Investimento',invH:'Valor e <em>pagamento</em>',tot:'Valor total do projeto',vista:'À vista',vistaS:'via Pix ou transferência',x6:'Até 6x sem juros',x6S:'no cartão de crédito',x10:'Até 10x',x10S:'com juros da operadora',disc:'de desconto',pix:'Pagamento via Pix',pixH:'Chave Pix',fav:'Favorecido',payNote:'O pagamento é de 100% antes do início do projeto. O prazo só começa a contar quando o pagamento estiver confirmado e o briefing enviado; se faltar um dos dois, ele ainda não corre.',v1:'Primeira versão em 24h',v1T:'O prazo de 24 horas é para a primeira versão da página, completa e funcionando. A partir dela fazemos juntos os ajustes até a versão final.',obs:'Observações',next:'Próximo passo',nextT:'Aprovou? Me chama no WhatsApp que eu já começo.',nextP:'Aprovou? Faça o Pix e me mande o comprovante no WhatsApp que eu já começo.',mSub:'Proposta {n} · Pedro Design',mHi:'Olá, {c}!',mBody:'Segue em anexo a proposta de {t}, preparada sob medida para você.\n\nSe tiver qualquer dúvida, é só responder este e-mail ou me chamar no WhatsApp +55 45 97400-0755.',mBye:'Um abraço,\nPedro\nPedro Design',svc:{lp:'Página sob medida',art:'Artes para Instagram',both:'Página + artes'},cover:'Uma proposta feita sob medida para',contact:'Contato',guar:'Contrato assinado · Nota fiscal · Suporte vitalício'},
+ en:{prop:'Business proposal',for:'Prepared for',date:'Date',valid:'Valid until',no:'No.',scope:'Scope',scopeH:"What's <em>included</em>",steps:'Timeline',stepsH:"How we'll <em>work</em>",total:'Deadline',inv:'Investment',invH:'Price and <em>payment</em>',tot:'Total project price',vista:'Upfront',vistaS:'bank transfer',x6:'Up to 6 installments',x6S:'interest-free, credit card',x10:'Up to 10 installments',x10S:'with card interest',disc:'discount',pix:'Payment via Pix (Brazil)',pixH:'Pix key',fav:'Payee',payNote:'Payment is 100% before the project starts. The timeline only starts once payment is confirmed and the briefing is sent; if either is missing, the clock has not started yet.',v1:'First version in 24h',v1T:'The 24-hour timeline is for the first version of your page, complete and working. From there we make the adjustments together until the final version.',obs:'Notes',next:'Next step',nextT:"Approved? Message me on WhatsApp and I'll get started.",nextP:"Approved? Send the Pix and the receipt on WhatsApp and I'll get started.",mSub:'Proposal {n} · Pedro Design',mHi:'Hi {c},',mBody:"Please find attached the proposal for {t}, tailored for you.\n\nIf you have any questions, just reply to this email or message me on WhatsApp at +55 45 97400-0755.",mBye:'Best regards,\nPedro\nPedro Design',svc:{lp:'Custom web page',art:'Instagram graphics',both:'Web page + graphics'},cover:'A proposal tailored for',contact:'Contact',guar:'Signed contract · Official invoice · Lifetime support'},
+ es:{prop:'Propuesta comercial',for:'Preparada para',date:'Fecha',valid:'Válida hasta',no:'N.º',scope:'Alcance',scopeH:'Qué está <em>incluido</em>',steps:'Plazo y etapas',stepsH:'Cómo vamos a <em>trabajar</em>',total:'Plazo',inv:'Inversión',invH:'Valor y <em>pago</em>',tot:'Valor total del proyecto',vista:'Pago único',vistaS:'por transferencia',x6:'Hasta 6 cuotas',x6S:'sin intereses, con tarjeta',x10:'Hasta 10 cuotas',x10S:'con intereses de la tarjeta',disc:'de descuento',pix:'Pago por Pix (Brasil)',pixH:'Clave Pix',fav:'Beneficiario',payNote:'El pago es del 100% antes de iniciar el proyecto. El plazo solo empieza a contar cuando el pago está confirmado y el briefing enviado; si falta uno de los dos, aún no corre.',v1:'Primera versión en 24h',v1T:'El plazo de 24 horas es para la primera versión de la página, completa y funcionando. A partir de ella hacemos juntos los ajustes hasta la versión final.',obs:'Observaciones',next:'Próximo paso',nextT:'¿Aprobado? Escríbeme por WhatsApp y empiezo enseguida.',nextP:'¿Aprobado? Haz el Pix y envíame el comprobante por WhatsApp y empiezo enseguida.',mSub:'Propuesta {n} · Pedro Design',mHi:'¡Hola, {c}!',mBody:'Te envío adjunta la propuesta de {t}, preparada a tu medida.\n\nSi tienes cualquier duda, responde este correo o escríbeme por WhatsApp al +55 45 97400-0755.',mBye:'Un abrazo,\nPedro\nPedro Design',svc:{lp:'Página a medida',art:'Diseños para Instagram',both:'Página + diseños'},cover:'Una propuesta a medida para',contact:'Contacto',guar:'Contrato firmado · Factura oficial · Soporte de por vida'}
 };
 const DEFS={
  pt:{
@@ -874,28 +871,25 @@ function proposalHTML(p){
   if(p.pay.vista)pays.push(`<div class="px-py"><b>${money(d>0?v*(1-d/100):v,cur,L)}</b><span>${T.vista}${d>0?` · ${d}% ${T.disc}`:''} · ${T.vistaS}</span></div>`);
   if(p.pay['6x'])pays.push(`<div class="px-py"><b>6× ${money(v/6,cur,L)}</b><span>${T.x6} · ${T.x6S}</span></div>`);
   if(p.pay['10x'])pays.push(`<div class="px-py"><b>${T.x10}</b><span>${T.x10S}</span></div>`);
-  const nameSize=name.length>22?40:name.length>14?50:60;
+  const title=p.tit||T.svc[p.svc];
+  const tSize=title.length>40?40:title.length>26?48:58;
+  const pixKey='45974000755';
   return `<div class="pg px">
     <div class="px-top"><img src="${LOGOB}" alt="Pedro Design" style="width:150px;height:auto"><div class="px-meta"><div>${T.prop} <b>${T.no} ${esc(numero)}</b></div><div>${T.date}: ${fmtDate(p.date||today(),L)} · ${T.valid}: <b>${fmtDate(valid,L)}</b></div></div></div>
     <div class="px-hero">
-      <div class="px-eb">${T.for}</div>
-      <div class="px-nm" style="font-size:${nameSize}px">${esc(name)}</div>
-      <div class="px-tt">${esc(p.tit||T.svc[p.svc])}</div>
+      <div class="px-nm" style="font-size:${tSize}px">${esc(title)}</div>
+      <div class="px-tt">${esc(name)}</div>
       ${p.res?`<p class="px-rs">${esc(p.res)}</p>`:''}
     </div>
-    <div class="px-grid">
-      <div>
-        <div class="px-h">${plain(T.scopeH)}</div>
-        <ul class="px-sc${many?' sm':''}">${scope.map(x=>`<li><i></i><span>${esc(x)}</span></li>`).join('')||'<li><i></i><span>[Itens do projeto]</span></li>'}</ul>
-        ${p.obs?`<div class="px-obs"><b>${T.obs}:</b> ${esc(p.obs)}</div>`:''}
-      </div>
-      <div class="px-side">
-        ${p.prz?`<div class="px-box"><div class="px-h">${T.total}</div><div class="px-pz">${esc(p.prz)}</div></div>`:''}
-        <div class="px-inv"><div class="px-h">${T.tot}</div><div class="px-v">${v?money(v,cur,L):'[Valor]'}</div>${pays.join('')}</div>
-        ${p.pix?`<div class="px-box px-pix"><div class="px-h">${T.pix}</div><div class="px-pk">${esc(p.pix)}</div><div class="px-fv">${T.fav}: Pedro Nascimento da Costa Design Gráfico Ltda</div></div>`:''}
-      </div>
+    <div class="px-inv">
+      <div class="px-vl"><div class="px-h">${T.tot}</div><div class="px-v">${v?money(v,cur,L):'[Valor]'}</div><div class="px-pys">${pays.join('')}</div></div>
+      <div class="px-pix"><div class="px-h">${T.pix}</div><img class="px-cx" src="/apresentacao/assets/caixa-neg-pdf.png" alt="Caixa"><div class="px-pk">${esc(pixKey)}</div><div class="px-fv">${T.fav}: <b>Pedro Nascimento da Costa</b><br>Caixa Econômica Federal</div></div>
     </div>
-    <div class="px-next"><div><div class="px-nt">${T.next}</div><div class="px-nx">${p.pix?T.nextP:T.nextT}</div></div><div class="px-ct"><b>Pedro</b>+55 45 97400-0755<br>equipe@pedrodesign.com</div></div>
+    <div class="px-low">
+      <div><div class="px-h">${plain(T.scopeH)}</div><ul class="px-sc">${scope.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>[Itens do projeto]</li>'}</ul>${p.obs?`<div class="px-obs"><b>${T.obs}:</b> ${esc(p.obs)}</div>`:''}</div>
+      ${p.prz?`<div class="px-pzb"><div class="px-h">${T.total}</div><div class="px-pz">${esc(p.prz)}</div></div>`:''}
+    </div>
+    <div class="px-next"><div><div class="px-nt">${T.next}</div><div class="px-nx">${T.nextP}</div></div><div class="px-ct"><b>Pedro</b>+55 45 97400-0755<br>equipe@pedrodesign.com</div></div>
     <div class="px-ft"><span>${T.payNote}</span><span>pedrodesign.store</span></div>
   </div>`;
 }
