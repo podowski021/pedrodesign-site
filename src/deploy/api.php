@@ -34,7 +34,7 @@ function data_dir(): string {
 function out($v, int $code = 200): never { http_response_code($code); echo json_encode($v, JSON_UNESCAPED_UNICODE); exit; }
 function body(): array {
     $raw = file_get_contents('php://input') ?: '';
-    if (strlen($raw) > (($_GET['a'] ?? '') === 'vf' ? 30_000_000 : 8_000_000)) out(['error' => 'Muito grande'], 413);
+    if (strlen($raw) > 8_000_000) out(['error' => 'Muito grande'], 413);
     $j = json_decode($raw, true);
     return is_array($j) ? $j : [];
 }
@@ -132,7 +132,8 @@ $dir = data_dir();
 $authFile = "$dir/auth.json";
 $a = $_GET['a'] ?? '';
 require __DIR__ . '/analytics.php';
-require __DIR__ . '/verificador.php';
+/* o verificador saiu do site: apaga a chave do Google que ficou guardada */
+if (is_file(data_dir() . '/ia.json')) @unlink(data_dir() . '/ia.json');
 
 /* ---------- público: visitas do site ---------- */
 if ($a === 't') { if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Método'], 405); an_track(); }
@@ -196,12 +197,6 @@ if (!$logged) out(['error' => 'Faça login'], 401);
 /* ---------- visitas (painel) ---------- */
 if ($a === 'visitas') an_stats(body());
 
-/* ---------- verificador de informações ---------- */
-if ($a === 'vfstatus') vf_status();
-if ($a === 'vfset') vf_set(body());
-if ($a === 'vf') vf_run(body());
-if ($a === 'vflist') vf_list();
-if ($a === 'vfdel') vf_del(body());
 
 /* ---------- e-mail ---------- */
 if ($a === 'mailget') {
