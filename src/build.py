@@ -156,6 +156,12 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
     with open(os.path.join(OUT, '.htaccess'), 'a') as f:
         f.write('\n# links antigos voltam para a página inicial\nRedirectMatch 301 ^/apresentacao/?$ /\n')
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
+    # bio.pedrodesign.store: subdomínio da Hostinger apontando para a pasta public_html/bio (cópia da árvore de links com endereços completos)
+    _lk = open(os.path.join(HERE, 'extra', 'links', 'index.html'), encoding='utf-8').read()
+    _lk = _lk.replace('"/apresentacao/', '"' + DOMAIN + '/apresentacao/').replace('(/apresentacao/', '(' + DOMAIN + '/apresentacao/')
+    _lk = _lk.replace('href="/"', 'href="' + DOMAIN + '/"').replace('href="/#', 'href="' + DOMAIN + '/#')
+    os.makedirs(os.path.join(OUT, 'bio'), exist_ok=True)
+    open(os.path.join(OUT, 'bio', 'index.html'), 'w', encoding='utf-8').write(_lk)
     print('MODO EM DESENVOLVIMENTO')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)
 print('ok', len(used), 'assets', round(tot / 1e6, 2), 'MB')
