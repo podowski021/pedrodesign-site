@@ -31,6 +31,9 @@ Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mon
 ## Visitas (analytics próprio)
 Contador anônimo `apresentacao/assets/pd-visitas-v1.js` (incluído na home, /links, bio e 404; `data-pagina` no `<html>` dá o nome da página) → `painel/api.php?a=t` → `analytics.php` grava em `../painel-data/visitas/AAAA-MM-DD.jsonl` (guarda 400 dias). Aba **Visitas** do painel lê `?a=visitas`. `?naocontar=1` (ou abrir o painel) para de contar o aparelho do Pedro. Links com `?utm_source=` aparecem com esse nome em "De onde vieram".
 
+## Verificador de informações
+Aba **Verificador** do painel: imagens (com EXIF), quadros de vídeo (tirados no navegador), link (o servidor lê a prévia og: e a imagem) e texto → `painel/verificador.php` chama a API da Anthropic (`claude-sonnet-5-5` rápido / `claude-opus-5-5` profundo) com `web_search` + `web_fetch`, em streaming, e continua sozinho em `pause_turn`. A chave fica em `../painel-data/ia.json` (nunca volta ao navegador); histórico em `../painel-data/verificacoes.json` (últimas 300). Logo: símbolo `#vfMark` (lupa com o globo laranja).
+
 ## Regras do Pedro (obrigatórias)
 - Textos sobre o trabalho dele: sempre **primeira pessoa do singular** ("trabalhou comigo", "eu entrego"), nunca "nós".
 - Usar **"páginas"**, nunca "landing pages".

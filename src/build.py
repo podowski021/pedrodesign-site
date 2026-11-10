@@ -114,11 +114,12 @@ j = bodyp.index('<script src="https://cdnjs')
 bodyp = bodyp[:j] + shim + '\n' + bodyp[j:]
 doc = ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-       '<meta name="robots" content="noindex, nofollow">\n<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">\n'
+       '<meta name="robots" content="noindex, nofollow">\n<link rel="icon" href="/apresentacao/assets/favicon-pd.svg" type="image/svg+xml">\n'
        + headp + '\n</head>\n<body>' + bodyp + '\n</body>\n</html>\n')
 open(os.path.join(OUT, 'painel/index.html'), 'w').write(doc)
 shutil.copyfile(os.path.join(SRC, 'api.php'), os.path.join(OUT, 'painel/api.php'))
 shutil.copyfile(os.path.join(SRC, 'analytics.php'), os.path.join(OUT, 'painel/analytics.php'))
+shutil.copyfile(os.path.join(SRC, 'verificador.php'), os.path.join(OUT, 'painel/verificador.php'))
 
 # ---------- arquivos estáticos ----------
 for n in ['favicon.svg', 'apple-touch-icon.png', 'og.jpg', 'px.gif']:

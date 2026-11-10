@@ -132,6 +132,7 @@ $dir = data_dir();
 $authFile = "$dir/auth.json";
 $a = $_GET['a'] ?? '';
 require __DIR__ . '/analytics.php';
+require __DIR__ . '/verificador.php';
 
 /* ---------- público: visitas do site ---------- */
 if ($a === 't') { if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Método'], 405); an_track(); }
@@ -194,6 +195,13 @@ if (!$logged) out(['error' => 'Faça login'], 401);
 
 /* ---------- visitas (painel) ---------- */
 if ($a === 'visitas') an_stats(body());
+
+/* ---------- verificador de informações ---------- */
+if ($a === 'vfstatus') vf_status();
+if ($a === 'vfset') vf_set(body());
+if ($a === 'vf') vf_run(body());
+if ($a === 'vflist') vf_list();
+if ($a === 'vfdel') vf_del(body());
 
 /* ---------- e-mail ---------- */
 if ($a === 'mailget') {
