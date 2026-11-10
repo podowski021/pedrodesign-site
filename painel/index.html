@@ -1088,28 +1088,28 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
     $('#vzLive span').textContent=k.agora+(k.agora===1?' pessoa no site agora':' pessoas no site agora');
     if(!j.recentes.length&&!k.paginas){$('#vzBody').innerHTML='<div class="vz-card vz-empty"><b>Ainda não há visitas neste período.</b><br>O contador começa a registrar a partir de agora. Suas próprias visitas neste aparelho não entram na conta.</div>';return}
     var h='<div class="vzk">'+
-      '<div class="vzk-i"><small>Visitantes</small><b>'+fmtN(k.visitantes)+'</b>'+diff(k.visitantes,k.antes.visitantes)+'</div>'+
-      '<div class="vzk-i"><small>Visitas</small><b>'+fmtN(k.visitas)+'</b><em>'+fmtN(k.paginas)+' páginas vistas</em></div>'+
-      '<div class="vzk-i"><small>Tempo médio por visita</small><b>'+fmtT(k.tempo)+'</b><em>com a página aberta na tela</em></div>'+
-      '<div class="vzk-i hot"><small>Cliques no WhatsApp</small><b>'+fmtN(k.whatsapp)+'</b>'+diff(k.whatsapp,k.antes.whatsapp)+'</div>'+
-      '<div class="vzk-i"><small>Visitas que chamaram no WhatsApp</small><b>'+String(k.taxa).replace('.',',')+'%</b><em>'+fmtN(k.novos)+' visitantes novos · '+fmtN(k.voltaram)+' voltaram</em></div>'+
+      '<div class="vzk-i"><small>Pessoas</small><b>'+fmtN(k.visitantes)+'</b>'+diff(k.visitantes,k.antes.visitantes)+'</div>'+
+      '<div class="vzk-i"><small>Novas · voltaram</small><b>'+fmtN(k.novos)+'<span style="font-weight:300;opacity:.45"> · </span>'+fmtN(k.voltaram)+'</b><em>quem voltou conta uma vez só</em></div>'+
+      '<div class="vzk-i"><small>Tempo médio por pessoa</small><b>'+fmtT(k.tempo)+'</b><em>somando todas as vezes que entrou</em></div>'+
+      '<div class="vzk-i hot"><small>Chamaram no WhatsApp</small><b>'+fmtN(k.whatsapp)+'</b>'+diff(k.whatsapp,k.antes.whatsapp)+'</div>'+
+      '<div class="vzk-i"><small>Pessoas que chamaram</small><b>'+String(k.taxa).replace('.',',')+'%</b><em>de quem entrou no site</em></div>'+
     '</div><div class="vz-grid">';
-    if(j.diario.length>1){h+='<div class="vz-card vz-wide"><h3>Visitantes por dia</h3><p class="h">Passe o mouse (ou toque) em uma barra para ver o dia.</p>'+chart(j.diario,1,'')+'</div>';
-      h+='<div class="vz-card vz-wide"><h3>Cliques no WhatsApp por dia</h3><p class="h">Quantas vezes alguém abriu a conversa com você.</p>'+chart(j.diario,3,'wa')+'</div>'}
-    h+='<div class="vz-card"><h3>De onde vieram</h3><p class="h">Origem de cada visita. Links com ?utm_source=… aparecem com o nome que você der.</p>'+list(j.origem,S)+'</div>';
-    h+='<div class="vz-card"><h3>Onde clicaram</h3><p class="h">Todos os cliques registrados no período.</p>'+list(j.cliques,0,'Ninguém clicou em nada ainda')+'</div>';
-    h+='<div class="vz-card"><h3>Qual botão do WhatsApp</h3><p class="h">Em que parte da página a pessoa chamou você.</p>'+list(j.whatsapp,k.whatsapp,'Nenhum clique no WhatsApp ainda')+'</div>';
-    h+='<div class="vz-card"><h3>Projetos mais abertos</h3><p class="h">Cliques nos cartões dos projetos.</p>'+list(j.projetos,0,'Nenhum projeto aberto ainda')+'</div>';
-    h+='<div class="vz-card"><h3>Páginas</h3><p class="h">Visualizações de cada página.</p>'+list(j.paginas,k.paginas)+'</div>';
-    h+='<div class="vz-card"><h3>Quanto tempo ficaram</h3><p class="h">Tempo de cada visita, com a página aberta na tela.</p>'+list(j.tempo,S)+'</div>';
+    if(j.diario.length>1){h+='<div class="vz-card vz-wide"><h3>Pessoas por dia</h3><p class="h">Passe o mouse (ou toque) em uma barra para ver o dia.</p>'+chart(j.diario,1,'')+'</div>';
+      h+='<div class="vz-card vz-wide"><h3>Quem chamou no WhatsApp, por dia</h3><p class="h">Pessoas diferentes que abriram a conversa com você.</p>'+chart(j.diario,3,'wa')+'</div>'}
+    h+='<div class="vz-card"><h3>De onde vieram</h3><p class="h">De onde cada pessoa chegou pela primeira vez. Links com ?utm_source=… aparecem com o nome que você der.</p>'+list(j.origem,S)+'</div>';
+    h+='<div class="vz-card"><h3>Onde clicaram</h3><p class="h">Quantas pessoas clicaram em cada coisa.</p>'+list(j.cliques,0,'Ninguém clicou em nada ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Qual botão do WhatsApp</h3><p class="h">Em que parte da página a pessoa chamou você.</p>'+list(j.whatsapp,0,'Nenhum clique no WhatsApp ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Projetos mais abertos</h3><p class="h">Quantas pessoas abriram cada projeto.</p>'+list(j.projetos,0,'Nenhum projeto aberto ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Páginas</h3><p class="h">Quantas pessoas viram cada página.</p>'+list(j.paginas,S)+'</div>';
+    h+='<div class="vz-card"><h3>Quanto tempo ficaram</h3><p class="h">Tempo total de cada pessoa, com a página aberta na tela.</p>'+list(j.tempo,S)+'</div>';
     h+='<div class="vz-card"><h3>Até onde rolaram o site</h3><p class="h">Quanto da página inicial a pessoa viu.</p>'+list(j.rolagem,j.rolagem.reduce(function(a,r){return a+r[1]},0))+'</div>';
     h+='<div class="vz-card"><h3>Aparelho</h3><p class="h">&nbsp;</p>'+list(j.aparelhos,S)+'<p class="h" style="margin:16px 0 10px">Sistema</p>'+list(j.sistemas,S)+'</div>';
     h+='<div class="vz-card"><h3>País</h3><p class="h">Pelo fuso horário do aparelho.</p>'+list(j.paises,S)+'</div>';
     h+='<div class="vz-card"><h3>Idioma do aparelho</h3><p class="h">O site abre sozinho nesse idioma.</p>'+list(j.idiomas,S)+'</div>';
     var hx=Math.max(1,Math.max.apply(null,j.horas));
-    h+='<div class="vz-card"><h3>Horário das visitas</h3><p class="h">Horário de Brasília.</p><div class="hrs">'+j.horas.map(function(v,i){return '<i title="'+i+'h: '+v+'" style="height:'+(100*v/hx)+'%"></i>'}).join('')+'</div><div class="hrs-x">'+j.horas.map(function(v,i){return '<span>'+(i%6===0?i+'h':'')+'</span>'}).join('')+'</div></div>';
-    h+='<div class="vz-card vz-wide"><h3>Últimas visitas</h3><p class="h">As 40 mais recentes do período.</p><div class="tw"><table class="tbl rec"><thead><tr><th>Quando</th><th>Origem</th><th>Página</th><th>Aparelho</th><th>País</th><th>Tempo</th><th>Rolou</th><th>O que fez</th></tr></thead><tbody>'+
-      j.recentes.map(function(r){var d=new Date(r.t*1000);return '<tr><td>'+d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+'<small>'+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</small></td><td>'+esc(r.src)+'</td><td>'+esc(r.p)+'</td><td>'+esc(r.d)+'<small>'+esc(r.os)+'</small></td><td>'+esc(r.c)+'</td><td>'+fmtT(r.du)+'</td><td>'+(r.sc?r.sc+'%':'—')+'</td><td>'+(r.k.length?r.k.map(function(x){return '<span class="tag'+(/^WhatsApp/.test(x)?' wa':'')+'">'+esc(x)+'</span>'}).join(''):'<span class="z">só olhou</span>')+'</td></tr>'}).join('')+'</tbody></table></div></div>';
+    h+='<div class="vz-card"><h3>Horário em que entram</h3><p class="h">Horário de Brasília.</p><div class="hrs">'+j.horas.map(function(v,i){return '<i title="'+i+'h: '+v+'" style="height:'+(100*v/hx)+'%"></i>'}).join('')+'</div><div class="hrs-x">'+j.horas.map(function(v,i){return '<span>'+(i%6===0?i+'h':'')+'</span>'}).join('')+'</div></div>';
+    h+='<div class="vz-card vz-wide"><h3>Últimas pessoas</h3><p class="h">Uma linha por pessoa, as 40 mais recentes. Se entrou mais de uma vez, aparece quantas.</p><div class="tw"><table class="tbl rec"><thead><tr><th>Quando</th><th>Origem</th><th>Página</th><th>Aparelho</th><th>País</th><th>Tempo</th><th>Rolou</th><th>O que fez</th></tr></thead><tbody>'+
+      j.recentes.map(function(r){var d=new Date(r.t*1000);return '<tr><td>'+d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+'<small>'+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</small>'+(r.x>1?'<span class="tag" style="margin-top:4px">entrou '+r.x+'x</span>':'')+'</td><td>'+esc(r.src)+'</td><td>'+esc(r.p)+'</td><td>'+esc(r.d)+'<small>'+esc(r.os)+'</small></td><td>'+esc(r.c)+'</td><td>'+fmtT(r.du)+'</td><td>'+(r.sc?r.sc+'%':'—')+'</td><td>'+(r.k.length?r.k.map(function(x){return '<span class="tag'+(/^WhatsApp/.test(x)?' wa':'')+'">'+esc(x)+'</span>'}).join(''):'<span class="z">só olhou</span>')+'</td></tr>'}).join('')+'</tbody></table></div></div>';
     h+='</div>';
     $('#vzBody').innerHTML=h;
   }

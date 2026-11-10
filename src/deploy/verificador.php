@@ -136,6 +136,19 @@ function vf_resolve(array $urls): array {
     return $out;
 }
 
+/* lista os modelos que a chave pode usar e escolhe o melhor grátis com Pesquisa Google */
+function vf_pick_model(string $base, string $key, string $skip): string {
+    $ch = curl_init($base . '/v1beta/models?pageSize=200');
+    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 15, CURLOPT_HTTPHEADER => ['x-goog-api-key: ' . $key]]);
+    $j = json_decode((string)curl_exec($ch), true); curl_close($ch);
+    $ok = [];
+    foreach ($j['models'] ?? [] as $m) if (in_array('generateContent', $m['supportedGenerationMethods'] ?? [], true)) $ok[] = preg_replace('~^models/~', '', (string)$m['name']);
+    foreach (['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-flash-lite', 'gemini-flash-lite-latest'] as $pref) if (in_array($pref, $ok, true) && $pref !== $skip) return $pref;
+    foreach ($ok as $n) if (preg_match('~^gemini-[\d.]+-flash(-lite)?$~', $n) && $n !== $skip) return $n;
+    foreach ($ok as $n) if (str_contains($n, 'flash') && !preg_match('~(tts|image|live|audio|embedding)~', $n) && $n !== $skip) return $n;
+    return '';
+}
+
 function vf_run(array $b): never {
     $cfg = vf_cfg();
     if (empty($cfg['key'])) out(['error' => 'Configure a chave da IA primeiro.'], 400);
@@ -214,6 +227,8 @@ function vf_run(array $b): never {
         if (isset($d['usageMetadata'])) { $usage['in'] = (int)($d['usageMetadata']['promptTokenCount'] ?? 0); $usage['out'] = (int)($d['usageMetadata']['candidatesTokenCount'] ?? 0) + (int)($d['usageMetadata']['thoughtsTokenCount'] ?? 0); }
         if (($c['finishReason'] ?? '') === 'SAFETY') $err = 'O Google bloqueou a análise desse conteúdo por segurança.';
     };
+    for ($try = 0; $try < 3; $try++) {
+    $sse = '';
     $ch = curl_init($base . '/v1beta/models/' . rawurlencode($model) . ':streamGenerateContent?alt=sse');
     curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_POSTFIELDS => json_encode($req, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), CURLOPT_TIMEOUT => 600, CURLOPT_CONNECTTIMEOUT => 15,
         CURLOPT_HTTPHEADER => ['content-type: application/json', 'x-goog-api-key: ' . $cfg['key']],
@@ -229,13 +244,20 @@ function vf_run(array $b): never {
         }]);
     curl_exec($ch);
     $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $cerr = curl_error($ch); curl_close($ch);
+    /* modelo não existe para essa chave: descobre qual modelo grátis ela tem e tenta de novo */
+    if ($code === 404 && $try < 2 && $final === '') {
+        $alt = vf_pick_model($base, $cfg['key'], $model);
+        if ($alt && $alt !== $model) { $model = $alt; $c2 = vf_cfg(); $c2['gemini_model'] = $alt; file_put_contents(data_dir() . '/ia.json', json_encode($c2, JSON_UNESCAPED_UNICODE), LOCK_EX); vf_emit(['t' => 'passo', 'm' => 'Usando o modelo ' . $alt . '…']); continue; }
+    }
+    break;
+    }
     if ($code !== 200) {
         $j = json_decode($sse, true); if (isset($j[0])) $j = $j[0];
         $m = $j['error']['message'] ?? ($cerr ?: "Erro $code");
         if ($code === 400 && stripos($m, 'API key') !== false) $m = 'A chave do Google está errada. Gere outra em aistudio.google.com/apikey.';
         elseif ($code === 403) $m = 'O Google recusou a chave (permissão). Gere outra em aistudio.google.com/apikey.';
         elseif ($code === 429) $m = 'Chegou no limite gratuito do Google por agora (por minuto ou por dia). Espere um pouco e tente de novo; o limite renova sozinho.';
-        elseif ($code === 404) $m = 'O modelo gratuito mudou de nome no Google. Me avise para eu atualizar o verificador.';
+        elseif ($code === 404) $m = 'O Google não encontrou o modelo de IA para essa chave (' . $model . '). Resposta do Google: ' . mb_substr($m, 0, 300);
         elseif ($code === 413 || stripos($m, 'size') !== false) $m = 'O arquivo ficou grande demais. Tente um vídeo mais curto ou prints.';
         elseif ($code >= 500) $m = 'O Google está instável agora. Tente de novo em alguns minutos.';
         $err = $m;

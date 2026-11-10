@@ -108,7 +108,7 @@ function an_stats(array $q): never {
     $prevStart = (clone $start)->modify("-$days days");
     $dir = an_dir();
     $views = []; $leave = []; $clicks = [];
-    $prev = ['v' => [], 'wa' => 0];
+    $prev = ['v' => [], 'wa' => []];
     for ($d = clone $prevStart; $d <= $end; $d->modify('+1 day')) {
         $f = "$dir/" . $d->format('Y-m-d') . '.jsonl';
         if (!file_exists($f)) continue;
@@ -118,7 +118,7 @@ function an_stats(array $q): never {
             $r = json_decode($ln, true); if (!is_array($r)) continue;
             if ($isPrev) {
                 if ($r['e'] === 'v') $prev['v'][$r['v']] = 1;
-                elseif ($r['e'] === 'c' && str_starts_with((string)($r['k'] ?? ''), 'WhatsApp')) $prev['wa']++;
+                elseif ($r['e'] === 'c' && str_starts_with((string)($r['k'] ?? ''), 'WhatsApp')) $prev['wa'][$r['v'] ?? $r['s']] = 1;
                 continue;
             }
             if ($r['e'] === 'v') $views[] = $r;
@@ -132,70 +132,72 @@ function an_stats(array $q): never {
     $inc = function (array &$a, string $k, int $n = 1) { $a[$k] = ($a[$k] ?? 0) + $n; };
     $top = function (array $a, int $n = 12) { arsort($a); return array_map(fn($k, $v) => [$k, $v], array_slice(array_keys($a), 0, $n), array_slice(array_values($a), 0, $n)); };
 
-    $visitors = []; $sessions = []; $daily = [];
-    for ($d = clone $start; $d <= $end; $d->modify('+1 day')) $daily[$d->format('Y-m-d')] = ['vis' => [], 'pv' => 0, 'wa' => 0];
-    $src = []; $pages = []; $dev = []; $os = []; $country = []; $lang = []; $hours = array_fill(0, 24, 0); $newv = 0; $retv = [];
+    /* tudo é contado por PESSOA (aparelho): quem entra várias vezes conta uma vez só */
+    $sessions = []; $people = []; $daily = [];
+    for ($d = clone $start; $d <= $end; $d->modify('+1 day')) $daily[$d->format('Y-m-d')] = ['vis' => [], 'pv' => 0, 'wa' => []];
+    $pageName = fn($p) => ['home' => 'Site (página inicial)', 'links' => 'Árvore de links', 'bio' => 'bio.pedrodesign.store', '404' => 'Página não encontrada'][$p] ?? $p;
+    $pagesP = []; $hoursP = array_fill(0, 24, []);
     foreach ($views as $r) {
-        $visitors[$r['v']] = 1;
-        $dk = $dayKey($r['t']); if (isset($daily[$dk])) { $daily[$dk]['vis'][$r['v']] = 1; $daily[$dk]['pv']++; }
-        $pn = ['home' => 'Site (página inicial)', 'links' => 'Árvore de links', 'bio' => 'bio.pedrodesign.store', '404' => 'Página não encontrada'][$r['p']] ?? $r['p'];
-        $inc($pages, $pn);
-        $hours[$hour($r['t'])]++;
-        if (!isset($sessions[$r['s']])) {
-            $sessions[$r['s']] = ['t' => $r['t'], 'src' => an_source($r), 'p' => $pn, 'd' => $r['d'] ?? '', 'os' => $r['os'] ?? '', 'c' => an_country((string)($r['tz'] ?? ''), (string)($r['lg'] ?? '')), 'pvs' => [], 'wa' => false, 'k' => [], 'last' => $r['t']];
-            $inc($src, $sessions[$r['s']]['src']);
-            $inc($dev, ucfirst($r['d'] ?? 'outro'));
-            $inc($os, $r['os'] ?? 'Outro');
-            $inc($country, $sessions[$r['s']]['c']);
-            $lgn = ['pt' => 'Português', 'en' => 'Inglês', 'es' => 'Espanhol', 'fr' => 'Francês', 'it' => 'Italiano', 'de' => 'Alemão'][strtolower(substr((string)($r['lg'] ?? ''), 0, 2))] ?? 'Outro';
-            $inc($lang, $lgn);
-            if (!empty($r['n'])) $newv++; else $retv[$r['v']] = 1;
+        $v = $r['v']; $pn = $pageName($r['p']);
+        $dk = $dayKey($r['t']); if (isset($daily[$dk])) { $daily[$dk]['vis'][$v] = 1; $daily[$dk]['pv']++; }
+        $pagesP[$pn][$v] = 1; $hoursP[$hour($r['t'])][$v] = 1;
+        if (!isset($people[$v])) {
+            $people[$v] = ['t' => $r['t'], 'last' => $r['t'], 'src' => an_source($r), 'p' => $pn, 'd' => $r['d'] ?? '', 'os' => $r['os'] ?? '', 'c' => an_country((string)($r['tz'] ?? ''), (string)($r['lg'] ?? '')),
+                'lg' => strtolower(substr((string)($r['lg'] ?? ''), 0, 2)), 'n' => !empty($r['n']), 's' => [], 'pvs' => [], 'wa' => false, 'k' => [], 'pg' => []];
         }
-        $sessions[$r['s']]['pvs'][] = $r['pv'];
-        $sessions[$r['s']]['last'] = max($sessions[$r['s']]['last'], $r['t']);
+        $P = &$people[$v];
+        $P['s'][$r['s']] = 1; $P['pvs'][] = $r['pv']; $P['pg'][$pn] = 1; $P['last'] = max($P['last'], $r['t']);
+        unset($P);
+        $sessions[$r['s']] = $v;
     }
     $ck = []; $proj = []; $waBy = []; $waTotal = 0;
     foreach ($clicks as $r) {
         $k = (string)($r['k'] ?? ''); if ($k === '') continue;
-        $inc($ck, $k);
-        if (str_starts_with($k, 'Projeto: ')) $inc($proj, substr($k, 9));
+        $v = $r['v'] ?? ($sessions[$r['s']] ?? ''); if (!isset($people[$v])) continue;
+        $ck[$k][$v] = 1;
+        if (str_starts_with($k, 'Projeto: ')) $proj[substr($k, 9)][$v] = 1;
         if (str_starts_with($k, 'WhatsApp')) {
-            $waTotal++; $inc($waBy, trim(substr($k, 8), ' ·-') ?: 'WhatsApp');
-            $dk = $dayKey($r['t']); if (isset($daily[$dk])) $daily[$dk]['wa']++;
-            if (isset($sessions[$r['s']])) $sessions[$r['s']]['wa'] = true;
+            $waTotal++; $waBy[trim(substr($k, 8), ' ·-') ?: 'WhatsApp'][$v] = 1;
+            $dk = $dayKey($r['t']); if (isset($daily[$dk])) $daily[$dk]['wa'][$v] = 1;
+            $people[$v]['wa'] = true;
         }
-        if (isset($sessions[$r['s']])) { $sessions[$r['s']]['k'][] = $k; $sessions[$r['s']]['last'] = max($sessions[$r['s']]['last'], $r['t']); }
+        $people[$v]['k'][$k] = 1; $people[$v]['last'] = max($people[$v]['last'], $r['t']);
     }
-    /* tempo e rolagem */
+    $cnt = fn(array $a) => array_map('count', $a);
+    $src = []; $dev = []; $os = []; $country = []; $lang = []; $newv = 0; $retv = 0; $waP = 0;
     $durB = ['Menos de 10 s' => 0, '10 a 30 s' => 0, '30 s a 1 min' => 0, '1 a 3 min' => 0, 'Mais de 3 min' => 0];
     $scB = ['Até 25%' => 0, '25 a 50%' => 0, '50 a 75%' => 0, '75 a 100%' => 0];
-    $totDur = 0; $nDur = 0; $waS = 0;
-    foreach ($sessions as $sid => &$s) {
-        $du = 0; $sc = 0;
-        foreach (array_unique($s['pvs']) as $pv) { $l = $leave[$pv] ?? null; if ($l) { $du += $l['du']; $sc = max($sc, $l['sc']); } }
-        $s['du'] = $du; $s['sc'] = $sc;
+    $totDur = 0; $nDur = 0;
+    $lgNames = ['pt' => 'Português', 'en' => 'Inglês', 'es' => 'Espanhol', 'fr' => 'Francês', 'it' => 'Italiano', 'de' => 'Alemão'];
+    foreach ($people as $v => &$P) {
+        $inc($src, $P['src']); $inc($dev, ucfirst($P['d'] ?: 'outro')); $inc($os, $P['os'] ?: 'Outro'); $inc($country, $P['c']); $inc($lang, $lgNames[$P['lg']] ?? 'Outro');
+        $P['vezes'] = count($P['s']);
+        if ($P['vezes'] > 1 || !$P['n']) $retv++; else $newv++;
+        $du = 0; $sc = 0; $scHome = 0;
+        foreach (array_unique($P['pvs']) as $pv) { $l = $leave[$pv] ?? null; if ($l) { $du += $l['du']; $sc = max($sc, $l['sc']); } }
+        $P['du'] = $du; $P['sc'] = $sc;
         if ($du > 0) { $totDur += $du; $nDur++; }
         $durB[$du < 10 ? 'Menos de 10 s' : ($du < 30 ? '10 a 30 s' : ($du < 60 ? '30 s a 1 min' : ($du < 180 ? '1 a 3 min' : 'Mais de 3 min')))]++;
-        if ($s['p'] === 'Site (página inicial)' && $sc > 0) $scB[$sc <= 25 ? 'Até 25%' : ($sc <= 50 ? '25 a 50%' : ($sc <= 75 ? '50 a 75%' : '75 a 100%'))]++;
-        if ($s['wa']) $waS++;
+        if (isset($P['pg']['Site (página inicial)']) && $sc > 0) $scB[$sc <= 25 ? 'Até 25%' : ($sc <= 50 ? '25 a 50%' : ($sc <= 75 ? '50 a 75%' : '75 a 100%'))]++;
+        if ($P['wa']) $waP++;
     }
-    unset($s);
+    unset($P);
     $live = 0; $now = time();
-    foreach ($sessions as $s) if ($s['last'] > $now - 300) $live++;
-    foreach ($leave as $l) {}
-    uasort($sessions, fn($a, $b) => $b['t'] <=> $a['t']);
+    foreach ($people as $P) if ($P['last'] > $now - 300) $live++;
+    $hours = array_map('count', $hoursP);
+    uasort($people, fn($a, $b) => $b['last'] <=> $a['last']);
     $recent = [];
-    foreach (array_slice($sessions, 0, 40) as $s) {
-        $recent[] = ['t' => $s['t'], 'src' => $s['src'], 'p' => $s['p'], 'd' => $s['d'], 'os' => $s['os'], 'c' => $s['c'], 'du' => $s['du'], 'sc' => $s['sc'], 'wa' => $s['wa'], 'k' => array_values(array_unique($s['k']))];
+    foreach (array_slice($people, 0, 40) as $P) {
+        $recent[] = ['t' => $P['last'], 'src' => $P['src'], 'p' => implode(' + ', array_keys($P['pg'])), 'd' => $P['d'], 'os' => $P['os'], 'c' => $P['c'], 'du' => $P['du'], 'sc' => $P['sc'], 'wa' => $P['wa'], 'k' => array_keys($P['k']), 'x' => $P['vezes']];
     }
-    $nS = count($sessions);
+    $nP = count($people);
     out([
         'dias' => $days, 'de' => $start->format('Y-m-d'), 'ate' => $end->format('Y-m-d'),
-        'kpi' => ['visitantes' => count($visitors), 'visitas' => $nS, 'paginas' => count($views), 'tempo' => $nDur ? (int)round($totDur / $nDur) : 0,
-            'whatsapp' => $waTotal, 'taxa' => $nS ? round(100 * $waS / $nS, 1) : 0, 'agora' => $live, 'novos' => $newv, 'voltaram' => count($retv),
-            'antes' => ['visitantes' => count($prev['v']), 'whatsapp' => $prev['wa']]],
-        'diario' => array_map(fn($k, $v) => [$k, count($v['vis']), $v['pv'], $v['wa']], array_keys($daily), array_values($daily)),
-        'origem' => $top($src), 'paginas' => $top($pages), 'cliques' => $top($ck, 20), 'whatsapp' => $top($waBy), 'projetos' => $top($proj),
+        'kpi' => ['visitantes' => $nP, 'visitas' => $nP, 'paginas' => count($views), 'tempo' => $nDur ? (int)round($totDur / $nDur) : 0,
+            'whatsapp' => $waP, 'cliqueswa' => $waTotal, 'taxa' => $nP ? round(100 * $waP / $nP, 1) : 0, 'agora' => $live, 'novos' => $newv, 'voltaram' => $retv,
+            'antes' => ['visitantes' => count($prev['v']), 'whatsapp' => count($prev['wa'])]],
+        'diario' => array_map(fn($k, $v) => [$k, count($v['vis']), $v['pv'], count($v['wa'])], array_keys($daily), array_values($daily)),
+        'origem' => $top($src), 'paginas' => $top($cnt($pagesP)), 'cliques' => $top($cnt($ck), 20), 'whatsapp' => $top($cnt($waBy)), 'projetos' => $top($cnt($proj)),
         'aparelhos' => $top($dev), 'sistemas' => $top($os), 'paises' => $top($country), 'idiomas' => $top($lang),
         'tempo' => array_map(fn($k, $v) => [$k, $v], array_keys($durB), array_values($durB)),
         'rolagem' => array_map(fn($k, $v) => [$k, $v], array_keys($scB), array_values($scB)),
