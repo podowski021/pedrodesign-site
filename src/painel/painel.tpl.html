@@ -1055,7 +1055,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
 
   /* ---------- configuração ---------- */
   function status(){return post('vfstatus').then(function(r){return r.json()}).then(function(j){
-    if(j.error)return;loaded=true;$('#vfCfg').hidden=!!j.configured;$('#vfOn').hidden=!j.configured;$('#vfLast4').textContent=j.last4||'····';
+    if(j.error)return;loaded=true;$('#vfCfg').hidden=!!j.configured;$('#vfOn').hidden=!j.configured;$('#vfLast4').textContent=(j.last4||'····')+(j.ia?' · modelo '+j.ia:'');
     model=j.model||model;setModel(model);if(j.configured)loadHist();
   }).catch(function(){})}
   function setModel(m){model=m;$$('#vfModel button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m)})}
@@ -1153,6 +1153,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
     var r=rec.resultado||{},v=vInfo(r.veredito),cf=CONF[r.confianca]||1,h='<div class="vf-r">';
     h+='<div class="vf-top'+(v[3]?' lt':'')+'" style="--c:'+v[1]+'"><div class="vf-badge"><svg viewBox="0 0 52 52" aria-hidden="true">'+ICON[v[2]]+'</svg></div><div><small>Veredito</small><h2>'+esc(v[0])+'</h2><p><b>'+esc(r.titulo||'')+'</b>'+(r.resumo?' '+esc(r.resumo):'')+'</p>'
       +'<span class="cf">Confiança '+esc(ACC(r.confianca||'baixa'))+' <i>'+[1,2,3].map(function(k){return '<b class="'+(k<=cf?'f':'')+'"></b>'}).join('')+'</i></span></div></div>';
+    if(rec.sem_busca)h+='<div class="vf-card" style="border-color:var(--acc)"><b>Feito sem Pesquisa Google.</b> <span class="h">A cota grátis de pesquisa da sua chave estava indisponível, então a IA analisou só com o que já sabe e lendo os links. Confira as fontes com mais cuidado ou tente de novo mais tarde.</span></div>';
     h+='<div class="vf-cols">';
     var left='',right='';
     if(r.o_que_mostra||(rec.previa&&rec.previa.titulo)){left+='<div class="vf-card"><h3>O que o material mostra</h3>'+(r.o_que_mostra?'<p class="h" style="margin:0">'+esc(r.o_que_mostra)+'</p>':'')
