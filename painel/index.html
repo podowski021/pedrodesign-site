@@ -142,6 +142,50 @@ select option{background:#1C1C21}
 .offscreen{position:fixed;left:-20000px;top:0;pointer-events:none}
 @media (max-width:640px){.li .w{flex-basis:90px}.actions{flex-wrap:nowrap;gap:6px;padding:8px}.actions .btn{flex:1 1 auto;padding:13px 8px;font-size:13.5px;white-space:nowrap;min-width:0}.actions .b-d{flex:0 0 auto}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- visitas ---------- */
+.vz-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.seg{display:inline-flex;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:500;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.vz-me input{width:18px!important;height:18px;min-height:0;flex:none;margin:0;padding:0;accent-color:#FF6A33}
+.vz-me{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-left:auto}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg);background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(25,227,160,.2)}
+.vzk{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:12px}
+.vzk-i{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.vzk-i small{display:block;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.vzk-i b{display:block;margin-top:6px;font-family:var(--f-display);font-size:34px;line-height:1;letter-spacing:-.03em;font-weight:600}
+.vzk-i em{display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--dim)}
+.vzk-i em.up{color:var(--green)}.vzk-i em.dn{color:var(--red)}
+.vz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.vz-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.vz-card h3{margin:0 0 4px;font-size:15px;font-weight:700}
+.vz-card p.h{margin:0 0 14px;font-size:12px;color:var(--muted)}
+.vz-wide{grid-column:1/-1}
+.hb{display:grid;gap:9px}
+.hb div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:13.5px;align-items:center}
+.hb span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb b{font-variant-numeric:tabular-nums;font-weight:600}
+.hb i{grid-column:1/-1;height:6px;border-radius:4px;background:var(--panel2);position:relative;overflow:hidden}
+.hb i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:#FF6A33;border-radius:4px}
+.hb .z{color:var(--dim);font-size:13px}
+.chart{position:relative;height:200px;display:flex;align-items:flex-end;gap:2px;padding-top:8px;border-bottom:1px solid var(--line2)}
+.chart .c{flex:1;min-width:2px;height:100%;display:flex;align-items:flex-end;position:relative;cursor:default}
+.chart .c i{display:block;width:100%;background:#FF6A33;border-radius:4px 4px 0 0;min-height:1px}
+.chart .c.wa i{background:var(--green)}
+.chart .c:hover i{filter:brightness(1.25)}
+.chart-x{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-top:6px}
+@media (max-width:640px){.vzk{grid-template-columns:1fr 1fr;gap:10px}.vzk-i{padding:14px}.vzk-i b{font-size:28px}.vzk-i:last-child{grid-column:1/-1}.vz-bar .seg{width:100%}.vz-bar .seg button{flex:1;padding:8px 4px;font-size:13px;white-space:nowrap}.vz-me{margin-left:0;width:100%;line-height:1.4}.chart{height:140px}}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--fg);color:var(--bg);font-size:12px;border-radius:10px;padding:8px 10px;line-height:1.35;box-shadow:0 8px 24px rgba(0,0,0,.4);display:none;white-space:nowrap}
+.tip b{display:block}
+.hrs{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;align-items:end;height:90px}
+.hrs i{display:block;background:#FF6A33;border-radius:3px 3px 0 0;min-height:2px}
+.hrs-x{display:grid;grid-template-columns:repeat(24,1fr);font-size:10px;color:var(--dim);margin-top:4px;text-align:center}
+.rec td small{display:block;color:var(--dim);font-size:12px}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);margin:2px 4px 2px 0}
+.tag.wa{background:rgba(25,227,160,.14);color:var(--green)}
+.vz-empty{padding:40px 20px;text-align:center;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -152,6 +196,7 @@ select option{background:#1C1C21}
     <span class="sync" id="sync"><i></i><span id="syncTxt">Conectando…</span></span><button type="button" id="bOut" class="mini" onclick="__painelLogout()">Sair</button>
   </div>
   <nav class="tabs" role="tablist" aria-label="Seções do painel">
+    <button role="tab" data-v="visitas" aria-selected="false">Visitas <span class="n" id="nV">·</span></button>
     <button role="tab" data-v="nova" aria-selected="true">Nova proposta</button>
     <button role="tab" data-v="propostas" aria-selected="false">Propostas <span class="n" id="nP">0</span></button>
     <button role="tab" data-v="financeiro" aria-selected="false">Financeiro <span class="n" id="nF">0</span></button>
@@ -161,6 +206,19 @@ select option{background:#1C1C21}
 </header>
 
 <main class="wrap">
+
+
+<!-- VISITAS -->
+<section class="view" id="v-visitas" aria-labelledby="t-vz">
+  <div class="head"><div><h1 id="t-vz">Visitas do site</h1><p class="sub">De onde as pessoas vêm, quanto tempo ficam e onde clicam. Conta o site, a árvore de links e o bio.pedrodesign.store. Anônimo: sem IP e sem nome.</p></div></div>
+  <div class="vz-bar">
+    <div class="seg" id="vzSeg" role="group" aria-label="Período"><button data-d="1">Hoje</button><button data-d="7">7 dias</button><button data-d="30" aria-pressed="true">30 dias</button><button data-d="90">90 dias</button><button data-d="365">12 meses</button></div>
+    <span class="live" id="vzLive"><i></i><span>— no site agora</span></span>
+    <label class="vz-me"><input type="checkbox" id="vzMe"> Não contar as minhas visitas neste aparelho</label>
+  </div>
+  <div id="vzBody"><div class="vz-empty">Carregando…</div></div>
+  <div class="tip" id="vzTip"></div>
+</section>
 
 <!-- NOVA PROPOSTA -->
 <section class="view on" id="v-nova" aria-labelledby="t-nova">
@@ -734,8 +792,61 @@ function renderPj(){
 $('#pjForm').onsubmit=async e=>{e.preventDefault();if(!db)return toast('Faça login para salvar');await col('projetos').add({tipo:$('#jTip').value,nome:$('#jNom').value,url:$('#jUrl').value,des:$('#jDes').value,inv:$('#jInv').value,noSite:false,createdAt:Date.now()});e.target.reset();toast('Projeto adicionado')};
 $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b||!b.dataset.del||!db)return;if(armed!==b){armed=b;b.textContent='Confirmar';setTimeout(()=>{if(armed===b){armed=null;b.textContent='Excluir'}},3000);return}armed=null;await col('projetos').doc(b.dataset.del).delete()});
 
+
+/* ---------- visitas ---------- */
+(function(){
+  var dias=30,busy=false;
+  var fmtN=function(n){return (n||0).toLocaleString('pt-BR')};
+  var fmtT=function(s){s=s||0;if(s<60)return s+' s';var m=Math.floor(s/60),r=s%60;return m+' min'+(r?' '+r+' s':'')};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var diff=function(a,b){if(!b)return a?'<em class="up">novo no período</em>':'<em>sem dados antes</em>';var p=Math.round(100*(a-b)/b);return '<em class="'+(p>0?'up':p<0?'dn':'')+'">'+(p>0?'+':'')+p+'% vs. período anterior</em>'};
+  try{$('#vzMe').checked=localStorage.getItem('pd-nao-contar')!=='0';if(localStorage.getItem('pd-nao-contar')===null)localStorage.setItem('pd-nao-contar','1')}catch(e){}
+  $('#vzMe').onchange=function(){try{localStorage.setItem('pd-nao-contar',this.checked?'1':'0')}catch(e){}toast(this.checked?'Suas visitas neste aparelho não serão contadas':'Suas visitas neste aparelho voltam a contar')};
+  $$('#vzSeg button').forEach(function(b){b.onclick=function(){$$('#vzSeg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});dias=+b.dataset.d;load()}});
+  function list(rows,total,empty){if(!rows||!rows.length)return '<p class="hb z">'+(empty||'Ainda sem dados')+'</p>';var mx=Math.max.apply(null,rows.map(function(r){return r[1]}));return '<div class="hb">'+rows.map(function(r){var pc=total?Math.round(100*r[1]/total):0;return '<div><span title="'+esc(r[0])+'">'+esc(r[0])+'</span><b>'+fmtN(r[1])+(total?' <small class="z">'+pc+'%</small>':'')+'</b><i style="--w:'+(mx?Math.max(2,100*r[1]/mx):0)+'%"></i></div>'}).join('')+'</div>'}
+  function chart(rows,idx,cls){var mx=Math.max(1,Math.max.apply(null,rows.map(function(r){return r[idx]})));return '<div class="chart">'+rows.map(function(r){var d=r[0].split('-');return '<div class="c '+cls+'" data-t="'+d[2]+'/'+d[1]+'" data-a="'+r[1]+'" data-b="'+r[2]+'" data-w="'+r[3]+'"><i style="height:'+(100*r[idx]/mx)+'%"></i></div>'}).join('')+'</div><div class="chart-x"><span>'+fmtD(rows[0][0])+'</span><span>'+fmtD(rows[rows.length-1][0])+'</span></div>'}
+  function fmtD(s){var d=s.split('-');return d[2]+'/'+d[1]}
+  function render(j){
+    var k=j.kpi,S=j.kpi.visitas;
+    $('#nV').textContent=fmtN(k.visitantes);
+    $('#vzLive span').textContent=k.agora+(k.agora===1?' pessoa no site agora':' pessoas no site agora');
+    if(!j.recentes.length&&!k.paginas){$('#vzBody').innerHTML='<div class="vz-card vz-empty"><b>Ainda não há visitas neste período.</b><br>O contador começa a registrar a partir de agora. Suas próprias visitas neste aparelho não entram na conta.</div>';return}
+    var h='<div class="vzk">'+
+      '<div class="vzk-i"><small>Visitantes</small><b>'+fmtN(k.visitantes)+'</b>'+diff(k.visitantes,k.antes.visitantes)+'</div>'+
+      '<div class="vzk-i"><small>Visitas</small><b>'+fmtN(k.visitas)+'</b><em>'+fmtN(k.paginas)+' páginas vistas</em></div>'+
+      '<div class="vzk-i"><small>Tempo médio por visita</small><b>'+fmtT(k.tempo)+'</b><em>com a página aberta na tela</em></div>'+
+      '<div class="vzk-i"><small>Cliques no WhatsApp</small><b>'+fmtN(k.whatsapp)+'</b>'+diff(k.whatsapp,k.antes.whatsapp)+'</div>'+
+      '<div class="vzk-i"><small>Visitas que chamaram no WhatsApp</small><b>'+String(k.taxa).replace('.',',')+'%</b><em>'+fmtN(k.novos)+' visitantes novos · '+fmtN(k.voltaram)+' voltaram</em></div>'+
+    '</div><div class="vz-grid">';
+    if(j.diario.length>1){h+='<div class="vz-card vz-wide"><h3>Visitantes por dia</h3><p class="h">Passe o mouse (ou toque) em uma barra para ver o dia.</p>'+chart(j.diario,1,'')+'</div>';
+      h+='<div class="vz-card vz-wide"><h3>Cliques no WhatsApp por dia</h3><p class="h">Quantas vezes alguém abriu a conversa com você.</p>'+chart(j.diario,3,'wa')+'</div>'}
+    h+='<div class="vz-card"><h3>De onde vieram</h3><p class="h">Origem de cada visita. Links com ?utm_source=… aparecem com o nome que você der.</p>'+list(j.origem,S)+'</div>';
+    h+='<div class="vz-card"><h3>Onde clicaram</h3><p class="h">Todos os cliques registrados no período.</p>'+list(j.cliques,0,'Ninguém clicou em nada ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Qual botão do WhatsApp</h3><p class="h">Em que parte da página a pessoa chamou você.</p>'+list(j.whatsapp,k.whatsapp,'Nenhum clique no WhatsApp ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Projetos mais abertos</h3><p class="h">Cliques nos cartões dos projetos.</p>'+list(j.projetos,0,'Nenhum projeto aberto ainda')+'</div>';
+    h+='<div class="vz-card"><h3>Páginas</h3><p class="h">Visualizações de cada página.</p>'+list(j.paginas,k.paginas)+'</div>';
+    h+='<div class="vz-card"><h3>Quanto tempo ficaram</h3><p class="h">Tempo de cada visita, com a página aberta na tela.</p>'+list(j.tempo,S)+'</div>';
+    h+='<div class="vz-card"><h3>Até onde rolaram o site</h3><p class="h">Quanto da página inicial a pessoa viu.</p>'+list(j.rolagem,j.rolagem.reduce(function(a,r){return a+r[1]},0))+'</div>';
+    h+='<div class="vz-card"><h3>Aparelho</h3><p class="h">&nbsp;</p>'+list(j.aparelhos,S)+'<p class="h" style="margin:16px 0 10px">Sistema</p>'+list(j.sistemas,S)+'</div>';
+    h+='<div class="vz-card"><h3>País</h3><p class="h">Pelo fuso horário do aparelho.</p>'+list(j.paises,S)+'</div>';
+    h+='<div class="vz-card"><h3>Idioma do aparelho</h3><p class="h">O site abre sozinho nesse idioma.</p>'+list(j.idiomas,S)+'</div>';
+    var hx=Math.max(1,Math.max.apply(null,j.horas));
+    h+='<div class="vz-card"><h3>Horário das visitas</h3><p class="h">Horário de Brasília.</p><div class="hrs">'+j.horas.map(function(v,i){return '<i title="'+i+'h: '+v+'" style="height:'+(100*v/hx)+'%"></i>'}).join('')+'</div><div class="hrs-x">'+j.horas.map(function(v,i){return '<span>'+(i%6===0?i+'h':'')+'</span>'}).join('')+'</div></div>';
+    h+='<div class="vz-card vz-wide"><h3>Últimas visitas</h3><p class="h">As 40 mais recentes do período.</p><div class="tw"><table class="tbl rec"><thead><tr><th>Quando</th><th>Origem</th><th>Página</th><th>Aparelho</th><th>País</th><th>Tempo</th><th>Rolou</th><th>O que fez</th></tr></thead><tbody>'+
+      j.recentes.map(function(r){var d=new Date(r.t*1000);return '<tr><td>'+d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+'<small>'+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</small></td><td>'+esc(r.src)+'</td><td>'+esc(r.p)+'</td><td>'+esc(r.d)+'<small>'+esc(r.os)+'</small></td><td>'+esc(r.c)+'</td><td>'+fmtT(r.du)+'</td><td>'+(r.sc?r.sc+'%':'—')+'</td><td>'+(r.k.length?r.k.map(function(x){return '<span class="tag'+(/^WhatsApp/.test(x)?' wa':'')+'">'+esc(x)+'</span>'}).join(''):'<span class="z">só olhou</span>')+'</td></tr>'}).join('')+'</tbody></table></div></div>';
+    h+='</div>';
+    $('#vzBody').innerHTML=h;
+  }
+  /* dica das barras */
+  var tip=$('#vzTip');
+  document.addEventListener('mousemove',function(e){var c=e.target.closest&&e.target.closest('.chart .c');if(!c){tip.style.display='none';return}tip.innerHTML='<b>'+c.dataset.t+'</b>'+c.dataset.a+' visitantes · '+c.dataset.b+' páginas<br>'+c.dataset.w+' cliques no WhatsApp';tip.style.display='block';var x=Math.min(innerWidth-tip.offsetWidth-10,e.clientX+14);tip.style.left=x+'px';tip.style.top=(e.clientY-tip.offsetHeight-12)+'px'});
+  async function load(){if(busy)return;busy=true;try{var r=await fetch('/painel/api.php?a=visitas',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Painel':'1'},body:JSON.stringify({dias:dias})});if(!r.ok)throw new Error(r.status);render(await r.json())}catch(e){if(location.protocol!=='file:')$('#vzBody').innerHTML='<div class="vz-card vz-empty">Não consegui carregar as visitas agora. Recarregue a página.</div>'}busy=false}
+  window.__vzLoad=load;
+  load();setInterval(function(){if($('#v-visitas').classList.contains('on')&&document.visibilityState==='visible')load()},60000);
+})();
+
 /* ---------- tabs ---------- */
-function go(v){$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));try{localStorage.setItem('pd-tab',v)}catch(e){}window.scrollTo({top:0});if(v==='nova')requestAnimationFrame(fitPreview)}
+function go(v){$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));try{localStorage.setItem('pd-tab',v)}catch(e){}window.scrollTo({top:0});if(v==='nova')requestAnimationFrame(fitPreview);if(v==='visitas'&&window.__vzLoad)window.__vzLoad()}
 $$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)go(g.dataset.go)});
 

@@ -118,6 +118,7 @@ doc = ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
        + headp + '\n</head>\n<body>' + bodyp + '\n</body>\n</html>\n')
 open(os.path.join(OUT, 'painel/index.html'), 'w').write(doc)
 shutil.copyfile(os.path.join(SRC, 'api.php'), os.path.join(OUT, 'painel/api.php'))
+shutil.copyfile(os.path.join(SRC, 'analytics.php'), os.path.join(OUT, 'painel/analytics.php'))
 
 # ---------- arquivos estáticos ----------
 for n in ['favicon.svg', 'apple-touch-icon.png', 'og.jpg', 'px.gif']:
@@ -160,6 +161,7 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
     _lk = open(os.path.join(HERE, 'extra', 'links', 'index.html'), encoding='utf-8').read()
     _lk = _lk.replace('"/apresentacao/', '"' + DOMAIN + '/apresentacao/').replace('(/apresentacao/', '(' + DOMAIN + '/apresentacao/')
     _lk = _lk.replace('href="/"', 'href="' + DOMAIN + '/"').replace('href="/#', 'href="' + DOMAIN + '/#')
+    _lk = _lk.replace('data-pagina="links"', 'data-pagina="bio"')
     os.makedirs(os.path.join(OUT, 'bio'), exist_ok=True)
     open(os.path.join(OUT, 'bio', 'index.html'), 'w', encoding='utf-8').write(_lk)
     print('MODO EM DESENVOLVIMENTO')

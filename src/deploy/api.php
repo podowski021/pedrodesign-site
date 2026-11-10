@@ -131,6 +131,10 @@ function mail_html(string $text): string {
 $dir = data_dir();
 $authFile = "$dir/auth.json";
 $a = $_GET['a'] ?? '';
+require __DIR__ . '/analytics.php';
+
+/* ---------- público: visitas do site ---------- */
+if ($a === 't') { if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Método'], 405); an_track(); }
 $COLS = ['propostas', 'financeiro', 'contatos', 'projetos', 'config'];
 
 /* ---------- público: lead do formulário do site ---------- */
@@ -187,6 +191,9 @@ if ($a === 'login') {
 if ($a === 'logout') { $_SESSION = []; session_destroy(); out(['ok' => true]); }
 
 if (!$logged) out(['error' => 'Faça login'], 401);
+
+/* ---------- visitas (painel) ---------- */
+if ($a === 'visitas') an_stats(body());
 
 /* ---------- e-mail ---------- */
 if ($a === 'mailget') {
