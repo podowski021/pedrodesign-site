@@ -23,7 +23,13 @@
 @font-face{font-family:'Mona Sans';font-style:italic;font-weight:300;font-display:swap;src:url(https://pedrodesign.store/apresentacao/assets/mona-light-italic.woff2) format('woff2')}
 :root{--paper:#EFEDE7;--paper2:#E6E3DB;--ink:#0D0D0D;--ink2:#3A3A38;--mut:#66645E;--acc:#FF4F1A;--acc-t:#F44812;--ease:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box}
-html{background:var(--paper);scrollbar-width:none}::-webkit-scrollbar{width:0}
+html{background:var(--paper)}
+html{scrollbar-width:thin;scrollbar-color:#FF4F1A #E6E3DB}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#E6E3DB}
+::-webkit-scrollbar-thumb{background:#FF4F1A;border-radius:999px;border:2px solid #E6E3DB}
+::-webkit-scrollbar-thumb:hover{background:#0D0D0D}
+
 body{margin:0;min-height:100vh;min-height:100dvh;background:var(--paper);color:var(--ink);font-family:'Mona Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M3.5 3.5L25 12.2 14.8 14.8 12.2 25Z' fill='%230D0D0D' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E") 3 3,auto}
 a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M3.5 3.5L25 12.2 14.8 14.8 12.2 25Z' fill='%23FF4F1A' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E") 3 3,pointer}
 .orb{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
