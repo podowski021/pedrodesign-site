@@ -188,6 +188,7 @@ section.s{padding:clamp(90px,11vw,160px) 0}
 .card ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 36px;font-size:17px}
 .card li{display:flex;gap:12px;align-items:flex-start;line-height:1.4;padding-bottom:16px;border-bottom:1px solid #2A2A28}
 .card li:last-child{border-bottom:0;padding-bottom:0}
+@media (min-width:861px){.card li:nth-last-child(-n+3){border-bottom:0;padding-bottom:0}}
 .card li::before{content:"";flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;background:var(--acc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
 .btn.big{grid-column:1/-1;width:100%;height:84px;padding:0 14px 0 32px;justify-content:space-between;font-size:clamp(17px,1.6vw,21px)}
 .btn.big .wi{display:flex;align-items:center;gap:14px}
@@ -495,7 +496,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
         <div><span class="lab rv"><b>03</b><span data-i="n3">Orçamento</span></span><h2 class="disp rv" style="--d:.06s" data-i="h2l">Sua página <span class="o">sob medida</span></h2></div>
       </div>
       <article class="card rv">
-        <ul data-i="ol"><li>Perfeita no celular e no computador</li><li>Textos pensados para vender</li><li>Botão de WhatsApp em destaque</li><li>Pixel e Google Analytics instalados</li><li>Rodadas de ajustes incluídas</li></ul>
+        <ul data-i="ol"><li>Visual que passa confiança</li><li>Perfeita no celular e no computador</li><li>Textos que falam com seu cliente</li><li>Contato direto pelo WhatsApp</li><li>Rápida e pronta para o Google</li><li>Ajustes até ficar do seu jeito</li></ul>
         <a class="btn acc big" data-wa="wa0" href="https://wa.me/5545974000755?text=Ol%C3%A1%2C%20Pedro!%20Vi%20sua%20apresenta%C3%A7%C3%A3o%20e%20quero%20uma%20p%C3%A1gina." target="_blank" rel="noopener"><span class="wi"><svg aria-hidden="true"><use href="#wa"/></svg><span data-i="c3">Chamar no WhatsApp</span></span><span class="ic"><svg aria-hidden="true"><use href="#ar"/></svg></span></a>
       </article>
     </div>
@@ -522,7 +523,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
   function O(s){return '<span class="o">'+s+'</span>'}
   function L(a){return '<li>'+a.join('</li><li>')+'</li>'}
   var T={
-  en:{skip:'Skip to content',cli:'Client',a3:'Play Emerson’s voice message',mvx:'in partnership with',you:'You',fw1:'Talk to me',spd:'Playback speed',n3:'Quote',h2l:'Your '+O('custom')+' page',ol:L(['Flawless on mobile and desktop','Copy written to sell','Highlighted WhatsApp button','Pixel and Google Analytics set up','Revision rounds included']),
+  en:{skip:'Skip to content',cli:'Client',a3:'Play Emerson’s voice message',mvx:'in partnership with',you:'You',fw1:'Talk to me',spd:'Playback speed',n3:'Quote',h2l:'Your '+O('custom')+' page',ol:L(['A look that builds trust','Flawless on mobile and desktop','Copy that speaks to your clients','Direct contact via WhatsApp','Fast and ready for Google','Adjustments until it feels like you']),
     _t:'Pedro Design · Custom web pages',_d:'Custom web pages with exclusive design. See the projects, the feedback and the plans.',
     n1:'Projects',n2:'Feedback',live:'Booking new projects',kind:'Custom web pages',
     h1a:'Pages that',h1b:'sell '+O('for'),h1c:'your brand'+O('.'),
@@ -535,7 +536,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stars',a1:'Play the first voice message',a2:'Play the second voice message',wa:'Message me on WhatsApp',
     
     wa0:"Hi Pedro! I saw your presentation and I'd like a page.",},
-  es:{skip:'Saltar al contenido',cli:'Cliente',a3:'Escuchar el audio de Emerson',mvx:'en alianza con',you:'Tú',fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Presupuesto',h2l:'Tu página '+O('a medida')+'',ol:L(['Perfecta en móvil y ordenador','Textos pensados para vender','Botón de WhatsApp destacado','Pixel y Google Analytics instalados','Rondas de ajustes incluidas']),
+  es:{skip:'Saltar al contenido',cli:'Cliente',a3:'Escuchar el audio de Emerson',mvx:'en alianza con',you:'Tú',fw1:'Habla conmigo',spd:'Velocidad del audio',n3:'Presupuesto',h2l:'Tu página '+O('a medida')+'',ol:L(['Un diseño que transmite confianza','Perfecta en móvil y ordenador','Textos que hablan con tu cliente','Contacto directo por WhatsApp','Rápida y lista para Google','Ajustes hasta que quede a tu gusto']),
     _t:'Pedro Design · Páginas a medida',_d:'Páginas a medida con diseño exclusivo. Mira los proyectos, las opiniones y los planes.',
     n1:'Proyectos',n2:'Opiniones',live:'Agenda abierta para nuevos proyectos',kind:'Páginas a medida',
     h1a:'Páginas que',h1b:'venden '+O('por'),h1c:'tu marca'+O('.'),
@@ -548,7 +549,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 estrellas',a1:'Escuchar el primer audio',a2:'Escuchar el segundo audio',wa:'Escríbeme por WhatsApp',
     
     wa0:'¡Hola, Pedro! Vi tu presentación y quiero una página.',},
-  fr:{skip:'Aller au contenu',cli:'Client',a3:'Écouter le message d’Emerson',mvx:'en partenariat avec',you:'Vous',fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Devis',h2l:'Votre page '+O('sur mesure')+'',ol:L(['Parfaite sur mobile et ordinateur','Textes pensés pour vendre','Bouton WhatsApp mis en avant','Pixel et Google Analytics installés','Séries de retouches incluses']),
+  fr:{skip:'Aller au contenu',cli:'Client',a3:'Écouter le message d’Emerson',mvx:'en partenariat avec',you:'Vous',fw1:'Parlons-en',spd:'Vitesse de lecture',n3:'Devis',h2l:'Votre page '+O('sur mesure')+'',ol:L(['Un visuel qui inspire confiance','Parfaite sur mobile et ordinateur','Des textes qui parlent à vos clients','Contact direct sur WhatsApp','Rapide et prête pour Google','Des retouches jusqu’à ce qu’elle vous ressemble']),
     _t:'Pedro Design · Pages sur mesure',_d:'Pages sur mesure au design exclusif. Découvrez les projets, les avis et les formules.',
     n1:'Projets',n2:'Avis',live:'Agenda ouvert aux nouveaux projets',kind:'Pages sur mesure',
     h1a:'Des pages',h1b:'qui vendent',h1c:'votre '+O('marque')+O('.'),
@@ -561,7 +562,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 étoiles',a1:'Écouter le premier message',a2:'Écouter le deuxième message',wa:'Écrivez-moi sur WhatsApp',
     
     wa0:'Bonjour Pedro ! J’ai vu votre présentation et je voudrais une page.',},
-  it:{skip:'Vai al contenuto',cli:'Cliente',a3:'Ascolta il vocale di Emerson',mvx:'in collaborazione con',you:'Tu',fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Preventivo',h2l:'La tua pagina '+O('su misura')+'',ol:L(['Perfetta su smartphone e computer','Testi pensati per vendere','Pulsante WhatsApp in evidenza','Pixel e Google Analytics installati','Giri di modifiche inclusi']),
+  it:{skip:'Vai al contenuto',cli:'Cliente',a3:'Ascolta il vocale di Emerson',mvx:'in collaborazione con',you:'Tu',fw1:'Parliamone',spd:'Velocità di riproduzione',n3:'Preventivo',h2l:'La tua pagina '+O('su misura')+'',ol:L(['Un aspetto che trasmette fiducia','Perfetta su smartphone e computer','Testi che parlano ai tuoi clienti','Contatto diretto su WhatsApp','Veloce e pronta per Google','Modifiche finché non ti somiglia']),
     _t:'Pedro Design · Pagine su misura',_d:'Pagine su misura con design esclusivo. Guarda i progetti, i feedback e i piani.',
     n1:'Progetti',n2:'Feedback',live:'Agenda aperta per nuovi progetti',kind:'Pagine su misura',
     h1a:'Pagine che',h1b:'vendono '+O('per'),h1c:'il tuo brand'+O('.'),
@@ -574,7 +575,7 @@ a,button,.pj,label,[role=button]{cursor:url("data:image/svg+xml,<svg xmlns='http
     stars:'5 stelle',a1:'Ascolta il primo vocale',a2:'Ascolta il secondo vocale',wa:'Scrivimi su WhatsApp',
     
     wa0:'Ciao Pedro! Ho visto la tua presentazione e vorrei una pagina.',},
-  de:{skip:'Zum Inhalt springen',cli:'Kunde',a3:'Sprachnachricht von Emerson anhören',mvx:'in Partnerschaft mit',you:'Sie',fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Angebot',h2l:'Ihre Seite '+O('nach Maß'),ol:L(['Perfekt auf Handy und Computer','Verkaufsstarke Texte','Hervorgehobener WhatsApp-Button','Pixel und Google Analytics eingerichtet','Korrekturrunden inklusive']),
+  de:{skip:'Zum Inhalt springen',cli:'Kunde',a3:'Sprachnachricht von Emerson anhören',mvx:'in Partnerschaft mit',you:'Sie',fw1:'Schreiben Sie mir',spd:'Wiedergabegeschwindigkeit',n3:'Angebot',h2l:'Ihre Seite '+O('nach Maß'),ol:L(['Ein Auftritt, der Vertrauen schafft','Perfekt auf Handy und Computer','Texte, die Ihre Kunden ansprechen','Direkter Kontakt per WhatsApp','Schnell und bereit für Google','Anpassungen, bis alles passt']),
     _t:'Pedro Design · Maßgeschneiderte Webseiten',_d:'Maßgeschneiderte Webseiten mit exklusivem Design. Projekte, Feedback und Pakete.',
     n1:'Projekte',n2:'Feedback',live:'Offen für neue Projekte',kind:'Maßgeschneiderte Webseiten',
     h1a:'Seiten, die',h1b:O('für Sie'),h1c:'verkaufen'+O('.'),
