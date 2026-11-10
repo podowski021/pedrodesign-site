@@ -406,10 +406,13 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
 .px-v{font-weight:900;font-size:52px;letter-spacing:-.045em;line-height:1;color:#FF4F1A;margin-bottom:14px}
 .px-py{padding:8px 0;border-top:1px solid rgba(239,237,231,.14);font-size:12px;color:rgba(239,237,231,.7);line-height:1.35}
 .px-py b{display:block;font-size:14.5px;font-weight:600;color:#EFEDE7}
-.px-pix{padding:26px 24px;background:#1A1A19;border-left:1px solid rgba(239,237,231,.1);display:flex;flex-direction:column}
-.px-cx{width:120px;height:auto;margin:6px 0 16px}
-.px-pk{font-weight:900;font-size:30px;letter-spacing:-.03em;line-height:1;word-break:break-all}
-.px-fv{font-size:12.5px;line-height:1.5;color:rgba(239,237,231,.7);margin-top:12px}.px-fv b{color:#EFEDE7;font-weight:600}
+.px-pix{padding:24px;background:#1A1A19;border-left:1px solid rgba(239,237,231,.1);display:flex;flex-direction:column;gap:0}
+.px-ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px}
+.px-cx{width:92px;height:auto;flex:none}
+.px-row{display:flex;flex-direction:column;gap:3px;padding:12px 0;border-top:1px solid rgba(239,237,231,.14)}
+.px-row span{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,237,231,.55)}
+.px-row b{font-size:15px;font-weight:600;color:#EFEDE7}
+.px-row b.px-pk{font-size:26px;font-weight:900;letter-spacing:-.02em;line-height:1.05}
 .px-low{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;padding:30px 4px 0;flex:1;min-height:0}
 .px-sc{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
 .px-sc li{break-inside:avoid;position:relative;padding:0 0 7px 14px;font-size:12.5px;line-height:1.4;color:#3A3936}
@@ -727,7 +730,7 @@ function proposalHTML(p){
   if(p.pay['10x'])pays.push(`<div class="px-py"><b>${T.x10}</b><span>${T.x10S}</span></div>`);
   const title=p.tit||T.svc[p.svc];
   const tSize=title.length>40?40:title.length>26?48:58;
-  const pixKey='45974000755';
+  const pixKey='(45) 97400-0755';
   return `<div class="pg px">
     <div class="px-top"><img src="${LOGOB}" alt="Pedro Design" style="width:150px;height:auto"><div class="px-meta"><div>${T.prop} <b>${T.no} ${esc(numero)}</b></div><div>${T.date}: ${fmtDate(p.date||today(),L)} · ${T.valid}: <b>${fmtDate(valid,L)}</b></div></div></div>
     <div class="px-hero">
@@ -737,7 +740,10 @@ function proposalHTML(p){
     </div>
     <div class="px-inv">
       <div class="px-vl"><div class="px-h">${T.tot}</div><div class="px-v">${v?money(v,cur,L):'[Valor]'}</div><div class="px-pys">${pays.join('')}</div></div>
-      <div class="px-pix"><div class="px-h">${T.pix}</div><img class="px-cx" src="/apresentacao/assets/caixa-neg-pdf.png" alt="Caixa"><div class="px-pk">${esc(pixKey)}</div><div class="px-fv">${T.fav}: <b>Pedro Nascimento da Costa</b><br>Caixa Econômica Federal</div></div>
+      <div class="px-pix"><div class="px-ph"><div class="px-h" style="margin:0">${T.pix}</div><img class="px-cx" src="/apresentacao/assets/caixa-neg-pdf.png" alt="Caixa"></div>
+        <div class="px-row"><span>${L==='en'?'Key (phone)':L==='es'?'Clave (teléfono)':'Chave (telefone)'}</span><b class="px-pk">${esc(pixKey)}</b></div>
+        <div class="px-row"><span>${T.fav}</span><b>Pedro Nascimento da Costa</b></div>
+        <div class="px-row"><span>${L==='en'?'Bank':L==='es'?'Banco':'Banco'}</span><b>Caixa Econômica Federal</b></div></div>
     </div>
     <div class="px-low">
       <div><div class="px-h">${plain(T.scopeH)}</div><ul class="px-sc">${scope.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>[Itens do projeto]</li>'}</ul>${p.obs?`<div class="px-obs"><b>${T.obs}:</b> ${esc(p.obs)}</div>`:''}</div>
