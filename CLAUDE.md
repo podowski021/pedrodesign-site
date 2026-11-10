@@ -29,7 +29,7 @@ Enquanto existir `src/EM_DESENVOLVIMENTO`, a página inicial (`/`) é a **págin
 Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mona Sans** (títulos Black 900 em caixa alta, destaque em itálico Light 300 laranja); logo animada `assets/logo-animada-v5.js` (`data-logo-animada`, `data-loop`, `data-intervalo`, `data-globo`); 6 idiomas automáticos pelo idioma do aparelho (dicionário `T` no script). Arquivos de imagem/fonte ficam em cache por 1 ano: ao trocar um arquivo, salve com **nome novo**. Preço: páginas a partir de R$ 1.000.
 
 ## Visitas (analytics próprio)
-Contador anônimo `apresentacao/assets/pd-visitas-v1.js` (incluído na home, /links, bio e 404; `data-pagina` no `<html>` dá o nome da página) → `painel/api.php?a=t` → `analytics.php` grava em `../painel-data/visitas/AAAA-MM-DD.jsonl` (guarda 400 dias). Aba **Visitas** do painel lê `?a=visitas`. `?naocontar=1` (ou abrir o painel) para de contar o aparelho do Pedro. Links com `?utm_source=` aparecem com esse nome em "De onde vieram".
+Contador anônimo `apresentacao/assets/pd-visitas-v2.js` (incluído na home, /links, bio e 404; `data-pagina` no `<html>` dá o nome da página) → `painel/api.php?a=t` → `analytics.php` grava em `../painel-data/visitas/AAAA-MM-DD.jsonl` (guarda 400 dias). Aba **Visitas** do painel lê `?a=visitas`. `?naocontar=1` (ou abrir o painel) para de contar o aparelho do Pedro. Conta **pessoas únicas** (id em cookie do domínio `.pedrodesign.store`); cada pessoa conta uma vez no período, no dia e na hora da primeira visita. Links com `?utm_source=` aparecem com esse nome em "De onde vieram".
 
 ## Regras do Pedro (obrigatórias)
 - Textos sobre o trabalho dele: sempre **primeira pessoa do singular** ("trabalhou comigo", "eu entrego"), nunca "nós".

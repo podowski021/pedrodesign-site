@@ -139,8 +139,9 @@ function an_stats(array $q): never {
     $pagesP = []; $hoursP = array_fill(0, 24, []);
     foreach ($views as $r) {
         $v = $r['v']; $pn = $pageName($r['p']);
-        $dk = $dayKey($r['t']); if (isset($daily[$dk])) { $daily[$dk]['vis'][$v] = 1; $daily[$dk]['pv']++; }
-        $pagesP[$pn][$v] = 1; $hoursP[$hour($r['t'])][$v] = 1;
+        $first = !isset($people[$v]);
+        $dk = $dayKey($r['t']); if (isset($daily[$dk])) { if ($first) $daily[$dk]['vis'][$v] = 1; $daily[$dk]['pv']++; }
+        $pagesP[$pn][$v] = 1; if ($first) $hoursP[$hour($r['t'])][$v] = 1;
         if (!isset($people[$v])) {
             $people[$v] = ['t' => $r['t'], 'last' => $r['t'], 'src' => an_source($r), 'p' => $pn, 'd' => $r['d'] ?? '', 'os' => $r['os'] ?? '', 'c' => an_country((string)($r['tz'] ?? ''), (string)($r['lg'] ?? '')),
                 'lg' => strtolower(substr((string)($r['lg'] ?? ''), 0, 2)), 'n' => !empty($r['n']), 's' => [], 'pvs' => [], 'wa' => false, 'k' => [], 'pg' => []];
@@ -158,7 +159,7 @@ function an_stats(array $q): never {
         if (str_starts_with($k, 'Projeto: ')) $proj[substr($k, 9)][$v] = 1;
         if (str_starts_with($k, 'WhatsApp')) {
             $waTotal++; $waBy[trim(substr($k, 8), ' ·-') ?: 'WhatsApp'][$v] = 1;
-            $dk = $dayKey($r['t']); if (isset($daily[$dk])) $daily[$dk]['wa'][$v] = 1;
+            if (!$people[$v]['wa']) { $dk = $dayKey($r['t']); if (isset($daily[$dk])) $daily[$dk]['wa'][$v] = 1; }
             $people[$v]['wa'] = true;
         }
         $people[$v]['k'][$k] = 1; $people[$v]['last'] = max($people[$v]['last'], $r['t']);
