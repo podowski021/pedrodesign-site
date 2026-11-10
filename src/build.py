@@ -143,7 +143,7 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
     for n in os.listdir(os.path.join(OUT, 'assets')):
         if n not in KEEP_ASSETS:
             q = os.path.join(OUT, 'assets', n); shutil.rmtree(q) if os.path.isdir(q) else os.remove(q)
-    for q in ['links', 'support.js']:
+    for q in ['support.js']:  # /links/ agora vem de src/extra/links (árvore de links nova)
         q = os.path.join(OUT, q)
         if os.path.isdir(q): shutil.rmtree(q)
         elif os.path.exists(q): os.remove(q)
@@ -154,8 +154,8 @@ if os.path.exists(os.path.join(HERE, 'EM_DESENVOLVIMENTO')):
     _ap = _ap.replace('"' + DOMAIN + '/apresentacao/"', '"' + DOMAIN + '/"')
     open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(_ap)
     with open(os.path.join(OUT, '.htaccess'), 'a') as f:
-        f.write('\n# links antigos voltam para a página inicial\nRedirectMatch 302 ^/links/?$ /\nRedirectMatch 301 ^/apresentacao/?$ /\n')
-    open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url></urlset>\n')
+        f.write('\n# links antigos voltam para a página inicial\nRedirectMatch 301 ^/apresentacao/?$ /\n')
+    open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/links/</loc></url></urlset>\n')
     print('MODO EM DESENVOLVIMENTO')
 tot = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) if '.git' not in r for f in fs)
 print('ok', len(used), 'assets', round(tot / 1e6, 2), 'MB')

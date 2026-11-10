@@ -36,5 +36,5 @@ Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mon
 - Estilo do site antigo (guardado em `src/site/`): muito alto padrão, editorial, que transmite autoridade. Fundo azul-marinho (#06101F) com aurora animada discreta e granulado. Títulos em **Newsreader** (serifada, peso 400, destaque em itálico 300 dourado/marfim); textos em **Inter**. Acento **champanhe/dourado** (#D2B77E) nos botões e detalhes; texto marfim #EEEAE1. Nada de cores vibrantes/degradê colorido na interface (o logo usa a versão monocromática dourada `pedro-design-logo-mono.svg`). Seções numeradas "§ 01".
 - Não falar de nota fiscal, empresa, CNPJ ou razão social no site nem na árvore de links.
 - Logos dos clientes ficam nas cores originais.
-- Árvore de links em `src/links/index.html` (publicada em `/links/`), mesmo estilo do site.
+- Árvore de links atual em `src/extra/links/index.html` (publicada em `/links/`, para a bio do Instagram), no estilo da apresentação; usa os arquivos de `/apresentacao/assets/`. (`src/links/` é a versão antiga, do site navy.)
 - Contato: WhatsApp +55 45 97400-0755 · equipe@pedrodesign.com.
