@@ -7,7 +7,7 @@ A raiz do repositório (`index.html`, `assets/`, `painel/`, `support.js`…) é 
 
 - `src/site/Main.tpl.html` — estrutura, CSS e lógica da página (template; `{{t.chave}}` = texto traduzido).
 - `src/site/strings.py` — todos os textos nos **6 idiomas** (pt, en, es, fr, it, de). Os blocos `T.update({...})` no fim sobrescrevem os de cima; para mudar um texto, acrescente/edite no último bloco. Toda chave nova precisa dos 6 idiomas (`x(pt, en, es, fr, it, de)`).
-- `src/painel/painel.tpl.html` — painel (propostas em PDF, financeiro, contatos, projetos). `__LOGO__` vira o `src/painel/logo.png`.
+- `src/painel/painel.tpl.html` — painel: Visitas, Verificador, Nova proposta, Propostas, Financeiro (as abas Contatos e Projetos foram retiradas; o código ficou escondido). A proposta em PDF tem **1 página só**, no estilo do site (papel/preto/laranja, Mona Sans, logo `apresentacao/assets/logo-pd-preto-pdf.png`), sem etapas (o campo fica escondido) e sem 24h.
 - `src/deploy/` — PHP do painel (`api.php`), login (`shim.html`), `.htaccess`, fontes, favicon, imagem de compartilhamento (`og.jpg`), 404, README.
 - `src/media/` — imagens, áudios e logos. No template elas aparecem como `/_blob/<id>`; `src/media/map.txt` liga cada id ao arquivo (`id nome tipo`). Para usar uma imagem nova: copie para `src/media/`, invente um id de 32 caracteres hexadecimais, adicione a linha no `map.txt` e use `/_blob/<id>` no template.
 
