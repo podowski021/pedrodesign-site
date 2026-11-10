@@ -1,19 +1,25 @@
 <style>
-#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#06101F;color:#EEEAE1;font-family:'Inter',system-ui,sans-serif}
+#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#EFEDE7;color:#0D0D0D;font-family:'Mona Sans',system-ui,sans-serif}
 #gate[hidden]{display:none}
-#gate form{width:min(380px,100%);display:flex;flex-direction:column;gap:14px;padding:30px 26px;border-radius:24px;background:#0B1A30;border:1px solid rgba(245,241,232,.12);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
-#gate h1{margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:26px;letter-spacing:-.02em}
-#gate p{margin:0;color:#A9A39A;font-size:14px;line-height:1.5}
-#gate input{padding:14px 16px;border-radius:14px;border:1px solid rgba(245,241,232,.2);background:#06101F!important;color:#EEEAE1!important;-webkit-text-fill-color:#EEEAE1;font:inherit;font-size:16px}
-#gate button{padding:15px;border:0;border-radius:999px;background:#D2B77E;color:#07111F;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+#gate form{width:min(400px,100%);display:flex;flex-direction:column;gap:14px;padding:32px 28px;border-radius:28px;background:#F8F7F3;border:1px solid rgba(13,13,13,.11);box-shadow:0 40px 90px -50px rgba(13,13,13,.45);animation:gateIn .8s cubic-bezier(.16,1,.3,1) both}
+@keyframes gateIn{from{opacity:0;transform:translateY(18px)}}
+#gate h1{margin:4px 0 0;font-family:'Mona Sans',system-ui,sans-serif;font-weight:900;text-transform:uppercase;font-size:30px;line-height:.95;letter-spacing:-.035em}
+#gate h1 em{font-weight:300;font-style:italic;text-transform:none;color:#D93D0B;letter-spacing:-.04em}
+#gate p{margin:0;color:#4F4D49;font-size:14.5px;line-height:1.5}
+#gate input{padding:14px 16px;border-radius:14px;border:1px solid rgba(13,13,13,.22);background:#fff!important;color:#0D0D0D!important;-webkit-text-fill-color:#0D0D0D;font:inherit;font-size:16px}
+#gate input:focus{outline:none;border-color:#0D0D0D;box-shadow:0 0 0 3px rgba(255,79,26,.2)}
+#gate button{padding:16px;border:0;border-radius:999px;background:#FF4F1A;color:#fff;font:inherit;font-weight:600;font-size:16px;cursor:pointer;transition:background .25s}
+#gate button:hover{background:#0D0D0D}
 #gate button:disabled{opacity:.6}
-#gate .err{color:#FF7AA2;font-size:14px;min-height:1em}
-#gate img{width:170px;height:auto;margin-bottom:6px}
+#gate .err{color:#C8321E;font-size:14px;min-height:1em}
+#gate .glogo{display:block;width:130px;margin-bottom:6px}
+#gate .glogo img,#gate .glogo svg{display:block;width:100%;height:auto}
+#gate .glogo:has(svg) img{display:none}
 #bOut{margin-left:8px}
 </style>
 <div id="gate" hidden><form id="gateF" autocomplete="on">
-  <img src="/assets/pedro-design-logo-mono.svg" alt="Pedro Design">
-  <h1 id="gateT">Entrar no painel</h1>
+  <span class="glogo" data-logo-animada data-loop="true" data-intervalo="8"><img src="/apresentacao/assets/logo-pd-preto.svg" alt="Pedro Design" width="130" height="62"></span>
+  <h1 id="gateT">Entrar no <em>painel</em></h1>
   <p id="gateP">Digite sua senha para ver propostas, financeiro, contatos e projetos.</p>
   <input type="text" name="username" value="pedro" autocomplete="username" hidden>
   <input id="gateI" type="password" placeholder="Senha" autocomplete="current-password" required minlength="8">
@@ -37,7 +43,7 @@ const g=document.getElementById('gate'),gi=document.getElementById('gateI'),gi2=
 let setupMode=false;
 function showGate(setup){
   setupMode=setup;g.hidden=false;
-  document.getElementById('gateT').textContent=setup?'Crie sua senha':'Entrar no painel';
+  document.getElementById('gateT').innerHTML=setup?'Crie sua <em>senha</em>':'Entrar no <em>painel</em>';
   document.getElementById('gateP').textContent=setup?'Primeiro acesso: escolha uma senha com pelo menos 8 caracteres. Ela fica salva só no seu servidor.':'Digite sua senha para ver propostas, financeiro, contatos e projetos.';
   gi.autocomplete=setup?'new-password':'current-password';gi2.hidden=!setup;gi2.required=setup;gb.textContent=setup?'Criar senha e entrar':'Entrar';
   setTimeout(()=>gi.focus(),50);

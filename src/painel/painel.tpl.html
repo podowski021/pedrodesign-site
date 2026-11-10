@@ -1,6 +1,7 @@
 <title>Painel Pedro Design</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#EFEDE7">
 <meta name="darkreader-lock">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
@@ -181,11 +182,118 @@ select option{background:#1C1C21}
 .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);margin:2px 4px 2px 0}
 .tag.wa{background:rgba(25,227,160,.14);color:var(--green)}
 .vz-empty{padding:40px 20px;text-align:center;color:var(--muted)}
+/* ---------- tema Pedro Design (papel, preto e laranja, Mona Sans) ---------- */
+@font-face{font-family:'Mona Sans';font-weight:400;font-display:swap;src:url(/apresentacao/assets/mona-regular.woff2) format('woff2')}
+@font-face{font-family:'Mona Sans';font-weight:500;font-display:swap;src:url(/apresentacao/assets/mona-medium.woff2) format('woff2')}
+@font-face{font-family:'Mona Sans';font-weight:600;font-display:swap;src:url(/apresentacao/assets/mona-semibold.woff2) format('woff2')}
+@font-face{font-family:'Mona Sans';font-weight:900;font-display:swap;src:url(/apresentacao/assets/mona-black.woff2) format('woff2')}
+@font-face{font-family:'Mona Sans';font-style:italic;font-weight:300;font-display:swap;src:url(/apresentacao/assets/mona-light-italic.woff2) format('woff2')}
+:root{
+  --bg:#EFEDE7;--panel:#F8F7F3;--panel2:#E6E3DB;--line:rgba(13,13,13,.11);--line2:rgba(13,13,13,.22);
+  --fg:#0D0D0D;--muted:#4F4D49;--dim:#6E6B65;
+  --acc:#FF4F1A;--acc-t:#D93D0B;--yellow:#FF4F1A;--pink:#FF4F1A;--lilac:#0D0D0D;--green:#0F8A5F;--red:#C8321E;
+  --grad:linear-gradient(90deg,#FF4F1A,#FF8A4C);
+  --f-display:'Mona Sans',system-ui,sans-serif;--f-body:'Mona Sans',system-ui,sans-serif;--f-serif:'Mona Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);color-scheme:light;
+}
+/* a proposta em PDF continua com o visual dela */
+.pg{--f-display:'Bricolage Grotesque',system-ui,sans-serif;--f-body:'DM Sans',system-ui,sans-serif;--f-serif:'Instrument Serif',Georgia,serif}
+body{-webkit-font-smoothing:antialiased}
+html{scrollbar-width:thin;scrollbar-color:#FF4F1A #E6E3DB}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:#E6E3DB}::-webkit-scrollbar-thumb{background:#FF4F1A;border-radius:999px;border:2px solid #E6E3DB}::-webkit-scrollbar-thumb:hover{background:#0D0D0D}
+::selection{background:#FF4F1A;color:#fff}
+:focus-visible{outline-color:var(--acc)}
+header.top{background:rgba(239,237,231,.86)}
+.logo{height:auto;width:118px}
+.logo svg,.logo img{display:block;width:100%;height:auto}
+.logo:has(svg) img{display:none}
+.num,.kpi div,.hb b,.vzk-i b,.tbl td{font-variant-numeric:normal}
+.vzk-i.hot em,.vzk-i.hot em.up,.vzk-i.hot em.dn{color:#fff}
+.sync.on i{box-shadow:0 0 0 3px rgba(15,138,95,.16)}
+nav.tabs button{font-weight:500;color:var(--muted);transition:color .25s}
+nav.tabs button:hover{color:var(--fg)}
+nav.tabs button[aria-selected=true]{color:var(--fg);font-weight:600;border-image:none;border-bottom:2px solid var(--acc)}
+nav.tabs .n{background:var(--fg);color:var(--bg);font-weight:600}
+nav.tabs button[aria-selected=true] .n{background:var(--acc);color:#fff}
+.bar{opacity:1}
+h1{font-weight:900;text-transform:uppercase;letter-spacing:-.035em;font-size:clamp(30px,4.4vw,52px);line-height:.95}
+h1 em{font-family:var(--f-body);font-style:italic;font-weight:300;text-transform:none;color:var(--acc-t);letter-spacing:-.04em}
+.sub{color:var(--muted)}
+.card,.tw,.kpi,.vzk-i,.vz-card,.dlg-box{background:var(--panel);border-color:var(--line);box-shadow:0 1px 0 rgba(13,13,13,.03)}
+legend{font-weight:600}
+legend b{color:#fff;background:var(--acc)}
+label.f{color:var(--muted);font-weight:600}
+input,select,textarea{background:#fff;border-color:var(--line2);color:var(--fg)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--fg);box-shadow:0 0 0 3px rgba(255,79,26,.18)}
+select option{background:#fff;color:#0D0D0D}
+.add:hover{border-color:var(--acc);color:var(--acc-t)}
+.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn{font-weight:600;transition:transform .5s var(--ease),background .25s,opacity .2s}
+.b-y{background:var(--acc);color:#fff}.b-y:hover{background:#0D0D0D}
+.b-g{background:var(--fg);color:var(--bg)}.b-g:hover{background:var(--acc);color:#fff}
+.b-o{border-color:var(--fg);color:var(--fg)}.b-o:hover{background:var(--fg);color:var(--bg)}
+.chk input{accent-color:var(--acc)}
+.actions{background:rgba(248,247,243,.92);box-shadow:0 18px 40px -24px rgba(13,13,13,.35)}
+.dlg{background:rgba(13,13,13,.45)}
+.dlg-box{box-shadow:0 50px 100px -40px rgba(13,13,13,.5)}
+.dlg-box h2{font-weight:900;text-transform:uppercase;letter-spacing:-.03em}
+.toast{background:var(--fg);color:var(--bg)}
+.pv-viewport{background:#D9D5CB;border-color:var(--line)}
+.tbl th{color:var(--muted);font-weight:600}
+.tbl tr:hover td{background:rgba(255,79,26,.04)}
+.mini{border-color:var(--line2)}
+.mini:hover{border-color:var(--fg);background:var(--fg);color:var(--bg)}
+.mini.dg:hover{background:var(--red);border-color:var(--red);color:#fff}
+.empty b{font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.kpi small{color:var(--muted);font-weight:600}
+.kpi div{font-weight:900;letter-spacing:-.03em}
+.p-rascunho{background:rgba(13,13,13,.07);color:#4F4D49}.p-enviada{background:rgba(255,79,26,.12);color:#B93408}.p-aprovada{background:rgba(15,138,95,.12);color:#0B7550}.p-recusada{background:rgba(200,50,30,.1);color:#A82A18}
+.p-novo{background:rgba(255,79,26,.12);color:#B93408}.p-conversa{background:rgba(13,13,13,.07);color:#2E2D2A}.p-fechado{background:rgba(15,138,95,.12);color:#0B7550}.p-perdido{background:rgba(200,50,30,.1);color:#A82A18}
+.p-receber{background:rgba(255,79,26,.12);color:#B93408}.p-recebido{background:rgba(15,138,95,.12);color:#0B7550}.p-atrasado{background:rgba(200,50,30,.1);color:#A82A18}
+/* visitas no tema */
+.seg{background:var(--panel2);border-color:transparent}
+.seg button{color:var(--muted);transition:background .3s var(--ease),color .3s}
+.seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.live{background:var(--panel);border-color:var(--line)}
+.live i{background:var(--acc);box-shadow:0 0 0 0 rgba(255,79,26,.5);animation:vzPulse 1.8s infinite}
+@keyframes vzPulse{70%{box-shadow:0 0 0 8px rgba(255,79,26,0)}100%{box-shadow:0 0 0 0 rgba(255,79,26,0)}}
+.vz-me input{accent-color:var(--acc)}
+.vzk-i{position:relative;overflow:hidden}
+.vzk-i small{color:var(--muted);font-weight:600;letter-spacing:.02em}
+.vzk-i b{font-weight:900;font-size:40px;letter-spacing:-.045em}
+.vzk-i:first-child{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.vzk-i:first-child small,.vzk-i:first-child em{color:rgba(239,237,231,.7)}
+.vzk-i:first-child em.up{color:#FF8A5C}
+.vzk-i.hot{background:var(--acc);border-color:var(--acc);color:#fff}
+.vzk-i.hot small,.vzk-i.hot em{color:rgba(255,255,255,.85)}
+.vzk-i em.up{color:var(--green)}
+.vz-card h3{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:16px}
+.vz-card p.h{color:var(--muted)}
+.hb i{background:var(--panel2)}
+.hb i::after{background:var(--acc);transform-origin:left;animation:vzGrow .9s var(--ease) both}
+.hb div:first-child i::after{background:var(--fg)}
+.chart .c i{background:var(--acc);transform-origin:bottom;animation:vzUp .8s var(--ease) both;animation-delay:calc(var(--k,0)*12ms)}
+.chart .c.wa i{background:var(--fg)}
+.chart .c:hover i{filter:none;background:#0D0D0D}
+.chart .c.wa:hover i{background:var(--acc)}
+.hrs i{background:var(--acc);transform-origin:bottom;animation:vzUp .8s var(--ease) both}
+.tag{background:var(--panel2);color:#3A3936}
+.tag.wa{background:var(--acc);color:#fff}
+.tip{background:var(--fg);color:var(--bg);box-shadow:0 10px 30px rgba(13,13,13,.25)}
+@keyframes vzGrow{from{transform:scaleX(0)}}
+@keyframes vzUp{from{transform:scaleY(0)}}
+.vzk-i,.vz-card{animation:vzIn .7s var(--ease) both}
+.vzk-i:nth-child(2){animation-delay:.05s}.vzk-i:nth-child(3){animation-delay:.1s}.vzk-i:nth-child(4){animation-delay:.15s}.vzk-i:nth-child(5){animation-delay:.2s}
+@keyframes vzIn{from{opacity:0;transform:translateY(14px)}}
+/* mouse: seta da marca */
+html,body{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path d='M3.5 3.5 L25 12.2 L14.8 14.8 L12.2 25 Z' fill='%230D0D0D' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/></svg>") 3 3,auto}
+a,button,label,select,[role=button],.chart .c{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path d='M3.5 3.5 L25 12.2 L14.8 14.8 L12.2 25 Z' fill='%23FF4F1A' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/></svg>") 3 3,pointer}
+input[type=text],input:not([type]),input[type=password],input[type=number],input[type=date],input[type=email],textarea{cursor:text}
+@media (prefers-reduced-motion:reduce){.vzk-i,.vz-card,.hb i::after,.chart .c i,.hrs i,.live i{animation:none!important}}
 </style>
 
 <header class="top">
   <div class="top-row">
-    <img class="logo" alt="Pedro Design" src="data:image/png;base64,__LOGO__">
+    <span class="logo" data-logo-animada data-loop="true" data-intervalo="8" aria-label="Pedro Design" role="img"><img src="/apresentacao/assets/logo-pd-preto.svg" alt="Pedro Design" width="118" height="56"></span>
     <span class="sync" id="sync"><i></i><span id="syncTxt">Conectando…</span></span>
   </div>
   <nav class="tabs" role="tablist" aria-label="Seções do painel">
@@ -203,7 +311,7 @@ select option{background:#1C1C21}
 
 <!-- VISITAS -->
 <section class="view" id="v-visitas" aria-labelledby="t-vz">
-  <div class="head"><div><h1 id="t-vz">Visitas do site</h1><p class="sub">De onde as pessoas vêm, quanto tempo ficam e onde clicam. Conta o site, a árvore de links e o bio.pedrodesign.store. Anônimo: sem IP e sem nome.</p></div></div>
+  <div class="head"><div><h1 id="t-vz">Visitas do <em>site</em></h1><p class="sub">De onde as pessoas vêm, quanto tempo ficam e onde clicam. Conta o site, a árvore de links e o bio.pedrodesign.store. Anônimo: sem IP e sem nome.</p></div></div>
   <div class="vz-bar">
     <div class="seg" id="vzSeg" role="group" aria-label="Período"><button data-d="1">Hoje</button><button data-d="7">7 dias</button><button data-d="30" aria-pressed="true">30 dias</button><button data-d="90">90 dias</button><button data-d="365">12 meses</button></div>
     <span class="live" id="vzLive"><i></i><span>— no site agora</span></span>
@@ -288,7 +396,7 @@ select option{background:#1C1C21}
 
 <!-- PROPOSTAS -->
 <section class="view" id="v-propostas" aria-labelledby="t-prop">
-  <div class="head"><div><h1 id="t-prop">Propostas</h1><p class="sub">Tudo o que você já mandou, com o status de cada uma.</p></div>
+  <div class="head"><div><h1 id="t-prop">Minhas <em>propostas</em></h1><p class="sub">Tudo o que você já mandou, com o status de cada uma.</p></div>
     <button class="btn b-y" data-go="nova">Nova proposta</button></div>
   <div class="kpis" id="propKpis"></div>
   <div class="filters chips" id="propFilter">
@@ -303,7 +411,7 @@ select option{background:#1C1C21}
 
 <!-- FINANCEIRO -->
 <section class="view" id="v-financeiro" aria-labelledby="t-fin">
-  <div class="head"><div><h1 id="t-fin">Financeiro</h1><p class="sub">Recebido, a receber e notas fiscais. Propostas aprovadas podem ser lançadas aqui com um toque.</p></div></div>
+  <div class="head"><div><h1 id="t-fin">Meu <em>financeiro</em></h1><p class="sub">Recebido, a receber e notas fiscais. Propostas aprovadas podem ser lançadas aqui com um toque.</p></div></div>
   <div class="kpis" id="finKpis"></div>
   <form class="card inline-form" id="finForm">
     <label class="f">Cliente<input id="fCli" required></label>
@@ -318,7 +426,7 @@ select option{background:#1C1C21}
 
 <!-- CONTATOS -->
 <section class="view" id="v-contatos" aria-labelledby="t-ctt">
-  <div class="head"><div><h1 id="t-ctt">Contatos</h1><p class="sub">Quem pediu orçamento. Daqui você já abre uma proposta com os dados preenchidos.</p></div></div>
+  <div class="head"><div><h1 id="t-ctt">Meus <em>contatos</em></h1><p class="sub">Quem pediu orçamento. Daqui você já abre uma proposta com os dados preenchidos.</p></div></div>
   <div class="note" style="margin-bottom:16px"><b>Por enquanto o cadastro é manual.</b> O formulário do portfólio manda a pessoa direto para o seu WhatsApp. Quando o site estiver no seu domínio, eu ligo o formulário a esta lista para os contatos caírem aqui sozinhos.</div>
   <form class="card inline-form" id="cttForm">
     <label class="f">Nome<input id="cNom" required></label>
@@ -332,7 +440,7 @@ select option{background:#1C1C21}
 
 <!-- PROJETOS -->
 <section class="view" id="v-projetos" aria-labelledby="t-pj">
-  <div class="head"><div><h1 id="t-pj">Projetos do portfólio</h1><p class="sub">Páginas e artes que vão para o site.</p></div></div>
+  <div class="head"><div><h1 id="t-pj">Projetos do <em>portfólio</em></h1><p class="sub">Páginas e artes que vão para o site.</p></div></div>
   <div class="note" style="margin-bottom:16px"><b>Como publicar:</b> cadastre aqui e me peça "sincroniza os projetos do painel". Eu leio esta lista, tiro os prints dos sites e atualizo o portfólio.</div>
   <form class="card inline-form" id="pjForm">
     <label class="f">Tipo<select id="jTip"><option value="lp">Página</option><option value="art">Artes</option></select></label>
@@ -711,7 +819,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
   $('#vzMe').onchange=function(){try{localStorage.setItem('pd-nao-contar',this.checked?'1':'0')}catch(e){}toast(this.checked?'Suas visitas neste aparelho não serão contadas':'Suas visitas neste aparelho voltam a contar')};
   $$('#vzSeg button').forEach(function(b){b.onclick=function(){$$('#vzSeg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});dias=+b.dataset.d;load()}});
   function list(rows,total,empty){if(!rows||!rows.length)return '<p class="hb z">'+(empty||'Ainda sem dados')+'</p>';var mx=Math.max.apply(null,rows.map(function(r){return r[1]}));return '<div class="hb">'+rows.map(function(r){var pc=total?Math.round(100*r[1]/total):0;return '<div><span title="'+esc(r[0])+'">'+esc(r[0])+'</span><b>'+fmtN(r[1])+(total?' <small class="z">'+pc+'%</small>':'')+'</b><i style="--w:'+(mx?Math.max(2,100*r[1]/mx):0)+'%"></i></div>'}).join('')+'</div>'}
-  function chart(rows,idx,cls){var mx=Math.max(1,Math.max.apply(null,rows.map(function(r){return r[idx]})));return '<div class="chart">'+rows.map(function(r){var d=r[0].split('-');return '<div class="c '+cls+'" data-t="'+d[2]+'/'+d[1]+'" data-a="'+r[1]+'" data-b="'+r[2]+'" data-w="'+r[3]+'"><i style="height:'+(100*r[idx]/mx)+'%"></i></div>'}).join('')+'</div><div class="chart-x"><span>'+fmtD(rows[0][0])+'</span><span>'+fmtD(rows[rows.length-1][0])+'</span></div>'}
+  function chart(rows,idx,cls){var mx=Math.max(1,Math.max.apply(null,rows.map(function(r){return r[idx]})));return '<div class="chart">'+rows.map(function(r,q){var d=r[0].split('-');return '<div style="--k:'+q+'" class="c '+cls+'" data-t="'+d[2]+'/'+d[1]+'" data-a="'+r[1]+'" data-b="'+r[2]+'" data-w="'+r[3]+'"><i style="height:'+(100*r[idx]/mx)+'%"></i></div>'}).join('')+'</div><div class="chart-x"><span>'+fmtD(rows[0][0])+'</span><span>'+fmtD(rows[rows.length-1][0])+'</span></div>'}
   function fmtD(s){var d=s.split('-');return d[2]+'/'+d[1]}
   function render(j){
     var k=j.kpi,S=j.kpi.visitas;
@@ -722,7 +830,7 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
       '<div class="vzk-i"><small>Visitantes</small><b>'+fmtN(k.visitantes)+'</b>'+diff(k.visitantes,k.antes.visitantes)+'</div>'+
       '<div class="vzk-i"><small>Visitas</small><b>'+fmtN(k.visitas)+'</b><em>'+fmtN(k.paginas)+' páginas vistas</em></div>'+
       '<div class="vzk-i"><small>Tempo médio por visita</small><b>'+fmtT(k.tempo)+'</b><em>com a página aberta na tela</em></div>'+
-      '<div class="vzk-i"><small>Cliques no WhatsApp</small><b>'+fmtN(k.whatsapp)+'</b>'+diff(k.whatsapp,k.antes.whatsapp)+'</div>'+
+      '<div class="vzk-i hot"><small>Cliques no WhatsApp</small><b>'+fmtN(k.whatsapp)+'</b>'+diff(k.whatsapp,k.antes.whatsapp)+'</div>'+
       '<div class="vzk-i"><small>Visitas que chamaram no WhatsApp</small><b>'+String(k.taxa).replace('.',',')+'%</b><em>'+fmtN(k.novos)+' visitantes novos · '+fmtN(k.voltaram)+' voltaram</em></div>'+
     '</div><div class="vz-grid">';
     if(j.diario.length>1){h+='<div class="vz-card vz-wide"><h3>Visitantes por dia</h3><p class="h">Passe o mouse (ou toque) em uma barra para ver o dia.</p>'+chart(j.diario,1,'')+'</div>';
@@ -773,3 +881,4 @@ renderProps();renderFin();renderCtt();renderPj();
 })();
 })();
 </script>
+<script src="/apresentacao/assets/logo-animada-v5.js" defer></script>
