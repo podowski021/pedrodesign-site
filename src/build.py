@@ -119,6 +119,7 @@ doc = ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
 open(os.path.join(OUT, 'painel/index.html'), 'w').write(doc)
 shutil.copyfile(os.path.join(SRC, 'api.php'), os.path.join(OUT, 'painel/api.php'))
 shutil.copyfile(os.path.join(SRC, 'analytics.php'), os.path.join(OUT, 'painel/analytics.php'))
+shutil.copyfile(os.path.join(SRC, 'posts.php'), os.path.join(OUT, 'painel/posts.php'))
 
 # ---------- arquivos estáticos ----------
 for n in ['favicon.svg', 'apple-touch-icon.png', 'og.jpg', 'px.gif']:

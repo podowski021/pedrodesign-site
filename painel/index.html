@@ -328,6 +328,60 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
 .px-ct{flex:none;text-align:right;font-size:12.5px;line-height:1.5}.px-ct b{display:block;font-size:15px;font-weight:600}
 .px-ft{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;padding:14px 0 26px;font-size:10px;line-height:1.45;color:#6E6B65}
 .px-ft span:first-child{max-width:560px}.px-ft span:last-child{font-weight:600;color:#0D0D0D;font-size:11px}
+/* ---------- agendar posts ---------- */
+.ps-card[hidden],#psOn[hidden]{display:none!important}
+.ps-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:14px;display:flex;flex-direction:column;gap:14px}
+.ps-card h3{margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:17px}
+.ps-card .h{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55}
+.ps-card a{color:var(--acc-t)}
+.ps-card code{font-size:12px;background:var(--panel2);padding:1px 6px;border-radius:6px}
+.ps-steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5}
+.ps-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ps-row input{flex:1 1 260px}
+.ps-err{margin:0;color:var(--red);font-size:13.5px;white-space:pre-line}.ps-err:empty{display:none}
+.ps-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ps-ok{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-right:auto}
+.ps-ok:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.ps-drop{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:26px 16px;border:2px dashed var(--line2);border-radius:18px;background:var(--bg);transition:border-color .25s,background .25s}
+.ps-drop:hover,.ps-drop.on{border-color:var(--acc);background:rgba(255,79,26,.06)}
+.ps-drop b{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:16px}
+.ps-drop span{font-size:13px;color:var(--muted)}
+.ps-defs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,2fr);gap:12px;align-items:end}
+.ps-defs .f>span{font-size:12px;font-weight:600;color:var(--muted)}
+@media (max-width:860px){.ps-defs{grid-template-columns:1fr 1fr}.ps-defs .f:last-child{grid-column:1/-1}}
+.ps-list{display:flex;flex-direction:column;gap:10px}.ps-list:empty{display:none}
+.ps-it{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.ps-it.bad{border-color:var(--acc)}
+.ps-im{display:flex;gap:8px}
+.ps-im figure{margin:0;display:flex;flex-direction:column;gap:4px;align-items:center}
+.ps-im img{width:72px;height:90px;object-fit:cover;border-radius:10px;background:var(--panel2);display:block}
+.ps-im figure.s img{width:56px;height:100px}
+.ps-im figcaption{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.ps-im .none{width:56px;height:90px;border-radius:10px;border:1.5px dashed var(--line2);display:grid;place-items:center;font-size:10px;color:var(--dim);text-align:center}
+.ps-bd{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ps-hd{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ps-hd img{width:28px;height:28px;border-radius:50%;object-fit:cover;background:var(--panel2)}
+.ps-hd b{font-weight:600}
+.ps-hd small{color:var(--dim)}
+.ps-hd select{max-width:240px}
+.ps-hd .x{margin-left:auto}
+.ps-bd textarea{min-height:64px}
+.ps-tm{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--muted)}
+.ps-tm input{width:auto;padding:6px 8px}
+.ps-warn{font-size:12.5px;color:var(--acc-t)}
+.ps-day{margin:8px 0 2px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ps-q{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.ps-q .ps-im img{width:44px;height:55px}.ps-q .ps-im figure.s img{width:34px;height:60px}
+.ps-q .nm{font-weight:600}.ps-q .cp{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-st{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.ps-s{display:inline-flex;gap:5px;align-items:center;font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--panel2);color:#3A3936;text-decoration:none}
+.ps-s.pub{background:rgba(15,138,95,.13);color:#0B7550}
+.ps-s.err{background:rgba(200,50,30,.12);color:#A82A18}
+.ps-s.try{background:rgba(255,79,26,.12);color:#B93408}
+.ps-s i{font-style:normal}
+.ps-cf{font-size:11.5px;color:var(--dim);margin-top:4px}
+.ps-cf.bad{color:var(--red)}
+@media (max-width:640px){.ps-it{grid-template-columns:1fr}.ps-q{grid-template-columns:1fr}.ps-q>.ps-row{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -339,6 +393,7 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
   </div>
   <nav class="tabs" role="tablist" aria-label="Seções do painel">
     <button role="tab" data-v="visitas" aria-selected="false">Visitas <span class="n" id="nV">·</span></button>
+    <button role="tab" data-v="posts" aria-selected="false">Posts</button>
     <button role="tab" data-v="nova" aria-selected="true">Nova proposta</button>
     <button role="tab" data-v="propostas" aria-selected="false">Propostas <span class="n" id="nP">0</span></button>
     <button role="tab" data-v="financeiro" aria-selected="false">Financeiro <span class="n" id="nF">0</span></button>
@@ -462,6 +517,75 @@ input[type=text],input:not([type]),input[type=password],input[type=number],input
   </form>
   <div class="tw"><table class="tbl"><thead><tr><th>Vencimento</th><th>Cliente</th><th>Descrição</th><th>Valor</th><th>Status</th><th>NF</th><th></th></tr></thead><tbody id="finBody"></tbody></table></div>
 </section>
+
+<section class="view" id="v-posts" aria-labelledby="t-ps">
+  <div class="head"><div><h1 id="t-ps">Agendar <em>posts</em></h1><p class="sub">Solte as artes com o nome do cliente no arquivo, confira a legenda e o horário de cada um e agende. Na hora certa o painel publica no Instagram e no Facebook e depois confere se ficou no ar.</p></div></div>
+
+  <div class="ps-card" id="psConn" hidden>
+    <h3>Conectar com a Meta</h3>
+    <p class="h">Faça isso uma vez só. O painel usa a API oficial da Meta (gratuita) com o seu Meta Business Suite.</p>
+    <ol class="ps-steps">
+      <li>Entre em <a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">developers.facebook.com/apps</a>, clique em <b>Criar app</b>, escolha o tipo <b>Empresa</b> e ligue ao seu portfólio empresarial.</li>
+      <li>No app, adicione o produto <b>API do Instagram</b> (opção "com login do Facebook").</li>
+      <li>Abra <a href="https://business.facebook.com/settings/system-users" target="_blank" rel="noopener">Configurações do negócio → Usuários do sistema</a>, crie um usuário <b>Administrador</b> e, em <b>Atribuir ativos</b>, marque as Páginas dos clientes com <b>controle total</b>.</li>
+      <li>Clique em <b>Gerar token</b>, escolha o app, prazo <b>Nunca expira</b> e marque: <code>pages_show_list</code>, <code>pages_read_engagement</code>, <code>pages_manage_posts</code>, <code>instagram_basic</code>, <code>instagram_content_publish</code>, <code>business_management</code>.</li>
+      <li>Cole o token aqui.</li>
+    </ol>
+    <form class="ps-row" id="psConnF"><input id="psTok" type="password" placeholder="Token do usuário do sistema" autocomplete="off" spellcheck="false"><button class="btn b-y" type="submit">Conectar</button></form>
+    <p class="ps-err" id="psConnE" role="alert"></p>
+  </div>
+
+  <div id="psOn" hidden>
+    <div class="ps-bar">
+      <span class="ps-ok" id="psAcc"></span>
+      <button type="button" class="mini" id="psSync">Atualizar clientes</button>
+      <button type="button" class="mini" id="psCli">Nomes nos arquivos</button>
+      <button type="button" class="mini" id="psAuto">Publicação automática</button>
+    </div>
+
+    <div class="ps-card" id="psCliBox" hidden>
+      <h3>Nome de cada cliente nos arquivos</h3>
+      <p class="h">O arquivo precisa começar com um desses nomes. Ex.: <code>capanema-natal-feed.jpg</code> e <code>capanema-natal-story.jpg</code>. Em "outros nomes" separe por vírgula.</p>
+      <div class="tw"><table class="tbl"><thead><tr><th>Cliente</th><th>Instagram</th><th>Nome no arquivo</th><th>Outros nomes</th></tr></thead><tbody id="psCliT"></tbody></table></div>
+    </div>
+
+    <div class="ps-card" id="psAutoBox" hidden>
+      <h3>Publicação automática</h3>
+      <p class="h">O painel publica sozinho quando alguém visita o seu site ou quando o painel está aberto. Para publicar no minuto exato, mesmo sem visitas, crie um cron na Hostinger: <b>hPanel → Avançado → Tarefas Cron</b>, tipo <b>PHP/URL</b> (ou comando), a cada <b>5 minutos</b>, com este endereço:</p>
+      <div class="ps-row"><input id="psCronU" readonly><button type="button" class="mini" id="psCronC">Copiar</button></div>
+      <p class="h" id="psCronL"></p>
+    </div>
+
+    <div class="ps-card">
+      <label class="ps-drop" id="psDrop" for="psFile">
+        <input id="psFile" type="file" accept="image/*,.txt" multiple hidden>
+        <b>Solte as artes aqui</b><span>Feed e story de vários clientes de uma vez · .txt com o mesmo nome vira a legenda</span>
+      </label>
+      <div class="ps-defs">
+        <label class="f">Dia<input id="psDay" type="date"></label>
+        <label class="f">Hora do feed<input id="psHF" type="time" value="09:00"></label>
+        <label class="f">Hora do story<input id="psHS" type="time" value="09:00"></label>
+        <div class="f"><span>Publicar em</span><div class="chips" id="psTg">
+          <button type="button" class="chip" data-t="igf" aria-pressed="true">Feed IG</button>
+          <button type="button" class="chip" data-t="igs" aria-pressed="true">Story IG</button>
+          <button type="button" class="chip" data-t="fbf" aria-pressed="true">Feed FB</button>
+          <button type="button" class="chip" data-t="fbs" aria-pressed="false">Story FB</button></div></div>
+      </div>
+      <label class="f">Legenda para todos (opcional)<textarea id="psCapAll" rows="3" placeholder="Ex.: Feliz Natal! A equipe {cliente} deseja boas festas. Use {cliente} para o nome de cada um."></textarea></label>
+      <div class="ps-row" style="justify-content:space-between"><button type="button" class="mini" id="psApply">Usar nos posts sem legenda</button><span class="h" id="psCount"></span></div>
+      <div class="ps-list" id="psNew"></div>
+      <div class="ps-row" style="justify-content:flex-end"><button class="btn b-y" type="button" id="psGo" disabled>Agendar</button></div>
+      <p class="ps-err" id="psErr" role="alert"></p>
+    </div>
+
+    <div class="ps-card">
+      <div class="ps-row" style="justify-content:space-between;align-items:center"><h3 style="margin:0">Agendados e publicados</h3>
+        <div class="ps-row"><button type="button" class="mini" id="psRun">Publicar o que já passou da hora</button><button type="button" class="btn b-g" id="psVer">Conferir todos</button></div></div>
+      <div id="psQ"><p class="h">Carregando…</p></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- CONTATOS -->
 <section class="view" hidden style="display:none" id="v-contatos" aria-labelledby="t-ctt">
@@ -974,7 +1098,172 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
 /* ---------- tabs ---------- */
 
 
-function go(v){$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));try{localStorage.setItem('pd-tab',v)}catch(e){}window.scrollTo({top:0});if(v==='nova')requestAnimationFrame(fitPreview);if(v==='visitas'&&window.__vzLoad)window.__vzLoad();if(v==='verificador'&&window.__vfLoad)window.__vfLoad()}
+/* ---------- agendar posts ---------- */
+(function(){
+  var API='/painel/api.php?a=';
+  var E=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+  var call=function(a,b){return fetch(API+a,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Painel':'1'},body:JSON.stringify(b||{})}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||('Erro '+r.status));return j})})};
+  var slug=function(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')};
+  var pad=function(n){return String(n).padStart(2,'0')};
+  var ymd=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+  var ts=function(day,hm){var p=String(day||'').split('-'),h=String(hm||'09:00').split(':');return Math.floor(new Date(+p[0],+p[1]-1,+p[2],+h[0],+h[1]).getTime()/1000)};
+  var fmt=function(t){var d=new Date(t*1000);return pad(d.getDate())+'/'+pad(d.getMonth()+1)+' '+pad(d.getHours())+':'+pad(d.getMinutes())};
+  var hmOf=function(t){var d=new Date(t*1000);return pad(d.getHours())+':'+pad(d.getMinutes())};
+  var TN={igf:'Feed IG',igs:'Story IG',fbf:'Feed FB',fbs:'Story FB'};
+  var clients=[],queue=[],posts=[],loaded=false,busy=false;
+  var tg={igf:true,igs:true,fbf:true,fbs:false};
+  (function(){var t=new Date();t.setDate(t.getDate()+1);$('#psDay').value=ymd(t)})();
+
+  function status(){return call('pstatus').then(function(j){loaded=true;clients=j.clientes||[];
+    $('#psConn').hidden=j.conectado;$('#psOn').hidden=!j.conectado;
+    $('#psAcc').textContent='Conectado'+(j.conta?' como '+j.conta:'')+' · '+clients.length+' cliente'+(clients.length===1?'':'s');
+    $('#psCronU').value=j.cron||'';
+    $('#psCronL').textContent=j.ultimoCron?'Última conferência automática: '+fmt(j.ultimoCron):'Ainda não rodou nenhuma conferência automática.';
+    drawCli();matchAll();drawNew();if(j.conectado)loadQ();
+  }).catch(function(){})}
+  window.__psLoad=function(){if(!loaded)status();else loadQ()};
+
+  /* ---------- conexão ---------- */
+  $('#psConnF').addEventListener('submit',function(e){e.preventDefault();$('#psConnE').textContent='';var b=this.querySelector('button');b.disabled=true;b.textContent='Conectando…';
+    call('pconnect',{token:$('#psTok').value}).then(function(){$('#psTok').value='';toast('Conectado à Meta');loaded=false;status()}).catch(function(er){$('#psConnE').textContent=er.message}).then(function(){b.disabled=false;b.textContent='Conectar'})});
+  $('#psSync').onclick=function(){var b=this;b.disabled=true;b.textContent='Atualizando…';call('psync').then(function(){toast('Clientes atualizados');status()}).catch(function(er){toast(er.message)}).then(function(){b.disabled=false;b.textContent='Atualizar clientes'})};
+  $('#psCli').onclick=function(){$('#psCliBox').hidden=!$('#psCliBox').hidden};
+  $('#psAuto').onclick=function(){$('#psAutoBox').hidden=!$('#psAutoBox').hidden};
+  $('#psCronC').onclick=function(){var v=$('#psCronU').value;(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(function(){toast('Endereço copiado')},function(){$('#psCronU').select()})};
+
+  function drawCli(){$('#psCliT').innerHTML=clients.map(function(c){return '<tr><td>'+E(c.nome)+'</td><td>'+(c.igUser?'@'+E(c.igUser):'<span class="z">sem Instagram</span>')+'</td><td><input data-cs="'+E(c.id)+'" value="'+E(c.slug)+'" aria-label="Nome no arquivo de '+E(c.nome)+'"></td><td><input data-ca="'+E(c.id)+'" value="'+E((c.apelidos||[]).join(', '))+'" aria-label="Outros nomes de '+E(c.nome)+'"></td></tr>'}).join('')||'<tr><td colspan="4">Nenhuma Página liberada para o token. Atribua as Páginas ao usuário do sistema e clique em Atualizar clientes.</td></tr>'}
+  $('#psCliT').addEventListener('change',function(e){var t=e.target,id=t.dataset.cs||t.dataset.ca;if(!id)return;var c=clients.filter(function(x){return x.id===id})[0];if(!c)return;
+    var b={id:id};if(t.dataset.cs){c.slug=slug(t.value);t.value=c.slug;b.slug=c.slug}else{c.apelidos=t.value.split(',').map(slug).filter(Boolean);b.apelidos=c.apelidos}
+    call('pclient',b).then(function(){toast('Salvo');matchAll();drawNew()}).catch(function(er){toast(er.message)})});
+
+  /* ---------- arquivos ---------- */
+  function keyOf(c){return [c.slug].concat(c.apelidos||[]).filter(Boolean)}
+  function findClient(base){var best=null,bl=0;clients.forEach(function(c){keyOf(c).forEach(function(k){if((base===k||base.indexOf(k+'-')===0)&&k.length>bl){best=c;bl=k.length}})});return [best,bl]}
+  function parse(name){
+    var base=slug(name.replace(/\.[a-z0-9]+$/i,''));
+    var story=/(^|-)(story|stories|storie|storys|stor)(-|$)/.test(base);
+    var m=findClient(base),c=m[0];
+    var rest=(c?base.slice(m[1]):base).replace(/(^|-)(story|stories|storie|storys|stor|feed|post)(?=-|$)/g,'').replace(/-?\d+$/,'').replace(/^-+|-+$/g,'');
+    return {base:base,tipo:story?'story':'feed',cliente:c?c.id:'',campanha:rest};
+  }
+  function toJpeg(file){return new Promise(function(ok,no){var u=URL.createObjectURL(file),im=new Image();
+    im.onload=function(){var w=im.naturalWidth,h=im.naturalHeight,s=Math.min(1,1440/w),c=document.createElement('canvas');c.width=Math.round(w*s);c.height=Math.round(h*s);var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+      var t=document.createElement('canvas'),ts2=Math.min(1,200/w);t.width=Math.round(w*ts2);t.height=Math.round(h*ts2);t.getContext('2d').drawImage(im,0,0,t.width,t.height);
+      URL.revokeObjectURL(u);ok({data:c.toDataURL('image/jpeg',.92),thumb:t.toDataURL('image/jpeg',.7),w:w,h:h})};
+    im.onerror=function(){URL.revokeObjectURL(u);no(new Error('Não consegui abrir '+file.name))};im.src=u})}
+  function addFiles(list){
+    $('#psErr').textContent='';
+    var arr=[].slice.call(list),txts=arr.filter(function(f){return /\.txt$/i.test(f.name)}),imgs=arr.filter(function(f){return /^image\//.test(f.type)});
+    Promise.all(txts.map(function(f){return f.text().then(function(t){return [slug(f.name.replace(/\.txt$/i,'')),t.trim()]})})).then(function(caps){
+      return Promise.all(imgs.map(function(f){return toJpeg(f).then(function(r){var p=parse(f.name);r.nome=f.name;r.tipo=p.tipo;r.cliente=p.cliente;r.campanha=p.campanha;r.base=p.base;return r}).catch(function(er){$('#psErr').textContent+=er.message+'\n';return null})})).then(function(rs){
+        rs.filter(Boolean).forEach(function(r){
+          var g=posts.filter(function(p){return p.cliente===r.cliente&&p.campanha===r.campanha&&!p[r.tipo]&&(r.cliente||p.base0===r.base.replace(/-?(story|stories|feed)$/,''))})[0];
+          if(!g){g={k:Math.random().toString(36).slice(2),cliente:r.cliente,campanha:r.campanha,base0:r.base.replace(/-?(story|stories|feed)$/,''),legenda:'',hf:'',hs:''};posts.push(g)}
+          g[r.tipo]=r;
+          caps.forEach(function(cp){var b=r.base.replace(/-?(story|stories|feed)$/,'');if(cp[0]===r.base||cp[0]===b||cp[0]===g.base0)g.legenda=g.legenda||cp[1]});
+        });
+        posts.sort(function(a,b){return nm(a).localeCompare(nm(b))});drawNew();
+      });
+    });
+  }
+  function nm(p){var c=clients.filter(function(x){return x.id===p.cliente})[0];return c?c.nome:'~'}
+  function matchAll(){posts.forEach(function(p){if(p.cliente)return;var f=p.feed||p.story;if(f){var r=parse(f.nome);if(r.cliente){p.cliente=r.cliente;p.campanha=r.campanha}}})}
+  $('#psFile').addEventListener('change',function(e){addFiles(e.target.files);e.target.value=''});
+  var dz=$('#psDrop');
+  ['dragenter','dragover'].forEach(function(n){dz.addEventListener(n,function(e){e.preventDefault();dz.classList.add('on')})});
+  ['dragleave','drop'].forEach(function(n){dz.addEventListener(n,function(e){e.preventDefault();dz.classList.remove('on')})});
+  dz.addEventListener('drop',function(e){if(e.dataTransfer.files.length)addFiles(e.dataTransfer.files)});
+  $('#psTg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;tg[b.dataset.t]=!tg[b.dataset.t];b.setAttribute('aria-pressed',tg[b.dataset.t]);drawNew()});
+  ['psDay','psHF','psHS'].forEach(function(id){$('#'+id).addEventListener('change',drawNew)});
+  $('#psApply').onclick=function(){var t=$('#psCapAll').value;if(!t.trim())return;posts.forEach(function(p){if(p.cliente&&!p.legenda.trim())p.legenda=t.replace(/\{cliente\}/gi,nm(p))});drawNew()};
+
+  function problems(p){var w=[],c=clients.filter(function(x){return x.id===p.cliente})[0];
+    if(!c)w.push('Escolha o cliente (o nome do arquivo não bateu com nenhum).');
+    if(c&&!c.ig&&(tg.igf||tg.igs))w.push('Essa Página não tem Instagram ligado.');
+    if(p.feed){var r=p.feed.w/p.feed.h;if(r<0.79||r>1.92)w.push('A arte do feed está fora do formato do Instagram (vai de 4:5 a 1,91:1).')}
+    if(p.story){var rs=p.story.w/p.story.h;if(rs>0.7)w.push('O story não está em pé (o ideal é 1080×1920).')}
+    if(p.feed&&(tg.igf||tg.fbf)&&!p.legenda.trim())w.push('Sem legenda.');
+    var now=Date.now()/1000;if(p.feed&&ts($('#psDay').value,p.hf||$('#psHF').value)<now)w.push('O horário do feed já passou.');
+    if(p.story&&ts($('#psDay').value,p.hs||$('#psHS').value)<now)w.push('O horário do story já passou.');
+    if((p.legenda.match(/(^|\s)#\w/g)||[]).length>30)w.push('Mais de 30 hashtags.');
+    return w}
+  function drawNew(){
+    var opts='<option value="">Escolha o cliente…</option>'+clients.map(function(c){return '<option value="'+E(c.id)+'">'+E(c.nome)+'</option>'}).join('');
+    $('#psNew').innerHTML=posts.map(function(p,i){var c=clients.filter(function(x){return x.id===p.cliente})[0],w=problems(p);
+      return '<div class="ps-it'+(w.length&&!c?' bad':'')+'" data-i="'+i+'"><div class="ps-im">'+(p.feed?'<figure><img src="'+p.feed.thumb+'" alt=""><figcaption>Feed</figcaption></figure>':'<figure><div class="none">sem feed</div></figure>')+(p.story?'<figure class="s"><img src="'+p.story.thumb+'" alt=""><figcaption>Story</figcaption></figure>':'<figure class="s"><div class="none">sem story</div></figure>')+'</div>'
+        +'<div class="ps-bd"><div class="ps-hd">'+(c?(c.foto?'<img src="'+E(c.foto)+'" alt="" referrerpolicy="no-referrer">':'')+'<b>'+E(c.nome)+'</b>'+(c.igUser?'<small>@'+E(c.igUser)+'</small>':''):'<select data-sel="'+i+'">'+opts+'</select>')+(p.campanha?'<small>· '+E(p.campanha.replace(/-/g,' '))+'</small>':'')+'<button type="button" class="mini dg x" data-rm="'+i+'">Tirar</button></div>'
+        +(p.feed?'<textarea data-cap="'+i+'" placeholder="Legenda do feed">'+E(p.legenda)+'</textarea>':'')
+        +'<div class="ps-tm">'+(p.feed?'Feed às <input type="time" data-hf="'+i+'" value="'+E(p.hf||$('#psHF').value)+'">':'')+(p.story?' Story às <input type="time" data-hs="'+i+'" value="'+E(p.hs||$('#psHS').value)+'">':'')+'</div>'
+        +(w.length?'<div class="ps-warn">'+w.map(E).join('<br>')+'</div>':'')+'</div></div>'}).join('');
+    var ok=posts.filter(function(p){return p.cliente}).length;
+    $('#psCount').textContent=posts.length?ok+' de '+posts.length+' post'+(posts.length===1?'':'s')+' com cliente identificado':'';
+    $('#psGo').disabled=!ok;$('#psGo').textContent=ok?'Agendar '+ok+' post'+(ok===1?'':'s'):'Agendar';
+  }
+  $('#psNew').addEventListener('input',function(e){var t=e.target;if(t.dataset.cap!=null)posts[+t.dataset.cap].legenda=t.value});
+  $('#psNew').addEventListener('change',function(e){var t=e.target;
+    if(t.dataset.sel!=null){posts[+t.dataset.sel].cliente=t.value;drawNew()}
+    else if(t.dataset.hf!=null){posts[+t.dataset.hf].hf=t.value;drawNew()}
+    else if(t.dataset.hs!=null){posts[+t.dataset.hs].hs=t.value;drawNew()}
+    else if(t.dataset.cap!=null)drawNew()});
+  $('#psNew').addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(b){posts.splice(+b.dataset.rm,1);drawNew()}});
+
+  /* ---------- agendar ---------- */
+  $('#psGo').onclick=async function(){
+    if(busy)return;var list=posts.filter(function(p){return p.cliente});if(!list.length)return;
+    if(!tg.igf&&!tg.igs&&!tg.fbf&&!tg.fbs){$('#psErr').textContent='Marque pelo menos um lugar para publicar.';return}
+    busy=true;var b=this;b.disabled=true;$('#psErr').textContent='';
+    try{
+      var out=[],n=0,tot=list.reduce(function(a,p){return a+(p.feed?1:0)+(p.story?1:0)},0);
+      for(var i=0;i<list.length;i++){var p=list[i],o={cliente:p.cliente,campanha:p.campanha,legenda:p.legenda,alvos:tg,quando:ts($('#psDay').value,p.hf||$('#psHF').value),quandoStory:ts($('#psDay').value,p.hs||$('#psHS').value)};
+        if(p.feed){b.textContent='Enviando artes '+(++n)+'/'+tot+'…';if(!p.feed.f)p.feed.f=(await call('pup',{b64:p.feed.data.split(',')[1]})).f;o.feed=p.feed.f}
+        if(p.story){b.textContent='Enviando artes '+(++n)+'/'+tot+'…';if(!p.story.f)p.story.f=(await call('pup',{b64:p.story.data.split(',')[1]})).f;o.story=p.story.f}
+        out.push(o)}
+      b.textContent='Agendando…';
+      var r=await call('padd',{posts:out});
+      toast(r.agendados+' post'+(r.agendados===1?'':'s')+' agendado'+(r.agendados===1?'':'s'));
+      if(r.avisos&&r.avisos.length)$('#psErr').textContent=r.avisos.join('\n');
+      posts=posts.filter(function(p){return !p.cliente});drawNew();loadQ();
+    }catch(er){$('#psErr').textContent=er.message}
+    busy=false;b.disabled=false;drawNew();
+  };
+
+  /* ---------- fila ---------- */
+  function loadQ(){return call('plist').then(function(j){queue=(j.itens||[]).filter(function(x){return !x.oculto});drawQ();
+    $('#psCronL').textContent=j.ultimoCron?'Última conferência automática: '+fmt(j.ultimoCron):'Ainda não rodou nenhuma conferência automática.'}).catch(function(){})}
+  function chip(k,a){var em=a.em||0,cls=a.st==='publicado'?'pub':a.st==='erro'?'err':a.st==='tentar'?'try':'',
+      lab=a.st==='publicado'?'✓ '+TN[k]:a.st==='erro'?'Erro · '+TN[k]:a.st==='tentar'?'Tentando de novo · '+TN[k]:TN[k]+(em?' · '+hmOf(em):'');
+    var h=a.link&&a.st==='publicado'?'<a class="ps-s '+cls+'" href="'+E(a.link)+'" target="_blank" rel="noopener" title="Abrir">'+E(lab)+' ↗</a>':'<span class="ps-s '+cls+'"'+(a.msg?' title="'+E(a.msg)+'"':'')+'>'+E(lab)+'</span>';
+    return h}
+  function drawQ(){
+    if(!queue.length){$('#psQ').innerHTML='<p class="h">Nada agendado ainda.</p>';return}
+    var now=Date.now()/1000,last='',h='';
+    queue.slice().sort(function(a,b){return a.quando-b.quando}).forEach(function(x){
+      var d=new Date(x.quando*1000),day=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'2-digit'});
+      if(day!==last){h+='<div class="ps-day">'+E(day)+'</div>';last=day}
+      var errs=[],conf=[];Object.keys(x.alvos).forEach(function(k){var a=x.alvos[k];if(a.st==='erro'||a.st==='tentar')errs.push(TN[k]+': '+(a.msg||''));if(a.conf)conf.push([TN[k],a.conf])});
+      var canEdit=Object.keys(x.alvos).some(function(k){return x.alvos[k].st!=='publicado'});
+      h+='<div class="ps-q"><div class="ps-im">'+(x.feed?'<figure><img src="'+API+'pm&f='+E(x.feed)+'" alt="" loading="lazy"></figure>':'')+(x.story?'<figure class="s"><img src="'+API+'pm&f='+E(x.story)+'" alt="" loading="lazy"></figure>':'')+'</div>'
+        +'<div style="min-width:0"><div class="nm">'+E(x.nome)+(x.campanha?' <small style="color:var(--dim);font-weight:400">· '+E(x.campanha.replace(/-/g,' '))+'</small>':'')+'</div>'
+        +(x.legenda?'<div class="cp">'+E(x.legenda)+'</div>':'')
+        +'<div class="ps-st">'+Object.keys(x.alvos).map(function(k){return chip(k,x.alvos[k])}).join('')+'</div>'
+        +(errs.length?'<div class="ps-cf bad">'+errs.map(E).join('<br>')+'</div>':'')
+        +(conf.length?'<div class="ps-cf">'+conf.map(function(c){return (c[1].ok?'✓ ':'✕ ')+E(c[0])+': '+E(c[1].msg)}).join('<br>')+'</div>':'')+'</div>'
+        +'<div class="ps-row">'+(errs.length?'<button type="button" class="mini" data-retry="'+E(x.id)+'">Tentar de novo</button>':'')+(canEdit?'<button type="button" class="mini dg" data-del="'+E(x.id)+'">Cancelar</button>':'')+'</div></div>';
+    });
+    $('#psQ').innerHTML=h;
+  }
+  var armed=null;
+  $('#psQ').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    if(b.dataset.del){if(armed!==b){armed=b;b.textContent='Confirmar';setTimeout(function(){if(armed===b){armed=null;b.textContent='Cancelar'}},3000);return}armed=null;call('pdel',{id:b.dataset.del}).then(function(){toast('Cancelado');loadQ()}).catch(function(er){toast(er.message)})}
+    else if(b.dataset.retry){call('pedit',{id:b.dataset.retry}).then(function(){return call('prun')}).then(function(){toast('Tentando de novo');loadQ()}).catch(function(er){toast(er.message)})}});
+  $('#psVer').onclick=function(){var b=this;b.disabled=true;b.textContent='Conferindo…';call('pverify').then(function(j){var n=0,bad=0;Object.values(j.resultado||{}).forEach(function(r){Object.values(r).forEach(function(v){n++;if(!v.ok)bad++})});toast(bad?bad+' de '+n+' com problema':'Tudo certo ('+n+')');loadQ()}).catch(function(er){toast(er.message)}).then(function(){b.disabled=false;b.textContent='Conferir todos'})};
+  $('#psRun').onclick=function(){var b=this;b.disabled=true;call('prun').then(function(j){toast(j.ocupado?'Já está publicando, espere um pouco':(j.publicados?j.publicados+' publicado(s)':'Nada na hora de sair'));loadQ()}).catch(function(er){toast(er.message)}).then(function(){b.disabled=false})};
+  /* com o painel aberto, publica o que chegar na hora */
+  setInterval(function(){if(!loaded||$('#psOn').hidden)return;var now=Date.now()/1000;
+    if(queue.some(function(x){return Object.keys(x.alvos).some(function(k){var a=x.alvos[k];return (a.st==='agendado'||a.st==='tentar')&&(a.em||x.quando)<=now})}))call('prun').then(loadQ).catch(function(){})},60000);
+})();
+
+function go(v){$$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));try{localStorage.setItem('pd-tab',v)}catch(e){}window.scrollTo({top:0});if(v==='nova')requestAnimationFrame(fitPreview);if(v==='visitas'&&window.__vzLoad)window.__vzLoad();if(v==='posts'&&window.__psLoad)window.__psLoad();if(v==='verificador'&&window.__vfLoad)window.__vfLoad()}
 $$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)go(g.dataset.go)});
 
