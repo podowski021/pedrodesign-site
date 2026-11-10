@@ -21,7 +21,8 @@ function vf_set(array $b): never {
     $c = vf_cfg();
     $k = trim((string)($b['key'] ?? ''));
     if ($k !== '') {
-        if (!preg_match('/^AIza[A-Za-z0-9_\-]{30,}$/', $k)) out(['error' => 'Essa chave não parece uma chave do Google AI Studio (começa com AIza).'], 400);
+        $k = preg_replace('/\s+/', '', $k);
+        if (!preg_match('/^[A-Za-z0-9._\-]{30,200}$/', $k)) out(['error' => 'Essa chave não parece uma chave do Google AI Studio. Copie de novo em aistudio.google.com/apikey.'], 400);
         $c['key'] = $k;
     }
     if (!empty($b['remove'])) unset($c['key']);
