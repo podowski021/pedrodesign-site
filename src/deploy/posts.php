@@ -131,10 +131,10 @@ function ps_add(array $b): never {
         $story = preg_match('/^[a-f0-9]{32}\.jpg$/', (string)($p['story'] ?? '')) ? $p['story'] : '';
         $al = (array)($p['alvos'] ?? []);
         $alvos = [];
-        if ($feed && !empty($al['igf'])) $alvos['igf'] = ['st' => 'agendado'];
+        if ($feed && !empty($al['igf'])) $alvos['igf'] = ['st' => 'agendado', 'em' => $quando];
         $qs = (int)($p['quandoStory'] ?? 0) ?: $quando;
         if ($story && !empty($al['igs'])) $alvos['igs'] = ['st' => 'agendado', 'em' => $qs];
-        if ($feed && !empty($al['fbf'])) $alvos['fbf'] = ['st' => 'agendado'];
+        if ($feed && !empty($al['fbf'])) $alvos['fbf'] = ['st' => 'agendado', 'em' => $quando];
         if ($story && !empty($al['fbs'])) $alvos['fbs'] = ['st' => 'agendado', 'em' => $qs];
         if (!$cl) { $errs[] = "Post " . ($i + 1) . ": cliente não encontrado."; continue; }
         if (!$alvos) { $errs[] = $cl['nome'] . ': nada para publicar (sem arte ou sem destino marcado).'; continue; }
@@ -296,4 +296,52 @@ function ps_verify(array $b): never {
     /* limpa artes de posts publicados há mais de 7 dias */
     foreach ($d as $x) if (($x['st'] ?? '') === 'publicado' && $x['quando'] < $now - 7 * 86400) foreach (['feed', 'story'] as $kk) if (!empty($x[$kk])) @unlink(ps_mdir() . '/' . $x[$kk]);
     out(['ok' => true, 'resultado' => $res]);
+}
+
+/* ---------- importar do Google Drive (pasta ou arquivo compartilhado com "qualquer pessoa com o link") ---------- */
+function ps_drive_get(string $url, int $max = 15_000_000): array {
+    $ch = curl_init($url); $buf = '';
+    curl_setopt_array($ch, [CURLOPT_FOLLOWLOCATION => true, CURLOPT_MAXREDIRS => 5, CURLOPT_TIMEOUT => 40, CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36',
+        CURLOPT_WRITEFUNCTION => function ($c, $d) use (&$buf, $max) { $buf .= $d; return strlen($buf) > $max ? 0 : strlen($d); }]);
+    curl_exec($ch); $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $type = (string)curl_getinfo($ch, CURLINFO_CONTENT_TYPE); curl_close($ch);
+    return [$code, $type, $buf];
+}
+function ps_drive_list(string $folder, string $path, int $depth, array &$out): void {
+    [$code, , $html] = ps_drive_get('https://drive.google.com/embeddedfolderview?id=' . rawurlencode($folder) . '&hl=pt-BR', 3_000_000);
+    if ($code !== 200 || $html === '') return;
+    preg_match_all('~<div class="flip-entry" id="entry-([\w-]+)"[\s\S]*?<a href="([^"]+)"[\s\S]*?<div class="flip-entry-title">([^<]*)</div>~', $html, $m, PREG_SET_ORDER);
+    foreach ($m as $e) {
+        $id = $e[1]; $name = html_entity_decode($e[3], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        if (str_contains($e[2], '/folders/')) { if ($depth < 2 && count($out) < 120) ps_drive_list($id, $path === '' ? $name : "$path/$name", $depth + 1, $out); }
+        elseif (preg_match('/\.(jpe?g|png|webp|heic)$/i', $name)) $out[] = ['id' => $id, 'nome' => $name, 'pasta' => $path];
+    }
+}
+function ps_drive(array $b): never {
+    @set_time_limit(300);
+    $u = trim((string)($b['url'] ?? ''));
+    $folder = preg_match('~/folders/([\w-]{10,})~', $u, $m) ? $m[1] : (preg_match('~[?&]id=([\w-]{10,})~', $u, $m) && str_contains($u, 'folder') ? $m[1] : '');
+    $file = !$folder && (preg_match('~/file/d/([\w-]{10,})~', $u, $m) || preg_match('~[?&]id=([\w-]{10,})~', $u, $m)) ? $m[1] : '';
+    if (!$folder && !$file) out(['error' => 'Cole o link de uma pasta ou de um arquivo do Google Drive.'], 400);
+    $list = [];
+    if ($folder) { ps_drive_list($folder, '', 0, $list); if (!$list) out(['error' => 'Não achei imagens na pasta. Confira se ela está compartilhada como "Qualquer pessoa com o link" e se tem arquivos JPG ou PNG.'], 400); }
+    else $list[] = ['id' => $file, 'nome' => (string)($b['nome'] ?? 'arte.jpg'), 'pasta' => ''];
+    $list = array_slice($list, 0, 120);
+    $res = []; $errs = [];
+    foreach ($list as $it) {
+        [$code, $type, $raw] = ps_drive_get('https://drive.usercontent.google.com/download?id=' . rawurlencode($it['id']) . '&export=download&confirm=t');
+        if ($code !== 200 || strlen($raw) < 100 || str_starts_with(ltrim($raw), '<')) { $errs[] = $it['nome'] . ': não consegui baixar (confira o compartilhamento).'; continue; }
+        $info = @getimagesizefromstring($raw);
+        if (!$info) { $errs[] = $it['nome'] . ': não é uma imagem que eu consiga ler.'; continue; }
+        if ($info[2] !== IMAGETYPE_JPEG) {
+            if (!function_exists('imagecreatefromstring')) { $errs[] = $it['nome'] . ': converta para JPG.'; continue; }
+            $im = @imagecreatefromstring($raw); if (!$im) { $errs[] = $it['nome'] . ': não consegui converter para JPG.'; continue; }
+            $bg = imagecreatetruecolor(imagesx($im), imagesy($im)); imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255)); imagecopy($bg, $im, 0, 0, 0, 0, imagesx($im), imagesy($im));
+            ob_start(); imagejpeg($bg, null, 92); $raw = (string)ob_get_clean(); imagedestroy($im); imagedestroy($bg);
+        }
+        $f = bin2hex(random_bytes(16)) . '.jpg';
+        file_put_contents(ps_mdir() . '/' . $f, $raw, LOCK_EX);
+        $res[] = ['f' => $f, 'nome' => $it['nome'], 'pasta' => $it['pasta'], 'w' => (int)$info[0], 'h' => (int)$info[1]];
+    }
+    out(['arquivos' => $res, 'avisos' => $errs]);
 }
