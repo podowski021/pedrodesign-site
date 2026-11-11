@@ -55,7 +55,7 @@ function ps_status(): never {
     usort($cl, fn($a, $b) => strcmp($a['nome'], $b['nome']));
     if (empty($c['cronKey'])) { $c['cronKey'] = bin2hex(random_bytes(12)); ps_save_cfg($c); }
     out(['conectado' => !empty($c['token']), 'conta' => $c['conta'] ?? '', 'clientes' => $cl,
-        'cron' => ps_site() . '/painel/api.php?a=pcron&k=' . $c['cronKey'], 'ultimoCron' => (int)($c['ultimoCron'] ?? 0)]);
+        'cron' => ps_site() . '/painel/api.php?a=pcron&k=' . $c['cronKey'], 'cronCmd' => '/usr/bin/php ' . __DIR__ . '/cron.php', 'ultimoCron' => (int)($c['cronCli'] ?? 0)]);
 }
 function ps_connect(array $b): never {
     $t = preg_replace('/\s+/', '', (string)($b['token'] ?? ''));
@@ -154,7 +154,7 @@ function ps_list(): never {
     $d = jread(ps_file()); $o = array_values($d);
     usort($o, fn($a, $b) => $a['quando'] <=> $b['quando']);
     $c = ps_cfg();
-    out(['itens' => $o, 'ultimoCron' => (int)($c['ultimoCron'] ?? 0)]);
+    out(['itens' => $o, 'ultimoCron' => (int)($c['cronCli'] ?? 0)]);
 }
 function ps_del(array $b): never {
     $id = preg_replace('/[^a-f0-9]/', '', (string)($b['id'] ?? ''));

@@ -572,9 +572,18 @@ input,select,textarea,.ps-tm input,.tbl input{font-size:16px!important}
     </div>
 
     <div class="ps-card" id="psAutoBox" hidden>
-      <h3>Publicação automática</h3>
-      <p class="h">O painel publica sozinho quando alguém visita o seu site ou quando o painel está aberto. Para publicar no minuto exato, mesmo sem visitas, crie um cron na Hostinger: <b>hPanel → Avançado → Tarefas Cron</b>, a cada <b>5 minutos</b>, com este endereço:</p>
+      <h3>Publicação automática (cron da Hostinger)</h3>
+      <p class="h">Faça uma vez só. Assim os posts saem na hora certa mesmo com o painel fechado.</p>
+      <ol class="ps-steps">
+        <li>No <a href="https://hpanel.hostinger.com" target="_blank" rel="noopener">hPanel</a>, abra <b>Sites → pedrodesign.store → Gerenciar</b>.</li>
+        <li>No menu da esquerda, abra <b>Avançado → Tarefas Cron</b> (Cron Jobs).</li>
+        <li>Escolha <b>Personalizado</b> (Custom) e cole este comando:</li>
+      </ol>
       <div class="ps-row"><input id="psCronU" readonly><button type="button" class="mini" id="psCronC">Copiar</button></div>
+      <ol class="ps-steps" start="4">
+        <li>Em <b>frequência</b>, escolha <b>a cada 5 minutos</b> (ou escreva <code>*/5 * * * *</code>) e clique em <b>Salvar</b>.</li>
+        <li>Volte aqui em 5 minutos: a linha abaixo deve mostrar a hora da última conferência.</li>
+      </ol>
       <p class="h" id="psCronL"></p>
     </div>
 
@@ -1164,10 +1173,10 @@ $('#pjBody').addEventListener('click',async e=>{const b=e.target.closest('button
   function status(){return call('pstatus').then(function(j){loaded=true;clients=j.clientes||[];
     $('#psConn').hidden=j.conectado;$('#psOn').hidden=!j.conectado;
     $('#psAcc').textContent='Conectado'+(j.conta?' como '+j.conta:'')+' · '+clients.length+' cliente'+(clients.length===1?'':'s');
-    $('#psCronU').value=j.cron||'';cronLine(j.ultimoCron);
+    $('#psCronU').value=j.cronCmd||j.cron||'';cronLine(j.ultimoCron);
     drawCli();rematch();draw();if(j.conectado)loadQ();
   }).catch(function(){})}
-  function cronLine(t){$('#psCronL').textContent=t?'Última conferência automática: '+fmt(t):'Ainda não rodou nenhuma conferência automática.'}
+  function cronLine(t){var ok=t&&Date.now()/1000-t<900;$('#psCronL').innerHTML=t?(ok?'<b style="color:var(--green)">✓ Funcionando.</b> ':'<b style="color:var(--red)">Parado há mais de 15 minutos.</b> ')+'Última conferência: '+fmt(t):'Ainda não rodou nenhuma conferência automática.';var b=$('#psAuto');if(b)b.textContent=ok?'Publicação automática ✓':'Publicação automática'}
   window.__psLoad=function(){if(!loaded)status();else loadQ()};
 
   /* ---------- conexão e clientes ---------- */
