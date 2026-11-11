@@ -317,31 +317,38 @@ function ps_drive_list(string $folder, string $path, int $depth, array &$out): v
         elseif (preg_match('/\.(jpe?g|png|webp|heic)$/i', $name)) $out[] = ['id' => $id, 'nome' => $name, 'pasta' => $path];
     }
 }
+/* 1) lista a pasta (rápido); 2) o painel pede um arquivo por vez (evita estourar o tempo do servidor) */
 function ps_drive(array $b): never {
-    @set_time_limit(300);
+    @set_time_limit(120);
     $u = trim((string)($b['url'] ?? ''));
-    $folder = preg_match('~/folders/([\w-]{10,})~', $u, $m) ? $m[1] : (preg_match('~[?&]id=([\w-]{10,})~', $u, $m) && str_contains($u, 'folder') ? $m[1] : '');
+    $folder = preg_match('~/folders/([\w-]{10,})~', $u, $m) ? $m[1] : '';
     $file = !$folder && (preg_match('~/file/d/([\w-]{10,})~', $u, $m) || preg_match('~[?&]id=([\w-]{10,})~', $u, $m)) ? $m[1] : '';
     if (!$folder && !$file) out(['error' => 'Cole o link de uma pasta ou de um arquivo do Google Drive.'], 400);
     $list = [];
     if ($folder) { ps_drive_list($folder, '', 0, $list); if (!$list) out(['error' => 'Não achei imagens na pasta. Confira se ela está compartilhada como "Qualquer pessoa com o link" e se tem arquivos JPG ou PNG.'], 400); }
-    else $list[] = ['id' => $file, 'nome' => (string)($b['nome'] ?? 'arte.jpg'), 'pasta' => ''];
-    $list = array_slice($list, 0, 120);
-    $res = []; $errs = [];
-    foreach ($list as $it) {
-        [$code, $type, $raw] = ps_drive_get('https://drive.usercontent.google.com/download?id=' . rawurlencode($it['id']) . '&export=download&confirm=t');
-        if ($code !== 200 || strlen($raw) < 100 || str_starts_with(ltrim($raw), '<')) { $errs[] = $it['nome'] . ': não consegui baixar (confira o compartilhamento).'; continue; }
-        $info = @getimagesizefromstring($raw);
-        if (!$info) { $errs[] = $it['nome'] . ': não é uma imagem que eu consiga ler.'; continue; }
-        if ($info[2] !== IMAGETYPE_JPEG) {
-            if (!function_exists('imagecreatefromstring')) { $errs[] = $it['nome'] . ': converta para JPG.'; continue; }
-            $im = @imagecreatefromstring($raw); if (!$im) { $errs[] = $it['nome'] . ': não consegui converter para JPG.'; continue; }
-            $bg = imagecreatetruecolor(imagesx($im), imagesy($im)); imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255)); imagecopy($bg, $im, 0, 0, 0, 0, imagesx($im), imagesy($im));
-            ob_start(); imagejpeg($bg, null, 92); $raw = (string)ob_get_clean(); imagedestroy($im); imagedestroy($bg);
-        }
-        $f = bin2hex(random_bytes(16)) . '.jpg';
-        file_put_contents(ps_mdir() . '/' . $f, $raw, LOCK_EX);
-        $res[] = ['f' => $f, 'nome' => $it['nome'], 'pasta' => $it['pasta'], 'w' => (int)$info[0], 'h' => (int)$info[1]];
+    else $list[] = ['id' => $file, 'nome' => 'arte.jpg', 'pasta' => ''];
+    out(['lista' => array_slice($list, 0, 150)]);
+}
+function ps_drive_file(array $b): never {
+    @set_time_limit(90); @ini_set('memory_limit', '512M');
+    $id = preg_replace('/[^\w-]/', '', (string)($b['id'] ?? '')); $nome = mb_substr((string)($b['nome'] ?? 'arte'), 0, 120);
+    if (strlen($id) < 10) out(['error' => 'Arquivo inválido'], 400);
+    [$code, , $raw] = ps_drive_get('https://drive.usercontent.google.com/download?id=' . rawurlencode($id) . '&export=download&confirm=t', 40_000_000);
+    if ($code !== 200 || strlen($raw) < 100 || str_starts_with(ltrim($raw), '<')) out(['error' => $nome . ': não consegui baixar (confira o compartilhamento).'], 400);
+    $info = @getimagesizefromstring($raw);
+    if (!$info) out(['error' => $nome . ': não é uma imagem que eu consiga ler.'], 400);
+    [$w, $h] = [(int)$info[0], (int)$info[1]];
+    /* converte para JPG e reduz para no máximo 1440 de largura (o Instagram não usa mais que isso) */
+    if ($info[2] !== IMAGETYPE_JPEG || $w > 1440 || strlen($raw) > 7_000_000) {
+        if (!function_exists('imagecreatefromstring')) out(['error' => $nome . ': converta para JPG.'], 400);
+        $im = @imagecreatefromstring($raw); unset($raw);
+        if (!$im) out(['error' => $nome . ': não consegui converter para JPG.'], 400);
+        $nw = min($w, 1440); $nh = (int)round($h * $nw / $w);
+        $bg = imagecreatetruecolor($nw, $nh); imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+        imagecopyresampled($bg, $im, 0, 0, 0, 0, $nw, $nh, $w, $h); imagedestroy($im);
+        ob_start(); imagejpeg($bg, null, 90); $raw = (string)ob_get_clean(); imagedestroy($bg);
     }
-    out(['arquivos' => $res, 'avisos' => $errs]);
+    $f = bin2hex(random_bytes(16)) . '.jpg';
+    file_put_contents(ps_mdir() . '/' . $f, $raw, LOCK_EX);
+    out(['f' => $f, 'w' => $w, 'h' => $h]);
 }

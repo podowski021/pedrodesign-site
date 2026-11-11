@@ -211,6 +211,7 @@ if ($a === 'psync') ps_sync();
 if ($a === 'pclient') ps_client(body());
 if ($a === 'pup') ps_upload(body());
 if ($a === 'pdrive') ps_drive(body());
+if ($a === 'pdrivef') ps_drive_file(body());
 if ($a === 'padd') ps_add(body());
 if ($a === 'plist') ps_list();
 if ($a === 'pdel') ps_del(body());
