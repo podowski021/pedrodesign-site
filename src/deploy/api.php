@@ -34,7 +34,7 @@ function data_dir(): string {
 function out($v, int $code = 200): never { http_response_code($code); echo json_encode($v, JSON_UNESCAPED_UNICODE); exit; }
 function body(): array {
     $raw = file_get_contents('php://input') ?: '';
-    if (strlen($raw) > (($_GET['a'] ?? '') === 'pup' ? 12_000_000 : 8_000_000)) out(['error' => 'Muito grande'], 413);
+    if (strlen($raw) > 8_000_000) out(['error' => 'Muito grande'], 413);
     $j = json_decode($raw, true);
     return is_array($j) ? $j : [];
 }
@@ -132,17 +132,12 @@ $dir = data_dir();
 $authFile = "$dir/auth.json";
 $a = $_GET['a'] ?? '';
 require __DIR__ . '/analytics.php';
-require __DIR__ . '/posts.php';
-/* o verificador saiu do site: apaga a chave do Google que ficou guardada */
+/* o verificador e o agendador de posts saíram do site: apaga a chave do Google, o token da Meta e as artes que ficaram guardados */
 if (is_file(data_dir() . '/ia.json')) @unlink(data_dir() . '/ia.json');
-
-/* ---------- público: artes dos posts (a Meta baixa por aqui) e cron dos posts ---------- */
-if ($a === 'pm') ps_media();
-if ($a === 'pcron') { $k = (string)($_GET['k'] ?? ''); $c = ps_cfg(); if ($k === '' || !hash_equals((string)($c['cronKey'] ?? ''), $k)) out(['error' => 'Chave'], 403); out(ps_run()); }
+foreach (['posts-config.json', 'posts.json', 'posts-proximo.txt', 'posts.lock'] as $f) if (is_file(data_dir() . "/$f")) @unlink(data_dir() . "/$f");
+if (is_dir(data_dir() . '/posts-midia')) { foreach (glob(data_dir() . '/posts-midia/*') ?: [] as $f) @unlink($f); @rmdir(data_dir() . '/posts-midia'); }
 
 /* ---------- público: visitas do site ---------- */
-/* cada visita também confere se há post na hora de sair (funciona mesmo sem o cron da Hostinger) */
-if ($a === 't' && ps_due()) register_shutdown_function(function () { if (function_exists('fastcgi_finish_request')) @fastcgi_finish_request(); ps_run(); });
 if ($a === 't') { if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Método'], 405); an_track(); }
 $COLS = ['propostas', 'financeiro', 'contatos', 'projetos', 'config'];
 
@@ -204,20 +199,6 @@ if (!$logged) out(['error' => 'Faça login'], 401);
 /* ---------- visitas (painel) ---------- */
 if ($a === 'visitas') an_stats(body());
 
-/* ---------- agendador de posts ---------- */
-if ($a === 'pstatus') ps_status();
-if ($a === 'pconnect') ps_connect(body());
-if ($a === 'psync') ps_sync();
-if ($a === 'pclient') ps_client(body());
-if ($a === 'pup') ps_upload(body());
-if ($a === 'pdrive') ps_drive(body());
-if ($a === 'pdrivef') ps_drive_file(body());
-if ($a === 'padd') ps_add(body());
-if ($a === 'plist') ps_list();
-if ($a === 'pdel') ps_del(body());
-if ($a === 'pedit') ps_edit(body());
-if ($a === 'pverify') ps_verify(body());
-if ($a === 'prun') out(ps_run());
 
 
 /* ---------- e-mail ---------- */
