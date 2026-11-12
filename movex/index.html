@@ -65,7 +65,7 @@ em{font-style:italic}
 .hero{position:relative;overflow:hidden;padding-block:150px 96px;isolation:isolate}
 .hero{background:radial-gradient(60% 70% at 78% 30%,rgba(61,134,255,.35),transparent 70%),radial-gradient(40% 50% at 20% 90%,rgba(102,179,255,.18),transparent 70%),var(--navy);color:var(--on-navy)}
 .hero-bg{position:absolute;inset:0;z-index:-4;overflow:hidden}
-.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(90deg,rgba(9,18,43,.88) 0%,rgba(9,18,43,.62) 42%,rgba(9,18,43,.18) 75%,rgba(9,18,43,.05) 100%),linear-gradient(180deg,rgba(9,18,43,.35) 0%,transparent 22%)}
+.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(90deg,rgba(9,18,43,.92) 0%,rgba(9,18,43,.75) 45%,rgba(9,18,43,.45) 100%)}
 .grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
 @keyframes drift{to{background-position:56px 56px}}
 
@@ -91,7 +91,7 @@ em{font-style:italic}
 .orbit::after{content:"";position:absolute;top:50%;left:-5px;width:9px;height:9px;border-radius:50%;background:var(--electric);box-shadow:0 0 12px var(--electric)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hud{position:relative;background:linear-gradient(160deg,rgba(13,28,69,.82),rgba(9,18,43,.9) 60%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--on-navy);border-radius:22px;padding:24px;box-shadow:0 40px 80px -30px rgba(9,18,43,.55),inset 0 0 0 1px rgba(127,211,255,.12);overflow:hidden}
-.hud::before{content:"";position:absolute;left:0;right:0;height:80px;top:-80px;background:linear-gradient(transparent,rgba(127,211,255,.08));animation:scan 5s ease-in-out infinite}
+.hud::before{display:none;content:"";position:absolute;left:0;right:0;height:80px;top:-80px;background:linear-gradient(transparent,rgba(127,211,255,.08));animation:scan 5s ease-in-out infinite}
 @keyframes scan{to{top:110%}}
 .corner{position:absolute;width:16px;height:16px;border-color:var(--cyan);opacity:.7}
 .c1{top:10px;left:10px;border-top:1px solid;border-left:1px solid}.c2{top:10px;right:10px;border-top:1px solid;border-right:1px solid}
@@ -296,7 +296,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .funnel{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
 .funnel li{display:flex;justify-content:center}
 .fn-bar{position:relative;display:flex;align-items:center;gap:12px;width:var(--w);min-width:0;height:44px;border-radius:12px;padding:0 14px;background:linear-gradient(90deg,rgba(61,134,255,.38),rgba(61,134,255,.14));border:1px solid rgba(127,211,255,.22);overflow:hidden}
-.fn-bar i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(127,211,255,.32),transparent);transform:translateX(-100%);animation:fnflow 3s ease-in-out infinite}
+.fn-bar i{display:none}
 .funnel li:nth-child(2) i{animation-delay:.35s}.funnel li:nth-child(3) i{animation-delay:.7s}.funnel li:nth-child(4) i{animation-delay:1.05s}
 @keyframes fnflow{60%,100%{transform:translateX(100%)}}
 .fn-k{position:relative;font-size:10.5px;color:var(--cyan)}
@@ -471,9 +471,8 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 <main id="topo">
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" data-animated-gradient data-preset="Prism" data-color1="#09122b" aria-hidden="true"></div>
+    <div class="hero-bg" data-animated-gradient data-preset="Prism" data-color1="#09122b" data-speed="8" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
-    <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
         <span class="pill-tag">Implementação</span>
@@ -492,8 +491,6 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
       </div>
 
       <div class="hud-zone" aria-label="Como o Funil Start funciona">
-        <div class="orbit" aria-hidden="true"></div>
-        <div class="orbit o2" aria-hidden="true"></div>
         <div class="hud">
           <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
           <div class="hud-top mono"><span>FUNIL START // EM OPERAÇÃO</span><span class="live"><b></b>ATIVO</span></div>
@@ -861,9 +858,9 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   function tick(){
     var q = qs[qi];
     if (del) { ci--; if (ci <= 0) { del = false; qi = (qi + 1) % qs.length; } }
-    else { ci++; if (ci >= qs[qi].length) { del = true; el.textContent = qs[qi]; return setTimeout(tick, 2200); } }
+    else { ci++; if (ci >= qs[qi].length) { del = true; el.textContent = qs[qi]; return setTimeout(tick, 3500); } }
     el.textContent = (del ? q : qs[qi]).slice(0, Math.max(ci, 0));
-    setTimeout(tick, del ? 35 : 70);
+    setTimeout(tick, del ? 45 : 95);
   }
   setTimeout(tick, 2600);
 })();
