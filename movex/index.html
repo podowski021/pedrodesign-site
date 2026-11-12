@@ -555,6 +555,38 @@ section{position:relative;scroll-margin-top:84px}
 
 
 
+
+/* Prévia do Google no topo */
+.gx{position:relative;padding:18px;border-radius:24px;background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 40px 80px -30px rgba(0,0,0,.7)}
+.gx-search{display:flex;align-items:center;gap:12px;height:50px;padding:0 20px;border-radius:999px;background:#fff;color:var(--ink);font-size:15px}
+.gx-search svg{width:18px;height:18px;color:#7a869e;flex:none}
+.gx-search .q{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.gx-res{margin-top:12px;padding:18px 20px;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 16px 40px -20px rgba(11,79,216,.7)}
+.gx-meta{display:flex;align-items:center;gap:10px}
+.gx-fav{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;flex:none}
+.gx-meta>span:nth-child(2){min-width:0;line-height:1.2}
+.gx-meta b{display:block;font-size:13px;font-weight:600}
+.gx-meta small{display:block;font-size:11.5px;color:#6b7690}
+.gx-spon{margin-left:auto;font-size:11px;font-weight:600;color:#1f6b3a;background:#e6f6ec;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.gx-title{margin-top:12px;font-family:var(--display);font-size:18px;font-weight:600;color:#1a46c4;letter-spacing:-.01em;line-height:1.25}
+.gx-rate{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:6px;font-size:12.5px;color:#5a6580}
+.gx-stars{display:inline-flex;gap:1px}
+.gx-stars svg{width:13px;height:13px;fill:#f5b800}
+.gx-acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.gx-acts span{height:32px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid #dde3ee;font-size:12.5px;font-weight:600;color:#2a3550}
+.gx-acts .gx-wa{background:#25d366;border-color:#25d366;color:#fff}
+.gx-ghost{margin-top:10px;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.gx-ghost i{display:block;height:8px;border-radius:999px;background:rgba(255,255,255,.12)}
+.gx-ghost i:nth-child(1){width:34%}.gx-ghost i:nth-child(2){width:72%;margin-top:9px}.gx-ghost i:nth-child(3){width:56%;margin-top:7px;opacity:.7}
+.gx-ghost+.gx-ghost{opacity:.6}
+.gx-toast{position:absolute;right:-18px;bottom:-22px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 24px 50px -18px rgba(0,0,0,.6);animation:gxToast 7s cubic-bezier(.22,1,.36,1) 2.5s infinite both}
+.gx-toast b{display:block;font-size:13px;font-weight:600}
+.gx-toast small{display:block;font-size:11.5px;color:#6b7690}
+.gx-dot{width:10px;height:10px;border-radius:50%;background:#25d366;box-shadow:0 0 0 4px rgba(37,211,102,.18);flex:none}
+@keyframes gxToast{0%{opacity:0;transform:translateY(12px) scale(.96)}8%,72%{opacity:1;transform:none}82%,100%{opacity:0;transform:translateY(8px) scale(.98)}}
+@media (max-width:560px){.gx{padding:12px;border-radius:20px}.gx-res{padding:16px}.gx-title{font-size:16px}.gx-toast{right:-4px;bottom:-26px;padding:10px 14px}}
+@media (prefers-reduced-motion:reduce){.gx-toast{animation:none;opacity:1}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -659,22 +691,21 @@ section{position:relative;scroll-margin-top:84px}
         </div>
       </div>
 
-      <div class="hud-zone" aria-label="Como o Funil Start funciona">
-        <div class="hud">
-          <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-          <div class="hud-top mono"><span>FUNIL START // EM OPERAÇÃO</span><span class="live"><b></b>ATIVO</span></div>
-          <div class="search search-top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <div class="hud-zone" aria-label="Exemplo: sua empresa em primeiro no Google">
+        <div class="gx">
+          <div class="gx-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             <span class="q"><span id="typed">dentista em cascavel</span><span class="caret"></span></span>
-            <span class="rank">1º · SUA EMPRESA</span>
           </div>
-          <ol class="funnel" aria-label="Etapas do funil">
-            <li style="--w:100%"><span class="fn-bar"><i></i><span class="fn-k mono">01</span><b>Cliente procura no Google</b></span></li>
-            <li style="--w:90%"><span class="fn-bar"><i></i><span class="fn-k mono">02</span><b>Sua empresa aparece primeiro</b></span></li>
-            <li style="--w:80%"><span class="fn-bar"><i></i><span class="fn-k mono">03</span><b>Visita o perfil ou a página</b></span></li>
-            <li style="--w:70%" class="fn-last"><span class="fn-bar"><i></i><span class="fn-k mono">04</span><b>Chama no WhatsApp</b></span></li>
-          </ol>
-          <div class="hud-foot mono"><span>Google Meu Negócio</span><span>+</span><span>Google Ads</span><span>+</span><span>Página</span></div>
+          <div class="gx-res">
+            <div class="gx-meta"><span class="gx-fav">SE</span><span><b>Sua Empresa</b><small>suaempresa.com.br</small></span><span class="gx-spon">Patrocinado</span></div>
+            <p class="gx-title">Sua Empresa · Atendimento na sua região</p>
+            <div class="gx-rate"><span class="gx-stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg></span><span>Aberto agora · Cascavel, PR</span></div>
+            <div class="gx-acts"><span>Site</span><span>Rotas</span><span class="gx-wa">WhatsApp</span></div>
+          </div>
+          <div class="gx-ghost" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="gx-ghost" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="gx-toast" aria-hidden="true"><span class="gx-dot"></span><span><b>Novo lead no WhatsApp</b><small>veio da busca no Google · agora</small></span></div>
         </div>
       </div>
     </div>
