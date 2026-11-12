@@ -68,9 +68,9 @@
     box.appendChild(cv); box.setAttribute("data-gl", "on");
 
     var reduce = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
-    var raf = 0, visible = true, offset = 40;
+    var raf = 0, visible = true, offset = 0;
     function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.max(1, Math.round(box.clientWidth * dpr)); cv.height = Math.max(1, Math.round(box.clientHeight * dpr));
       gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(L.res, cv.width, cv.height);
       if (!raf) draw(performance.now());
