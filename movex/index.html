@@ -402,32 +402,51 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .tl-note{margin-top:22px;color:var(--muted)}
 .tl-note strong{color:var(--ink)}
 
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;margin:0 auto}
-.plan{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;padding:34px;background:#fff;min-width:0}
-.plan-tag{color:var(--blue);font-size:11px}
-.plan h3{font-size:clamp(24px,2.4vw,30px);font-weight:700;margin-top:10px}
-.plan-desc{color:var(--muted);font-size:15px;margin-top:12px}
-.plan-desc strong{color:var(--ink)}
-.price-big{display:flex;align-items:flex-start;margin-top:26px;font-family:var(--display);font-style:italic;font-weight:800;color:#0fb36d}
-.price-big .px{align-self:center;font-size:24px;font-weight:600;color:var(--ink);margin-right:12px}
-.price-big .cur{font-size:24px;margin-top:6px;margin-right:2px}
-.price-big .num{font-size:clamp(68px,8vw,104px);line-height:.88;letter-spacing:-.045em}
-.price-big .cents{align-self:flex-end;font-size:26px;margin-bottom:6px}
-.avista{font-style:italic;color:var(--muted);margin-top:8px}
-.avista strong{color:var(--ink)}
-.checks{list-style:none;padding:0;margin:26px 0 30px;display:grid;gap:11px}
-.checks li{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
-.checks li::before{content:"";width:21px;height:21px;border-radius:50%;flex:none;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
-.checks li.off{color:#9aa5bd;text-decoration:line-through}
-.checks li.off::before{background-color:#dbe2ef}
-.plan-btn{margin-top:auto;width:100%}
-.plan-pro{background:linear-gradient(160deg,var(--navy-2),var(--navy));color:var(--on-navy);border-color:transparent;box-shadow:10px 10px 0 var(--blue)}
-.plan-pro .plan-tag{color:var(--cyan)}
-.plan-pro .plan-desc,.plan-pro .avista{color:var(--on-navy-muted)}
-.plan-pro .plan-desc strong,.plan-pro .avista strong,.plan-pro .price-big .px{color:#fff}
-.plan-pro .price-big{color:#3ee49a}
-.plan-pro .checks li::before{background-color:var(--electric)}
-.badge{position:absolute;top:-13px;right:26px;background:var(--ok);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;box-shadow:0 8px 20px -8px rgba(20,194,122,.8)}
+/* Selos de parceiro */
+.seals{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.seals img{height:72px;width:auto;border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 14px 30px -14px rgba(0,0,0,.7);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.seals img:hover{transform:translateY(-2px)}
+@media (max-width:560px){.seals img{height:60px}}
+/* Planos (pricing-02 adaptado) */
+@property --pr-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.pr-head{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;margin-bottom:clamp(32px,5vw,52px)}
+.pr-badge{display:inline-flex;align-items:center;height:28px;padding:0 13px;border:1px solid var(--line);border-radius:999px;font-size:14px;color:var(--ink);background:#fff}
+.pr-head h2{font-size:clamp(30px,4.6vw,50px);font-weight:600;max-width:17ch}
+.pr-head h2 em{color:var(--blue)}
+.pr-grid{display:flex;gap:24px;align-items:stretch;max-width:1000px;margin:0 auto}
+.pr-item{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;transition:opacity .6s ease-in-out,transform .6s ease-in-out;transition-delay:calc(var(--i) * .25s)}
+.pricing.is-pending .pr-item{opacity:0;transform:translateX(-60px)}
+.pr-item.is-featured{z-index:1;transform:scale(1.02)}
+.pricing.is-pending .pr-item.is-featured{transform:translateX(-60px) scale(1.02)}
+.pr-ring{position:absolute;inset:-2px;border-radius:18px;overflow:hidden;pointer-events:none}
+.pr-spin{position:absolute;inset:-100%;background:conic-gradient(from var(--pr-a),#3b82f6,#7fd3ff,#1e40af,#93c5fd,#3b82f6);filter:blur(4px);animation:prSpin 2.6s linear infinite}
+@keyframes prSpin{to{--pr-a:360deg}}
+.pr-mask{position:absolute;inset:2px;border-radius:16px;background:#fff}
+.pr-card{position:relative;flex:1;display:flex;flex-direction:column;gap:0;padding:32px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(10,21,48,.04)}
+.is-featured .pr-card{border-color:transparent;background:transparent;box-shadow:0 30px 60px -36px rgba(11,79,216,.45)}
+.pr-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pr-top h3{font-size:24px;font-weight:600;color:var(--blue);letter-spacing:-.02em}
+.pr-rec{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:var(--blue);color:#fff;font-size:14px;font-weight:600}
+.pr-rec svg{width:16px;height:16px}
+.pr-desc{color:var(--muted);font-size:16px;margin-top:12px}
+.pr-price{display:flex;align-items:baseline;gap:8px;margin-top:32px}
+.pr-x{font-size:16px;color:var(--muted)}
+.pr-num{font-family:var(--display);font-size:clamp(40px,5vw,50px);font-weight:600;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.pr-avista{color:var(--muted);font-size:15px;margin-top:8px}
+.pr-avista strong{color:var(--ink)}
+.pr-sep{border:0;height:1px;background:var(--line);margin:32px 0}
+.pr-list{list-style:none;margin:0 0 32px;padding:0;display:flex;flex-direction:column;gap:16px;flex:1}
+.pr-list li{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--muted)}
+.pr-ck{width:16px;height:16px;flex:none;color:var(--blue)}
+.pr-list li.off{color:#a7b1c8;text-decoration:line-through}
+.pr-list li.off .pr-ck{color:#c3cbdc}
+.pr-btn{display:flex;align-items:center;justify-content:center;width:100%;height:48px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.pr-btn-outline{border:1px solid var(--line);color:var(--ink);background:#fff}
+.pr-btn-outline:hover{background:var(--mist);border-color:#c6d2ea}
+.pr-btn-solid{background:var(--blue);color:#fff}
+.pr-btn-solid:hover{background:#0a45bf}
+@media (max-width:980px){.pr-grid{flex-direction:column;max-width:560px}.pr-item.is-featured,.pricing.is-pending .pr-item.is-featured{transform:none}.pricing.is-pending .pr-item.is-featured{transform:translateX(-60px)}}
+@media (max-width:560px){.pr-card{padding:26px 22px}}
 
 
 /* Faixa de clientes (marquee) */
@@ -506,7 +525,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 
 /* Responsivo */
 @media (max-width:980px){
-  .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid,.plans{grid-template-columns:minmax(0,1fr)}
+  .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
   .incl{grid-template-columns:1fr 1fr}
   .impl-grid{grid-template-columns:1fr;max-width:560px}
   .tl{flex-direction:column;gap:10px}
@@ -544,7 +563,6 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .steps,.live-links,.contacts,.diag .two,.incl{grid-template-columns:1fr}
   .seg{width:100%}
   .seg button{flex:1;padding:10px 8px;font-size:13px}
-  .plan{padding:26px 22px}
   .fn-bar b{font-size:12px}
   .diag{padding:22px;box-shadow:6px 6px 0 var(--blue)}
   .clients-panel{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -605,9 +623,9 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="#planos">Ver os planos</a>
         </div>
-        <div class="partners" aria-label="Certificações">
-          <span class="chip"><i></i>Google Partner</span>
-          <span class="chip"><i></i>Meta Business Partner</span>
+        <div class="seals" aria-label="Certificações">
+          <img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
+          <img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
         </div>
       </div>
 
@@ -787,44 +805,40 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   </section>
 
   <!-- PLANOS -->
-  <section class="sec" id="planos" aria-labelledby="t-planos">
+  <section class="sec pricing" id="planos" aria-labelledby="t-planos">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="mono tag">Investimento estratégico</span>
-          <h2 id="t-planos">Escolha como <em>começar.</em></h2>
-        </div>
-        <p>As duas versões incluem Google Meu Negócio, campanha no Google Ads e 2 meses de acompanhamento.</p>
+      <div class="pr-head">
+        <span class="pr-badge">Investimento</span>
+        <h2 id="t-planos">Escolha o plano que <em>combina com o seu momento</em></h2>
       </div>
-      <div class="plans">
-        <article class="plan">
-          <span class="plan-tag mono">Sem página de conversão</span>
-          <h3>Presença local</h3>
-          <p class="plan-desc">Para negócios que já têm uma página própria ou querem concentrar o investimento no fluxo direto de clientes pelo <strong>Google Meu Negócio.</strong></p>
-          <div class="price-big"><span class="px">10x</span><span class="cur">R$</span><span class="num">250</span><span class="cents">,00</span></div>
-          <p class="avista">ou <strong>R$ 1.997</strong> à vista</p>
-          <ul class="checks">
-            <li>Implementação Google Meu Negócio</li>
-            <li>Campanha do Google Ads</li>
-            <li>Acompanhamento de 2 meses</li>
-            <li class="off">Página de conversão</li>
-          </ul>
-          <a class="btn btn-ghost plan-btn" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20sem%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20250%29." target="_blank" rel="noopener">Quero este plano</a>
+      <div class="pr-grid">
+        <article class="pr-item" style="--i:0">
+          <div class="pr-card">
+            <div class="pr-top">
+              <h3>Presença local</h3>
+            </div>
+            <p class="pr-desc">Para negócios que já têm uma página própria ou querem concentrar o investimento no fluxo direto de clientes pelo Google Meu Negócio.</p>
+            <div class="pr-price"><span class="pr-x">10x</span><span class="pr-num">R$ 250</span></div>
+            <p class="pr-avista">ou <strong>R$ 1.997</strong> à vista</p>
+            <hr class="pr-sep">
+            <ul class="pr-list"><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Implementação Google Meu Negócio</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Campanha do Google Ads</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Acompanhamento e suporte de 2 meses</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Planejamento estratégico e know-how</span></li><li class="off"><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg><span>Página de conversão</span></li></ul>
+            <a class="pr-btn pr-btn-outline" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20sem%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20250%29." target="_blank" rel="noopener">Quero este plano</a>
+          </div>
         </article>
-        <article class="plan plan-pro">
-          <span class="badge mono">Autoridade máxima</span>
-          <span class="plan-tag mono">Solução completa</span>
-          <h3>Posicionamento completo</h3>
-          <p class="plan-desc">A solução de ponta a ponta para quem quer não apenas se posicionar, mas <strong>dominar o mercado</strong>, aproveitando ao máximo o orçamento de marketing.</p>
-          <div class="price-big"><span class="px">10x</span><span class="cur">R$</span><span class="num">400</span><span class="cents">,00</span></div>
-          <p class="avista">ou <strong>R$ 3.497</strong> à vista</p>
-          <ul class="checks">
-            <li>Implementação Google Meu Negócio</li>
-            <li>Campanha do Google Ads</li>
-            <li>Acompanhamento de 2 meses</li>
-            <li>Página de conversão</li>
-          </ul>
-          <a class="btn btn-primary plan-btn" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20completo%2C%20com%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20400%29." target="_blank" rel="noopener">Quero o Funil Start completo</a>
+        <article class="pr-item is-featured" style="--i:1">
+          <div class="pr-ring" aria-hidden="true"><span class="pr-spin"></span><span class="pr-mask"></span></div>
+          <div class="pr-card">
+            <div class="pr-top">
+              <h3>Posicionamento completo</h3>
+              <span class="pr-rec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Recomendado</span>
+            </div>
+            <p class="pr-desc">A solução de ponta a ponta para quem quer não apenas se posicionar, mas dominar o mercado, aproveitando ao máximo o orçamento de marketing.</p>
+            <div class="pr-price"><span class="pr-x">10x</span><span class="pr-num">R$ 400</span></div>
+            <p class="pr-avista">ou <strong>R$ 3.497</strong> à vista</p>
+            <hr class="pr-sep">
+            <ul class="pr-list"><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tudo do plano Presença local</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Página de conversão</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Estrutura limpa, rápida e persuasiva</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Foco em transformar o clique em lead</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Autoridade máxima na sua região</span></li></ul>
+            <a class="pr-btn pr-btn-solid" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20completo%2C%20com%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20400%29." target="_blank" rel="noopener">Quero o Funil Start completo</a>
+          </div>
         </article>
       </div>
     </div>
@@ -1061,6 +1075,16 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   ch.addEventListener('pointermove', function(e){ var r = ch.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W, best = 0; pts.forEach(function(p, i){ if (Math.abs(p[0] - x) < Math.abs(pts[best][0] - x)) best = i; }); show(best, true); });
   ch.addEventListener('pointerleave', function(){ show(pts.length - 1, false); });
   if (!reduce && 'IntersectionObserver' in window && ch.getBoundingClientRect().top > innerHeight) { ln.classList.add('is-pending'); onView(ch, .3, function(){ requestAnimationFrame(function(){ ln.classList.remove('is-pending'); }); }); }
+})();
+</script>
+<script>
+(function(){
+  var sec = document.querySelector('.pricing'); if (!sec) return;
+  if (!('IntersectionObserver' in window) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  if (sec.getBoundingClientRect().top < innerHeight) return;
+  sec.classList.add('is-pending');
+  var io = new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })) { sec.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .15});
+  io.observe(sec);
 })();
 </script>
 </body>
