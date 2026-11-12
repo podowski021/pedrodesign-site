@@ -95,7 +95,7 @@ em{font-style:italic}
 .hero{position:relative;overflow:hidden;padding-block:150px 72px;isolation:isolate}
 .hero{background:radial-gradient(60% 70% at 78% 30%,rgba(61,134,255,.35),transparent 70%),radial-gradient(40% 50% at 20% 90%,rgba(102,179,255,.18),transparent 70%),var(--navy);color:var(--on-navy)}
 .hero-bg{position:absolute;inset:0;z-index:-4;overflow:hidden}
-.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(180deg,transparent 62%,#09122b 100%),linear-gradient(90deg,rgba(9,18,43,.92) 0%,rgba(9,18,43,.75) 45%,rgba(9,18,43,.45) 100%)}
+.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(180deg,transparent 60%,#09122b 100%),linear-gradient(90deg,rgba(6,12,34,.78) 0%,rgba(6,12,34,.5) 42%,rgba(6,12,34,.12) 75%,transparent 100%)}
 .grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
 @keyframes drift{to{background-position:56px 56px}}
 
@@ -535,7 +535,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 <main id="topo">
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" data-animated-gradient data-preset="Prism" data-color1="#09122b" data-speed="8" aria-hidden="true"></div>
+    <div class="hero-bg" data-velaris data-bg="#060c22" data-colors="#8fc0ff,#3d86ff,#0b4fd8,#020617" data-speed="1.4" data-grain=".35" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
@@ -843,7 +843,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
 </a>
 
-<script src="assets/hero-gradient-v1.js"></script>
+<script src="assets/velaris-v1.js"></script>
 <script>
 (function(){
   var navEl = document.getElementById('hnav'), header = document.querySelector('.site-header');
