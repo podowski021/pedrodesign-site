@@ -75,10 +75,10 @@ em{font-style:italic}
 .site-header .nimbus-nav[data-tone="dark"]{--n-tint:rgba(10,18,40,.42)}
 .hdr-cta{height:54px;border-radius:999px;padding:0 22px;font-size:14px}
 /* Hero */
-.hero{position:relative;overflow:hidden;padding-block:150px 96px;isolation:isolate}
+.hero{position:relative;overflow:hidden;padding-block:150px 72px;isolation:isolate}
 .hero{background:radial-gradient(60% 70% at 78% 30%,rgba(61,134,255,.35),transparent 70%),radial-gradient(40% 50% at 20% 90%,rgba(102,179,255,.18),transparent 70%),var(--navy);color:var(--on-navy)}
 .hero-bg{position:absolute;inset:0;z-index:-4;overflow:hidden}
-.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(90deg,rgba(9,18,43,.92) 0%,rgba(9,18,43,.75) 45%,rgba(9,18,43,.45) 100%)}
+.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(180deg,transparent 62%,#09122b 100%),linear-gradient(90deg,rgba(9,18,43,.92) 0%,rgba(9,18,43,.75) 45%,rgba(9,18,43,.45) 100%)}
 .grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
 @keyframes drift{to{background-position:56px 56px}}
 
@@ -405,6 +405,24 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .plan-pro .checks li::before{background-color:var(--electric)}
 .badge{position:absolute;top:-13px;right:26px;background:var(--ok);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;box-shadow:0 8px 20px -8px rgba(20,194,122,.8)}
 
+
+/* Faixa de clientes (marquee) */
+.clients{background:var(--navy);padding-block:8px 72px;border-bottom:1px solid rgba(127,211,255,.08);overflow:hidden}
+.clients-head{display:flex;align-items:center;gap:20px;justify-content:center}
+.cl-line{flex:1;max-width:220px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,211,255,.35))}
+.cl-line:last-child{background:linear-gradient(90deg,rgba(127,211,255,.35),transparent)}
+.clients-head h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--on-navy-muted);text-align:center;margin:0;white-space:nowrap}
+.clients-head h2 em{font-style:normal;color:#fff}
+.marquee{position:relative;margin-top:40px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%)}
+.mq-track{display:flex;align-items:center;width:max-content;list-style:none;margin:0;padding:0;animation:mq 70s linear infinite;will-change:transform}
+.mq-track li{flex:none;display:flex;align-items:center;justify-content:center;padding:0 clamp(28px,3.6vw,52px);height:72px}
+.mq-track img{width:auto;max-width:none;display:block;opacity:.72;filter:saturate(.85);transition:opacity .5s ease,filter .5s ease,transform .5s ease}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track li:hover img{opacity:1;filter:none;transform:scale(1.06)}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (max-width:560px){.clients{padding-block:4px 52px}.marquee{margin-top:28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}.mq-track{animation-duration:55s}.mq-track li{height:60px}.mq-track img{transform:scale(.82)}.mq-track li:hover img{transform:scale(.88)}.cl-line{max-width:40px}.clients-head h2{font-size:10.5px;letter-spacing:.14em}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.mq-track{animation:none}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid,.plans{grid-template-columns:minmax(0,1fr)}
@@ -433,7 +451,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .hero{padding-block:112px 64px}
   .sec{padding-block:68px}
   .hud-zone{padding:8px}
-  .hero-shade{background:linear-gradient(180deg,rgba(9,18,43,.6) 0%,rgba(9,18,43,.78) 55%,rgba(9,18,43,.55) 100%)}
+  .hero-shade{background:linear-gradient(180deg,rgba(9,18,43,.6) 0%,rgba(9,18,43,.78) 55%,#09122b 100%)}
   .orbit{display:none}
   .metrics{grid-template-columns:1fr}
   .metric{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
@@ -526,14 +544,13 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 
   <!-- CLIENTES -->
   <section class="clients" aria-labelledby="t-clientes">
-    <div class="wrap">
-      <div class="clients-top">
-        <h2 id="t-clientes">Marcas <em>impulsionadas</em></h2>
-        <span class="mono" style="color:var(--muted)">Alguns dos nossos cases de sucesso</span>
-      </div>
-      <div class="clients-panel">
-        <img src="assets/movex-clientes-v1.webp" alt="Logos dos clientes: Capanema Escapamentos, Corazzo, Morada Premium, Deputado Batatinha, Recanto Catarina, EJR Decor, Meu Pet, Motion Elevadores, Meu Viver, Power Diesel e General Diesel" width="1600" height="381">
-      </div>
+    <div class="wrap clients-head">
+      <span class="cl-line" aria-hidden="true"></span>
+      <h2 id="t-clientes" class="mono">Empresas impulsionadas pela <em>Movex</em></h2>
+      <span class="cl-line" aria-hidden="true"></span>
+    </div>
+    <div class="marquee">
+      <ul class="mq-track"><li><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" style="height:41px" loading="eager" decoding="async"></li><li><img src="assets/cli-corazzo-v1.webp" alt="Corazzo Home Decor" width="76" height="50" style="height:50px" loading="eager" decoding="async"></li><li><img src="assets/cli-morada-premium-v1.webp" alt="Morada Premium" width="83" height="47" style="height:47px" loading="eager" decoding="async"></li><li><img src="assets/cli-batatinha-v1.webp" alt="Deputado Estadual Batatinha" width="162" height="33" style="height:33px" loading="eager" decoding="async"></li><li><img src="assets/cli-recanto-catarina-v1.webp" alt="Recanto Catarina" width="137" height="37" style="height:37px" loading="eager" decoding="async"></li><li><img src="assets/cli-ejr-decor-v1.webp" alt="EJR Decor" width="61" height="57" style="height:57px" loading="eager" decoding="async"></li><li><img src="assets/cli-meu-pet-v1.webp" alt="Meu Pet" width="102" height="42" style="height:42px" loading="eager" decoding="async"></li><li><img src="assets/cli-motion-v1.webp" alt="Motion Elevadores" width="163" height="33" style="height:33px" loading="eager" decoding="async"></li><li><img src="assets/cli-meu-viver-v1.webp" alt="Meu Viver Construtora" width="190" height="30" style="height:30px" loading="eager" decoding="async"></li><li><img src="assets/cli-power-diesel-v1.webp" alt="Power Diesel" width="148" height="35" style="height:35px" loading="eager" decoding="async"></li><li><img src="assets/cli-general-diesel-v1.webp" alt="General Diesel" width="95" height="45" style="height:45px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-capanema-v1.webp" alt="" width="107" height="41" style="height:41px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-corazzo-v1.webp" alt="" width="76" height="50" style="height:50px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-morada-premium-v1.webp" alt="" width="83" height="47" style="height:47px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-batatinha-v1.webp" alt="" width="162" height="33" style="height:33px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-recanto-catarina-v1.webp" alt="" width="137" height="37" style="height:37px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-ejr-decor-v1.webp" alt="" width="61" height="57" style="height:57px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-meu-pet-v1.webp" alt="" width="102" height="42" style="height:42px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-motion-v1.webp" alt="" width="163" height="33" style="height:33px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-meu-viver-v1.webp" alt="" width="190" height="30" style="height:30px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-power-diesel-v1.webp" alt="" width="148" height="35" style="height:35px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-general-diesel-v1.webp" alt="" width="95" height="45" style="height:45px" loading="eager" decoding="async"></li></ul>
     </div>
   </section>
 
@@ -803,7 +820,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   if (!navEl || !window.LiquidNav) return;
   var nav = window.LiquidNav(navEl);
   var ids = ['topo','incluso','como-funciona','planos','diagnostico'].map(function(id){ return document.getElementById(id); });
-  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .about, .final, footer'));
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, footer'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
   function update(){
