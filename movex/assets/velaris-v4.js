@@ -10,7 +10,7 @@
   var FRAG = [
     "precision highp float;",
     "varying vec2 vUv;",
-    "uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;uniform float u_sharp;",
+    "uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;uniform float u_sharp;uniform float u_ref;",
     "float ss(float a,float b,float x){float c=(a+b)*.5,h=(b-a)*.5/u_sharp;return smoothstep(c-h,c+h,x);}",
     "vec3 permute(vec3 x){return mod(((x*34.0)+1.0)*x,289.0);}",
     "float snoise(vec2 v){",
@@ -24,7 +24,7 @@
     " m*=1.79284291400159-0.85373472095314*(a0*a0+h*h);",
     " vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.0*dot(m,g);}",
     "void main(){",
-    " vec2 uv=vUv;float ratio=u_resolution.x/u_resolution.y;vec2 p=uv-0.5;p.x*=ratio;",
+    " vec2 uv=vUv;vec2 p=(uv-0.5)*u_resolution/u_ref;",
     " float t=u_time*0.1;",
     " float n1=snoise(p*0.4+vec2(t*0.2,-t*0.3));",
     " float n2=snoise(p*0.55+vec2(-t*0.15,t*0.25)+n1*0.25);",
@@ -62,7 +62,7 @@
     var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
     var pos = gl.getAttribLocation(pr, "position"); gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-    var L = { res: gl.getUniformLocation(pr, "u_resolution"), time: gl.getUniformLocation(pr, "u_time"), grain: gl.getUniformLocation(pr, "u_grain"), colors: gl.getUniformLocation(pr, "u_colors"), bg: gl.getUniformLocation(pr, "u_bg"), sharp: gl.getUniformLocation(pr, "u_sharp") };
+    var L = { res: gl.getUniformLocation(pr, "u_resolution"), time: gl.getUniformLocation(pr, "u_time"), grain: gl.getUniformLocation(pr, "u_grain"), colors: gl.getUniformLocation(pr, "u_colors"), bg: gl.getUniformLocation(pr, "u_bg"), sharp: gl.getUniformLocation(pr, "u_sharp"), ref: gl.getUniformLocation(pr, "u_ref") };
     gl.uniform1f(L.grain, grain);
     gl.uniform1f(L.sharp, parseFloat(box.getAttribute("data-sharp") || "1"));
     gl.uniform3f(L.bg, bg[0], bg[1], bg[2]);
@@ -75,6 +75,8 @@
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.max(1, Math.round(box.clientWidth * dpr)); cv.height = Math.max(1, Math.round(box.clientHeight * dpr));
       gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(L.res, cv.width, cv.height);
+      // tamanho das manchas pela tela: em telas altas (celular) não estica o ruído pela altura inteira
+      gl.uniform1f(L.ref, Math.min(cv.height, Math.max(cv.width, 760 * dpr)));
       if (!raf) draw(performance.now());
     }
     function draw(t) { gl.uniform1f(L.time, offset + t * 0.001 * speed); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); }
