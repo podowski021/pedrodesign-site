@@ -450,7 +450,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 
 
 /* Faixa de clientes (marquee) */
-.clients{background:var(--navy);padding-block:8px 72px;border-bottom:1px solid rgba(127,211,255,.08);overflow:hidden}
+.clients{background:var(--navy);padding-block:24px 80px;border-bottom:1px solid rgba(127,211,255,.08);overflow:hidden}
 .clients-head{display:flex;align-items:center;gap:20px;justify-content:center}
 .cl-line{flex:1;max-width:220px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,211,255,.35))}
 .cl-line:last-child{background:linear-gradient(90deg,rgba(127,211,255,.35),transparent)}
@@ -524,6 +524,18 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 @media (max-width:560px){.ib-root{padding-block:48px}.ib-sec{padding:32px 14px}}
 
 
+
+
+/* Logo cloud com onda (logo-clouds adaptado) */
+.lc-head{max-width:640px;margin:0 auto;text-align:center}
+.lc-head h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;color:#fff}
+.lc-head h2 em{color:#7fb6ff}
+.lc-head p{margin-top:12px;font-size:14px;color:var(--on-navy-muted)}
+.lc-grid{list-style:none;margin:48px auto 0;padding:0;max-width:1060px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 44px}
+.lc-item{display:flex;align-items:center;justify-content:center;height:60px;cursor:default;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.lc-item img{width:auto;max-width:none;display:block}
+.lc-item:hover{transform:scale(1.07)}
+@media (max-width:640px){.lc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 12px;margin-top:36px}.lc-item{height:44px;flex:0 0 calc((100% - 24px) / 3);min-width:0}.lc-item img{max-width:88%;max-height:32px;height:auto!important;width:auto;object-fit:contain}}
 
 /* Responsivo */
 @media (max-width:980px){
@@ -653,13 +665,24 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 
   <!-- CLIENTES -->
   <section class="clients" aria-labelledby="t-clientes">
-    <div class="wrap clients-head">
-      <span class="cl-line" aria-hidden="true"></span>
-      <h2 id="t-clientes" class="mono">Empresas impulsionadas pela <em>Movex</em></h2>
-      <span class="cl-line" aria-hidden="true"></span>
-    </div>
-    <div class="marquee">
-      <ul class="mq-track"><li><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" style="height:41px" loading="eager" decoding="async"></li><li><img src="assets/cli-corazzo-v1.webp" alt="Corazzo Home Decor" width="76" height="50" style="height:50px" loading="eager" decoding="async"></li><li><img src="assets/cli-morada-premium-v1.webp" alt="Morada Premium" width="83" height="47" style="height:47px" loading="eager" decoding="async"></li><li><img src="assets/cli-batatinha-v1.webp" alt="Deputado Estadual Batatinha" width="162" height="33" style="height:33px" loading="eager" decoding="async"></li><li><img src="assets/cli-recanto-catarina-v1.webp" alt="Recanto Catarina" width="137" height="37" style="height:37px" loading="eager" decoding="async"></li><li><img src="assets/cli-ejr-decor-v1.webp" alt="EJR Decor" width="61" height="57" style="height:57px" loading="eager" decoding="async"></li><li><img src="assets/cli-meu-pet-v1.webp" alt="Meu Pet" width="102" height="42" style="height:42px" loading="eager" decoding="async"></li><li><img src="assets/cli-motion-v1.webp" alt="Motion Elevadores" width="163" height="33" style="height:33px" loading="eager" decoding="async"></li><li><img src="assets/cli-meu-viver-v1.webp" alt="Meu Viver Construtora" width="190" height="30" style="height:30px" loading="eager" decoding="async"></li><li><img src="assets/cli-power-diesel-v1.webp" alt="Power Diesel" width="148" height="35" style="height:35px" loading="eager" decoding="async"></li><li><img src="assets/cli-general-diesel-v1.webp" alt="General Diesel" width="95" height="45" style="height:45px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-capanema-v1.webp" alt="" width="107" height="41" style="height:41px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-corazzo-v1.webp" alt="" width="76" height="50" style="height:50px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-morada-premium-v1.webp" alt="" width="83" height="47" style="height:47px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-batatinha-v1.webp" alt="" width="162" height="33" style="height:33px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-recanto-catarina-v1.webp" alt="" width="137" height="37" style="height:37px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-ejr-decor-v1.webp" alt="" width="61" height="57" style="height:57px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-meu-pet-v1.webp" alt="" width="102" height="42" style="height:42px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-motion-v1.webp" alt="" width="163" height="33" style="height:33px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-meu-viver-v1.webp" alt="" width="190" height="30" style="height:30px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-power-diesel-v1.webp" alt="" width="148" height="35" style="height:35px" loading="eager" decoding="async"></li><li aria-hidden="true"><img src="assets/cli-general-diesel-v1.webp" alt="" width="95" height="45" style="height:45px" loading="eager" decoding="async"></li></ul>
+    <div class="wrap">
+      <div class="lc-head">
+        <h2 id="t-clientes">Empresas impulsionadas pela <em>Movex</em></h2>
+        <p>Marcas que confiaram na nossa estratégia para crescer na internet.</p>
+      </div>
+      <ul class="lc-grid" id="lc-grid">
+        <li class="lc-item"><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" style="height:41px"></li>
+        <li class="lc-item"><img src="assets/cli-corazzo-v1.webp" alt="Corazzo Home Decor" width="76" height="50" style="height:50px"></li>
+        <li class="lc-item"><img src="assets/cli-morada-premium-v1.webp" alt="Morada Premium" width="83" height="47" style="height:47px"></li>
+        <li class="lc-item"><img src="assets/cli-batatinha-v1.webp" alt="Deputado Estadual Batatinha" width="162" height="33" style="height:33px"></li>
+        <li class="lc-item"><img src="assets/cli-recanto-catarina-v1.webp" alt="Recanto Catarina" width="137" height="37" style="height:37px"></li>
+        <li class="lc-item"><img src="assets/cli-ejr-decor-v1.webp" alt="EJR Decor" width="61" height="57" style="height:57px"></li>
+        <li class="lc-item"><img src="assets/cli-meu-pet-v1.webp" alt="Meu Pet" width="102" height="42" style="height:42px"></li>
+        <li class="lc-item"><img src="assets/cli-motion-v1.webp" alt="Motion Elevadores" width="163" height="33" style="height:33px"></li>
+        <li class="lc-item"><img src="assets/cli-meu-viver-v1.webp" alt="Meu Viver Construtora" width="190" height="30" style="height:30px"></li>
+        <li class="lc-item"><img src="assets/cli-power-diesel-v1.webp" alt="Power Diesel" width="148" height="35" style="height:35px"></li>
+        <li class="lc-item"><img src="assets/cli-general-diesel-v1.webp" alt="General Diesel" width="95" height="45" style="height:45px"></li>
+      </ul>
     </div>
   </section>
 
@@ -1086,6 +1109,22 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   sec.classList.add('is-pending');
   var io = new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })) { sec.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .15});
   io.observe(sec);
+})();
+</script>
+<script>
+(function(){
+  var grid = document.getElementById('lc-grid'); if (!grid || !grid.animate) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var items = Array.prototype.slice.call(grid.querySelectorAll('.lc-item img'));
+  var DUR = 920, STAGGER = 110, INTERVAL = 3200, visible = true;
+  var frames = [
+    { clipPath: 'inset(0 0% 0 0)', filter: 'blur(0px)', opacity: 1, easing: 'cubic-bezier(.42,0,1,1)' },
+    { clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)', opacity: .2, offset: .4, easing: 'cubic-bezier(.16,1,.3,1)' },
+    { clipPath: 'inset(0 0% 0 0)', filter: 'blur(0px)', opacity: 1 }
+  ];
+  function wave(){ if (!visible || document.hidden) return; items.forEach(function(el, i){ el.animate(frames, { duration: DUR, delay: i * STAGGER, easing: 'linear' }); }); }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }).observe(grid);
+  setInterval(wave, INTERVAL);
 })();
 </script>
 </body>
