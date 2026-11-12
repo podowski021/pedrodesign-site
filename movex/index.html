@@ -403,10 +403,10 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .tl-note strong{color:var(--ink)}
 
 /* Selos de parceiro */
-.seals{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
-.seals img{height:72px;width:auto;border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 14px 30px -14px rgba(0,0,0,.7);transition:transform .35s cubic-bezier(.22,1,.36,1)}
-.seals img:hover{transform:translateY(-2px)}
-@media (max-width:560px){.seals img{height:60px}}
+.seals{display:flex;align-items:center;gap:8px;margin-top:30px;flex-wrap:wrap}
+.seals-k{font-size:10px;letter-spacing:.14em;color:var(--on-navy-muted);margin-right:4px}
+.seals img{height:30px;width:auto;border-radius:7px;opacity:.88;box-shadow:0 0 0 1px rgba(255,255,255,.14);transition:opacity .3s}
+.seals img:hover{opacity:1}
 /* Planos (pricing-02 adaptado) */
 @property --pr-a{syntax:"<angle>";inherits:false;initial-value:0deg}
 .pr-head{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;margin-bottom:clamp(32px,5vw,52px)}
@@ -624,6 +624,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
           <a class="btn btn-ghost" href="#planos">Ver os planos</a>
         </div>
         <div class="seals" aria-label="Certificações">
+          <span class="seals-k mono">Parceiro oficial</span>
           <img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
           <img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
         </div>
