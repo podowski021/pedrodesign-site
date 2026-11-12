@@ -605,9 +605,10 @@ section{position:relative;scroll-margin-top:84px}
 
 
 /* Home Movex */
-.hx-h1{margin-top:26px;font-size:clamp(32px,4vw,54px);font-weight:700;line-height:1.06;letter-spacing:-.03em;color:#fff;max-width:19ch;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero .hx-h1{margin-top:24px;font-size:clamp(25px,2.75vw,38px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;letter-spacing:-.025em;color:#fff;max-width:24ch;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.25)}
 .hero .lead{color:rgba(255,255,255,.86);text-shadow:0 1px 18px rgba(0,8,30,.45)}
-.hx-h1 em{font-style:italic;color:#8fc0ff}
+.hero .hx-h1 em{font-style:italic;font-weight:800;color:#6ea8ff}
+.hero .lead{font-size:clamp(16px,1.35vw,18px);line-height:1.6;max-width:50ch}
 .prov{background:var(--paper);padding-block:clamp(56px,8vw,96px)}
 .prov p{max-width:24ch;margin:0 auto;text-align:center;font-family:var(--display);font-size:clamp(28px,4.4vw,52px);font-weight:600;line-height:1.12;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
 .prov em{color:var(--blue);font-style:italic}
@@ -640,6 +641,29 @@ section{position:relative;scroll-margin-top:84px}
 .ft-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:10px;font-size:13px;color:var(--on-navy)}
 @media (max-width:980px){.ent-grid{grid-template-columns:1fr 1fr}.par-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.ent-grid{grid-template-columns:1fr}.ent{padding:24px}.par{padding:24px}}
+
+
+/* entregas + parcerias + processo */
+.ib-lede{max-width:62ch;color:var(--ib-muted);font-size:16px;line-height:1.6}
+.ib-shot{border:1px solid var(--ib-line);background:#fff;overflow:hidden}
+.ib-shot img{width:100%;height:auto;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.ib-frame-hover:hover .ib-shot img{transform:scale(1.04)}
+.ib-bar{transform-box:fill-box;transform-origin:left center;transition:transform 1.4s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.ib-funnel.is-pending .ib-bar{transform:scaleX(0)}
+.ib-gargalo{transition:opacity .6s .9s}
+.ib-funnel.is-pending .ib-gargalo{opacity:0}
+.ib-cta{display:flex;justify-content:center;margin-top:clamp(28px,4cqw,44px)}
+.pr-seal{height:40px;width:auto;border-radius:8px;box-shadow:0 0 0 1px var(--line)}
+#parcerias .pr-top h3{font-size:22px}
+.tl-rv li{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * .12s)}
+.tl-rv.is-pending li{opacity:0;transform:translateY(16px)}
+
+
+/* títulos mais contidos, estilo movex.ag */
+.h2,.sec-head h2,.pr-head h2,.about h2,.final h2{font-size:clamp(26px,3vw,40px)!important;line-height:1.1;letter-spacing:-.025em}
+.ib-h2{font-size:clamp(26px,3.2cqw,40px)}
+.prov p{font-size:clamp(22px,2.8vw,34px)}
+.lc-head h2{font-size:clamp(22px,2.4vw,30px)!important}
 
 /* Responsivo */
 @media (max-width:980px){
@@ -736,7 +760,7 @@ section{position:relative;scroll-margin-top:84px}
           <img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
           <img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
         </div>
-        <h1 class="hx-h1">Aumente suas vendas e o seu lucro com <em>anúncios estratégicos</em> na internet.</h1>
+        <h1 class="hx-h1">Aumente suas vendas e o <em>seu lucro</em> com anúncios estratégicos na internet.</h1>
         <p class="lead">Pare de queimar dinheiro com campanhas que não convertem. Transformamos seus anúncios em uma <strong>máquina de resultados reais</strong>, focada exclusivamente em <strong>vender mais e escalar o seu faturamento.</strong></p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#diagnostico">Quero conhecer a Movex
@@ -823,38 +847,113 @@ section{position:relative;scroll-margin-top:84px}
     </div>
   </section>
 
-  <!-- NÚCLEO DE ENTREGAS -->
-  <section class="sec" id="entregas" aria-labelledby="t-ent">
-    <div class="wrap">
-      <div class="ent-head">
-        <span class="mono tag">Nosso núcleo de entregas</span>
-        <h2 class="h2" id="t-ent">Onde o seu investimento vira <em>lucro real!</em></h2>
-        <p>Na Movex, você encontra soluções sob medida para o que o seu negócio mais precisa agora. Unimos inteligência estratégica, tecnologia de dados e alta performance operacional para implementar as engrenagens que o seu negócio exige:</p>
+  <!-- NÚCLEO DE ENTREGAS (workflow) -->
+  <section class="ib-root" id="entregas" aria-labelledby="t-ent">
+    <div class="ib-shell">
+      <div class="ib-sec">
+        <div class="ib-reveal" id="ib-reveal">
+          <div class="ib-head">
+            <span class="ib-tag">Nosso núcleo de entregas</span>
+            <h2 class="ib-h2" id="t-ent"><span>Onde o seu investimento</span><span class="ib-muted">vira lucro real!</span></h2>
+            <p class="ib-lede">Na Movex, você encontra soluções sob medida para o que o seu negócio mais precisa agora. Unimos inteligência estratégica, tecnologia de dados e alta performance operacional para implementar as engrenagens que o seu negócio exige:</p>
+          </div>
+          <div class="ib-bento">
+            <div class="ib-frame ib-frame-hover ib-wide"><span class="ib-c ib-c-tl" aria-hidden="true"></span><span class="ib-c ib-c-tr" aria-hidden="true"></span><span class="ib-c ib-c-bl" aria-hidden="true"></span><span class="ib-c ib-c-br" aria-hidden="true"></span><div class="ib-card" style="padding:0;overflow:hidden">
+<svg class="ib-diagram" id="ib-flow" viewBox="0 0 640 178" role="img" aria-label="Buscas e atenção qualificada passam pela Movex e viram vendas">
+<defs><radialGradient id="ibglow" cx="320" cy="110" r="190" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--ib-raise)" stop-opacity="1"/><stop offset="1" stop-color="var(--ib-raise)" stop-opacity="0"/></radialGradient>
+<linearGradient id="ibrays" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ib-line-strong)" stop-opacity=".55"/><stop offset="1" stop-color="var(--ib-line-strong)" stop-opacity="0"/></linearGradient></defs>
+<rect x="0" y="0" width="640" height="178" fill="url(#ibglow)"/><path d="M320,110 L90.4,-12.1 L107.0,-39.1 Z" fill="url(#ibrays)" opacity=".5"/><path d="M320,110 L159.9,-94.9 L186.1,-112.9 Z" fill="url(#ibrays)" opacity=".5"/><path d="M320,110 L257.1,-142.3 L288.3,-148.1 Z" fill="url(#ibrays)" opacity=".5"/><path d="M320,110 L382.9,-142.3 L413.2,-132.7 Z" fill="url(#ibrays)" opacity=".5"/><path d="M320,110 L480.1,-94.9 L503.8,-73.8 Z" fill="url(#ibrays)" opacity=".5"/><path d="M320,110 L549.6,-12.1 L562.7,16.8 Z" fill="url(#ibrays)" opacity=".5"/>
+<g data-hover="left"><rect x="20" y="8" width="170" height="130" fill="transparent"/><line x1="58" y1="38" x2="104" y2="70" stroke="var(--ib-line-strong)" stroke-dasharray="2 3"/><line x1="104" y1="22" x2="104" y2="70" stroke="var(--ib-line-strong)" stroke-dasharray="2 3"/><line x1="150" y1="40" x2="104" y2="70" stroke="var(--ib-line-strong)" stroke-dasharray="2 3"/><line x1="46" y1="92" x2="104" y2="70" stroke="var(--ib-line-strong)" stroke-dasharray="2 3"/><line x1="146" y1="114" x2="104" y2="70" stroke="var(--ib-line-strong)" stroke-dasharray="2 3"/><g transform="translate(91,57)"><rect width="26" height="26" rx="5" class="ib-node"/><svg x="5" y="5" width="16" height="16" viewBox="0 0 24 24" style="color:var(--ib-ink)" aria-hidden="true"><path d="M3.5 4.5h17l-6.6 8.2v5.6l-3.8 2.2v-7.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></g><g class="ib-av" tabindex="0" role="img" aria-label="Cliente que viu seu anúncio · instagram"><svg x="47" y="27" width="22" height="22" viewBox="0 0 22 22" overflow="visible"><circle cx="11" cy="11" r="11" fill="var(--ib-chip)"/><circle cx="11" cy="8.6" r="3.6" fill="var(--ib-soft)"/><path d="M4 19c1.3-3.6 4-5.2 7-5.2s5.7 1.6 7 5.2z" fill="var(--ib-soft)"/><circle cx="11" cy="11" r="10.5" fill="none" stroke="var(--ib-paper)" stroke-width="1.5"/></svg><circle cx="66" cy="46" r="2.6" fill="#22c55e" stroke="var(--ib-paper)" class="ib-presence"/><g class="ib-av-tip" transform="translate(58,20)"><rect x="-67.4" y="-9" width="134.8" height="14" rx="2" fill="var(--ib-inv)"/><text x="0" y="1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-sans)">viu seu anúncio · instagram</text></g></g><g class="ib-av" tabindex="0" role="img" aria-label="Cliente que buscou · seu produto no google"><svg x="93" y="11" width="22" height="22" viewBox="0 0 22 22" overflow="visible"><circle cx="11" cy="11" r="11" fill="var(--ib-chip)"/><circle cx="11" cy="8.6" r="3.6" fill="var(--ib-soft)"/><path d="M4 19c1.3-3.6 4-5.2 7-5.2s5.7 1.6 7 5.2z" fill="var(--ib-soft)"/><circle cx="11" cy="11" r="10.5" fill="none" stroke="var(--ib-paper)" stroke-width="1.5"/></svg><circle cx="112" cy="30" r="2.6" fill="#22c55e" stroke="var(--ib-paper)" class="ib-presence"/><g class="ib-av-tip" transform="translate(104,4)"><rect x="-74.0" y="-9" width="148.0" height="14" rx="2" fill="var(--ib-inv)"/><text x="0" y="1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-sans)">buscou · seu produto no google</text></g></g><g class="ib-av" tabindex="0" role="img" aria-label="Cliente que assistiu · seu vídeo no youtube"><svg x="139" y="29" width="22" height="22" viewBox="0 0 22 22" overflow="visible"><circle cx="11" cy="11" r="11" fill="var(--ib-chip)"/><circle cx="11" cy="8.6" r="3.6" fill="var(--ib-soft)"/><path d="M4 19c1.3-3.6 4-5.2 7-5.2s5.7 1.6 7 5.2z" fill="var(--ib-soft)"/><circle cx="11" cy="11" r="10.5" fill="none" stroke="var(--ib-paper)" stroke-width="1.5"/></svg><circle cx="158" cy="48" r="2.6" fill="#22c55e" stroke="var(--ib-paper)" class="ib-presence"/><g class="ib-av-tip" transform="translate(150,22)"><rect x="-76.2" y="-9" width="152.4" height="14" rx="2" fill="var(--ib-inv)"/><text x="0" y="1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-sans)">assistiu · seu vídeo no youtube</text></g></g><g class="ib-av" tabindex="0" role="img" aria-label="Cliente que clicou · anúncio no facebook"><svg x="35" y="81" width="22" height="22" viewBox="0 0 22 22" overflow="visible"><circle cx="11" cy="11" r="11" fill="var(--ib-chip)"/><circle cx="11" cy="8.6" r="3.6" fill="var(--ib-soft)"/><path d="M4 19c1.3-3.6 4-5.2 7-5.2s5.7 1.6 7 5.2z" fill="var(--ib-soft)"/><circle cx="11" cy="11" r="10.5" fill="none" stroke="var(--ib-paper)" stroke-width="1.5"/></svg><circle cx="54" cy="100" r="2.6" fill="#22c55e" stroke="var(--ib-paper)" class="ib-presence"/><g class="ib-av-tip" transform="translate(46,74)"><rect x="-69.6" y="-9" width="139.2" height="14" rx="2" fill="var(--ib-inv)"/><text x="0" y="1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-sans)">clicou · anúncio no facebook</text></g></g><g class="ib-av" tabindex="0" role="img" aria-label="Cliente que buscou · seu serviço perto de mim"><svg x="135" y="103" width="22" height="22" viewBox="0 0 22 22" overflow="visible"><circle cx="11" cy="11" r="11" fill="var(--ib-chip)"/><circle cx="11" cy="8.6" r="3.6" fill="var(--ib-soft)"/><path d="M4 19c1.3-3.6 4-5.2 7-5.2s5.7 1.6 7 5.2z" fill="var(--ib-soft)"/><circle cx="11" cy="11" r="10.5" fill="none" stroke="var(--ib-paper)" stroke-width="1.5"/></svg><circle cx="154" cy="122" r="2.6" fill="var(--ib-faint)" stroke="var(--ib-paper)"/><g class="ib-av-tip" transform="translate(146,96)"><rect x="-80.6" y="-9" width="161.2" height="14" rx="2" fill="var(--ib-inv)"/><text x="0" y="1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-sans)">buscou · seu serviço perto de mim</text></g></g></g>
+<path d="M117,67 C196,67 210,100 262,100" class="ib-flow" data-side="left"/><path d="M117,73 C186,73 206,120 262,120" class="ib-flow ib-dash" data-side="left"/><path d="M386,100 C416,100 420,86 450,86" class="ib-flow" data-side="right"/><path d="M386,120 C416,120 420,134 450,134" class="ib-flow ib-dash" data-side="right"/><g class="ib-pkts"><circle r="2.2" class="ib-pkt"><animateMotion dur="2.2s" begin="0.00s" repeatCount="indefinite" path="M117,67 C196,67 210,100 262,100"/></circle><circle r="2.2" class="ib-pkt"><animateMotion dur="2.8s" begin="0.35s" repeatCount="indefinite" path="M117,73 C186,73 206,120 262,120"/></circle><circle r="2.2" class="ib-pkt"><animateMotion dur="2.2s" begin="0.70s" repeatCount="indefinite" path="M386,100 C416,100 420,86 450,86"/></circle><circle r="2.2" class="ib-pkt"><animateMotion dur="2.8s" begin="1.05s" repeatCount="indefinite" path="M386,120 C416,120 420,134 450,134"/></circle></g>
+<g transform="translate(262,88)"><rect x="-4" y="-4" width="132" height="52" rx="8" fill="none" stroke="var(--ib-line)" class="ib-glow"/><rect width="124" height="44" rx="6" class="ib-node" style="filter:drop-shadow(0 6px 10px rgba(11,79,216,.12))"/><svg x="13" y="14" width="16" height="16" viewBox="0 0 24 24" style="color:var(--ib-ink)" aria-hidden="true"><path d="M3.5 4.5h17l-6.6 8.2v5.6l-3.8 2.2v-7.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><text x="36" y="26" font-size="8.5" letter-spacing="1.4" font-weight="700" fill="var(--ib-soft)" font-family="var(--ib-sans)">MOVEX</text><path d="M110 18l4 4-4 4" fill="none" stroke="var(--ib-muted)" stroke-width="1.3"/></g>
+<g data-hover="right" id="ib-stack"><g transform="translate(474,20)" opacity="0.50"><g class="ib-sheet"><rect width="138" height="102" rx="3" fill="var(--ib-raise)" stroke="var(--ib-line-strong)"/></g></g><g transform="translate(462,30)" opacity="0.75"><g class="ib-sheet"><rect width="138" height="102" rx="3" fill="var(--ib-raise)" stroke="var(--ib-line-strong)"/></g></g><g transform="translate(450,40)" opacity="1.00"><g class="ib-sheet ib-sheet-new"><rect width="138" height="102" rx="3" fill="var(--ib-raise)" stroke="var(--ib-line-strong)"/><text x="10" y="16" font-size="7" fill="var(--ib-muted)" font-family="var(--ib-mono)" class="ib-lead-n">VENDA #128</text><rect x="10" y="24" width="64" height="5" rx="1" fill="var(--ib-ink)" opacity=".75"/><rect x="10" y="33" width="92" height="3" rx="1" fill="var(--ib-line-strong)"/><rect x="10" y="39" width="80" height="3" rx="1" fill="var(--ib-line-strong)"/><rect x="12" y="74" width="8" height="18" fill="var(--ib-accent)" opacity="0.25"/><rect x="25" y="66" width="8" height="26" fill="var(--ib-accent)" opacity="0.37"/><rect x="38" y="78" width="8" height="14" fill="var(--ib-accent)" opacity="0.49"/><rect x="51" y="62" width="8" height="30" fill="var(--ib-accent)" opacity="0.61"/><rect x="64" y="70" width="8" height="22" fill="var(--ib-accent)" opacity="0.73"/><rect x="77" y="58" width="8" height="34" fill="var(--ib-accent)" opacity="0.85"/><g transform="translate(92,60)"><rect width="36" height="14" rx="7" fill="#22c55e" opacity=".16"/><text x="18" y="9.6" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0f9d58" font-family="var(--ib-sans)">VENDA</text></g><path d="M92 80h34M92 88h26" stroke="var(--ib-line-strong)" stroke-width="2.5"/></g></g></g>
+</svg>
+<div class="ib-wide-copy" style="padding:0 22px 20px"><div><h3>Tráfego pago</h3><p>Oferecemos estratégias de escala para ter domínio total da intenção de busca e da atenção qualificada, criando um cerco digital que sua marca esteja posicionada em todos os canais.</p></div><div><h3>Posicionamento estratégico</h3><p>Contribuímos para criação de narrativas de vendas que conectam, eliminam objeções e fortalecem o seu posicionamento. É a voz da sua marca trabalhando para vender 24h por dia.</p></div></div>
+</div></div>
+            <div class="ib-frame ib-frame-hover"><span class="ib-c ib-c-tl" aria-hidden="true"></span><span class="ib-c ib-c-tr" aria-hidden="true"></span><span class="ib-c ib-c-bl" aria-hidden="true"></span><span class="ib-c ib-c-br" aria-hidden="true"></span><div class="ib-card">
+<svg class="ib-diagram" id="ib-integ" viewBox="0 0 300 150" role="group" aria-label="Ferramentas conectadas pela Movex"><path d="M133,75 H108 V34 H81" class="ib-flow" data-i="0"/><path d="M133,75 H108 V116 H81" class="ib-flow" data-i="1"/><path d="M167,75 H192 V34 H219" class="ib-flow" data-i="2"/><path d="M167,75 H192 V116 H219" class="ib-flow" data-i="3"/><circle r="2.2" class="ib-pkt" id="ib-integ-pkt" style="opacity:0"><animateMotion id="ib-integ-mo" dur="1.1s" repeatCount="indefinite" path="M133,75 H108 V34 H81"/></circle>
+<g transform="translate(133,58)"><rect width="34" height="34" rx="7" class="ib-node" style="filter:drop-shadow(0 4px 8px rgba(11,79,216,.12))"/><svg x="8" y="8" width="18" height="18" viewBox="0 0 24 24" style="color:var(--ib-ink)" aria-hidden="true"><path d="M3.5 4.5h17l-6.6 8.2v5.6l-3.8 2.2v-7.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></g><g class="ib-tool" data-i="0" tabindex="0" role="img" aria-label="Google Ads"><rect x="51" y="19" width="30" height="30" rx="6" class="ib-node"/><g transform="translate(66,34)" style="color:var(--ib-ink)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M-5.5 5V0M-1.8 5V-3.5M1.8 5V-1M5.5 5V-6"/></g><text x="66" y="13" text-anchor="middle" font-size="8" fill="var(--ib-muted)" font-family="var(--ib-sans)" class="ib-tool-label">Google Ads</text></g><g class="ib-tool" data-i="1" tabindex="0" role="img" aria-label="Meta Ads"><rect x="51" y="101" width="30" height="30" rx="6" class="ib-node"/><g transform="translate(66,116)" style="color:var(--ib-ink)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M-6.5 1.5c0-3 1.2-5 2.8-5 2.6 0 4.6 7 7 7 1.6 0 2.7-1.6 2.7-3.6 0-2-1.1-3.6-2.7-3.6-2.4 0-4.4 7-7 7-1.6 0-2.8-.8-2.8-1.8Z"/></g><text x="66" y="144" text-anchor="middle" font-size="8" fill="var(--ib-muted)" font-family="var(--ib-sans)" class="ib-tool-label">Meta Ads</text></g><g class="ib-tool" data-i="2" tabindex="0" role="img" aria-label="Google Tag Manager"><rect x="219" y="19" width="30" height="30" rx="6" class="ib-node"/><g transform="translate(234,34)" style="color:var(--ib-ink)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0-6.5 6.5 0 0 6.5-6.5 0Z"/><path d="M0-2.4 2.4 0 0 2.4-2.4 0Z"/></g><text x="234" y="13" text-anchor="middle" font-size="8" fill="var(--ib-muted)" font-family="var(--ib-sans)" class="ib-tool-label">Google Tag Manager</text></g><g class="ib-tool" data-i="3" tabindex="0" role="img" aria-label="API de Conversão"><rect x="219" y="101" width="30" height="30" rx="6" class="ib-node"/><g transform="translate(234,116)" style="color:var(--ib-ink)" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M-2.5-4.5-6.5 0l4 4.5M2.5-4.5 6.5 0l-4 4.5"/></g><text x="234" y="144" text-anchor="middle" font-size="8" fill="var(--ib-muted)" font-family="var(--ib-sans)" class="ib-tool-label">API de Conversão</text></g>
+<text x="150" y="108" text-anchor="middle" font-size="6.5" fill="var(--ib-faint)" font-family="var(--ib-mono)" id="ib-integ-status"><tspan x="150" id="ib-st1">4 conectadas</tspan><tspan x="150" dy="9" id="ib-st2"></tspan></text></svg>
+<div style="margin-top:auto"><h3>Trackeamento avançado</h3><p>Realizamos a implementação técnica de ponta (via GTM e API de Conversão) para garantir que nenhum dado se perca, tendo total rastreabilidade da jornada do cliente, do primeiro clique à venda final.</p></div>
+</div></div>
+            <div class="ib-frame ib-frame-hover" id="ib-ins-frame"><span class="ib-c ib-c-tl" aria-hidden="true"></span><span class="ib-c ib-c-tr" aria-hidden="true"></span><span class="ib-c ib-c-bl" aria-hidden="true"></span><span class="ib-c ib-c-br" aria-hidden="true"></span><div class="ib-card">
+<svg class="ib-diagram ib-chart" id="ib-chart" viewBox="0 0 300 136" role="img" aria-label="Exemplo ilustrativo de vendas por semana com previsão" data-values="8,11,10,14,13,17,16,21,23,27,31,36" data-forecast="8"></svg>
+<div style="margin-top:auto"><h3>Inteligência de dados</h3><p>Transformamos números em estratégia. Analisamos métricas reais para otimizar investimentos, prever cenários e garantir que cada decisão na conta de anúncios seja focada no aumento do seu ROI.</p><p class="ib-note">Gráfico ilustrativo</p></div>
+</div></div>
+            <div class="ib-frame ib-frame-hover"><span class="ib-c ib-c-tl" aria-hidden="true"></span><span class="ib-c ib-c-tr" aria-hidden="true"></span><span class="ib-c ib-c-bl" aria-hidden="true"></span><span class="ib-c ib-c-br" aria-hidden="true"></span><div class="ib-card">
+<svg class="ib-diagram ib-funnel" viewBox="0 0 300 136" role="img" aria-label="Análise do funil de vendas com gargalo identificado">
+<text x="14" y="8" font-size="7" fill="var(--ib-faint)" font-family="var(--ib-mono)">FUNIL DE VENDAS</text>
+<g font-family="var(--ib-sans)" font-size="8">
+<text x="14" y="32" fill="var(--ib-soft)">Alcance</text><rect x="86" y="22" width="200" height="14" rx="3" fill="var(--ib-chip)"/><rect class="ib-bar" x="86" y="22" width="200" height="14" rx="3" fill="var(--ib-accent)" opacity=".9"/>
+<text x="14" y="58" fill="var(--ib-soft)">Cliques</text><rect x="86" y="48" width="200" height="14" rx="3" fill="var(--ib-chip)"/><rect class="ib-bar" x="86" y="48" width="138" height="14" rx="3" fill="var(--ib-accent)" opacity=".75" style="--d:.15s"/>
+<text x="14" y="84" fill="var(--ib-soft)">Leads</text><rect x="86" y="74" width="200" height="14" rx="3" fill="var(--ib-chip)"/><rect class="ib-bar" x="86" y="74" width="54" height="14" rx="3" fill="#f59e0b" opacity=".9" style="--d:.3s"/>
+<text x="14" y="110" fill="var(--ib-soft)">Vendas</text><rect x="86" y="100" width="200" height="14" rx="3" fill="var(--ib-chip)"/><rect class="ib-bar" x="86" y="100" width="34" height="14" rx="3" fill="var(--ib-accent)" opacity=".55" style="--d:.45s"/>
+</g>
+<g class="ib-gargalo" transform="translate(148,81)"><circle r="3" fill="#f59e0b" class="ib-glow"/><text x="8" y="3" font-size="7" fill="#b45309" font-family="var(--ib-mono)">GARGALO</text></g>
+</svg>
+<div style="margin-top:auto"><h3>Gestão de performance</h3><p>Além da execução dos serviços, também prestamos serviços de consultoria estratégica, realizando uma análise completa do funil de vendas para identificar gargalos e oportunidades.</p></div>
+</div></div>
+            <div class="ib-frame ib-frame-hover"><span class="ib-c ib-c-tl" aria-hidden="true"></span><span class="ib-c ib-c-tr" aria-hidden="true"></span><span class="ib-c ib-c-bl" aria-hidden="true"></span><span class="ib-c ib-c-br" aria-hidden="true"></span><div class="ib-card">
+<div class="ib-shot"><img src="assets/movex-sites-v1.webp" alt="Páginas criadas pela Movex para Dalzon, PD Drones, Motion Elevadores e Pezzatto" width="1800" height="512" loading="lazy"></div>
+<div style="margin-top:auto"><h3>Páginas de alta conversão</h3><p>Desenvolvemos páginas de alta performance, desenhadas com foco total em conversão. Tudo que criamos aqui é pensado em aumentar suas vendas.</p></div>
+</div></div>
+          </div>
+          <div class="ib-cta"><a class="btn btn-primary" href="#diagnostico">Quero conhecer a Movex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
       </div>
-      <div class="ent-grid">
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><h3>Tráfego pago</h3><p>Oferecemos estratégias de escala para ter domínio total da intenção de busca e da atenção qualificada, criando um cerco digital que sua marca esteja posicionada em todos os canais.</p></article>
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span><h3>Posicionamento estratégico</h3><p>Contribuímos para criação de narrativas de vendas que conectam, eliminam objeções e fortalecem o seu posicionamento. É a voz da sua marca trabalhando para vender 24h por dia.</p></article>
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14l4-4"/><path d="M3.5 18a9 9 0 1 1 17 0"/><circle cx="12" cy="14" r="1.2"/></svg></span><h3>Gestão de performance</h3><p>Além da execução dos serviços, também prestamos serviços de consultoria estratégica, realizando uma análise completa do funil de vendas para identificar gargalos e oportunidades.</p></article>
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><h3>Trackeamento avançado</h3><p>Realizamos a implementação técnica de ponta (via GTM e API de Conversão) para garantir que nenhum dado se perca, tendo total rastreabilidade da jornada do cliente, do primeiro clique à venda final.</p></article>
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Inteligência de dados</h3><p>Transformamos números em estratégia. Analisamos métricas reais para otimizar investimentos, prever cenários e garantir que cada decisão na conta de anúncios seja focada no aumento do seu ROI.</p></article>
-          <article class="ent"><span class="ent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 9h19M6 6.5h.01M9 6.5h.01M7 13h6M7 16h10"/></svg></span><h3>Páginas de alta conversão</h3><p>Desenvolvemos páginas de alta performance, desenhadas com foco total em conversão. Tudo que criamos aqui é pensado em aumentar suas vendas.</p></article>
-      </div>
-      <div class="hero-ctas ent-cta"><a class="btn btn-primary" href="#diagnostico">Quero conhecer a Movex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </section>
 
+
   <!-- FERRAMENTAS E PARCERIAS -->
-  <section class="sec method" id="parcerias" aria-labelledby="t-par">
+  <section class="sec pricing" id="parcerias" aria-labelledby="t-par">
     <div class="wrap">
-      <div class="ent-head">
-        <span class="mono tag">Parcerias oficiais</span>
-        <h2 class="h2" id="t-par">Utilizamos e somos especialistas em <em>diversas ferramentas</em></h2>
+      <div class="pr-head">
+        <span class="pr-badge">Parcerias oficiais</span>
+        <h2 id="t-par">Utilizamos e somos especialistas em <em>diversas ferramentas</em></h2>
       </div>
-      <div class="par-grid">
-        <article class="par"><img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176" loading="lazy"><h3>Google Partner</h3><p>Nossa expertise é certificada e monitorada pelo Google. Isso garante que sua empresa seja gerida por especialistas que dominam as estratégias mais avançadas, focando sempre na otimização rigorosa do orçamento para converter intenção em faturamento.</p></article>
-        <article class="par"><img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176" loading="lazy"><h3>Meta Business Partner</h3><p>Como membros oficiais, somos uma empresa que a Meta aprovou por nossas habilidades técnicas e serviços, bem como pela capacidade única de ajudar as empresas a crescer. Temos acesso a benefícios únicos, como treinamentos, suporte e oportunidades para promover o sucesso dos nossos clientes.</p></article>
+      <div class="pr-grid">
+        <article class="pr-item is-featured" style="--i:0">
+          <div class="pr-ring" aria-hidden="true"><span class="pr-spin"></span><span class="pr-mask"></span></div>
+          <div class="pr-card">
+            <div class="pr-top"><h3>Google Partner</h3><img class="pr-seal" src="assets/selo-google-partner-v1.webp" alt="Selo Google Partner" width="236" height="176" loading="lazy"></div>
+            <p class="pr-desc">Nossa expertise é certificada e monitorada pelo Google. Isso garante que sua empresa seja gerida por especialistas que dominam as estratégias mais avançadas, focando sempre na otimização rigorosa do orçamento para converter intenção em faturamento.</p>
+            <hr class="pr-sep">
+            <ul class="pr-list"><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Expertise certificada e monitorada pelo Google</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Especialistas nas estratégias mais avançadas</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Otimização rigorosa do orçamento</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Intenção de busca convertida em faturamento</span></li></ul>
+            <a class="pr-btn pr-btn-solid" href="#diagnostico">Quero conhecer a Movex</a>
+          </div>
+        </article>
+        <article class="pr-item is-featured" style="--i:1">
+          <div class="pr-ring" aria-hidden="true"><span class="pr-spin"></span><span class="pr-mask"></span></div>
+          <div class="pr-card">
+            <div class="pr-top"><h3>Meta Business Partner</h3><img class="pr-seal" src="assets/selo-meta-business-partner-v1.webp" alt="Selo Meta Business Partner" width="332" height="176" loading="lazy"></div>
+            <p class="pr-desc">Como membros oficiais, somos uma empresa que a Meta aprovou por nossas habilidades técnicas e serviços, bem como pela capacidade única de ajudar as empresas a crescer. Temos acesso a benefícios únicos, como treinamentos, suporte e oportunidades para promover o sucesso dos nossos clientes.</p>
+            <hr class="pr-sep">
+            <ul class="pr-list"><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Membro oficial aprovado pela Meta</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Habilidades técnicas reconhecidas</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Treinamentos e suporte exclusivos</span></li><li><svg class="pr-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oportunidades para o sucesso dos clientes</span></li></ul>
+            <a class="pr-btn pr-btn-solid" href="#diagnostico">Quero conhecer a Movex</a>
+          </div>
+        </article>
       </div>
-      <div class="hero-ctas ent-cta"><a class="btn btn-primary" href="#diagnostico">Quero conhecer a Movex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- DO DIAGNÓSTICO À ESCALA -->
+  <section class="sec method" id="processo" aria-labelledby="t-proc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono tag">Como funciona</span>
+          <h2 id="t-proc">Do diagnóstico à <em>máquina de vendas.</em></h2>
+        </div>
+        <p>Cada negócio exige uma direção única. Por isso, tudo começa com uma análise do seu momento atual.</p>
+      </div>
+      <ol class="tl tl-rv" id="processo-tl">
+        <li class="now" style="--i:0"><span class="d mono">Etapa 01</span><b>Diagnóstico estratégico gratuito</b></li>
+        <li style="--i:1"><span class="d mono">Etapa 02</span><b>Análise da maturidade digital</b></li>
+        <li style="--i:2"><span class="d mono">Etapa 03</span><b>Plano de ação sob medida</b></li>
+        <li style="--i:3"><span class="d mono">Etapa 04</span><b>Implementação das engrenagens</b></li>
+        <li class="go" style="--i:4"><span class="d mono">Etapa 05</span><b>Vendas previsíveis e escala</b></li>
+      </ol>
     </div>
   </section>
 
@@ -988,7 +1087,7 @@ section{position:relative;scroll-margin-top:84px}
 <script>
 (function(){
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.getElementById('implementacao'); if (!root) return;
+  var root = document.querySelector('.ib-root'); if (!root) return;
   // revelar ao entrar na tela (começa visível se não houver IntersectionObserver)
   var rev = document.getElementById('ib-reveal');
   function onView(el, th, fn){ if (!('IntersectionObserver' in window)) return fn(); var io = new IntersectionObserver(function(es){ if (es.some(function(e){return e.isIntersecting;})) { fn(); io.disconnect(); } }, {threshold: th}); io.observe(el); }
@@ -1006,7 +1105,7 @@ section{position:relative;scroll-margin-top:84px}
   // integrações: sincroniza uma ferramenta por vez
   var ig = document.getElementById('ib-integ'), tools = ig.querySelectorAll('.ib-tool'), paths = ig.querySelectorAll('.ib-flow');
   var pkt = document.getElementById('ib-integ-pkt'), mo = document.getElementById('ib-integ-mo'), st1 = document.getElementById('ib-st1'), st2 = document.getElementById('ib-st2');
-  var names = ['Google Meu Negócio','Google Ads','Página de conversão','WhatsApp'], auto = 0, hover = -1;
+  var names = ['Google Ads','Meta Ads','Google Tag Manager','API de Conversão'], auto = 0, hover = -1;
   function setOn(i){
     tools.forEach(function(t, k){ t.classList.toggle('is-on', k === i); }); paths.forEach(function(p, k){ p.classList.toggle('is-on', k === i); });
     if (i >= 0) { mo.setAttribute('path', paths[i].getAttribute('d')); pkt.style.opacity = reduce ? 0 : 1; st1.textContent = 'sincronizando'; st2.textContent = names[i].toLowerCase(); }
@@ -1032,23 +1131,34 @@ section{position:relative;scroll-margin-top:84px}
   var sx = pts[split][0];
   el('line', {x1: sx, x2: sx, y1: 10, y2: H - 14, stroke: 'var(--ib-line-strong)', 'stroke-dasharray': '2 3'});
   el('text', {x: sx - 4, y: H - 18, 'text-anchor': 'end', 'font-size': 7, fill: 'var(--ib-faint)', 'font-family': 'var(--ib-mono)'}).textContent = 'PREVISÃO';
-  el('text', {x: 14, y: 8, 'font-size': 7, fill: 'var(--ib-faint)', 'font-family': 'var(--ib-mono)'}).textContent = 'LEADS / SEMANA';
+  el('text', {x: 14, y: 8, 'font-size': 7, fill: 'var(--ib-faint)', 'font-family': 'var(--ib-mono)'}).textContent = 'VENDAS / SEMANA';
   var cross = el('line', {y1: 8, y2: H - 14, stroke: 'var(--ib-ink)', 'stroke-opacity': .3, opacity: 0});
   var halo = el('circle', {cx: last[0], cy: last[1], r: 7, fill: 'var(--ib-accent)', opacity: .16, 'class': reduce ? '' : 'ib-glow'});
   var dot = el('circle', {r: 3.2, fill: 'var(--ib-raise)', stroke: 'var(--ib-accent)', 'stroke-width': 1.6});
-  var tip = el('g', {}); tip.innerHTML = '<rect x="-44" y="-11" width="88" height="15" rx="2" fill="var(--ib-inv)"/><text x="0" y="-1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-mono)"></text>';
+  var tip = el('g', {}); tip.innerHTML = '<rect x="-52" y="-11" width="104" height="15" rx="2" fill="var(--ib-inv)"/><text x="0" y="-1" text-anchor="middle" font-size="7.5" fill="var(--ib-inv-ink)" font-family="var(--ib-mono)"></text>';
   var tipText = tip.querySelector('text');
   function show(i, hov){
     var p = pts[i];
     dot.setAttribute('cx', p[0]); dot.setAttribute('cy', p[1]);
     cross.setAttribute('x1', p[0]); cross.setAttribute('x2', p[0]); cross.setAttribute('opacity', hov ? 1 : 0); halo.setAttribute('opacity', hov ? 0 : .16);
-    tip.setAttribute('transform', 'translate(' + Math.min(W - 48, Math.max(48, p[0])) + ',' + (p[1] < 34 ? p[1] + 22 : p[1] - 12) + ')');
-    tipText.textContent = (i >= split ? 'prev. sem ' : 'sem ') + (i + 1) + ' · ' + vals[i] + ' leads';
+    tip.setAttribute('transform', 'translate(' + Math.min(W - 54, Math.max(54, p[0])) + ',' + (p[1] < 34 ? p[1] + 22 : p[1] - 12) + ')');
+    tipText.textContent = (i >= split ? 'prev. ' : 'sem ') + (i + 1) + ' · ' + vals[i] + ' vendas';
   }
   show(pts.length - 1, false);
   ch.addEventListener('pointermove', function(e){ var r = ch.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W, best = 0; pts.forEach(function(p, i){ if (Math.abs(p[0] - x) < Math.abs(pts[best][0] - x)) best = i; }); show(best, true); });
   ch.addEventListener('pointerleave', function(){ show(pts.length - 1, false); });
   if (!reduce && 'IntersectionObserver' in window && ch.getBoundingClientRect().top > innerHeight) { ln.classList.add('is-pending'); onView(ch, .3, function(){ requestAnimationFrame(function(){ ln.classList.remove('is-pending'); }); }); }
+})();
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.ib-funnel, .tl-rv').forEach(function(el){
+    if (reduce || !('IntersectionObserver' in window) || el.getBoundingClientRect().top < innerHeight) return;
+    el.classList.add('is-pending');
+    var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { el.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .3});
+    io.observe(el);
+  });
 })();
 </script>
 <script>
