@@ -279,11 +279,27 @@ section{position:relative;scroll-margin-top:84px}
 .ct strong{display:block;font-size:14.5px;color:#fff;overflow-wrap:anywhere;user-select:all}
 .addr{margin-top:22px;color:var(--on-navy-muted);font-size:14px}
 
-footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rgba(127,211,255,.1);font-size:13px}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:26px}
-.foot img{height:20px;width:auto}
-.foot a{color:var(--on-navy);text-decoration:none}
-.foot a:hover{color:var(--electric)}
+/* Footer centralizado: logo, links animados e redes */
+.ft{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rgba(127,211,255,.1);font-size:13px}
+.ft-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:64px 28px}
+.ft-logo img{height:26px;width:auto;display:block;transition:opacity .3s}
+.ft-logo:hover img{opacity:.8}
+.ft-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 30px;margin-top:30px}
+.fl{position:relative;display:inline-block;color:var(--on-navy);text-decoration:none;font-weight:600;font-size:15px;padding-bottom:4px}
+.fl-in{position:relative;display:block;height:1.3em;line-height:1.3em;overflow:hidden}
+.fl-in span{display:block;transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.fl-in span+span{position:absolute;left:0;top:100%;color:#7fb6ff}
+.fl:hover .fl-in span,.fl:focus-visible .fl-in span{transform:translateY(-100%)}
+.fl::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:#7fb6ff;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.fl:hover::after,.fl:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.ft-soc{display:flex;gap:12px;margin-top:30px}
+.fs{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:var(--on-navy);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);transition:transform .45s cubic-bezier(.34,1.56,.64,1),background .3s,border-color .3s,color .3s}
+.fs svg{width:18px;height:18px}
+.fs:hover,.fs:focus-visible{transform:translateY(-4px);background:var(--blue);border-color:var(--blue);color:#fff}
+.ft-line{width:100%;max-width:980px;height:1px;margin-top:44px;background:linear-gradient(90deg,transparent,rgba(127,211,255,.25),transparent)}
+.ft-bottom{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;margin-top:22px;font-size:12.5px}
+.ft-bottom a{color:var(--on-navy);text-decoration:none}
+.ft-bottom a:hover{color:#7fb6ff}
 
 .wa-float{position:fixed;z-index:70;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
@@ -562,7 +578,6 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .site-header.is-scrolled .hdr{max-width:540px}
   .hnav-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .hnav-item{padding:0 14px}
-  .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
   section{scroll-margin-top:76px}
 }
 @media (max-width:560px){
@@ -936,11 +951,16 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   </section>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <img src="assets/movex-logo-branco-v1.png" alt="movex">
-    <span>Movimento estratégico que impulsiona resultados · © 2026 Movex</span>
-    <span>Site desenvolvido por <a href="https://pedrodesign.store" target="_blank" rel="noopener">Pedro Design</a></span>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <a class="ft-logo" href="#topo" aria-label="Movex, voltar ao início"><img src="assets/movex-logo-branco-v1.png" alt="movex" width="290" height="54"></a>
+    <nav class="ft-nav" aria-label="Rodapé"><a class="fl" href="#topo"><span class="fl-in"><span>Início</span><span aria-hidden="true">Início</span></span></a><a class="fl" href="#incluso"><span class="fl-in"><span>Incluso</span><span aria-hidden="true">Incluso</span></span></a><a class="fl" href="#como-funciona"><span class="fl-in"><span>Como funciona</span><span aria-hidden="true">Como funciona</span></span></a><a class="fl" href="#planos"><span class="fl-in"><span>Planos</span><span aria-hidden="true">Planos</span></span></a><a class="fl" href="#diagnostico"><span class="fl-in"><span>Diagnóstico</span><span aria-hidden="true">Diagnóstico</span></span></a></nav>
+    <div class="ft-soc"><a class="fs" href="https://www.instagram.com/movex.ag/" target="_blank" rel="noopener" aria-label="Instagram da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a class="fs" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="WhatsApp da Movex"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a><a class="fs" href="mailto:contato@movex.ag" aria-label="E-mail da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a><a class="fs" href="https://movex.ag" target="_blank" rel="noopener" aria-label="Site da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></a></div>
+    <div class="ft-line" aria-hidden="true"></div>
+    <div class="ft-bottom">
+      <span>© 2026 Movex · Movimento estratégico que impulsiona resultados</span>
+      <span>Site desenvolvido por <a href="https://pedrodesign.store" target="_blank" rel="noopener">Pedro Design</a></span>
+    </div>
   </div>
 </footer>
 
@@ -957,7 +977,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   function place(){ var el = items[current]; if (!el) return; pill.style.width = el.offsetWidth + 'px'; pill.style.transform = 'translateX(' + el.offsetLeft + 'px)'; pill.style.opacity = 1; }
   function setActive(i){ if (i === current && pill.style.opacity === '1') return; items[current].removeAttribute('aria-current'); current = i; items[i].setAttribute('aria-current', 'page'); place(); }
   var ids = ['topo','incluso','como-funciona','planos','diagnostico'].map(function(id){ return document.getElementById(id); });
-  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, footer'));
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, .ft'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
   function update(){
