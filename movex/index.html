@@ -47,17 +47,23 @@ em{font-style:italic}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
 .btn svg{width:18px;height:18px;flex:none}
 
-/* Header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(223,230,244,.7)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
-.logo img{height:26px;width:auto}
-.nav-links{display:flex;gap:28px;font-weight:600;font-size:14px}
-.nav-links a{text-decoration:none;color:var(--muted)}
-.nav-links a:hover{color:var(--blue)}
-.nav .btn{padding:11px 18px;font-size:14px}
-
+/* Header fixo: logo, menu de água (liquid glass) e botão */
+.site-header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;pointer-events:none;padding-top:14px}
+.hdr{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hdr>*{pointer-events:auto}
+.glass-chip{background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(12px) saturate(1.3) brightness(1.06);backdrop-filter:blur(12px) saturate(1.3) brightness(1.06);box-shadow:inset 0 1px 1px rgba(255,255,255,.75),inset 0 0 0 1px rgba(255,255,255,.3),0 12px 32px -14px rgba(0,40,90,.45),0 2px 6px rgba(0,40,90,.08);transition:background .3s}
+.logo-pill{display:flex;align-items:center;height:54px;padding:0 22px;border-radius:999px}
+.logo-pill img{height:22px;width:auto}
+.logo-pill .logo-w{display:none}
+.site-header[data-tone="dark"] .glass-chip{background:rgba(10,18,40,.32);box-shadow:inset 0 1px 1px rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.12),0 12px 32px -14px rgba(0,0,0,.6)}
+.site-header[data-tone="dark"] .logo-b{display:none}
+.site-header[data-tone="dark"] .logo-w{display:block}
+.site-header .nimbus-nav{font-family:var(--body)}
+.site-header .nimbus-nav[data-tone="light"]{--n-tint:rgba(255,255,255,.55)}
+.site-header .nimbus-nav[data-tone="dark"]{--n-tint:rgba(10,18,40,.42)}
+.hdr-cta{height:54px;border-radius:999px;padding:0 22px;font-size:14px}
 /* Hero */
-.hero{position:relative;overflow:hidden;padding-block:72px 96px;isolation:isolate}
+.hero{position:relative;overflow:hidden;padding-block:150px 96px;isolation:isolate}
 .grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
 @keyframes drift{to{background-position:56px 56px}}
 .glow{position:absolute;z-index:-1;width:620px;height:620px;right:-120px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(61,134,255,.22),transparent 65%)}
@@ -105,7 +111,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 @keyframes blink{50%{opacity:0}}
 
 /* Seções */
-section{position:relative}
+section{position:relative;scroll-margin-top:84px}
 .sec{padding-block:96px}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:44px}
 .sec-head h2{font-size:clamp(30px,4vw,48px);font-weight:700;margin-top:14px;max-width:18ch}
@@ -281,10 +287,13 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .track{display:none}
   .live-links,.contacts{grid-template-columns:1fr 1fr}
   .photo{justify-self:start}
-  .nav-links{display:none}
+  .site-header .nimbus-nav{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
+  .wa-float{display:none}
+  .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+  section{scroll-margin-top:76px}
 }
 @media (max-width:560px){
-  .hero{padding-block:44px 64px}
+  .hero{padding-block:112px 64px}
   .sec{padding-block:68px}
   .hud-zone{padding:8px}
   .orbit{display:none}
@@ -298,8 +307,9 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .hud-top{font-size:10px;letter-spacing:.06em}
   .svc{padding:24px;min-height:0}
   .stats{grid-template-columns:1fr 1fr;gap:24px}
-  .nav .btn span{display:none}
-  .nav .btn{padding:11px 13px}
+  .hdr-cta span{display:none}
+  .hdr-cta{width:54px;padding:0}
+  .logo-pill{padding:0 18px}
   .hero-ctas .btn{width:100%}
   .photo-tag{left:8px}
 }
@@ -312,17 +322,17 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#topo" aria-label="Movex, início"><img src="assets/movex-logo-azul-v1.png" alt="movex"></a>
-    <nav class="nav-links" aria-label="Seções">
-      <a href="#servicos">Serviços</a>
-      <a href="#metodo">Método</a>
-      <a href="#paginas">Cases</a>
-      <a href="#sobre">Quem somos</a>
-      <a href="#diagnostico">Diagnóstico</a>
+<header class="site-header" data-tone="light">
+  <div class="hdr">
+    <a class="logo-pill glass-chip" href="#topo" aria-label="Movex, início"><img class="logo-b" src="assets/movex-logo-azul-v1.png" alt="movex"><img class="logo-w" src="assets/movex-logo-branco-v1.png" alt="movex"></a>
+    <nav class="nimbus-nav" id="liquid-nav" data-tone="light" aria-label="Seções">
+      <a class="nimbus-item" href="#topo" data-fx="glow" aria-current="page"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h12V9.6"/><path class="nv-door" d="M10 20v-5h4v5Z"/></svg></span><span class="nimbus-label">Início</span></a>
+      <a class="nimbus-item" href="#servicos" data-fx="spin"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><span class="nimbus-label">Serviços</span></a>
+      <a class="nimbus-item" href="#metodo" data-fx="drop"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5Z"/></svg></span><span class="nimbus-label">Método</span></a>
+      <a class="nimbus-item" href="#paginas" data-fx="plane"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.2 3.6 5.4l2.7 6.8-2.7 6.4L21 12.2Zm-14.7 0H13"/></svg></span><span class="nimbus-label">Cases</span></a>
+      <a class="nimbus-item" href="#sobre" data-fx="wave"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20c1.2-3.4 4-5 7.2-5s6 1.6 7.2 5"/></svg></span><span class="nimbus-label">Quem somos</span></a>
     </nav>
-    <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">
+    <a class="btn btn-primary hdr-cta" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com especialista no WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
       <span>Falar com especialista</span>
     </a>
@@ -599,7 +609,36 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
 </a>
 
+<script src="assets/liquid-nav-v1.js"></script>
 <script>
+(function(){
+  var navEl = document.getElementById('liquid-nav'), header = document.querySelector('.site-header');
+  if (!navEl || !window.LiquidNav) return;
+  var nav = window.LiquidNav(navEl);
+  var ids = ['topo','servicos','metodo','paginas','sobre'].map(function(id){ return document.getElementById(id); });
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.about, #diagnostico ~ .final, .final, footer'));
+  var lock = false, lockTimer = 0, ticking = false;
+  function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
+  function update(){
+    ticking = false;
+    var hy = header.getBoundingClientRect().top + 41;
+    header.setAttribute('data-tone', isDarkAt(hy) ? 'dark' : 'light');
+    var nr = navEl.getBoundingClientRect();
+    nav.setTone(isDarkAt(nr.top + nr.height / 2) ? 'dark' : 'light');
+    if (lock) return;
+    var line = Math.min(160, innerHeight * .3), idx = 0;
+    ids.forEach(function(el, i){ if (el && i > 0 && el.getBoundingClientRect().top <= line) idx = i; });
+    if (idx !== nav.current) nav.setActive(idx, false);
+  }
+  function onScroll(){
+    if (lock) { clearTimeout(lockTimer); lockTimer = setTimeout(function(){ lock = false; update(); }, 180); }
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  navEl.onpick = function(){ lock = true; clearTimeout(lockTimer); lockTimer = setTimeout(function(){ lock = false; update(); }, 1400); };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  update();
+})();
 (function(){
   var f = document.getElementById('diag-form'), a = document.getElementById('f-send');
   function upd(){
