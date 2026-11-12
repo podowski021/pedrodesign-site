@@ -250,7 +250,7 @@
       var el = items[current]; if (!el) return;
       s.w = nav.offsetWidth; s.h = nav.offsetHeight;
       var T = s.t;
-      T.r = el.offsetHeight / 2;
+      T.r = Math.min(el.offsetHeight, el.offsetWidth) / 2;
       T.q = Math.max(0, el.offsetWidth / 2 - T.r);
       T.cy = PAD + el.offsetTop + el.offsetHeight / 2;
       var nx = PAD + el.offsetLeft + el.offsetWidth / 2;
