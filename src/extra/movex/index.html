@@ -414,13 +414,12 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .clients-head h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--on-navy-muted);text-align:center;margin:0;white-space:nowrap}
 .clients-head h2 em{font-style:normal;color:#fff}
 .marquee{position:relative;margin-top:40px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%)}
-.mq-track{display:flex;align-items:center;width:max-content;list-style:none;margin:0;padding:0;animation:mq 70s linear infinite;will-change:transform}
+.mq-track{display:flex;align-items:center;width:max-content;list-style:none;margin:0;padding:0;animation:mq 55s linear infinite;will-change:transform}
 .mq-track li{flex:none;display:flex;align-items:center;justify-content:center;padding:0 clamp(28px,3.6vw,52px);height:72px}
 .mq-track img{width:auto;max-width:none;display:block;opacity:.72;filter:saturate(.85);transition:opacity .5s ease,filter .5s ease,transform .5s ease}
-.marquee:hover .mq-track{animation-play-state:paused}
 .mq-track li:hover img{opacity:1;filter:none;transform:scale(1.06)}
 @keyframes mq{to{transform:translateX(-50%)}}
-@media (max-width:560px){.clients{padding-block:4px 52px}.marquee{margin-top:28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}.mq-track{animation-duration:55s}.mq-track li{height:60px}.mq-track img{transform:scale(.82)}.mq-track li:hover img{transform:scale(.88)}.cl-line{max-width:40px}.clients-head h2{font-size:10.5px;letter-spacing:.14em}}
+@media (max-width:560px){.clients{padding-block:4px 52px}.marquee{margin-top:28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}.mq-track{animation-duration:44s}.mq-track li{height:60px}.mq-track img{transform:scale(.82)}.mq-track li:hover img{transform:scale(.88)}.cl-line{max-width:40px}.clients-head h2{font-size:10.5px;letter-spacing:.14em}}
 @media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.mq-track{animation:none}}
 
 /* Responsivo */
