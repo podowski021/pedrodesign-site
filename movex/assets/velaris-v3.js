@@ -10,7 +10,8 @@
   var FRAG = [
     "precision highp float;",
     "varying vec2 vUv;",
-    "uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;",
+    "uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;uniform float u_sharp;",
+    "float ss(float a,float b,float x){float c=(a+b)*.5,h=(b-a)*.5/u_sharp;return smoothstep(c-h,c+h,x);}",
     "vec3 permute(vec3 x){return mod(((x*34.0)+1.0)*x,289.0);}",
     "float snoise(vec2 v){",
     " const vec4 C=vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439);",
@@ -29,10 +30,10 @@
     " float n2=snoise(p*0.55+vec2(-t*0.15,t*0.25)+n1*0.25);",
     " float n3=snoise(p*0.75+vec2(t*0.1,-t*0.2)+n2*0.2);",
     " vec3 col=u_bg;float dist=length(p)*1.5;float vignette=1.0-smoothstep(0.3,1.2,dist);",
-    " col=mix(col,u_colors[0],smoothstep(-0.2,0.5,n1)*0.85);",
-    " col=mix(col,u_colors[1],smoothstep(-0.1,0.6,n2)*0.7);",
-    " col=mix(col,u_colors[2],smoothstep(-0.3,0.4,n3)*0.6);",
-    " col=mix(col,u_colors[3],smoothstep(0.0,0.7,n1*n2)*0.5);",
+    " col=mix(col,u_colors[0],ss(-0.2,0.5,n1)*0.85);",
+    " col=mix(col,u_colors[1],ss(-0.1,0.6,n2)*0.7);",
+    " col=mix(col,u_colors[2],ss(-0.3,0.4,n3)*0.6);",
+    " col=mix(col,u_colors[3],ss(0.0,0.7,n1*n2)*0.5);",
     " float glow=smoothstep(0.8,0.0,dist)*0.3;col+=u_colors[1]*glow;",
     " col=mix(col*0.2,col,vignette);",
     " float grain=fract(sin(dot(uv,vec2(12.9898,78.233)))*43758.5453+u_time);",
@@ -61,8 +62,9 @@
     var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
     var pos = gl.getAttribLocation(pr, "position"); gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-    var L = { res: gl.getUniformLocation(pr, "u_resolution"), time: gl.getUniformLocation(pr, "u_time"), grain: gl.getUniformLocation(pr, "u_grain"), colors: gl.getUniformLocation(pr, "u_colors"), bg: gl.getUniformLocation(pr, "u_bg") };
+    var L = { res: gl.getUniformLocation(pr, "u_resolution"), time: gl.getUniformLocation(pr, "u_time"), grain: gl.getUniformLocation(pr, "u_grain"), colors: gl.getUniformLocation(pr, "u_colors"), bg: gl.getUniformLocation(pr, "u_bg"), sharp: gl.getUniformLocation(pr, "u_sharp") };
     gl.uniform1f(L.grain, grain);
+    gl.uniform1f(L.sharp, parseFloat(box.getAttribute("data-sharp") || "1"));
     gl.uniform3f(L.bg, bg[0], bg[1], bg[2]);
     gl.uniform3fv(L.colors, new Float32Array([].concat.apply([], cols)));
     box.appendChild(cv); box.setAttribute("data-gl", "on");
