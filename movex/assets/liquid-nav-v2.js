@@ -19,6 +19,7 @@
   '.nimbus-nav[data-refract="on"] .nimbus-glass{-webkit-backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08);backdrop-filter:url(#nimbus-refract) blur(2px) saturate(1.2) brightness(1.08)}' +
   '.nimbus-water{position:absolute;left:' + (-PAD) + 'px;top:' + (-PAD) + 'px;z-index:-1;pointer-events:none}' +
   '.nimbus-nav[data-gl="off"] .nimbus-water{display:none}' +
+  '.nimbus-nav[data-bare] .nimbus-glass{background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}' +
   '.nimbus-drop{display:none;position:absolute;top:6px;bottom:6px;left:0;border-radius:999px;z-index:-1;pointer-events:none;will-change:transform,width;' +
   'background:radial-gradient(120% 140% at 30% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),rgba(255,255,255,.38);' +
   'box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -2px 6px rgba(0,162,255,.22),inset 0 0 0 1px rgba(255,255,255,.55),0 6px 16px -6px rgba(0,70,140,.45)}' +
@@ -48,14 +49,14 @@
   '@keyframes nvDoor{0%{fill:transparent}30%{fill:#FFF3A8}100%{fill:rgba(126,232,255,.6)}}' +
   '.nv-ico[data-fx="wave"] svg{animation:nvWave .9s ease-in-out both;transform-origin:50% 92%}' +
   '@keyframes nvWave{0%{transform:none}20%{transform:rotate(-15deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}100%{transform:translateY(-1px) scale(1.08)}}' +
-  '@media (max-width:560px){.nimbus-nav .nimbus-item{padding:0 13px}.nimbus-nav .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}' +
+  '@media (max-width:560px){.nimbus-nav .nimbus-item{padding:0 11px}.nimbus-nav .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}' +
   '@media (prefers-reduced-motion:reduce){.nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none}}';
 
   var VERT = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
   var FRAG = [
     "precision highp float;",
     "uniform vec2 uRes;uniform float uDpr;uniform float uTime;uniform vec4 uPill;",
-    "uniform vec4 uBlob[6];uniform float uSy[6];uniform vec4 uRip[6];uniform vec3 uMouse;uniform float uDark;uniform float uAmb;",
+    "uniform vec4 uBlob[6];uniform float uSy[6];uniform vec4 uRip[6];uniform vec3 uMouse;uniform float uDark;uniform float uAmb;uniform float uRim;",
     "float sdRB(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.))+min(max(q.x,q.y),0.)-r;}",
     "float sdCap(vec2 p,vec4 B,float sy){p-=B.xy;p.y/=sy;p.x=max(abs(p.x)-B.z,0.);return(length(p)-B.w)*min(1.,sy);}",
     "float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}",
@@ -80,7 +81,7 @@
     " float pm=smoothstep(1.,-1.,dp);float dm=smoothstep(1.,-1.,dd)*smoothstep(1.,-2.,dp);",
     " float sh=smoothstep(9.,-9.,dropD(p-vec2(0.,5.)))*(1.-dm)*pm*(.11+.07*uDark);",
     " vec3 c=vec3(0.,.14,.36)*sh;float a=sh;",
-    " float pa=clamp(pm*(fres*.5+spec*.9+spec2),0.,1.);",
+    " float pa=clamp(pm*(fres*.5+spec*.9+spec2),0.,1.)*uRim;",
     " c=mix(vec3(1.),irid,.5*fres)*pa+c*(1.-pa);a=pa+a*(1.-pa);",
     " float th=lens(dd,11.);",
     " float cs=caus((p+n.xy*th*18.)*.085,uTime*.9);",
@@ -114,7 +115,7 @@
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     var loc = gl.getAttribLocation(p, "a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     var u = {};
-    ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb"].forEach(function (n) { u[n] = gl.getUniformLocation(p, n); });
+    ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb", "uRim"].forEach(function (n) { u[n] = gl.getUniformLocation(p, n); });
     return { gl: gl, u: u };
   }
 
@@ -134,6 +135,7 @@
       '<feDisplacementMap in="SourceGraphic" in2="soft" scale="60" xChannelSelector="R" yChannelSelector="G"/></filter></svg>' +
       '<span class="nimbus-glass" aria-hidden="true"></span><canvas class="nimbus-water" aria-hidden="true"></canvas><span class="nimbus-drop" aria-hidden="true"></span>');
     var canvas = nav.querySelector(".nimbus-water"), drop = nav.querySelector(".nimbus-drop");
+    var bare = nav.hasAttribute("data-bare");
 
     var s = {
       a: { x: 0, v: 0 }, b: { x: 0, v: 0 }, sy: { s: 1, v: 0 }, lead: 0, lagFrom: 0, sats: [], rips: [],
@@ -171,6 +173,7 @@
         g.uniform3f(u.uMouse, s.mouse.x, s.mouse.y, s.mouse.s);
         g.uniform1f(u.uDark, s.dark);
         g.uniform1f(u.uAmb, s.reduce ? 0 : 1);
+        g.uniform1f(u.uRim, bare ? 0 : 1);
         g.clearColor(0, 0, 0, 0); g.clear(g.COLOR_BUFFER_BIT); g.drawArrays(g.TRIANGLES, 0, 3);
       } else {
         var left = Math.min(s.a.x, s.b.x) - s.q - r - PAD, width = sep + 2 * (s.q + r);
@@ -313,6 +316,7 @@
     return {
       setActive: setActive,
       get current() { return current; },
+      measure: function () { s.ready = false; measure(); },
       setTone: function (t) {
         var d = t === "dark" ? 1 : 0;
         if (d === s.dark) return;
