@@ -403,11 +403,8 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .tl-note strong{color:var(--ink)}
 
 /* Selos de parceiro */
-.hero-grid{position:relative}
-.seals{position:absolute;top:-44px;right:calc(max(16px,env(safe-area-inset-right,0px)) + 24px);display:flex;gap:6px;z-index:2}
-.seals img{height:26px;width:auto;border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.22),0 6px 16px -6px rgba(0,0,0,.6)}
-@media (max-width:980px){.seals{top:2px;right:max(16px,env(safe-area-inset-right,0px))}}
-@media (max-width:560px){.seals img{height:24px}}
+.seals{display:flex;gap:8px}
+.seals img{height:28px;width:auto;border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.22),0 6px 16px -6px rgba(0,0,0,.6)}
 /* Planos (pricing-02 adaptado) */
 @property --pr-a{syntax:"<angle>";inherits:false;initial-value:0deg}
 .pr-head{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;margin-bottom:clamp(32px,5vw,52px)}
@@ -615,12 +612,11 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
     <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#93c5fd,#60a5fa,#2563eb,#000000" data-speed="2" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-grid">
-      <div class="seals" aria-label="Parceiro oficial Google e Meta">
-        <img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
-        <img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
-      </div>
       <div>
-        <span class="pill-tag">Implementação</span>
+        <div class="seals" aria-label="Parceiro oficial Google e Meta">
+          <img src="assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
+          <img src="assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
+        </div>
         <h1 class="fs-logo"><img src="assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></h1>
         <p class="lead">Engenharia de performance para <strong>dominar o mercado local</strong>, atrair leads e transformar intenção de busca em <strong>lucro real.</strong></p>
         <div class="hero-ctas">
