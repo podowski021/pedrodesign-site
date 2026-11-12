@@ -27,7 +27,6 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.92)}
 a{color:inherit}
 img{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.025em;text-wrap:balance;margin:0}
@@ -64,14 +63,22 @@ em{font-style:italic}
 .hdr-cta{height:54px;border-radius:999px;padding:0 22px;font-size:14px}
 /* Hero */
 .hero{position:relative;overflow:hidden;padding-block:150px 96px;isolation:isolate}
-.grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
+.hero{background:radial-gradient(60% 70% at 78% 30%,rgba(61,134,255,.35),transparent 70%),radial-gradient(40% 50% at 20% 90%,rgba(102,179,255,.18),transparent 70%),var(--navy);color:var(--on-navy)}
+.hero-bg{position:absolute;inset:0;z-index:-4;overflow:hidden}
+.hero-shade{position:absolute;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(90deg,rgba(9,18,43,.88) 0%,rgba(9,18,43,.62) 42%,rgba(9,18,43,.18) 75%,rgba(9,18,43,.05) 100%),linear-gradient(180deg,rgba(9,18,43,.35) 0%,transparent 22%)}
+.grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 40%,#000 20%,transparent 75%);animation:drift 30s linear infinite}
 @keyframes drift{to{background-position:56px 56px}}
-.glow{position:absolute;z-index:-1;width:620px;height:620px;right:-120px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(61,134,255,.22),transparent 65%)}
+
 .hero-grid>*,.google-grid>*,.about-grid>*,.diag-grid>*{min-width:0}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:700;margin-top:22px}
-.hero h1 em{color:var(--blue);font-weight:800}
-.hero .lead{font-size:18px;color:var(--muted);max-width:52ch;margin-top:22px}
+.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:700;margin-top:22px;color:#fff;text-shadow:0 2px 30px rgba(9,18,43,.45)}
+.hero .tag{color:var(--cyan)}
+.hero .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero .btn-ghost:hover{border-color:var(--cyan);color:#fff}
+.hero .chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--on-navy);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero .chip i{background:var(--cyan);box-shadow:0 0 0 3px rgba(127,211,255,.18)}
+.hero h1 em{color:#7fb6ff;font-weight:800}
+.hero .lead{font-size:18px;color:#c3cfeb;max-width:52ch;margin-top:22px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .partners{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:600;color:var(--ink)}
@@ -83,7 +90,7 @@ em{font-style:italic}
 .orbit.o2{inset:40px -30px;border-style:solid;border-color:rgba(61,134,255,.14);animation-duration:90s;animation-direction:reverse}
 .orbit::after{content:"";position:absolute;top:50%;left:-5px;width:9px;height:9px;border-radius:50%;background:var(--electric);box-shadow:0 0 12px var(--electric)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hud{position:relative;background:linear-gradient(160deg,var(--navy-2),var(--navy) 60%);color:var(--on-navy);border-radius:22px;padding:24px;box-shadow:0 40px 80px -30px rgba(9,18,43,.55),inset 0 0 0 1px rgba(127,211,255,.12);overflow:hidden}
+.hud{position:relative;background:linear-gradient(160deg,rgba(13,28,69,.82),rgba(9,18,43,.9) 60%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--on-navy);border-radius:22px;padding:24px;box-shadow:0 40px 80px -30px rgba(9,18,43,.55),inset 0 0 0 1px rgba(127,211,255,.12);overflow:hidden}
 .hud::before{content:"";position:absolute;left:0;right:0;height:80px;top:-80px;background:linear-gradient(transparent,rgba(127,211,255,.08));animation:scan 5s ease-in-out infinite}
 @keyframes scan{to{top:110%}}
 .corner{position:absolute;width:16px;height:16px;border-color:var(--cyan);opacity:.7}
@@ -296,6 +303,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .hero{padding-block:112px 64px}
   .sec{padding-block:68px}
   .hud-zone{padding:8px}
+  .hero-shade{background:linear-gradient(180deg,rgba(9,18,43,.6) 0%,rgba(9,18,43,.78) 55%,rgba(9,18,43,.55) 100%)}
   .orbit{display:none}
   .metrics{grid-template-columns:1fr}
   .metric{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
@@ -342,8 +350,9 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 <main id="topo">
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg" data-animated-gradient data-preset="Prism" data-color1="#09122b" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
     <div class="grid-bg" aria-hidden="true"></div>
-    <div class="glow" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
         <span class="mono tag">Agência de performance · Cascavel/PR</span>
@@ -610,13 +619,14 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 </a>
 
 <script src="assets/liquid-nav-v1.js"></script>
+<script src="assets/hero-gradient-v1.js"></script>
 <script>
 (function(){
   var navEl = document.getElementById('liquid-nav'), header = document.querySelector('.site-header');
   if (!navEl || !window.LiquidNav) return;
   var nav = window.LiquidNav(navEl);
   var ids = ['topo','servicos','metodo','paginas','sobre'].map(function(id){ return document.getElementById(id); });
-  var dark = Array.prototype.slice.call(document.querySelectorAll('.about, #diagnostico ~ .final, .final, footer'));
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .about, .final, footer'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
   function update(){
