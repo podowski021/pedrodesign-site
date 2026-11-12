@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#ffffff">
-<meta property="og:title" content="Movex · Agência de Performance">
-<meta property="og:description" content="Aumente suas vendas e o seu lucro com anúncios estratégicos na internet.">
-<title>Movex · Agência de Performance</title>
+<meta property="og:title" content="Funil Start · Movex">
+<meta property="og:description" content="Engenharia de performance para dominar o mercado local, atrair leads e transformar intenção de busca em lucro real.">
+<title>Funil Start · Movex</title>
 <meta name="description" content="Movex, agência de performance em Cascavel/PR. Tráfego pago, Funil Start, mentoria e páginas que transformam clique em cliente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,9 +284,126 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 .diag .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .diag .btn{width:100%;margin-top:4px}
 
+
+/* ---------- Funil Start ---------- */
+.hero .pill-tag{display:inline-block}
+.fs-logo{margin-top:26px;line-height:0}
+.fs-logo img{width:min(100%,560px);height:auto;filter:drop-shadow(0 6px 30px rgba(61,134,255,.35))}
+.hero .lead{font-size:clamp(17px,1.6vw,20px)}
+.hero .lead strong{color:#fff}
+.search-top{margin-top:18px}
+.search-top .rank{background:var(--ok)}
+.funnel{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.funnel li{display:flex;justify-content:center}
+.fn-bar{position:relative;display:flex;align-items:center;gap:12px;width:var(--w);min-width:0;height:44px;border-radius:12px;padding:0 14px;background:linear-gradient(90deg,rgba(61,134,255,.38),rgba(61,134,255,.14));border:1px solid rgba(127,211,255,.22);overflow:hidden}
+.fn-bar i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(127,211,255,.32),transparent);transform:translateX(-100%);animation:fnflow 3s ease-in-out infinite}
+.funnel li:nth-child(2) i{animation-delay:.35s}.funnel li:nth-child(3) i{animation-delay:.7s}.funnel li:nth-child(4) i{animation-delay:1.05s}
+@keyframes fnflow{60%,100%{transform:translateX(100%)}}
+.fn-k{position:relative;font-size:10.5px;color:var(--cyan)}
+.fn-bar b{position:relative;font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.fn-last .fn-bar{background:linear-gradient(90deg,rgba(20,194,122,.5),rgba(20,194,122,.18));border-color:rgba(20,194,122,.45)}
+.fn-last .fn-k{color:#9ff0c8}
+.hud-foot{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px;font-size:10.5px;color:var(--on-navy-muted)}
+
+.concept{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
+.concept-p{font-size:18px;color:var(--muted)}
+.concept-p strong,.txt p strong{color:var(--ink)}
+.incl-label{color:var(--muted);margin-bottom:14px}
+.incl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.inc{position:relative;display:flex;flex-direction:column;gap:12px;background:var(--mist);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.inc-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--blue);color:#fff;box-shadow:0 10px 24px -12px rgba(11,79,216,.75)}
+.inc-ico svg{width:24px;height:24px}
+.inc h3{font-size:19px;font-weight:600;line-height:1.2}
+.inc h3 em,.ic h3 em{color:var(--blue)}
+.inc p{color:var(--muted);font-size:14.5px}
+.inc-opt{background:#fff;border-style:dashed;border-color:#b9c9ea}
+.opt{position:absolute;top:20px;right:18px;font-size:10.5px;background:var(--blue);color:#fff;padding:4px 8px;border-radius:6px}
+
+.shot-gmn{justify-self:center;width:100%;max-width:330px}
+.shot-gmn img,.shot-map img,.shot-plain img{width:100%;height:auto}
+.map-block{margin-top:72px}
+.map-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.map-head h3{font-size:clamp(24px,3vw,34px);font-weight:700}
+.map-head h3 em{color:var(--blue)}
+.map-head .mono{color:var(--muted);font-size:11px}
+
+.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.conv-grid>*{min-width:0}
+.pill-blue{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:4px 11px;border-radius:7px}
+.conv-grid .h2{margin-top:12px}
+.conv-grid .sub{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-top:12px}
+.conv-grid .txt p:not(.sub){color:var(--muted);margin-top:16px;max-width:52ch}
+.conv-grid .txt p strong{color:var(--ink)}
+.shot-plain{max-width:520px;justify-self:center;width:100%}
+#pagina .mockups{margin-top:56px}
+
+.impl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ic{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;background:linear-gradient(160deg,var(--navy-2),var(--navy));color:var(--on-navy);border-radius:var(--r);padding:36px 28px;box-shadow:8px 8px 0 var(--blue)}
+.ic-ico{color:#fff}
+.ic-ico svg{width:56px;height:56px}
+.ic h3{font-size:24px;font-weight:600;color:#fff}
+.ic h3 em{color:var(--cyan);font-weight:700}
+.ic p{color:var(--on-navy-muted);font-size:15px}
+
+.seg{display:inline-flex;padding:5px;gap:4px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.seg button{font:inherit;font-weight:700;font-size:14px;border:0;background:none;padding:10px 16px;border-radius:999px;color:var(--muted);cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.tl{list-style:none;padding:0;margin:0;display:flex;gap:14px}
+.tl li{flex:1;min-width:0;position:relative;padding:44px 16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;transition:opacity .3s}
+.tl li::before{content:"";position:absolute;top:16px;left:16px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-sizing:border-box;z-index:1}
+.tl li::after{content:"";position:absolute;top:23px;left:36px;right:-16px;height:2px;background:linear-gradient(90deg,var(--blue),rgba(11,79,216,.2))}
+.tl li:last-child::after{display:none}
+.tl .now::before{background:var(--blue);animation:pulseb 1.8s infinite}
+@keyframes pulseb{0%{box-shadow:0 0 0 0 rgba(11,79,216,.45)}70%{box-shadow:0 0 0 9px rgba(11,79,216,0)}}
+.tl .only-com::before{border-color:#f5b800}
+.tl .only-com{border-color:#f3dc8f;background:#fffbea}
+.tl .go::before{border-color:var(--ok);background:var(--ok)}
+.tl .d{display:block;font-size:11px;color:var(--blue)}
+.tl .only-com .d{color:#a77800}
+.tl b{display:block;font-family:var(--display);font-weight:600;font-size:16.5px;line-height:1.25;margin-top:6px;letter-spacing:-.01em}
+.tl[data-mode="sem"] .only-com{display:none}
+.tl-note{margin-top:22px;color:var(--muted)}
+.tl-note strong{color:var(--ink)}
+
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;margin:0 auto}
+.plan{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;padding:34px;background:#fff;min-width:0}
+.plan-tag{color:var(--blue);font-size:11px}
+.plan h3{font-size:clamp(24px,2.4vw,30px);font-weight:700;margin-top:10px}
+.plan-desc{color:var(--muted);font-size:15px;margin-top:12px}
+.plan-desc strong{color:var(--ink)}
+.price-big{display:flex;align-items:flex-start;margin-top:26px;font-family:var(--display);font-style:italic;font-weight:800;color:#0fb36d}
+.price-big .px{align-self:center;font-size:24px;font-weight:600;color:var(--ink);margin-right:12px}
+.price-big .cur{font-size:24px;margin-top:6px;margin-right:2px}
+.price-big .num{font-size:clamp(68px,8vw,104px);line-height:.88;letter-spacing:-.045em}
+.price-big .cents{align-self:flex-end;font-size:26px;margin-bottom:6px}
+.avista{font-style:italic;color:var(--muted);margin-top:8px}
+.avista strong{color:var(--ink)}
+.checks{list-style:none;padding:0;margin:26px 0 30px;display:grid;gap:11px}
+.checks li{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.checks li::before{content:"";width:21px;height:21px;border-radius:50%;flex:none;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.checks li.off{color:#9aa5bd;text-decoration:line-through}
+.checks li.off::before{background-color:#dbe2ef}
+.plan-btn{margin-top:auto;width:100%}
+.plan-pro{background:linear-gradient(160deg,var(--navy-2),var(--navy));color:var(--on-navy);border-color:transparent;box-shadow:10px 10px 0 var(--blue)}
+.plan-pro .plan-tag{color:var(--cyan)}
+.plan-pro .plan-desc,.plan-pro .avista{color:var(--on-navy-muted)}
+.plan-pro .plan-desc strong,.plan-pro .avista strong,.plan-pro .price-big .px{color:#fff}
+.plan-pro .price-big{color:#3ee49a}
+.plan-pro .checks li::before{background-color:var(--electric)}
+.badge{position:absolute;top:-13px;right:26px;background:var(--ok);color:#fff;font-size:11px;padding:6px 12px;border-radius:8px;box-shadow:0 8px 20px -8px rgba(20,194,122,.8)}
+
 /* Responsivo */
 @media (max-width:980px){
-  .hero-grid,.google-grid,.about-grid,.diag-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid,.plans{grid-template-columns:minmax(0,1fr)}
+  .incl{grid-template-columns:1fr 1fr}
+  .impl-grid{grid-template-columns:1fr;max-width:560px}
+  .tl{flex-direction:column;gap:10px}
+  .tl li{padding:16px 16px 16px 48px}
+  .tl li::before{top:18px;left:16px}
+  .tl li::after{top:36px;left:23px;right:auto;bottom:-12px;width:2px;height:auto;background:linear-gradient(180deg,var(--blue),rgba(11,79,216,.2))}
+  .concept{gap:18px}
+  .shot-map{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+  .shot-map img{width:820px;max-width:none}
   .hud-zone{max-width:560px}
   .services{grid-template-columns:1fr 1fr}
   .svc.wide,.svc.half,.svc.third{grid-column:span 2}
@@ -308,7 +425,11 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   .metrics{grid-template-columns:1fr}
   .metric{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
   .metric small{text-align:right;margin:0}
-  .steps,.live-links,.contacts,.diag .two{grid-template-columns:1fr}
+  .steps,.live-links,.contacts,.diag .two,.incl{grid-template-columns:1fr}
+  .seg{width:100%}
+  .seg button{flex:1;padding:10px 8px;font-size:13px}
+  .plan{padding:26px 22px}
+  .fn-bar b{font-size:12px}
   .diag{padding:22px;box-shadow:6px 6px 0 var(--blue)}
   .clients-panel{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .clients-panel img{width:680px;max-width:none}
@@ -335,12 +456,12 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
     <a class="logo-pill glass-chip" href="#topo" aria-label="Movex, início"><img class="logo-b" src="assets/movex-logo-azul-v1.png" alt="movex"><img class="logo-w" src="assets/movex-logo-branco-v1.png" alt="movex"></a>
     <nav class="nimbus-nav" id="liquid-nav" data-tone="light" aria-label="Seções">
       <a class="nimbus-item" href="#topo" data-fx="glow" aria-current="page"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h12V9.6"/><path class="nv-door" d="M10 20v-5h4v5Z"/></svg></span><span class="nimbus-label">Início</span></a>
-      <a class="nimbus-item" href="#servicos" data-fx="spin"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><span class="nimbus-label">Serviços</span></a>
-      <a class="nimbus-item" href="#metodo" data-fx="drop"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5Z"/></svg></span><span class="nimbus-label">Método</span></a>
-      <a class="nimbus-item" href="#paginas" data-fx="plane"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.2 3.6 5.4l2.7 6.8-2.7 6.4L21 12.2Zm-14.7 0H13"/></svg></span><span class="nimbus-label">Cases</span></a>
-      <a class="nimbus-item" href="#sobre" data-fx="wave"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20c1.2-3.4 4-5 7.2-5s6 1.6 7.2 5"/></svg></span><span class="nimbus-label">Quem somos</span></a>
+      <a class="nimbus-item" href="#incluso" data-fx="spin"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><span class="nimbus-label">Incluso</span></a>
+      <a class="nimbus-item" href="#como-funciona" data-fx="drop"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5Z"/></svg></span><span class="nimbus-label">Como funciona</span></a>
+      <a class="nimbus-item" href="#planos" data-fx="plane"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.2 3.6 5.4l2.7 6.8-2.7 6.4L21 12.2Zm-14.7 0H13"/></svg></span><span class="nimbus-label">Planos</span></a>
+      <a class="nimbus-item" href="#diagnostico" data-fx="wave"><span class="nv-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20c1.2-3.4 4-5 7.2-5s6 1.6 7.2 5"/></svg></span><span class="nimbus-label">Diagnóstico</span></a>
     </nav>
-    <a class="btn btn-primary hdr-cta" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com especialista no WhatsApp">
+    <a class="btn btn-primary hdr-cta" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com especialista no WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
       <span>Falar com especialista</span>
     </a>
@@ -355,13 +476,13 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <span class="mono tag">Agência de performance · Cascavel/PR</span>
-        <h1>Aumente suas vendas e o seu lucro com <em>anúncios estratégicos</em> na internet.</h1>
-        <p class="lead">Transformamos estratégia em resultado. Tráfego pago, presença no Google e páginas de conversão trabalhando juntos para colocar a sua empresa na frente de quem já quer comprar.</p>
+        <span class="pill-tag">Implementação</span>
+        <h1 class="fs-logo"><img src="assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></h1>
+        <p class="lead">Engenharia de performance para <strong>dominar o mercado local</strong>, atrair leads e transformar intenção de busca em <strong>lucro real.</strong></p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">Quero um diagnóstico gratuito
+          <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero o Funil Start
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost" href="#servicos">Conhecer os serviços</a>
+          <a class="btn btn-ghost" href="#planos">Ver os planos</a>
         </div>
         <div class="partners" aria-label="Certificações">
           <span class="chip"><i></i>Google Partner</span>
@@ -370,32 +491,24 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
         </div>
       </div>
 
-      <div class="hud-zone" aria-label="Resultados da Movex">
+      <div class="hud-zone" aria-label="Como o Funil Start funciona">
         <div class="orbit" aria-hidden="true"></div>
         <div class="orbit o2" aria-hidden="true"></div>
         <div class="hud">
           <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-          <div class="hud-top mono"><span>MOVEX // PAINEL DE PERFORMANCE</span><span class="live"><b></b>ATIVO</span></div>
-          <div class="metrics">
-            <div class="metric"><strong><span>+</span><b data-count="200">200</b></strong><small>empresas impulsionadas</small></div>
-            <div class="metric"><strong><span>+</span>R$<b data-count="6">6</b>M</strong><small>investidos em campanhas</small></div>
-            <div class="metric"><strong><span>+</span>R$<b data-count="100">100</b>M</strong><small>faturamento gerado para clientes</small></div>
-          </div>
-          <div class="chart">
-            <div class="chart-head mono"><span>Faturamento dos clientes</span><span style="color:var(--ok)">▲ crescendo</span></div>
-            <svg viewBox="0 0 400 120" aria-hidden="true">
-              <defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d86ff" stop-opacity=".45"/><stop offset="1" stop-color="#3d86ff" stop-opacity="0"/></linearGradient></defs>
-              <g stroke="rgba(127,211,255,.1)" stroke-width="1"><line x1="0" y1="30" x2="400" y2="30"/><line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="90" x2="400" y2="90"/></g>
-              <path d="M0 108 C40 104 60 98 90 96 S140 86 170 80 S220 74 250 60 S310 40 340 28 S380 14 400 8 L400 120 L0 120 Z" fill="url(#fill)"/>
-              <path class="draw" d="M0 108 C40 104 60 98 90 96 S140 86 170 80 S220 74 250 60 S310 40 340 28 S380 14 400 8" fill="none" stroke="#7fd3ff" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="396" cy="9" r="5" fill="#7fd3ff"/><circle cx="396" cy="9" r="11" fill="none" stroke="#7fd3ff" stroke-opacity=".35"/>
-            </svg>
-          </div>
-          <div class="search">
+          <div class="hud-top mono"><span>FUNIL START // EM OPERAÇÃO</span><span class="live"><b></b>ATIVO</span></div>
+          <div class="search search-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <span class="q">agência de marketing cascavel<span class="caret"></span></span>
-            <span class="rank">1º · MOVEX</span>
+            <span class="q"><span id="typed">dentista em cascavel</span><span class="caret"></span></span>
+            <span class="rank">1º · SUA EMPRESA</span>
           </div>
+          <ol class="funnel" aria-label="Etapas do funil">
+            <li style="--w:100%"><span class="fn-bar"><i></i><span class="fn-k mono">01</span><b>Cliente procura no Google</b></span></li>
+            <li style="--w:90%"><span class="fn-bar"><i></i><span class="fn-k mono">02</span><b>Sua empresa aparece primeiro</b></span></li>
+            <li style="--w:80%"><span class="fn-bar"><i></i><span class="fn-k mono">03</span><b>Visita o perfil ou a página</b></span></li>
+            <li style="--w:70%" class="fn-last"><span class="fn-bar"><i></i><span class="fn-k mono">04</span><b>Chama no WhatsApp</b></span></li>
+          </ol>
+          <div class="hud-foot mono"><span>Google Meu Negócio</span><span>+</span><span>Google Ads</span><span>+</span><span>Página</span></div>
         </div>
       </div>
     </div>
@@ -414,118 +527,74 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
     </div>
   </section>
 
-  <!-- CONTRASTE -->
-  <section class="contrast" aria-label="Nosso diferencial">
-    <div class="wrap contrast-in">
-      <p class="mono" style="color:var(--blue)">// sem promessa vazia</p>
-      <p class="big">Muita agência se vende bem e entrega pouco. Aqui, cada decisão é guiada por <em>dados</em> e cada real investido é <em>rastreado até a venda.</em></p>
-    </div>
-  </section>
-
-  <!-- SERVIÇOS -->
-  <section class="sec" id="servicos" aria-labelledby="t-serv">
+  <!-- CONCEITO + INCLUSO -->
+  <section class="sec" id="incluso" aria-labelledby="t-conc">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="concept">
         <div>
-          <span class="mono tag">O que fazemos</span>
-          <h2 id="t-serv">Uma frente para cada <em>etapa do crescimento.</em></h2>
+          <span class="mono tag">Conceito Start</span>
+          <h2 class="h2" id="t-conc">Sua empresa exatamente <em>onde o cliente está procurando.</em></h2>
         </div>
-        <p>Escolha por onde começar. Cada serviço tem a sua própria página com tudo o que está incluso.</p>
+        <p class="concept-p">Nosso objetivo é simples: <strong>não depender da sorte</strong> e garantir que você seja a <strong>primeira opção da sua região</strong> no momento em que alguém busca pelo que você vende.</p>
       </div>
-
-      <div class="services">
-        <a class="svc wide feature" href="funil-start.html">
-          <svg class="arc" viewBox="0 0 340 340" fill="none" aria-hidden="true"><path d="M30 200 140 60l120 120c20 22 50 40 80 44" stroke="#3d86ff" stroke-width="1.2"/><path d="M90 200 140 140" stroke="#3d86ff" stroke-width="1.2"/></svg>
-          <span class="pill-tag">Implementação</span>
-          <div class="start-row"><span class="fl">Funil</span><span class="start-word">START</span></div>
-          <p>Engenharia de performance para dominar o mercado local, atrair leads e transformar intenção de busca em lucro real.</p>
-          <ul><li>Google Meu Negócio</li><li>Campanha no Google Ads</li><li>2 meses de suporte</li><li>Página de conversão (opcional)</li></ul>
-          <div class="price">a partir de <strong>10x R$ 250</strong> ou R$ 1.997 à vista</div>
-          <span class="go">Conhecer o Funil Start <b>→</b></span>
-        </a>
-
-        <a class="svc half" href="trafego-e-estrategia.html">
-          <span class="ix">Tráfego pago</span>
-          <h3>Tráfego e <em>Estratégia</em></h3>
-          <p>Estratégias de escala nos canais de busca e de atenção, com rastreamento de cada venda para o investimento virar lucro real.</p>
-          <ul><li>Google e Meta Ads</li><li>GTM e API de Conversão</li><li>Inteligência de dados</li></ul>
-          <span class="go">Ver detalhes <b>→</b></span>
-        </a>
-
-        <a class="svc third" href="mentoria-e-consultoria.html">
-          <span class="ix">Know-how</span>
-          <h3>Mentoria e <em>Consultoria</em></h3>
-          <p>Você não fica no escuro. Entregamos a nossa experiência para que você e a sua equipe entendam o porquê de cada movimento e tomem decisões com segurança.</p>
-          <ul><li>Gestão de performance</li><li>Análise completa do funil</li><li>Plano de ação</li></ul>
-          <span class="go">Ver detalhes <b>→</b></span>
-        </a>
-
-        <a class="svc third" href="paginas-e-identidade-visual.html">
-          <span class="ix">Vitrine digital</span>
-          <h3>Páginas e <em>Identidade Visual</em></h3>
-          <p>De nada adianta investir em tráfego se a sua vitrine não está pronta para vender. Páginas limpas, rápidas e persuasivas, com uma marca que passa confiança.</p>
-          <ul><li>Páginas de alta conversão</li><li>Posicionamento estratégico</li><li>Identidade visual</li></ul>
-          <span class="go">Ver detalhes <b>→</b></span>
-        </a>
+      <p class="mono incl-label">O que está incluso</p>
+      <div class="incl">
+        <div class="inc">
+          <span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <h3>Implementação <em>Google Meu Negócio</em></h3>
+          <p>Seu perfil completo, otimizado e pronto para aparecer no mapa quando alguém procura por perto.</p>
+        </div>
+        <div class="inc">
+          <span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+          <h3>Criação de <em>Campanha do Google Ads</em></h3>
+          <p>Compramos os termos de quem já busca pelo seu serviço ou produto, para você aparecer no topo.</p>
+        </div>
+        <div class="inc">
+          <span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
+          <h3>Acompanhamento e suporte de <em>2 meses</em></h3>
+          <p>Monitoramos e otimizamos as campanhas para garantir o potencial máximo dos resultados.</p>
+        </div>
+        <div class="inc inc-opt">
+          <span class="opt mono">Opcional</span>
+          <span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 9h19M6 6.5h.01M9 6.5h.01M7 13h6M7 16h10"/></svg></span>
+          <h3>Criação de <em>Página de Conversão</em></h3>
+          <p>Uma página feita para transformar o clique do Google em um lead qualificado.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MÉTODO -->
-  <section class="sec method" id="metodo" aria-labelledby="t-met">
+  <!-- DOMÍNIO DO GOOGLE -->
+  <section class="sec" id="como-funciona" aria-labelledby="t-goo">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="mono tag">Como atuamos</span>
-          <h2 id="t-met">Do diagnóstico ao <em>resultado</em>, em quatro etapas.</h2>
+      <div class="google-grid">
+        <div class="txt">
+          <span class="mono tag">Domínio total do Google</span>
+          <h2 class="h2" id="t-goo">Autoridade e atração: sua empresa onde a <em>intenção de compra</em> acontece.</h2>
+          <p>Otimizamos a sua presença local <strong>através do Google Meu Negócio</strong> e também compramos os termos de quem busca pelo seu <strong>serviço ou produto</strong>, garantindo que <strong>sua empresa seja a primeira opção do cliente.</strong></p>
+          <p>O resultado é simples: <strong>sua marca se torna a primeira e mais confiável opção</strong> no momento exato em que o cliente decide comprar.</p>
         </div>
-        <p>Movemos marcas com visão, consistência e intencionalidade. Nada é feito no achismo.</p>
+        <div class="shot shot-gmn"><img src="assets/fs-google-perfil-v1.webp" alt="Perfil da Movex no Google com nota 5,0 e anúncio patrocinado" width="600" height="1076"></div>
       </div>
-      <div class="steps">
-        <div class="track" aria-hidden="true"></div>
-        <div class="step"><div class="node">01</div><h3>Diagnóstico e <em>entendimento do negócio</em></h3><p>Analisamos o contexto, o mercado, a concorrência e os principais desafios da marca para definir um ponto de partida sólido.</p></div>
-        <div class="step"><div class="node">02</div><h3>Planejamento de <em>comunicação e mídia</em></h3><p>Construímos um plano coerente de ações, canais e formatos para fortalecer o posicionamento definido.</p></div>
-        <div class="step"><div class="node">03</div><h3>Execução criativa e <em>ativação de campanhas</em></h3><p>Transformamos a estratégia em campanhas visuais, conteúdos, tráfego e peças que comunicam e performam.</p></div>
-        <div class="step"><div class="node">04</div><h3>Acompanhamento, <em>métricas e otimização</em></h3><p>Monitoramos o desempenho, ajustamos o que for necessário e evoluímos os resultados continuamente.</p></div>
+      <div class="map-block">
+        <div class="map-head"><h3>Exemplo de como <em>funciona:</em></h3><span class="mono">Busca real · "agência de marketing" · Cascavel/PR</span></div>
+        <div class="shot shot-map"><img src="assets/fs-mapa-v1.webp" alt="Busca por agência de marketing no Google Maps em Cascavel, com a Movex em primeiro como patrocinado" width="1600" height="779"></div>
       </div>
     </div>
   </section>
 
-  <!-- GOOGLE -->
-  <section class="sec" aria-labelledby="t-goo">
-    <div class="wrap google-grid">
-      <div class="txt">
-        <span class="mono tag">Domínio total do Google</span>
-        <h2 id="t-goo">Sua empresa onde a <em>intenção de compra</em> acontece.</h2>
-        <p>Otimizamos a sua presença local pelo <strong>Google Meu Negócio</strong> e compramos os termos de quem procura pelo seu serviço ou produto.</p>
-        <p>O resultado é simples: <strong>sua marca vira a primeira e mais confiável opção</strong> no momento exato em que o cliente decide comprar, sem depender da sorte.</p>
-        <div class="hero-ctas"><a class="btn btn-primary" href="funil-start.html">Ver como funciona</a></div>
-      </div>
-      <div class="serp" aria-label="Exemplo de anúncio da Movex no Google">
-        <div class="serp-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>agência de marketing cascavel</div>
-        <div class="ad">
-          <span class="first">1º RESULTADO</span>
-          <div class="spon">Patrocinado · movex.ag</div>
-          <div class="t">Movex | Agência de Performance</div>
-          <div class="meta">5,0 <span class="stars">★★★★★</span> (9) · Agência de publicidade · Cascavel, PR</div>
-          <div class="desc">Estratégia e Tráfego Pago. Nosso propósito é impulsionar negócios por meio de decisões inteligentes.</div>
-          <div class="btns"><span>Site</span><span>Rotas</span><span>Ligar</span></div>
-        </div>
-        <div class="other" aria-hidden="true"><div></div><div></div><div></div></div>
-        <div class="other" aria-hidden="true" style="opacity:.35"><div></div><div></div><div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PÁGINAS -->
-  <section class="sec pages" id="paginas" aria-labelledby="t-pag" style="padding-top:24px">
+  <!-- PÁGINA DE CONVERSÃO -->
+  <section class="sec" id="pagina" aria-labelledby="t-pag">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="mono tag">Páginas de conversão</span>
-          <h2 id="t-pag">Páginas que transformam o clique em <em>cliente.</em></h2>
+      <div class="conv-grid">
+        <div class="txt">
+          <span class="pill-blue">Opcional</span>
+          <h2 class="h2" id="t-pag">Página de <em>Conversão</em></h2>
+          <p class="sub">Autoridade e atração: sua empresa onde a intenção de compra acontece.</p>
+          <p>De nada adianta investir em tráfego se a sua "vitrine digital" não está <strong>preparada para vender.</strong> A página é desenhada com foco exclusivo em uma única ação: <strong>transformar o clique do Google em um lead qualificado.</strong></p>
+          <p>Uma estrutura limpa, rápida e persuasiva, blindada contra distrações e focada em <strong>maximizar o seu lucro.</strong></p>
         </div>
-        <p>Estruturas limpas, rápidas e persuasivas, blindadas contra distrações e focadas em uma única ação.</p>
+        <div class="shot-plain"><img src="assets/fs-pagina-conversao-v1.webp" alt="Anúncio da Movex no Google e a página de conversão no computador e no celular" width="900" height="1029"></div>
       </div>
       <div class="mockups"><img src="assets/movex-sites-v1.webp" alt="Páginas criadas pela Movex para Dalzon, PD Drones, Motion Elevadores e Pezzatto" width="1800" height="512"></div>
       <div class="live-links">
@@ -533,6 +602,104 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
         <a class="ll" href="https://powerdieseloficial.com/" target="_blank" rel="noopener"><span><strong>Power Diesel</strong><small>powerdieseloficial.com</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
         <a class="ll" href="https://yadperfumaria.com.br/" target="_blank" rel="noopener"><span><strong>YAD Perfumaria</strong><small>yadperfumaria.com.br</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
         <a class="ll" href="https://viciandoce.com.br/" target="_blank" rel="noopener"><span><strong>Viciandoce</strong><small>viciandoce.com.br</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPLEMENTAÇÃO E ACOMPANHAMENTO -->
+  <section class="sec impl" id="implementacao" aria-labelledby="t-impl">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono tag">Implementação e acompanhamento</span>
+          <h2 id="t-impl">Nossa inteligência <em>a serviço da sua empresa.</em></h2>
+        </div>
+      </div>
+      <div class="impl-grid">
+        <div class="ic">
+          <span class="ic-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/><path d="m15 9 5-5M17 4h3v3"/></svg></span>
+          <h3>Planejamento <em>Estratégico</em></h3>
+          <p>Antes de qualquer clique, desenhamos a estratégia de palavras-chave e ofertas que realmente trazem lucro para o seu nicho.</p>
+        </div>
+        <div class="ic">
+          <span class="ic-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z"/></svg></span>
+          <h3>Compartilhamento <em>Know-how</em></h3>
+          <p>Você não fica no escuro. Entregamos a nossa expertise para que a sua equipe entenda o "porquê" de cada movimento.</p>
+        </div>
+        <div class="ic">
+          <span class="ic-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/></svg></span>
+          <h3>2 Meses <em>Suporte</em></h3>
+          <p>Durante 2 meses, monitoramos e otimizamos as suas campanhas para garantir o potencial máximo dos resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRONOGRAMA -->
+  <section class="sec method" id="cronograma" aria-labelledby="t-cron">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono tag">Cronograma de ação</span>
+          <h2 id="t-cron">Do diagnóstico às <em>campanhas no ar.</em></h2>
+        </div>
+        <div class="seg" role="group" aria-label="Escolha a versão do Funil Start">
+          <button type="button" id="seg-sem" aria-pressed="false" data-mode="sem">Sem página</button>
+          <button type="button" id="seg-com" aria-pressed="true" data-mode="com">Com página de conversão</button>
+        </div>
+      </div>
+      <ol class="tl" id="timeline" data-mode="com">
+        <li class="now"><span class="d mono">Estamos aqui</span><b>Diagnóstico</b></li>
+        <li><span class="d mono">Dia D · a definir</span><b>Assinatura do contrato</b></li>
+        <li><span class="d mono">D + 3</span><b>Planejamento estratégico</b></li>
+        <li class="only-com"><span class="d mono">D + 10</span><b>Confecção da página de conversão</b></li>
+        <li class="go"><span class="d mono" data-sem="D + 5" data-com="D + 15">D + 15</span><b>Início das campanhas</b></li>
+        <li><span class="d mono" data-sem="D + 15" data-com="D + 25">D + 25</span><b>Otimizações das campanhas</b></li>
+      </ol>
+      <p class="tl-note" id="tl-note">Com a página de conversão, as campanhas entram no ar em até <strong>15 dias</strong> após a assinatura.</p>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="sec" id="planos" aria-labelledby="t-planos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono tag">Investimento estratégico</span>
+          <h2 id="t-planos">Escolha como <em>começar.</em></h2>
+        </div>
+        <p>As duas versões incluem Google Meu Negócio, campanha no Google Ads e 2 meses de acompanhamento.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="plan-tag mono">Sem página de conversão</span>
+          <h3>Presença local</h3>
+          <p class="plan-desc">Para negócios que já têm uma página própria ou querem concentrar o investimento no fluxo direto de clientes pelo <strong>Google Meu Negócio.</strong></p>
+          <div class="price-big"><span class="px">10x</span><span class="cur">R$</span><span class="num">250</span><span class="cents">,00</span></div>
+          <p class="avista">ou <strong>R$ 1.997</strong> à vista</p>
+          <ul class="checks">
+            <li>Implementação Google Meu Negócio</li>
+            <li>Campanha do Google Ads</li>
+            <li>Acompanhamento de 2 meses</li>
+            <li class="off">Página de conversão</li>
+          </ul>
+          <a class="btn btn-ghost plan-btn" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20sem%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20250%29." target="_blank" rel="noopener">Quero este plano</a>
+        </article>
+        <article class="plan plan-pro">
+          <span class="badge mono">Autoridade máxima</span>
+          <span class="plan-tag mono">Solução completa</span>
+          <h3>Posicionamento completo</h3>
+          <p class="plan-desc">A solução de ponta a ponta para quem quer não apenas se posicionar, mas <strong>dominar o mercado</strong>, aproveitando ao máximo o orçamento de marketing.</p>
+          <div class="price-big"><span class="px">10x</span><span class="cur">R$</span><span class="num">400</span><span class="cents">,00</span></div>
+          <p class="avista">ou <strong>R$ 3.497</strong> à vista</p>
+          <ul class="checks">
+            <li>Implementação Google Meu Negócio</li>
+            <li>Campanha do Google Ads</li>
+            <li>Acompanhamento de 2 meses</li>
+            <li>Página de conversão</li>
+          </ul>
+          <a class="btn btn-primary plan-btn" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Tenho%20interesse%20no%20Funil%20Start%20completo%2C%20com%20p%C3%A1gina%20de%20convers%C3%A3o%20%2810x%20R%24%20400%29." target="_blank" rel="noopener">Quero o Funil Start completo</a>
+        </article>
       </div>
     </div>
   </section>
@@ -579,7 +746,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
           <label for="f-fat">Faturamento mensal<select id="f-fat" name="fat"><option value="">Selecione</option><option>Até R$30 mil</option><option>R$30 mil a R$50 mil</option><option>R$50 mil a R$100 mil</option><option>R$100 mil a R$300 mil</option><option>R$300 mil a R$500 mil</option><option>R$500 mil a R$1 milhão</option><option>Acima de R$1 milhão</option></select></label>
           <label for="f-inv">Investe em anúncios?<select id="f-inv" name="inv"><option value="">Selecione</option><option>Não invisto</option><option>Até R$2 mil</option><option>R$2 mil a R$5 mil</option><option>R$5 mil a R$10 mil</option><option>R$10 mil a R$50 mil</option><option>R$50 mil a R$100 mil</option><option>Acima de R$100 mil</option></select></label>
         </div>
-        <a class="btn btn-primary" id="f-send" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">Quero agendar meu diagnóstico</a>
+        <a class="btn btn-primary" id="f-send" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">Quero agendar meu diagnóstico</a>
         <p class="sm" style="text-align:center">Você será levado ao WhatsApp com os dados já preenchidos.</p>
       </form>
     </div>
@@ -592,12 +759,12 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
       <h2 id="t-final"><em>Posicionar sua marca</em> é assumir o controle da percepção que o mercado terá sobre você.</h2>
       <div class="final-sub">Seu próximo nível começa agora!</div>
       <div class="hero-ctas" style="margin-top:32px">
-        <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">Agendar diagnóstico gratuito</a>
+        <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">Agendar diagnóstico gratuito</a>
         <a class="btn btn-ghost" href="https://www.instagram.com/movex.ag/" target="_blank" rel="noopener">Ver o Instagram</a>
       </div>
       <div class="contacts">
         <a class="ct" href="https://www.instagram.com/movex.ag/" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></i><span><small>Instagram</small><strong>@movex.ag</strong></span></a>
-        <a class="ct" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></i><span><small>WhatsApp</small><strong>(45) 99943-0100</strong></span></a>
+        <a class="ct" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></i><span><small>WhatsApp</small><strong>(45) 99943-0100</strong></span></a>
         <div class="ct"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i><span><small>E-mail</small><strong>contato@movex.ag</strong></span></div>
         <a class="ct" href="https://movex.ag" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></i><span><small>Site</small><strong>movex.ag</strong></span></a>
       </div>
@@ -614,7 +781,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pelo%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com a Movex no WhatsApp">
+<a class="wa-float" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Vim%20pela%20p%C3%A1gina%20do%20Funil%20Start%20e%20quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com a Movex no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
 </a>
 
@@ -625,7 +792,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   var navEl = document.getElementById('liquid-nav'), header = document.querySelector('.site-header');
   if (!navEl || !window.LiquidNav) return;
   var nav = window.LiquidNav(navEl);
-  var ids = ['topo','servicos','metodo','paginas','sobre'].map(function(id){ return document.getElementById(id); });
+  var ids = ['topo','incluso','como-funciona','planos','diagnostico'].map(function(id){ return document.getElementById(id); });
   var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .about, .final, footer'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
@@ -653,7 +820,7 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
   var f = document.getElementById('diag-form'), a = document.getElementById('f-send');
   function upd(){
     var v = function(id){ return (document.getElementById(id).value || '').trim(); };
-    var t = 'Olá, Movex! Quero agendar meu diagnóstico gratuito.';
+    var t = 'Olá, Movex! Quero agendar meu diagnóstico gratuito para o Funil Start.';
     if (v('f-nome')) t += '\nNome: ' + v('f-nome');
     if (v('f-empresa')) t += '\nEmpresa: ' + v('f-empresa');
     if (v('f-fat')) t += '\nFaturamento mensal: ' + v('f-fat');
@@ -673,5 +840,33 @@ footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rg
 })();
 </script>
 
+<script>
+(function(){
+  // cronograma: com ou sem página de conversão
+  var tl = document.getElementById('timeline'), note = document.getElementById('tl-note');
+  var btns = document.querySelectorAll('.seg button');
+  function setMode(m){
+    tl.setAttribute('data-mode', m);
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode') === m ? 'true' : 'false'); });
+    tl.querySelectorAll('[data-' + m + ']').forEach(function(el){ el.textContent = el.getAttribute('data-' + m); });
+    note.innerHTML = m === 'com'
+      ? 'Com a página de conversão, as campanhas entram no ar em até <strong>15 dias</strong> após a assinatura.'
+      : 'Sem a página de conversão, as campanhas entram no ar em até <strong>5 dias</strong> após a assinatura.';
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-mode')); }); });
+  // busca digitando no painel do topo
+  var el = document.getElementById('typed');
+  if (!el || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var qs = ['dentista em cascavel','mecânico perto de mim','pizzaria aberta agora','advogado trabalhista','loja de móveis planejados'], qi = 0, ci = qs[0].length, del = true;
+  function tick(){
+    var q = qs[qi];
+    if (del) { ci--; if (ci <= 0) { del = false; qi = (qi + 1) % qs.length; } }
+    else { ci++; if (ci >= qs[qi].length) { del = true; el.textContent = qs[qi]; return setTimeout(tick, 2200); } }
+    el.textContent = (del ? q : qs[qi]).slice(0, Math.max(ci, 0));
+    setTimeout(tick, del ? 35 : 70);
+  }
+  setTimeout(tick, 2600);
+})();
+</script>
 </body>
 </html>
