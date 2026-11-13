@@ -1080,7 +1080,6 @@ html.fb-lock{overflow:hidden}
         <div class="fb-media" id="fb-media">
           <video id="fb-video" playsinline preload="none"></video>
           <div class="fb-shade" aria-hidden="true"></div>
-          <img class="fb-logo" id="fb-logo" src="" alt="">
           <button type="button" class="fb-big" id="fb-big" aria-label="Assistir depoimento"><span class="fb-big-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="ic-play" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/><path class="ic-pause" d="M7 5h3.2v14H7zM13.8 5H17v14h-3.2z"/></svg></span><span class="fb-big-t">Assistir depoimento</span></button>
           <div class="fb-bar">
             <button type="button" class="fb-btn" id="fb-play" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="ic-play" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/><path class="ic-pause" d="M7 5h3.2v14H7zM13.8 5H17v14h-3.2z"/></svg></button>
@@ -1239,8 +1238,7 @@ html.fb-lock{overflow:hidden}
     v.pause(); v.muted = false;
     v.poster = 'assets/depoimento-' + d.k + '-poster-v1.webp'; v.src = 'assets/depoimento-' + d.k + '-v1.mp4';
     prog.style.transform = 'scaleX(0)'; media.classList.remove('is-started','is-playing');
-    [$('fb-logo'), $('fb-cap-logo')].forEach(function(im){ im.src = 'assets/' + d.logo; im.width = d.w; im.height = d.h; });
-    $('fb-logo').alt = d.brand;
+    [$('fb-cap-logo')].forEach(function(im){ im.src = 'assets/' + d.logo; im.width = d.w; im.height = d.h; });
     $('fb-main').innerHTML = d.main;
     $('fb-quotes').innerHTML = d.q.map(function(t, k){ return '<li>' + t + '</li>'; }).join('');
     $('fb-cap-t').innerHTML = d.name + '<small>' + d.brand + ' · ' + d.sub + '</small>';
