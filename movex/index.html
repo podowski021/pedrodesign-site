@@ -11,7 +11,7 @@
 <meta name="description" content="Movex, agência de performance em Cascavel/PR. Tráfego pago, posicionamento, trackeamento, inteligência de dados e páginas de alta conversão.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: página branca com faixas azul-marinho; HUD futurista no hero; grid de serviços em bento levando às 4 páginas */
 :root{
@@ -666,10 +666,10 @@ section{position:relative;scroll-margin-top:84px}
 .lc-head h2{font-size:clamp(22px,2.4vw,30px)!important}
 
 
-/* títulos: Sora bold + destaque em Instrument Serif itálico */
+/* títulos: Sora bold + destaque em Sora light (mesma família) */
 h1,h2,.h2,.ib-h2,.pr-head h2,.sec-head h2{font-weight:700!important}
-h1 em,h2 em,.ib-h2 .ib-muted,.prov em{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:-.01em!important;font-size:1.12em;line-height:.9}
-.hero .hx-h1 em{font-size:1.14em;letter-spacing:0!important}
+h1 em,h2 em,.ib-h2 .ib-muted,.prov em{font-family:inherit!important;font-style:normal!important;font-weight:300!important;letter-spacing:-.03em!important}
+.hero .hx-h1 em{font-style:italic!important}
 
 
 /* grid pattern nas seções claras */
@@ -1161,7 +1161,7 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
   });
   if (reduce) flow.querySelector('.ib-pkts').remove();
   var n = 128, label = flow.querySelector('.ib-lead-n'), sheet = flow.querySelector('.ib-sheet-new');
-  onView(flow, .2, function(){ if (reduce) return; setInterval(function(){ n++; label.textContent = 'LEAD #' + n; sheet.classList.remove('ib-sheet-new'); void sheet.getBoundingClientRect(); sheet.classList.add('ib-sheet-new'); }, 2800); });
+  onView(flow, .2, function(){ if (reduce) return; setInterval(function(){ n++; label.textContent = 'VENDA #' + n; sheet.classList.remove('ib-sheet-new'); void sheet.getBoundingClientRect(); sheet.classList.add('ib-sheet-new'); }, 2800); });
   // integrações: sincroniza uma ferramenta por vez
   var ig = document.getElementById('ib-integ'), tools = ig.querySelectorAll('.ib-tool'), paths = ig.querySelectorAll('.ib-flow');
   var pkt = document.getElementById('ib-integ-pkt'), mo = document.getElementById('ib-integ-mo'), st1 = document.getElementById('ib-st1'), st2 = document.getElementById('ib-st2');
