@@ -714,11 +714,6 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
 
 /* feedback */
 .fb .ent-head h2{color:#fff}
-.fb-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:1040px;margin:0 auto clamp(28px,4vw,44px)}
-.fb-tab{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 10px;border-radius:999px;border:1px solid rgba(127,182,255,.16);background:rgba(255,255,255,.03);color:var(--on-navy-muted);font:600 13px/1 var(--body);cursor:pointer;transition:background .35s,border-color .35s,color .35s,opacity .35s;opacity:.72}
-.fb-tab img{height:22px;width:auto;max-width:72px;object-fit:contain}
-.fb-tab:hover{opacity:1;border-color:rgba(127,182,255,.35)}
-.fb-tab.is-on{opacity:1;background:rgba(61,134,255,.16);border-color:rgba(110,168,255,.6);color:#fff}
 .fb-card{margin:0 auto;max-width:1040px;display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
 .fb-media,.fb-copy>*{transition:opacity .42s ease,transform .42s ease}
 .fb-card.is-swap .fb-media{opacity:0;transform:scale(.98)}
@@ -770,27 +765,52 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
 .fb-rv.is-pending .fb-media,.fb-rv.is-pending .fb-q,.fb-rv.is-pending .fb-main,.fb-rv.is-pending .fb-quotes li,.fb-rv.is-pending .fb-cap{opacity:0;transform:translateY(20px)}
 .fb-card:not(.fb-rv) .fb-quotes li,.fb-card .fb-quotes li{transition-delay:0s}
 @media (max-width:820px){.fb-card{grid-template-columns:1fr}.fb-media{max-width:360px;width:100%;margin:0 auto}
-.fb-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));-webkit-mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent)}
-.fb-tabs::-webkit-scrollbar{display:none}.fb-tab{flex:none}}
+}
 
 
-.fb-thumbs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;max-width:1040px;margin:clamp(32px,4vw,48px) auto 0}
-.fb-th{position:relative;aspect-ratio:9/14;border-radius:14px;overflow:hidden;padding:0;border:1px solid rgba(127,182,255,.16);background:#000;cursor:pointer;opacity:.6;transition:opacity .4s,transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
-.fb-th-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.fb-th::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,28,.92),rgba(4,10,28,.2) 55%,transparent)}
-.fb-th:hover{opacity:1;transform:translateY(-4px)}
-.fb-th:hover .fb-th-img{transform:scale(1.06)}
-.fb-th.is-on{opacity:1;border-color:var(--electric);box-shadow:0 0 0 2px rgba(61,134,255,.5),0 20px 40px -20px rgba(61,134,255,.8)}
-.fb-th-play{position:absolute;left:50%;top:42%;z-index:1;transform:translate(-50%,-50%);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(11,79,216,.85);color:#fff;transition:transform .35s}
-.fb-th-play svg{width:14px;height:14px;margin-left:2px}
-.fb-th:hover .fb-th-play{transform:translate(-50%,-50%) scale(1.1)}
-.fb-th-t{position:absolute;left:8px;right:8px;bottom:9px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:left}
-.fb-th-t img{height:15px;width:auto;max-width:70%;object-fit:contain}
-.fb-th-t b{color:#fff;font:600 11px/1.25 var(--body)}
-@media (max-width:980px){.fb-thumbs{display:flex;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding:4px max(16px, env(safe-area-inset-left, 0px)) 8px}
-.fb-thumbs::-webkit-scrollbar{display:none}.fb-th{flex:none;width:112px;scroll-snap-align:center}}
+.fb .ent-head p{color:var(--on-navy-muted);font-size:15px}
+.fb-thumbs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;max-width:1180px;margin:0 auto}
+.fb-th{position:relative;aspect-ratio:9/15;border-radius:16px;overflow:hidden;padding:0;border:1px solid rgba(127,182,255,.18);background:#000;cursor:pointer;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .5s,opacity .7s}
+.fb-th-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.fb-th::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,28,.95),rgba(4,10,28,.35) 50%,rgba(4,10,28,.05) 75%)}
+.fb-th:hover,.fb-th:focus-visible{transform:translateY(-6px);border-color:rgba(110,168,255,.7);box-shadow:0 24px 50px -24px rgba(61,134,255,.9)}
+.fb-th:hover .fb-th-img{transform:scale(1.07)}
+.fb-th-play{position:absolute;left:50%;top:40%;z-index:1;transform:translate(-50%,-50%);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(11,79,216,.88);box-shadow:0 0 0 7px rgba(61,134,255,.18);color:#fff;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.fb-th-play svg{width:17px;height:17px;margin-left:3px}
+.fb-th:hover .fb-th-play{transform:translate(-50%,-50%) scale(1.12)}
+.fb-th-t{position:absolute;left:12px;right:12px;bottom:12px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+.fb-th-t img{height:20px;width:auto;max-width:80%;object-fit:contain;margin-bottom:6px}
+.fb-th-t b{color:#fff;font:700 13px/1.25 var(--display)}
+.fb-th-t small{color:var(--on-navy-muted);font:400 11px/1.3 var(--body)}
+.fb-thumbs.fb-rv .fb-th{transition-delay:calc(var(--i) * .07s)}
+.fb-thumbs.fb-rv.is-pending .fb-th{opacity:0;transform:translateY(24px)}
+.fb-thumbs.fb-rv:not(.is-pending) .fb-th:hover{transition-delay:0s}
+@media (max-width:1100px){.fb-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:620px){.fb-thumbs{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+/* pop-up */
+html.fb-lock{overflow:hidden}
+.fb-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));opacity:0;transition:opacity .38s ease}
+.fb-modal.is-open{opacity:1}
+.fb-backdrop{position:absolute;inset:0;background:rgba(3,8,22,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.fb-dialog{position:relative;width:min(1040px,100%);max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:clamp(20px,3vw,36px);border-radius:26px;background:linear-gradient(180deg,#0d1c45,#09122b);border:1px solid rgba(127,182,255,.18);box-shadow:0 60px 120px -40px rgba(0,0,0,.8);transform:translateY(18px) scale(.98);transition:transform .45s cubic-bezier(.2,.7,.2,1);scrollbar-width:thin}
+.fb-modal.is-open .fb-dialog{transform:none}
+.fb-close{position:absolute;top:14px;right:14px;z-index:3;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(127,182,255,.25);background:rgba(10,18,43,.7);color:#fff;cursor:pointer;transition:background .3s}
+.fb-close:hover{background:var(--blue)}
+.fb-close svg{width:18px;height:18px}
+.fb-dialog .fb-card{grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,4vw,48px)}
+.fb-dialog .fb-media{max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);width:100%;margin:0 auto}
+@media (max-width:820px){.fb-dialog .fb-card{grid-template-columns:1fr;gap:22px}.fb-modal{align-items:start}.fb-dialog{padding:16px;border-radius:20px}.fb-dialog .fb-media{max-width:300px;max-height:62vh;max-height:62dvh;aspect-ratio:9/16;width:auto;height:min(62dvh,533px)}.fb-dialog .fb-main{font-size:21px}.fb-close{top:10px;right:10px}}
 .fb-arrow{background:var(--blue);border-color:var(--blue)}
 .fb-arrow:hover{background:var(--electric);border-color:var(--electric)}
+
+
+/* botão assistir: pílula única, centralizada */
+.fb-big{flex-direction:row;gap:12px;white-space:nowrap;padding:7px 20px 7px 7px;border-radius:999px;background:rgba(8,16,40,.55);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 18px 40px -16px rgba(0,0,0,.6);transition:opacity .4s,transform .4s,background .3s,border-color .3s}
+.fb-big:hover{background:rgba(11,79,216,.55);border-color:rgba(127,182,255,.6)}
+.fb-big-ic{width:44px;height:44px;background:var(--blue);box-shadow:none}
+.fb-big:hover .fb-big-ic{transform:scale(1.06)}
+.fb-big-ic svg{width:18px;height:18px;margin-left:2px}
+.fb-big-t{padding:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;font-size:15px;letter-spacing:-.01em}
 
 /* Responsivo */
 @media (max-width:980px){
@@ -1038,12 +1058,29 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
       <div class="ent-head">
         <span class="pr-badge">Feedback de quem é cliente</span>
         <h2 class="h2" id="t-fb">Veja o que dizem <em>sobre a Movex</em></h2>
+        <p>Clique em um depoimento para assistir.</p>
       </div>
-      <figure class="fb-card fb-rv" id="fb-card">
+      <div class="fb-thumbs fb-rv" role="list">
+        <button type="button" class="fb-th" data-i="0" aria-label="Assistir depoimento de Proprietário, Recanto Catarina" style="--i:0"><img class="fb-th-img" src="assets/depoimento-recanto-catarina-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-recanto-catarina-v1.webp" alt="Recanto Catarina" width="137" height="37" loading="lazy"><b>Proprietário</b><small>Recanto Catarina</small></span></button>
+        <button type="button" class="fb-th" data-i="1" aria-label="Assistir depoimento de Eleandro e Tânia, EJR Decor" style="--i:1"><img class="fb-th-img" src="assets/depoimento-ejr-decor-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-ejr-decor-v1.webp" alt="EJR Decor" width="61" height="57" loading="lazy"><b>Eleandro e Tânia</b><small>EJR Decor</small></span></button>
+        <button type="button" class="fb-th" data-i="2" aria-label="Assistir depoimento de Ana, Meu Pet" style="--i:2"><img class="fb-th-img" src="assets/depoimento-meu-pet-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-meu-pet-v1.webp" alt="Meu Pet" width="102" height="42" loading="lazy"><b>Ana</b><small>Meu Pet</small></span></button>
+        <button type="button" class="fb-th" data-i="3" aria-label="Assistir depoimento de Proprietário, Capanema Escapamentos" style="--i:3"><img class="fb-th-img" src="assets/depoimento-capanema-estrategia-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" loading="lazy"><b>Proprietário</b><small>Capanema Escapamentos</small></span></button>
+        <button type="button" class="fb-th" data-i="4" aria-label="Assistir depoimento de João Pedro, Capanema Escapamentos" style="--i:4"><img class="fb-th-img" src="assets/depoimento-capanema-ribeirao-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" loading="lazy"><b>João Pedro</b><small>Franqueado Capanema</small></span></button>
+        <button type="button" class="fb-th" data-i="5" aria-label="Assistir depoimento de Alonso, Power Diesel" style="--i:5"><img class="fb-th-img" src="assets/depoimento-power-diesel-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-power-diesel-v1.webp" alt="Power Diesel" width="148" height="35" loading="lazy"><b>Alonso</b><small>Power Diesel</small></span></button>
+        <button type="button" class="fb-th" data-i="6" aria-label="Assistir depoimento de Proprietário, Capanema Escapamentos" style="--i:6"><img class="fb-th-img" src="assets/depoimento-capanema-matriz-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="Capanema Escapamentos" width="107" height="41" loading="lazy"><b>Proprietário</b><small>Capanema Escapamentos</small></span></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="fb-modal" id="fb-modal" role="dialog" aria-modal="true" aria-label="Depoimento em vídeo" hidden>
+    <div class="fb-backdrop" data-close></div>
+    <div class="fb-dialog">
+      <button type="button" class="fb-close" id="fb-close" aria-label="Fechar" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <figure class="fb-card" id="fb-card">
         <div class="fb-media" id="fb-media">
-          <video id="fb-video" src="assets/depoimento-recanto-catarina-v1.mp4" poster="assets/depoimento-recanto-catarina-poster-v1.webp" playsinline preload="none"></video>
+          <video id="fb-video" playsinline preload="none"></video>
           <div class="fb-shade" aria-hidden="true"></div>
-          <img class="fb-logo" id="fb-logo" src="assets/cli-recanto-catarina-v1.webp" alt="Recanto Catarina" width="137" height="37">
+          <img class="fb-logo" id="fb-logo" src="" alt="">
           <button type="button" class="fb-big" id="fb-big" aria-label="Assistir depoimento"><span class="fb-big-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="ic-play" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/><path class="ic-pause" d="M7 5h3.2v14H7zM13.8 5H17v14h-3.2z"/></svg></span><span class="fb-big-t">Assistir depoimento</span></button>
           <div class="fb-bar">
             <button type="button" class="fb-btn" id="fb-play" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="ic-play" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/><path class="ic-pause" d="M7 5h3.2v14H7zM13.8 5H17v14h-3.2z"/></svg></button>
@@ -1053,16 +1090,15 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
         </div>
         <div class="fb-copy">
           <svg class="fb-q" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.6 18.6C3.5 17.4 3 16.2 3 14.2c0-3.5 2.5-6.6 6-8.2l.9 1.3c-3.3 1.8-3.9 4.1-4.2 5.6.6-.3 1.5-.4 2.3-.4 2.1.2 3.7 1.9 3.7 4a4.1 4.1 0 0 1-7.1 2.1Zm10 0C13.5 17.4 13 16.2 13 14.2c0-3.5 2.5-6.6 6-8.2l.9 1.3c-3.3 1.8-3.9 4.1-4.2 5.6.6-.3 1.5-.4 2.3-.4 2.1.2 3.7 1.9 3.7 4a4.1 4.1 0 0 1-7.1 2.1Z"/></svg>
-          <blockquote class="fb-main" id="fb-main">“Junto com a Movex, o atendimento é personalizado, é rápido, é direto. <strong>Já fui atendido meia-noite, viu?</strong>”</blockquote>
-          <ul class="fb-quotes" id="fb-quotes"><li style="--i:0">“A Movex faz parte do crescimento do Recanto Catarina.”</li><li style="--i:1">“Uma empresa que, literalmente, tem o nome que merece: ela se move, ela tem movimento.”</li><li style="--i:2">“Hoje somos um hotel reconhecido em Cascavel, no Paraná e, com certeza absoluta, no Brasil.”</li></ul>
-          <figcaption class="fb-cap"><img id="fb-cap-logo" src="assets/cli-recanto-catarina-v1.webp" alt="" width="137" height="37"><span id="fb-cap-t">Proprietário<small>Recanto Catarina · Resort &amp; Glamping · Cascavel/PR</small></span>
+          <blockquote class="fb-main" id="fb-main"></blockquote>
+          <ul class="fb-quotes" id="fb-quotes"></ul>
+          <figcaption class="fb-cap"><img id="fb-cap-logo" src="" alt=""><span id="fb-cap-t"></span>
             <span class="fb-nav"><span class="fb-count" id="fb-count" aria-live="polite">1 / 7</span><button type="button" class="fb-arrow" id="fb-prev" aria-label="Depoimento anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="fb-arrow" id="fb-next" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></span>
           </figcaption>
         </div>
       </figure>
-      <div class="fb-thumbs" role="group" aria-label="Outros depoimentos"><button type="button" class="fb-th is-on" data-i="0" aria-label="Depoimento: Recanto Catarina" aria-pressed="true"><img class="fb-th-img" src="assets/depoimento-recanto-catarina-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-recanto-catarina-v1.webp" alt="" width="137" height="37" loading="lazy"><b>Recanto Catarina</b></span></button><button type="button" class="fb-th" data-i="1" aria-label="Depoimento: Eleandro e Tânia" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-ejr-decor-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-ejr-decor-v1.webp" alt="" width="61" height="57" loading="lazy"><b>Eleandro e Tânia</b></span></button><button type="button" class="fb-th" data-i="2" aria-label="Depoimento: Ana" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-meu-pet-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-meu-pet-v1.webp" alt="" width="102" height="42" loading="lazy"><b>Ana</b></span></button><button type="button" class="fb-th" data-i="3" aria-label="Depoimento: Capanema · Matriz" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-capanema-estrategia-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="" width="107" height="41" loading="lazy"><b>Capanema · Matriz</b></span></button><button type="button" class="fb-th" data-i="4" aria-label="Depoimento: João Pedro" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-capanema-ribeirao-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="" width="107" height="41" loading="lazy"><b>João Pedro</b></span></button><button type="button" class="fb-th" data-i="5" aria-label="Depoimento: Alonso" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-power-diesel-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-power-diesel-v1.webp" alt="" width="148" height="35" loading="lazy"><b>Alonso</b></span></button><button type="button" class="fb-th" data-i="6" aria-label="Depoimento: Capanema · Franquias" aria-pressed="false"><img class="fb-th-img" src="assets/depoimento-capanema-matriz-poster-v1.webp" alt="" width="540" height="960" loading="lazy"><span class="fb-th-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg></span><span class="fb-th-t"><img src="assets/cli-capanema-v1.webp" alt="" width="107" height="41" loading="lazy"><b>Capanema · Franquias</b></span></button></div>
     </div>
-  </section>
+  </div>
 
   <!-- FERRAMENTAS E PARCERIAS -->
   <section data-grid class="sec pricing dk" id="parcerias" aria-labelledby="t-par">
@@ -1183,11 +1219,11 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
 </script>
 <script>
 (function(){
-  var D = [{"k": "recanto-catarina", "logo": "cli-recanto-catarina-v1.webp", "w": 137, "h": 37, "brand": "Recanto Catarina", "who": "Proprietário", "sub": "Resort & Glamping · Cascavel/PR", "main": "“Junto com a Movex, o atendimento é personalizado, é rápido, é direto. <strong>Já fui atendido meia-noite, viu?</strong>”", "q": ["“A Movex faz parte do crescimento do Recanto Catarina.”", "“Uma empresa que, literalmente, tem o nome que merece: ela se move, ela tem movimento.”", "“Hoje somos um hotel reconhecido em Cascavel, no Paraná e, com certeza absoluta, no Brasil.”"]}, {"k": "ejr-decor", "logo": "cli-ejr-decor-v1.webp", "w": 61, "h": 57, "brand": "EJR Decor", "who": "Eleandro e Tânia", "sub": "Proprietários", "main": "“Virou muito mais que parceria: viraram nossos amigos e fazem parte da nossa família, <strong>com resultado que atende a todos nós.</strong>”", "q": ["“Nosso maior desafio sempre foi fazer os leads chegarem nas pessoas que realmente têm interesse no nosso produto.”", "“No balanço do fim do mês, a gente teve uma diferença bem bacana em porcentagem, bem satisfatória.”", "“Fora de hora, feriado, final de semana, domingo: o pessoal responde.”"]}, {"k": "meu-pet", "logo": "cli-meu-pet-v1.webp", "w": 102, "h": 42, "brand": "Meu Pet", "who": "Ana", "sub": "Proprietária · Meu Pet Spa Resort", "main": "“É muita eficiência, <strong>é um serviço de excelência.</strong> Eu sou muito contente mesmo.”", "q": ["“Os nossos conteúdos ficaram muito mais profissionais e a gente teve muito mais engajamento nas redes.”", "“Isso com certeza trouxe muitos clientes para nós.”", "“Eu não só recomendaria, como já recomendei para vários amigos empreendedores.”"]}, {"k": "capanema-estrategia", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "Capanema Escapamentos", "sub": "Matriz e rede de franquias", "main": "“A empresa deles não é boa: <strong>eles são excelentes no que fazem.</strong>”", "q": ["“Não tem um mês que a gente não faça uma reunião de alinhamento para definir os próximos passos.”", "“São quatro anos trabalhando juntos. Acompanhou todo o nosso crescimento.”", "“É muito importante ter venda todo dia no teu negócio, todo dia pessoas querendo orçamento.”"]}, {"k": "capanema-ribeirao", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "João Pedro", "sub": "Franqueado · Ribeirão Preto e Catanduva/SP", "main": "“Competência, pontualidade: <strong>é a Movex.</strong>”", "q": ["“Muito atenciosos, e nas estratégias então nem se fala.”", "“É muito cliente, muito lead vindo pelo tráfego pago, graças ao pessoal da Movex.”", "“Atenção ao extremo para a gente, e é isso que importa.”"]}, {"k": "power-diesel", "logo": "cli-power-diesel-v1.webp", "w": 148, "h": 35, "brand": "Power Diesel", "who": "Alonso", "sub": "Proprietário", "main": "“É uma empresa que nos ajudou a evoluir muito. <strong>Com certeza faz parte do nosso sucesso.</strong>”", "q": ["“A Movex cuida da nossa estratégia digital, dos clientes à parte de design gráfico.”", "“Uma empresa que acompanha a gente há muito tempo.”", "“Entra em contato com o pessoal e você vai ter um ótimo resultado.”"]}, {"k": "capanema-matriz", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "Capanema Escapamentos", "sub": "Parceria de mais de quatro anos", "main": "“A Movex é uma empresa bem completa para você que está pensando em <strong>crescer e expandir seus negócios.</strong>”", "q": ["“Campanhas, geração de novos clientes, acompanhamento dos resultados, da matriz a toda a rede de franquias.”", "“Já tenho um relacionamento com eles há mais de quatro anos.”", "“Pode confiar que você vai estar super bem atendido.”"]}];
-  var v = document.getElementById('fb-video'); if (!v) return;
+  var D = [{"k": "recanto-catarina", "logo": "cli-recanto-catarina-v1.webp", "w": 137, "h": 37, "brand": "Recanto Catarina", "who": "Proprietário", "sub": "Resort & Glamping · Cascavel/PR", "main": "“Junto com a Movex, o atendimento é personalizado, é rápido, é direto. <strong>Já fui atendido meia-noite, viu?</strong>”", "q": ["“A Movex faz parte do crescimento do Recanto Catarina.”", "“Uma empresa que, literalmente, tem o nome que merece: ela se move, ela tem movimento.”", "“Hoje somos um hotel reconhecido em Cascavel, no Paraná e, com certeza absoluta, no Brasil.”"], "name": "Proprietário"}, {"k": "ejr-decor", "logo": "cli-ejr-decor-v1.webp", "w": 61, "h": 57, "brand": "EJR Decor", "who": "Eleandro e Tânia", "sub": "Proprietários", "main": "“Virou muito mais que parceria: viraram nossos amigos e fazem parte da nossa família, <strong>com resultado que atende a todos nós.</strong>”", "q": ["“Nosso maior desafio sempre foi fazer os leads chegarem nas pessoas que realmente têm interesse no nosso produto.”", "“No balanço do fim do mês, a gente teve uma diferença bem bacana em porcentagem, bem satisfatória.”", "“Fora de hora, feriado, final de semana, domingo: o pessoal responde.”"], "name": "Eleandro e Tânia"}, {"k": "meu-pet", "logo": "cli-meu-pet-v1.webp", "w": 102, "h": 42, "brand": "Meu Pet", "who": "Ana", "sub": "Proprietária · Meu Pet Spa Resort", "main": "“É muita eficiência, <strong>é um serviço de excelência.</strong> Eu sou muito contente mesmo.”", "q": ["“Os nossos conteúdos ficaram muito mais profissionais e a gente teve muito mais engajamento nas redes.”", "“Isso com certeza trouxe muitos clientes para nós.”", "“Eu não só recomendaria, como já recomendei para vários amigos empreendedores.”"], "name": "Ana"}, {"k": "capanema-estrategia", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "Proprietário", "sub": "Matriz e rede de franquias", "main": "“A empresa deles não é boa: <strong>eles são excelentes no que fazem.</strong>”", "q": ["“Não tem um mês que a gente não faça uma reunião de alinhamento para definir os próximos passos.”", "“São quatro anos trabalhando juntos. Acompanhou todo o nosso crescimento.”", "“É muito importante ter venda todo dia no teu negócio, todo dia pessoas querendo orçamento.”"], "name": "Proprietário"}, {"k": "capanema-ribeirao", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "João Pedro", "sub": "Franqueado · Ribeirão Preto e Catanduva/SP", "main": "“Competência, pontualidade: <strong>é a Movex.</strong>”", "q": ["“Muito atenciosos, e nas estratégias então nem se fala.”", "“É muito cliente, muito lead vindo pelo tráfego pago, graças ao pessoal da Movex.”", "“Atenção ao extremo para a gente, e é isso que importa.”"], "name": "João Pedro"}, {"k": "power-diesel", "logo": "cli-power-diesel-v1.webp", "w": 148, "h": 35, "brand": "Power Diesel", "who": "Alonso", "sub": "Proprietário", "main": "“É uma empresa que nos ajudou a evoluir muito. <strong>Com certeza faz parte do nosso sucesso.</strong>”", "q": ["“A Movex cuida da nossa estratégia digital, dos clientes à parte de design gráfico.”", "“Uma empresa que acompanha a gente há muito tempo.”", "“Entra em contato com o pessoal e você vai ter um ótimo resultado.”"], "name": "Alonso"}, {"k": "capanema-matriz", "logo": "cli-capanema-v1.webp", "w": 107, "h": 41, "brand": "Capanema Escapamentos", "who": "Proprietário", "sub": "Parceria de mais de quatro anos", "main": "“A Movex é uma empresa bem completa para você que está pensando em <strong>crescer e expandir seus negócios.</strong>”", "q": ["“Campanhas, geração de novos clientes, acompanhamento dos resultados, da matriz a toda a rede de franquias.”", "“Já tenho um relacionamento com eles há mais de quatro anos.”", "“Pode confiar que você vai estar super bem atendido.”"], "name": "Proprietário"}];
   var $ = function(id){ return document.getElementById(id); };
+  var modal = $('fb-modal'), v = $('fb-video'); if (!modal || !v) return;
   var media = $('fb-media'), card = $('fb-card'), snd = $('fb-sound'), sndT = snd.querySelector('span'), prog = $('fb-prog');
-  var tabs = [].slice.call(document.querySelectorAll('.fb-th')), cur = 0, busy = false;
+  var thumbs = [].slice.call(document.querySelectorAll('.fb-th')), cur = -1, busy = false, lastFocus = null;
   function state(){
     var playing = !v.paused && !v.ended;
     media.classList.toggle('is-playing', playing);
@@ -1198,38 +1234,47 @@ section[data-grid]>*:not(.gp){position:relative;z-index:1}
     snd.setAttribute('aria-label', v.muted ? 'Ouvir depoimento' : 'Silenciar');
   }
   function play(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+  function fill(i){
+    var d = D[i]; cur = i;
+    v.pause(); v.muted = false;
+    v.poster = 'assets/depoimento-' + d.k + '-poster-v1.webp'; v.src = 'assets/depoimento-' + d.k + '-v1.mp4';
+    prog.style.transform = 'scaleX(0)'; media.classList.remove('is-started','is-playing');
+    [$('fb-logo'), $('fb-cap-logo')].forEach(function(im){ im.src = 'assets/' + d.logo; im.width = d.w; im.height = d.h; });
+    $('fb-logo').alt = d.brand;
+    $('fb-main').innerHTML = d.main;
+    $('fb-quotes').innerHTML = d.q.map(function(t, k){ return '<li>' + t + '</li>'; }).join('');
+    $('fb-cap-t').innerHTML = d.name + '<small>' + d.brand + ' · ' + d.sub + '</small>';
+    $('fb-count').textContent = (i + 1) + ' / ' + D.length;
+    state();
+  }
+  function open(i){
+    lastFocus = document.activeElement; fill(i);
+    modal.hidden = false; document.documentElement.classList.add('fb-lock');
+    requestAnimationFrame(function(){ modal.classList.add('is-open'); });
+    play(); setTimeout(function(){ $('fb-close').focus({preventScroll:true}); }, 50);
+  }
+  function close(){
+    v.pause(); modal.classList.remove('is-open'); document.documentElement.classList.remove('fb-lock');
+    setTimeout(function(){ modal.hidden = true; v.removeAttribute('src'); v.load(); }, 380);
+    if (lastFocus) lastFocus.focus({preventScroll:true});
+  }
+  function go(i){
+    i = (i + D.length) % D.length; if (busy || i === cur) return; busy = true;
+    v.pause(); card.classList.add('is-swap');
+    setTimeout(function(){ fill(i); requestAnimationFrame(function(){ card.classList.remove('is-swap'); busy = false; }); play(); }, 380);
+  }
+  thumbs.forEach(function(t, k){ t.addEventListener('click', function(){ open(k); }); });
+  [].forEach.call(modal.querySelectorAll('[data-close]'), function(el){ el.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (modal.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') go(cur + 1); else if (e.key === 'ArrowLeft') go(cur - 1); });
   $('fb-big').addEventListener('click', function(){ v.muted = false; play(); });
   $('fb-play').addEventListener('click', function(){ if (v.paused) play(); else v.pause(); });
-  media.addEventListener('click', function(e){ if (e.target.closest('button')) return; if (v.paused) { if (!media.classList.contains('is-started')) v.muted = false; play(); } else v.pause(); });
+  media.addEventListener('click', function(e){ if (e.target.closest('button')) return; if (v.paused) play(); else v.pause(); });
   snd.addEventListener('click', function(){ v.muted = !v.muted; if (v.paused) play(); state(); });
   ['play','pause','ended','volumechange'].forEach(function(e){ v.addEventListener(e, state); });
   v.addEventListener('timeupdate', function(){ prog.style.transform = 'scaleX(' + (v.duration ? v.currentTime / v.duration : 0) + ')'; });
   v.addEventListener('ended', function(){ v.currentTime = 0; media.classList.remove('is-started'); });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ if (!es[0].isIntersecting && !v.paused) v.pause(); }, {threshold: .1}).observe(media);
-  function go(i){
-    i = (i + D.length) % D.length; if (i === cur || busy) return; busy = true;
-    v.pause(); card.classList.add('is-swap');
-    tabs.forEach(function(t, k){ t.classList.toggle('is-on', k === i); t.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
-    var bar = tabs[i].parentNode; if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({left: tabs[i].offsetLeft - (bar.clientWidth - tabs[i].offsetWidth) / 2, behavior: 'smooth'});
-    $('fb-count').textContent = (i + 1) + ' / ' + D.length;
-    setTimeout(function(){
-      var d = D[i]; cur = i;
-      v.removeAttribute('src'); v.load();
-      v.poster = 'assets/depoimento-' + d.k + '-poster-v1.webp'; v.src = 'assets/depoimento-' + d.k + '-v1.mp4'; v.preload = 'none'; v.muted = false;
-      prog.style.transform = 'scaleX(0)'; media.classList.remove('is-started','is-playing');
-      [$('fb-logo'), $('fb-cap-logo')].forEach(function(im){ im.src = 'assets/' + d.logo; im.width = d.w; im.height = d.h; });
-      $('fb-logo').alt = d.brand;
-      $('fb-main').innerHTML = d.main;
-      $('fb-quotes').innerHTML = d.q.map(function(t, k){ return '<li style="--i:' + k + '">' + t + '</li>'; }).join('');
-      $('fb-cap-t').innerHTML = d.who + '<small>' + (d.who === d.brand ? d.sub : d.brand + ' · ' + d.sub) + '</small>';
-      requestAnimationFrame(function(){ card.classList.remove('is-swap'); busy = false; });
-      state();
-    }, 420);
-  }
-  tabs.forEach(function(t, k){ t.addEventListener('click', function(){ if (k === cur) { v.muted = false; play(); } else go(k); }); });
   $('fb-prev').addEventListener('click', function(){ go(cur - 1); });
   $('fb-next').addEventListener('click', function(){ go(cur + 1); });
-  state();
 })();
 </script>
 <script src="assets/velaris-v4.js"></script>
