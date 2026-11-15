@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR" data-pagina="movex-projetos">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#09122b">
+<title>Landing Pages e Identidade Visual | Projetos Movex</title>
+<meta name="description" content="Conheça landing pages, sites e identidades visuais criados pela Movex: páginas rápidas, personalizadas e feitas para converter visitantes em clientes.">
+<link rel="canonical" href="https://movex.ag/projetos">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projetos Movex: páginas e marcas feitas para vender">
+<meta property="og:description" content="Landing pages, sites e identidades visuais feitos para transformar visitante em cliente.">
+<meta property="og:image" content="https://pedrodesign.store/movex/assets/og-projetos-v1.jpg">
+<link rel="icon" href="../assets/favicon-movex-v1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/movex.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Movex","url":"https://movex.ag","email":"contato@movex.ag","address":{"@type":"PostalAddress","addressLocality":"Cascavel","addressRegion":"PR","addressCountry":"BR"},"areaServed":"BR","sameAs":["https://www.instagram.com/movex.ag/","https://www.youtube.com/@ezemovex"]}</script>
+<style>
+body{background:#fff}
+.ph{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--wrap);margin:0 auto;padding:22px max(20px,env(safe-area-inset-left,0px)) 0}
+.ph img{height:26px;width:auto;display:block}
+.ph .btn{padding:12px 20px;font-size:14px}
+.ph .btn svg{width:18px;height:18px}
+.pj-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(120px,14vw,160px) 0 0;color:var(--on-navy);text-align:center}
+.pj-hero .hero-bg{z-index:-2}
+.pj-hero .hero-shade{z-index:-1}
+.pj-hero h1{margin:18px auto 0;font-family:var(--display);font-weight:700;font-size:clamp(32px,4.6vw,62px);line-height:1.05;letter-spacing:-.04em;color:#fff;max-width:19ch;text-wrap:balance}
+.pj-hero h1 em{font-style:normal;color:#6ea8ff}
+.pj-hero .eyebrow{justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.16em}
+.pj-hero .lead{margin:22px auto 0;font-size:clamp(16px,1.4vw,18px);line-height:1.65;color:rgba(222,232,255,.86);max-width:60ch}
+.pj-hero .hero-ctas{justify-content:center;margin-top:32px}
+.laps{position:relative;margin-top:clamp(48px,7vw,80px);padding:clamp(28px,4vw,48px) 16px 0;background:#fff;border-radius:clamp(28px,4vw,48px) clamp(28px,4vw,48px) 0 0;box-shadow:0 -30px 80px -30px rgba(61,134,255,.45)}
+.laps img{display:block;width:min(1180px,100%);height:auto;margin:0 auto;animation:lapIn 1.4s cubic-bezier(.2,.7,.2,1) .2s both}
+@keyframes lapIn{from{opacity:0;transform:translateX(9%)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.laps img{animation:none}}
+/* filtros + grade */
+.pj-list{padding:clamp(24px,4vw,48px) 0 clamp(80px,10vw,120px);background:#fff}
+.flt{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:44px}
+.flt button{border:1px solid var(--line);background:#fff;color:var(--ink);font:600 14px var(--body);padding:11px 20px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.flt button:hover{border-color:var(--blue);color:var(--blue)}
+.flt button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.pc{display:flex;flex-direction:column;border-radius:24px;background:#f6f8fd;border:1px solid var(--line);overflow:hidden;transition:box-shadow .35s,transform .35s,border-color .35s}
+.pc:hover{box-shadow:0 34px 70px -40px rgba(9,18,43,.5);border-color:#c9d6f2;transform:translateY(-4px)}
+.pc[hidden]{display:none}
+.pc-shot{margin:14px 14px 0;border-radius:14px;overflow:hidden;background:#0d1530;box-shadow:0 18px 40px -26px rgba(9,18,43,.6)}
+.pc-bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px}
+.pc-bar i{width:8px;height:8px;border-radius:50%;background:#2c3757}
+.pc-bar span{flex:1;margin-right:38px;text-align:center;font:500 11.5px var(--mono);color:#8a97b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-vp{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e6ebf5}
+.pc-vp img{position:absolute;left:0;top:0;width:100%;height:auto;transform:translateY(0);transition:transform var(--dur,4s) cubic-bezier(.45,0,.25,1)}
+.pc:hover .pc-vp img,.pc:focus-within .pc-vp img{transform:translateY(calc(-1 * var(--sh,0px)))}
+.pc-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.pc h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+.pc-tag{flex:none;padding:5px 11px;border-radius:999px;background:#e8efff;color:var(--blue);font:600 11px var(--mono);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pc-seg{margin-top:4px;font-size:14px;color:var(--muted)}
+.pc-d{margin-top:12px;font-size:15.5px;line-height:1.6;color:#2b3756}
+.pc-links{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.pc-links a{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.pc-live{color:var(--ink);border:1px solid var(--line);background:#fff}
+.pc-live svg{width:16px;height:16px}
+.pc-live:hover{border-color:var(--blue);color:var(--blue)}
+.pc-wa{background:var(--green);color:#fff}
+.pc-wa:hover{background:var(--green-2)}
+/* por que funciona: editorial, sem ícones */
+.why{padding-block:clamp(80px,10vw,130px);background:var(--navy);color:var(--on-navy)}
+.why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:48px;border-top:1px solid rgba(127,182,255,.2)}
+.why-grid div{padding:28px 26px 0 0}
+.why-grid div+div{padding-left:26px;border-left:1px solid rgba(127,182,255,.2)}
+.why-grid b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em;color:#fff}
+.why-grid p{margin-top:12px;font-size:15.5px;line-height:1.6;color:#a9bbe2}
+/* como funciona */
+.how{padding-block:clamp(80px,10vw,130px);background:#f3f6fc}
+.steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:s}
+.steps li{position:relative;padding:26px 22px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.steps li::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--mono);font-size:13px;color:var(--blue);letter-spacing:.1em}
+.steps b{display:block;margin-top:14px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em}
+.steps p{margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+.steps a{color:var(--blue)}
+.how-tops{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px}
+.how-tops span{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--ink)}
+.how-tops svg{width:24px;height:24px;color:var(--blue)}
+/* cta final */
+.pj-end{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(90px,12vw,150px);text-align:center;color:#fff}
+.pj-end .hero-bg{z-index:-2}
+.pj-end h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.4vw,58px);line-height:1.06;letter-spacing:-.04em;max-width:18ch;margin:0 auto;text-wrap:balance}
+.pj-end h2 em{font-style:normal;color:#6ea8ff}
+.pj-end .hero-ctas{justify-content:center;margin-top:36px}
+@media (max-width:980px){.why-grid{grid-template-columns:1fr 1fr}.why-grid div:nth-child(3){padding-left:0;border-left:0}.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+@media (max-width:560px){.ph img{height:22px}.ph .btn{padding:10px 14px;font-size:13px}.why-grid{grid-template-columns:1fr}.why-grid div,.why-grid div+div{padding:24px 0;border-left:0;border-bottom:1px solid rgba(127,182,255,.2)}.steps{grid-template-columns:1fr}.pc-body{padding:18px 18px 20px}.pc-top{flex-direction:column;gap:8px}.laps img{width:150%;max-width:none;margin-left:-25%}.laps{overflow:hidden}}
+</style>
+<script src="/apresentacao/assets/pd-visitas-v2.js" defer></script>
+</head>
+<body>
+<header class="ph">
+  <a href="../" aria-label="Movex, página inicial"><img src="../assets/movex-logo-branco-v1.png" alt="movex" width="290" height="54"></a>
+  <a class="btn btn-go" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page%20/%20identidade%20visual%20/%20site." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Pedir orçamento</a>
+</header>
+
+<main id="topo">
+  <section class="pj-hero">
+    <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#5b93f0,#1f56d8,#0a2470,#000000" data-speed="2" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">PROJETOS MOVEX</p>
+      <h1>Páginas e marcas feitas para vender, <em>não só para serem bonitas.</em></h1>
+      <p class="lead">De nada adianta investir em anúncio se a sua “vitrine digital” não está preparada para vender. Criamos páginas rápidas, persuasivas e 100% personalizadas, e identidades que aumentam o valor percebido da sua marca.</p>
+      <div class="hero-ctas"><a class="btn btn-go" href="#projetos">Quero um projeto assim <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="laps" aria-hidden="true"><img src="../assets/movex-sites-v1.webp" alt="" width="1800" height="512"></div>
+  </section>
+
+  <section class="pj-list" id="projetos" aria-labelledby="t-proj">
+    <div class="wrap">
+      <h2 id="t-proj" class="sr">Projetos</h2>
+      <div class="flt" role="group" aria-label="Filtrar projetos">
+        <button type="button" data-f="all" aria-pressed="true">Todos</button>
+        <button type="button" data-f="lp" aria-pressed="false">Landing Pages</button>
+        <button type="button" data-f="site" aria-pressed="false">Sites</button>
+        <button type="button" data-f="iv" aria-pressed="false">Identidade Visual</button>
+      </div>
+      <div class="grid">
+        <article class="pc rv" data-t="lp" style="--i:0">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>powerdieseloficial.com</span></div><div class="pc-vp"><img src="../assets/proj-pw-v1.webp" alt="Página da Power Diesel" width="900" height="3800" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Power Diesel</h3><span class="pc-tag">Landing page</span></div>
+            <p class="pc-seg">Câmbio automático e diesel</p>
+            <p class="pc-d">Serviços diesel apresentados com clareza e um caminho direto para o orçamento no WhatsApp.</p>
+            <div class="pc-links"><a class="pc-live" href="https://powerdieseloficial.com/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="site" style="--i:1">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>franquia.capanemaescapamentos.com.br/unidades</span></div><div class="pc-vp"><img src="../assets/proj-cap-v1.webp" alt="Página da Capanema Escapamentos" width="900" height="747" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Capanema Escapamentos</h3><span class="pc-tag">Site · página de unidades</span></div>
+            <p class="pc-seg">Franquia</p>
+            <p class="pc-d">Mapa com todas as unidades da rede pelo Brasil, para o cliente achar a loja mais perto.</p>
+            <div class="pc-links"><a class="pc-live" href="https://franquia.capanemaescapamentos.com.br/unidades/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20site." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="lp" style="--i:0">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>paranadrones.com</span></div><div class="pc-vp"><img src="../assets/proj-pdr-v1.webp" alt="Página da Paraná Drones" width="900" height="562" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Paraná Drones</h3><span class="pc-tag">Landing page</span></div>
+            <p class="pc-seg">Assistência técnica de drones</p>
+            <p class="pc-d">Assistência técnica DJI posicionada como especialista e focada em gerar contatos.</p>
+            <div class="pc-links"><a class="pc-live" href="https://paranadrones.com/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="lp iv" style="--i:1">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>motionelevadores.com.br</span></div><div class="pc-vp"><img src="../assets/proj-motion-v1.webp" alt="Página da Motion Elevadores" width="900" height="1020" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Motion Elevadores</h3><span class="pc-tag">Identidade visual + landing page</span></div>
+            <p class="pc-seg">Elevadores</p>
+            <p class="pc-d">Marca e página premium para uma empresa de transporte vertical.</p>
+            <div class="pc-links"><a class="pc-live" href="https://motionelevadores.com.br/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20identidade%20visual." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="lp" style="--i:0">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>dalzon.com.br</span></div><div class="pc-vp"><img src="../assets/proj-dalzon-v1.webp" alt="Página da Dalzon" width="900" height="3800" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Dalzon</h3><span class="pc-tag">Catálogo · landing page</span></div>
+            <p class="pc-seg">Equipamentos para gastronomia</p>
+            <p class="pc-d">Locação de equipamentos para cozinha industrial explicada passo a passo.</p>
+            <div class="pc-links"><a class="pc-live" href="https://dalzon.com.br/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="site" style="--i:1">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>viciandoce.com.br</span></div><div class="pc-vp"><img src="../assets/proj-vc-v1.webp" alt="Página da Viciandoce" width="900" height="3800" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>Viciandoce</h3><span class="pc-tag">Site</span></div>
+            <p class="pc-seg">Confeitaria</p>
+            <p class="pc-d">Cardápio online que mostra os doces e leva o pedido direto para o WhatsApp.</p>
+            <div class="pc-links"><a class="pc-live" href="https://viciandoce.com.br/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20site." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+        <article class="pc rv" data-t="lp" style="--i:0">
+          <div class="pc-shot"><div class="pc-bar"><i></i><i></i><i></i><span>yadperfumaria.com.br</span></div><div class="pc-vp"><img src="../assets/proj-yad-v1.webp" alt="Página da YAD Perfumaria" width="900" height="3800" loading="lazy"></div></div>
+          <div class="pc-body">
+            <div class="pc-top"><h3>YAD Perfumaria</h3><span class="pc-tag">Landing page + sistema</span></div>
+            <p class="pc-seg">Perfumaria</p>
+            <p class="pc-d">Vitrine de perfumes importados com catálogo gerenciável.</p>
+            <div class="pc-links"><a class="pc-live" href="https://yadperfumaria.com.br/" target="_blank" rel="noopener">Ver página ao vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="pc-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page." target="_blank" rel="noopener">Quero um projeto assim</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" aria-labelledby="t-why">
+    <div class="wrap">
+      <h2 class="sec-t rv" id="t-why">Cada detalhe pensado <em>para converter.</em></h2>
+      <div class="why-grid rv" style="--i:1">
+        <div><b>Rápidas</b><p>Carregam em segundos, inclusive no celular, onde está a maior parte dos acessos.</p></div>
+        <div><b>Foco em uma ação</b><p>Sem distrações: tudo leva o visitante ao contato.</p></div>
+        <div><b>Copy estratégica</b><p>Textos que respondem objeções e mostram valor, não só informação.</p></div>
+        <div><b>100% personalizadas</b><p>Nada de modelo pronto: cada página tem a cara da sua marca.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" aria-labelledby="t-how">
+    <div class="wrap">
+      <span class="mono tag">Como funciona</span>
+      <h2 class="sec-t rv" id="t-how" style="margin-top:14px">Do briefing à <em>página no ar.</em></h2>
+      <ol class="steps rv" style="--i:1">
+        <li><b>Briefing</b><p>Você responde um formulário rápido sobre sua empresa (<a href="https://forms.movex.ag" target="_blank" rel="noopener">forms.movex.ag</a>).</p></li>
+        <li><b>Estrutura e copy</b><p>Montamos a estratégia e os textos da página.</p></li>
+        <li><b>Design e desenvolvimento</b><p>Sua página ganha forma.</p></li>
+        <li><b>Ajustes e publicação</b><p>Revisamos com você e colocamos no ar.</p></li>
+      </ol>
+      <div class="how-tops rv" style="--i:2">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2.5h6"/></svg>Landing pages no ar em até 48h</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-1.7-1.3-2-2.5-2h-2a2 2 0 0 1-1.6-3.2c.9-1.1.4-3.8-2.9-3.8Z"/><circle cx="7.5" cy="11.5" r="1.2"/><circle cx="10.5" cy="7.5" r="1.2"/><circle cx="8.5" cy="15.8" r="1.2"/></svg>100% personalizadas</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pj-end" aria-labelledby="t-end">
+    <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#5b93f0,#1f56d8,#0a2470,#000000" data-speed="1.6" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 id="t-end">Sua próxima página pode ser <em>o seu melhor vendedor.</em></h2>
+      <div class="hero-ctas"><a class="btn btn-go" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page%20/%20identidade%20visual%20/%20site." target="_blank" rel="noopener">Quero um orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <a class="ft-logo" href="../" aria-label="Movex, página inicial"><img src="../assets/movex-logo-branco-v1.png" alt="movex" width="290" height="54"></a>
+    <p class="ft-slogan">Movimento estratégico que impulsiona resultados</p>
+    <p class="ft-contact"><span>Cascavel/PR · Atendemos todo o Brasil</span><span><a href="mailto:contato@movex.ag">contato@movex.ag</a></span></p>
+    <div class="ft-soc"><a class="fs" href="https://www.instagram.com/movex.ag/" target="_blank" rel="noopener" aria-label="Instagram da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a class="fs" href="https://www.youtube.com/@ezemovex" target="_blank" rel="noopener" aria-label="YouTube da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.2 5 2.8-5 2.8Z" fill="currentColor"/></svg></a><a class="fs" href="mailto:contato@movex.ag" aria-label="E-mail da Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></a></div>
+    <div class="ft-line" aria-hidden="true"></div>
+    <div class="ft-bottom">
+      <span>© Movex. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5545999430100?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20landing%20page%20/%20identidade%20visual%20/%20site." target="_blank" rel="noopener" aria-label="Falar com a Movex no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+<script>
+(function(){
+  /* filtros */
+  var bs = [].slice.call(document.querySelectorAll('.flt button')), cs = [].slice.call(document.querySelectorAll('.pc'));
+  bs.forEach(function(b){ b.addEventListener('click', function(){
+    var f = b.getAttribute('data-f');
+    bs.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    cs.forEach(function(c){ c.hidden = !(f === 'all' || c.getAttribute('data-t').split(' ').indexOf(f) > -1); if (!c.hidden) c.classList.add('in'); });
+  }); });
+  /* a página real rola dentro do mockup ao passar o mouse */
+  function size(c){ var vp = c.querySelector('.pc-vp'), im = vp.querySelector('img'); var sh = Math.max(0, im.getBoundingClientRect().height - vp.getBoundingClientRect().height); c.style.setProperty('--sh', sh + 'px'); c.style.setProperty('--dur', Math.min(9, Math.max(1.5, sh / 320)) + 's'); }
+  cs.forEach(function(c){ var im = c.querySelector('img'); if (im.complete) size(c); else im.addEventListener('load', function(){ size(c); }); c.addEventListener('mouseenter', function(){ size(c); }); });
+  addEventListener('resize', function(){ cs.forEach(size); });
+})();
+</script>
+<script src="../assets/velaris-v4.js"></script>
+<script src="../assets/movex-ui.js" defer></script>
+</body>
+</html>

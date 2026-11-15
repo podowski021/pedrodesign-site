@@ -166,6 +166,27 @@ if ($a === 'lead') {
     out(['ok' => true]);
 }
 
+/* ---------- público: formulário de diagnóstico da página da Movex ---------- */
+if ($a === 'movexlead') {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(['error' => 'Método'], 405);
+    throttle('movexlead', 8, 3600);
+    $b = body();
+    $cut = fn($s, $n) => mb_substr(trim((string)($s ?? '')), 0, $n);
+    $f = [];
+    foreach (['nome' => 120, 'wpp' => 40, 'email' => 160, 'empresa' => 160, 'insta' => 80, 'fat' => 60, 'inv' => 60, 'origem' => 80] as $k => $n) $f[$k] = $cut($b[$k] ?? '', $n);
+    if ($f['nome'] === '' || strlen(preg_replace('/\D/', '', $f['wpp'])) < 10) out(['error' => 'Preencha nome e WhatsApp'], 400);
+    $id = new_id();
+    jmod("$dir/movex-leads.json", function (&$d) use ($id, $f) {
+        $d[$id] = $f + ['date' => gmdate('Y-m-d'), 'createdAt' => (int)(microtime(true) * 1000)];
+    });
+    $cfg = mail_cfg();
+    if (!empty($cfg['pass'])) {
+        $txt = "Novo pedido de diagnóstico pela página da Movex\n\nNome: {$f['nome']}\nWhatsApp: {$f['wpp']}\nE-mail: " . ($f['email'] ?: '-') . "\nEmpresa: " . ($f['empresa'] ?: '-') . "\nInstagram: " . ($f['insta'] ?: '-') . "\nFaturamento mensal: " . ($f['fat'] ?: '-') . "\nInvestimento em anúncios: " . ($f['inv'] ?: '-') . "\nPágina: " . ($f['origem'] ?: '-');
+        try { smtp_send($cfg, [$cfg['notify'] ?? $cfg['user']], 'Movex · diagnóstico: ' . $f['nome'], $txt, mail_html($txt)); } catch (Throwable $e) { /* o pedido já foi salvo */ }
+    }
+    out(['ok' => true]);
+}
+
 /* ---------- login ---------- */
 $hasPass = file_exists($authFile);
 $logged = !empty($_SESSION['ok']);

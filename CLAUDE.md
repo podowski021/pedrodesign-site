@@ -28,6 +28,13 @@ Enquanto existir `src/EM_DESENVOLVIMENTO`, a página inicial (`/`) é a **págin
 
 Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mona Sans** (títulos Black 900 em caixa alta, destaque em itálico Light 300 laranja); logo animada `assets/logo-animada-v5.js` (`data-logo-animada`, `data-loop`, `data-intervalo`, `data-globo`); 6 idiomas automáticos pelo idioma do aparelho (dicionário `T` no script). Arquivos de imagem/fonte ficam em cache por 1 ano: ao trocar um arquivo, salve com **nome novo**. Preço: páginas a partir de R$ 1.000.
 
+## Site novo da Movex (prévia em /movex/)
+`src/extra/movex/` publica a prévia do site novo da Movex (empresa onde o Pedro trabalha), seguindo a copy v6 do Ezequiel. Textos aqui são da **Movex** (usam "nós" e "landing pages"; as regras de primeira pessoa e "páginas" do Pedro não valem aqui). Regra da copy: **sem travessão**; títulos sem caixa alta e sem itálico; CTAs **verdes** (`.btn-go`, com brilho).
+- `/movex/` Home central (3 cards de caminho + Raio-X/YouTube/Instagram + WhatsApp flutuante).
+- `/movex/gestao-de-anuncios/` vem da prévia antiga: gerada pelo script do Claude (copy aplicada), **só formulário, nenhum WhatsApp**. O formulário manda para `painel/api.php?a=movexlead` → `../painel-data/movex-leads.json` + e-mail de aviso (mesma config de e-mail do painel).
+- `/movex/funil-start/` (mockup Sem/Com a Movex, WhatsApp) e `/movex/projetos/` (filtros + prints reais `assets/proj-*.webp` que rolam no hover).
+- CSS comum: `assets/movex.css`; JS comum: `assets/movex-ui.js` (barra de cookies `mx_ck`, revelação `.rv`). Fundo animado: `assets/velaris-v4.js`. WhatsApp da Movex: 55 45 99943-0100, uma mensagem pronta por página. Tudo com `noindex` até ir para movex.ag (canonical já aponta para movex.ag).
+
 ## Visitas (analytics próprio)
 Contador anônimo `apresentacao/assets/pd-visitas-v2.js` (incluído na home, /links, bio e 404; `data-pagina` no `<html>` dá o nome da página) → `painel/api.php?a=t` → `analytics.php` grava em `../painel-data/visitas/AAAA-MM-DD.jsonl` (guarda 400 dias). Aba **Visitas** do painel lê `?a=visitas`. `?naocontar=1` (ou abrir o painel) para de contar o aparelho do Pedro. Conta **pessoas únicas** (id em cookie do domínio `.pedrodesign.store`); cada pessoa conta uma vez no período, no dia e na hora da primeira visita. Links com `?utm_source=` aparecem com esse nome em "De onde vieram".
 
