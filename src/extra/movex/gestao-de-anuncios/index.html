@@ -19,6 +19,15 @@
 <link rel="stylesheet" href="../assets/movex.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Movex","url":"https://movex.ag","email":"contato@movex.ag","address":{"@type":"PostalAddress","addressLocality":"Cascavel","addressRegion":"PR","addressCountry":"BR"},"areaServed":"BR","sameAs":["https://www.instagram.com/movex.ag/","https://www.youtube.com/@ezemovex"]}</script>
 <script src="/apresentacao/assets/pd-visitas-v2.js" defer></script>
+<style>
+/* logos: no máximo 2 linhas; as demais entram no rodízio */
+.lc-grid{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr));gap:30px 28px!important;max-width:1120px}
+.lc-item{min-width:0;height:60px}
+.lc-item img{max-width:100%!important;object-fit:contain}
+.lc-item[hidden]{display:none!important}
+@media (max-width:980px){.lc-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){.lc-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 12px!important}.lc-item{height:44px}}
+</style>
 </head>
 <body>
 <header class="site-header" data-tone="light">
@@ -91,7 +100,6 @@
         <li class="lc-item"><img src="../assets/cli-pezzatto-v1.webp" alt="Pezzatto Serviços Automotivos" width="129" height="44" style="height:44px"></li>
         <li class="lc-item"><img src="../assets/cli-rizzare-v1.webp" alt="Rizzare Moda Masculina" width="131" height="20" style="height:20px"></li>
         <li class="lc-item"><img src="../assets/cli-dalzon-v1.webp" alt="Dalzon Equipamentos para Gastronomia" width="135" height="40" style="height:40px"></li>
-        <li class="lc-item"><img src="../assets/cli-grupo-agro-v1.webp" alt="Grupo Agro" width="75" height="48" style="height:48px"></li>
       </ul>
     </div>
   </section>
@@ -636,11 +644,16 @@
 </script>
 <script>
 (function(){
-  var grid = document.getElementById('lc-grid'); if (!grid || !grid.animate) return;
+  var grid = document.getElementById('lc-grid'); if (!grid) return;
+  var items = Array.prototype.slice.call(grid.querySelectorAll('.lc-item'));
+  var all = items.map(function(li){ var el = li.querySelector('img'); return { src: el.getAttribute('src'), alt: el.alt, w: el.getAttribute('width'), h: el.getAttribute('height'), sh: el.style.height }; });
+  function perScreen(){ return innerWidth <= 640 ? 6 : innerWidth <= 980 ? 8 : 14; }
+  var slots = [], N = 0;
+  function layout(){ var n = perScreen(); if (n === N) return; N = n; items.forEach(function(li, i){ li.hidden = i >= N; }); slots = items.slice(0, N).map(function(li){ return li.querySelector('img'); }); }
+  layout(); addEventListener('resize', layout);
+  if (!grid.animate) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var slots = Array.prototype.slice.call(grid.querySelectorAll('.lc-item img'));
   // dados de cada logo (para trocar de lugar)
-  var data = slots.map(function(el){ return { src: el.getAttribute('src'), alt: el.alt, w: el.getAttribute('width'), h: el.getAttribute('height'), sh: el.style.height }; });
   var OUT = 650, IN = 850, STAGGER = 45, PAUSE = 100, INTERVAL = 6000, visible = true, busy = false;
   var EASE = 'cubic-bezier(.45,0,.25,1)';
   var outF = [{ opacity: 1, filter: 'blur(0px)', transform: 'translateY(0) scale(1)' }, { opacity: 0, filter: 'blur(10px)', transform: 'translateY(6px) scale(.95)' }];
@@ -650,7 +663,9 @@
   function wave(){
     if (!visible || document.hidden || busy) return;
     busy = true;
-    var next = shuffle(data);
+    var shown = slots.map(function(el){ return el.getAttribute('src'); });
+    var off = shuffle(all.filter(function(d){ return shown.indexOf(d.src) < 0; })), on = shuffle(all.filter(function(d){ return shown.indexOf(d.src) >= 0; }));
+    var next = shuffle(off.concat(on).slice(0, slots.length));
     for (var i = 0; i < next.length; i++) if (next[i].src === slots[i].getAttribute('src')) { var j = (i + 1) % next.length; var t = next[i]; next[i] = next[j]; next[j] = t; }
     // 1) todas somem, uma a uma (ficam invisíveis)
     var order = shuffle(slots.map(function(_, i){ return i; })), rank = []; order.forEach(function(slot, k){ rank[slot] = k; });
