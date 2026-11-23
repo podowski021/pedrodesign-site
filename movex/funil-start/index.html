@@ -609,6 +609,16 @@ section{position:relative;scroll-margin-top:84px}
 @keyframes fsTitle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.hero .fs-title{animation:none;opacity:1}}
 
+
+/* logo menor, selos ao lado dos botões, painel sem mexer o texto */
+.hero .fs-logo{width:min(100%,380px);margin-top:0}
+.hero-ctas{align-items:center}
+.hero-seals{margin-left:6px}
+.hero-seals img{height:40px}
+#gx{min-height:500px}
+@media (max-width:980px){#gx{min-height:512px}}
+@media (max-width:560px){.hero .fs-logo{width:min(100%,280px)}.hero-seals{margin-left:0;width:100%;justify-content:center;margin-top:4px}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -709,10 +719,6 @@ section{position:relative;scroll-margin-top:84px}
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <div class="seals" aria-label="Parceiro oficial Google e Meta">
-          <img src="../assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
-          <img src="../assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
-        </div>
         <div class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></div>
         <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Engenharia de performance para <strong>dominar o mercado local</strong>, atrair leads e transformar intenção de busca em <strong>lucro real.</strong></p>
@@ -720,6 +726,10 @@ section{position:relative;scroll-margin-top:84px}
           <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero o Funil Start
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="#planos">Ver os planos</a>
+          <div class="seals hero-seals" aria-label="Parceiro oficial Google e Meta">
+          <img src="../assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
+          <img src="../assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
+        </div>
         </div>
       </div>
 
