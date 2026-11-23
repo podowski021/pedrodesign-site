@@ -343,7 +343,7 @@ section{position:relative;scroll-margin-top:84px}
 @keyframes fsIn{from{opacity:0;filter:blur(10px) drop-shadow(0 6px 30px rgba(61,134,255,0));transform:translateY(10px) scale(.985)}to{opacity:1;filter:blur(0) drop-shadow(0 6px 30px rgba(61,134,255,.28));transform:none}}
 @keyframes fsBreath{0%,100%{filter:drop-shadow(0 6px 30px rgba(61,134,255,.28))}50%{filter:drop-shadow(0 6px 34px rgba(61,134,255,.5))}}
 @keyframes fsSheen{0%{background-position:100% 0}55%,100%{background-position:0% 0}}
-.hero .lead{font-size:clamp(17px,1.6vw,20px)}
+.hero .lead{font-size:clamp(15px,1.3vw,17px);margin-top:28px}
 .hero .lead strong{color:#fff}
 .search-top{margin-top:18px}
 .search-top .rank{background:var(--ok)}
@@ -619,7 +619,7 @@ section{position:relative;scroll-margin-top:84px}
 .hero-grid{align-items:stretch}.hero-grid>:first-child{padding-top:24px;align-self:start}
 .hero .hud-zone{padding-bottom:0;position:relative;min-height:418px}
 .hero #gx{position:absolute;top:24px;left:24px;right:0;bottom:0;overflow:hidden;display:flex;flex-direction:column}
-.hero #gx .gx-list{flex:1;min-height:0;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent)}
+.hero #gx[data-state="depois"] .gx-list{flex:1;min-height:0;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent)}
 }
 @media (max-width:980px){#gx{min-height:512px}}
 @media (max-width:560px){.hero .fs-logo{width:min(100%,190px)}.hero-seals{margin-left:0;width:100%;justify-content:center;margin-top:4px}}
@@ -637,12 +637,13 @@ section{position:relative;scroll-margin-top:84px}
 
 @media (min-width:981px){.hero .hud-zone{padding-right:0}.hero-grid{grid-template-columns:1.12fr .88fr;gap:48px}}
 
-.hx-pts{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px}
+.hx-pts{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px}
 .hx-pts li{display:flex;align-items:center;gap:8px;font-size:14px;color:#c3d3f3}
+.hx-pts b{font-weight:700;color:#fff}
 .pt-ic{display:grid;place-items:center;flex:none;color:#7fb0ff}
 .pt-ic svg{width:17px;height:17px}
 @media (max-width:560px){.hx-pts{gap:8px 16px}.hx-pts li{font-size:13px}}
-.hero-ctas{margin-top:28px}
+.hero-ctas{margin-top:38px}
 .fs-prob{background:#fff}
 #incluso{background:var(--paper,#f5f7fb)}
 @media (max-width:560px){.hx-pts li{font-size:13px}}
@@ -660,7 +661,7 @@ section{position:relative;scroll-margin-top:84px}
 
 
 /* grade infinita (fundo da seção branca) */
-.ig{position:relative;overflow:hidden;isolation:isolate;--mx:-999px;--my:-999px}
+.ig{position:relative;overflow:hidden;isolation:isolate;cursor:default;-webkit-user-select:none;user-select:none;--mx:-999px;--my:-999px}
 .ig>.wrap{position:relative;z-index:1}
 .ig-base,.ig-hot,.ig-blobs{position:absolute;inset:0;z-index:0;pointer-events:none;color:#1d4ed8}
 .ig-base{opacity:.07}
@@ -769,7 +770,7 @@ section{position:relative;scroll-margin-top:84px}
         <div class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></div>
         <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Implementamos seu Google Meu Negócio e sua campanha no Google Ads para que sua empresa seja a <strong>primeira opção na sua região.</strong></p>
-        <ul class="hx-pts"><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></svg></span><span>Pagamento único</span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M9.5 13.5l5 5M14.5 13.5l-5 5"/></svg></span><span>Sem mensalidade</span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.6"/><rect x="17.5" y="13" width="4" height="6" rx="1.6"/><path d="M19.5 19c0 1.5-2 2.5-5 2.5"/></svg></span><span>2 meses de suporte</span></li></ul>
+        <ul class="hx-pts"><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></svg></span><span>Pagamento <b>único</b></span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M9.5 13.5l5 5M14.5 13.5l-5 5"/></svg></span><span><b>Sem</b> mensalidade</span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.6"/><rect x="17.5" y="13" width="4" height="6" rx="1.6"/><path d="M19.5 19c0 1.5-2 2.5-5 2.5"/></svg></span><span><b>2 meses</b> de suporte</span></li></ul>
         <div class="hero-ctas">
           <a class="btn btn-primary btn-rg" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero estar no topo do Google
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -816,7 +817,7 @@ section{position:relative;scroll-margin-top:84px}
     <div class="wrap">
       <h2 class="prob-h" id="t-prob">Quem não aparece no Google não existe para <em>quem está pronto para comprar.</em></h2>
       <div class="prob-grid">
-        <p>Quando alguém pesquisa <strong>“dentista perto de mim”</strong> ou <strong>“oficina em [cidade]”</strong>, a decisão acontece nos primeiros resultados. Se a sua empresa não está lá, o cliente liga para o concorrente, mesmo que o seu serviço seja melhor.</p>
+        <p>Quando alguém pesquisa <strong>“dentista perto de mim”</strong> ou <strong>“oficina em <span data-cidade>sua cidade</span>”</strong>, a decisão acontece nos primeiros resultados. Se a sua empresa não está lá, o cliente liga para o concorrente, mesmo que o seu serviço seja melhor.</p>
         <ul class="facts">
           <li><b>A busca já tem intenção:</b> quem pesquisa no Google está pronto para comprar.</li>
           <li><b>O mapa decide:</b> avaliações, fotos, rota e WhatsApp em um toque.</li>
@@ -1102,6 +1103,17 @@ section{position:relative;scroll-margin-top:84px}
   function tick(){ if (!run) return; off = (off + .5) % 40; for (var i = 0; i < pats.length; i++){ pats[i].setAttribute('x', off); pats[i].setAttribute('y', off); } requestAnimationFrame(tick); }
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ var v = es[0].isIntersecting; if (v && !run){ run = true; requestAnimationFrame(tick); } else if (!v) run = false; }).observe(sec);
   else { run = true; requestAnimationFrame(tick); }
+})();
+</script>
+<script>
+(function(){
+  var els = document.querySelectorAll('[data-cidade]'); if (!els.length) return;
+  function put(c){ if (!c) return; els.forEach(function(el){ el.textContent = c; }); }
+  try { var c = sessionStorage.getItem('mx_cidade'); if (c) { put(c); return; } } catch(e) {}
+  if (!window.fetch) return;
+  fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){ return r.json(); }).then(function(d){
+    if (d && d.country_code === 'BR' && d.city) { put(d.city); try { sessionStorage.setItem('mx_cidade', d.city); } catch(e) {} }
+  }).catch(function(){});
 })();
 </script>
 <script src="../assets/velaris-v4.js"></script>
