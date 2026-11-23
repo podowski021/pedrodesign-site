@@ -97,6 +97,17 @@ body{background:var(--ink);color:#e6eeff;overflow-x:hidden}
 .px-ft{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font:500 10.5px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#6f86b8}
 @media (prefers-reduced-motion:reduce){.px-floor,.px-tick div,.px h1 span,.px-logo::before,.px-logo::after,.px-dot{animation:none}.px-list li{animation:none;opacity:1;transform:none}}
 @media (max-width:420px){.px-logo{height:34px}.px-tag{letter-spacing:.08em;font-size:10px}.lk-t small{letter-spacing:.08em}.lk{gap:12px;padding:16px 14px 16px 12px}.lk-go{width:36px;height:36px}.px-bar .px-hide{display:none}}
+
+/* só logo e botões, coluna centralizada */
+.px-in{max-width:560px!important;grid-template-columns:minmax(0,1fr)!important;justify-items:center;text-align:center;align-content:center;min-height:100vh;min-height:100svh;padding-top:calc(40px + env(safe-area-inset-top,0px))!important}
+.px-hero{display:flex;flex-direction:column;align-items:center}
+.px-logo{height:52px}
+.px-soc{margin-top:22px}
+.px-links{width:100%;margin-top:34px}
+.px-list{margin-top:0!important}
+.lk{text-align:left}
+.lk-t b{font-size:18px}
+@media (max-width:420px){.px-logo{height:40px}}
 </style>
 <script src="/apresentacao/assets/pd-visitas-v2.js" defer></script>
 </head>
@@ -104,38 +115,27 @@ body{background:var(--ink);color:#e6eeff;overflow-x:hidden}
 <div class="px">
   <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#93c5fd,#60a5fa,#2563eb,#000000" data-speed="2" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
 
-  <header class="px-bar">
-    <span><span class="px-dot" aria-hidden="true"></span><b>Movex</b> <span class="px-hide">// agência de performance</span></span>
-    <span><span class="px-hide">Cascavel/PR · </span><b id="px-clock">--:--</b> BRT</span>
-  </header>
-
   <main class="px-in">
     <section class="px-hero">
       <a class="px-logo" href="./" aria-label="Movex"><img src="assets/movex-logo-branco-v1.png" alt="movex" width="290" height="54"></a>
-      <div><span class="px-tag">Google Partner + Meta Business Partner</span></div>
-      <h1>Sua empresa vendendo mais pela internet. <span>Escolha por onde começar.</span></h1>
-      <p class="px-sub">Anúncios no Google e no Instagram, presença local e landing pages que convertem. Tudo com foco em venda, não em curtida.</p>
       <nav class="px-soc" aria-label="Redes sociais"><a href="https://www.instagram.com/movex.ag/" target="_blank" rel="noopener" aria-label="Instagram @movex.ag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.youtube.com/@ezemovex" target="_blank" rel="noopener" aria-label="YouTube Ezequiel Xavier Movex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.2 5 2.8-5 2.8Z" fill="currentColor"/></svg></a><a href="mailto:contato@movex.ag" aria-label="E-mail contato@movex.ag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></a></nav>
     </section>
 
     <nav class="px-links" aria-label="Caminhos">
       <ul class="px-list">
-        <li style="--i:0"><a class="lk lk-main" href="gestao-de-anuncios/"><span class="lk-n">01</span><span class="lk-t"><b data-scr>Gestão de anúncios</b><small>Google Ads · Meta Ads · todo mês</small></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-        <li style="--i:1"><a class="lk lk-main" href="funil-start/"><span class="lk-n">02</span><span class="lk-t"><b data-scr>Funil Start: 1º no Google</b><small>Google Meu Negócio · pagamento único</small></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-        <li style="--i:2"><a class="lk lk-main" href="projetos/"><span class="lk-n">03</span><span class="lk-t"><b data-scr>Landing pages e sites</b><small>Projetos que convertem</small></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-        <li style="--i:3"><a class="lk lk-main" href="https://movex.ag/diagnostico"><span class="lk-n">04</span><span class="lk-t"><b data-scr>Raio-X Movex grátis</b><small>Google e IAs · em minutos</small></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-        <li style="--i:4"><a class="lk lk-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Movex%20e%20quero%20entender%20qual%20solu%C3%A7%C3%A3o%20%C3%A9%20ideal%20para%20minha%20empresa." target="_blank" rel="noopener"><span class="lk-n">05</span><span class="lk-t"><b data-scr>Falar no WhatsApp</b><small>Resposta rápida · (45) 99943-0100</small></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li style="--i:0"><a class="lk lk-main" href="gestao-de-anuncios/"><span class="lk-n">01</span><span class="lk-t"><b data-scr>Gestão de anúncios</b></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li style="--i:1"><a class="lk lk-main" href="funil-start/"><span class="lk-n">02</span><span class="lk-t"><b data-scr>Funil Start: 1º no Google</b></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li style="--i:2"><a class="lk lk-main" href="projetos/"><span class="lk-n">03</span><span class="lk-t"><b data-scr>Landing pages e sites</b></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li style="--i:3"><a class="lk lk-main" href="https://movex.ag/diagnostico"><span class="lk-n">04</span><span class="lk-t"><b data-scr>Raio-X Movex grátis</b></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li style="--i:4"><a class="lk lk-wa" href="https://wa.me/5545999430100?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Movex%20e%20quero%20entender%20qual%20solu%C3%A7%C3%A3o%20%C3%A9%20ideal%20para%20minha%20empresa." target="_blank" rel="noopener"><span class="lk-n">05</span><span class="lk-t"><b data-scr>Falar no WhatsApp</b></span><span class="lk-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
       </ul>
     </nav>
-
-    <div class="px-tick" aria-hidden="true"><div><span>Google Partner</span><i>✦</i><span>Meta Business Partner</span><i>✦</i><span>+200 empresas impulsionadas</span><i>✦</i><span>+R$6M investidos em campanhas</span><i>✦</i><span>Cascavel/PR</span><i>✦</i><span>Atendemos todo o Brasil</span><i>✦</i><span>Google Partner</span><i>✦</i><span>Meta Business Partner</span><i>✦</i><span>+200 empresas impulsionadas</span><i>✦</i><span>+R$6M investidos em campanhas</span><i>✦</i><span>Cascavel/PR</span><i>✦</i><span>Atendemos todo o Brasil</span><i>✦</i></div></div>
-    <footer class="px-ft"><span>© Movex</span><span>contato@movex.ag</span><span>Movimento estratégico que impulsiona resultados</span></footer>
   </main>
 </div>
 <script>
 (function(){
   var c = document.getElementById('px-clock');
-  function t(){ try { c.textContent = new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo'}); } catch(e) {} }
+  function t(){ if (!c) return; try { c.textContent = new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo'}); } catch(e) {} }
   t(); setInterval(t, 15000);
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var G = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789#/%&*';
