@@ -23,7 +23,8 @@
 html{background:var(--ink)}
 body{background:var(--ink);color:#e6eeff;overflow-x:hidden}
 .px{position:relative;isolation:isolate;min-height:100vh;min-height:100svh}
-.px .hero-bg{position:fixed;inset:0;z-index:-4;opacity:.75}
+.px .hero-bg{position:fixed;inset:0;z-index:-4}
+.px h1,.px-sub{text-shadow:0 2px 24px rgba(0,8,30,.45)}
 /* chão em perspectiva, linhas correndo */
 .px-floor{position:fixed;left:-50%;right:-50%;bottom:-10%;height:60vh;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(61,134,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(61,134,255,.5) 1px,transparent 1px);background-size:64px 64px;transform:perspective(420px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 10%,transparent 85%);mask-image:linear-gradient(to top,#000 10%,transparent 85%);animation:floor 6s linear infinite;opacity:.45}
 @keyframes floor{to{background-position:0 64px,0 0}}
@@ -100,10 +101,7 @@ body{background:var(--ink);color:#e6eeff;overflow-x:hidden}
 </head>
 <body>
 <div class="px">
-  <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#5b93f0,#1f56d8,#0a2470,#000000" data-speed="1.6" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
-  <div class="px-floor" aria-hidden="true"></div>
-  <div class="px-scan" aria-hidden="true"></div>
-  <div class="px-vig" aria-hidden="true"></div>
+  <div class="hero-bg" data-velaris data-bg="#000000" data-colors="#93c5fd,#60a5fa,#2563eb,#000000" data-speed="2" data-grain="0.3" data-sharp="1.7" aria-hidden="true"></div>
 
   <header class="px-bar">
     <span><span class="px-dot" aria-hidden="true"></span><b>Movex</b> <span class="px-hide">// agência de performance</span></span>
