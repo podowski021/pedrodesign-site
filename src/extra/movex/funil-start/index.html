@@ -603,6 +603,12 @@ section{position:relative;scroll-margin-top:84px}
 .gx-wa.is-press{transform:scale(.93);box-shadow:0 0 0 6px rgba(37,211,102,.25)}
 @media (max-width:560px){.gx{padding:12px;border-radius:20px}.gx-tab{font-size:12px}.gx-title{font-size:15.5px}}
 
+
+.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:21ch;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);opacity:0;animation:fsTitle 1.2s cubic-bezier(.22,1,.36,1) .9s forwards}
+.hero .fs-title em{font-style:normal;font-weight:300;color:#9cc8ff}
+@keyframes fsTitle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .fs-title{animation:none;opacity:1}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -707,7 +713,8 @@ section{position:relative;scroll-margin-top:84px}
           <img src="../assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
           <img src="../assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
         </div>
-        <h1 class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></h1>
+        <div class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></div>
+        <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Engenharia de performance para <strong>dominar o mercado local</strong>, atrair leads e transformar intenção de busca em <strong>lucro real.</strong></p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero o Funil Start
