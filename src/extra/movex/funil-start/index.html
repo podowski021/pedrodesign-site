@@ -615,7 +615,12 @@ section{position:relative;scroll-margin-top:84px}
 .hero-ctas{align-items:center}
 .hero-seals{margin-left:6px}
 .hero-seals img{height:40px}
-@media (min-width:981px){.hero-grid{align-items:start}.hero-grid>:first-child{padding-top:24px}}
+@media (min-width:981px){
+.hero-grid{align-items:stretch}.hero-grid>:first-child{padding-top:24px;align-self:start}
+.hero .hud-zone{padding-bottom:0;position:relative;min-height:418px}
+.hero #gx{position:absolute;top:24px;left:24px;right:0;bottom:0;overflow:hidden;display:flex;flex-direction:column}
+.hero #gx .gx-list{flex:1;min-height:0;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 44px),transparent)}
+}
 @media (max-width:980px){#gx{min-height:512px}}
 @media (max-width:560px){.hero .fs-logo{width:min(100%,190px)}.hero-seals{margin-left:0;width:100%;justify-content:center;margin-top:4px}}
 
@@ -632,9 +637,15 @@ section{position:relative;scroll-margin-top:84px}
 
 @media (min-width:981px){.hero .hud-zone{padding-right:0}.hero-grid{grid-template-columns:1.12fr .88fr;gap:48px}}
 
-.hx-pts{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.hx-pts li{display:inline-flex;align-items:center;gap:7px;padding:7px 12px 7px 8px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(160,195,255,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.hx-pts svg{width:16px;height:16px;flex:none;padding:3px;border-radius:50%;background:#19c463;color:#fff}
+.hx-pts{list-style:none;margin:24px 0 0;padding:6px;display:inline-grid;grid-template-columns:repeat(3,auto);border-radius:20px;background:rgba(255,255,255,.055);box-shadow:inset 0 0 0 1px rgba(160,195,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hx-pts li{display:flex;align-items:center;gap:11px;padding:8px 18px 8px 8px;position:relative}
+.hx-pts li+li{padding-left:18px}
+.hx-pts li+li::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;background:linear-gradient(transparent,rgba(160,195,255,.35),transparent)}
+.pt-ic{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,#2f6df0,#0b3fb8);color:#fff;box-shadow:0 8px 18px -8px rgba(37,99,235,.9),inset 0 1px 0 rgba(255,255,255,.25)}
+.pt-ic svg{width:18px;height:18px}
+.hx-pts li>span:last-child{font-size:14px;line-height:1.25;color:#b9cbef}
+.hx-pts b{display:block;font-weight:700;color:#fff;font-size:15px}
+@media (max-width:560px){.hx-pts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.hx-pts li{flex-direction:column;align-items:flex-start;gap:8px;padding:8px 6px 8px 8px}.hx-pts li+li{padding-left:12px}.hx-pts li>span:last-child{font-size:12px}.hx-pts b{font-size:13px}}
 .hero-ctas{margin-top:28px}
 #incluso{background:#fff}
 @media (max-width:560px){.hx-pts li{font-size:13px}}
@@ -742,7 +753,7 @@ section{position:relative;scroll-margin-top:84px}
         <div class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></div>
         <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Implementamos seu Google Meu Negócio e sua campanha no Google Ads para que sua empresa seja a <strong>primeira opção na sua região.</strong></p>
-        <ul class="hx-pts"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pagamento único</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sem mensalidade</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>2 meses de suporte</li></ul>
+        <ul class="hx-pts"><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></svg></span><span><b>Pagamento</b> único</span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M9.5 13.5l5 5M14.5 13.5l-5 5"/></svg></span><span><b>Sem</b> mensalidade</span></li><li><span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.6"/><rect x="17.5" y="13" width="4" height="6" rx="1.6"/><path d="M19.5 19c0 1.5-2 2.5-5 2.5"/></svg></span><span><b>2 meses</b> de suporte</span></li></ul>
         <div class="hero-ctas">
           <a class="btn btn-primary btn-rg" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero estar no topo do Google
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
