@@ -31,7 +31,7 @@ Apresentação: fundo papel #EFEDE7, preto #0D0D0D, laranja #FF4F1A; fonte **Mon
 ## Site novo da Movex (prévia em /movex/)
 `src/extra/movex/` publica a prévia do site novo da Movex (empresa onde o Pedro trabalha), seguindo a copy v6 do Ezequiel. Textos aqui são da **Movex** (usam "nós" e "landing pages"; as regras de primeira pessoa e "páginas" do Pedro não valem aqui). Regra da copy: **sem travessão**; títulos sem caixa alta e sem itálico; CTAs **verdes** (`.btn-go`, com brilho).
 - `/movex/gestao-de-anuncios/` vem da prévia antiga: gerada pelo script do Claude (copy aplicada), **só formulário, nenhum WhatsApp**. O formulário manda para `painel/api.php?a=movexlead` → `../painel-data/movex-leads.json` + e-mail de aviso (mesma config de e-mail do painel).
-- `/movex/funil-start/` é a página do Funil Start de **antes da copy** (pedido do Pedro, 23/11): hero Velaris, painel Sem/Com Funil Start, planos, cronograma. A versão da copy v6 ficou guardada em `/movex/funil-start-v6/` (fora do menu).
+- `/movex/funil-start/` é a página do Funil Start de **antes da copy** (pedido do Pedro, 23/11): hero Velaris, painel Sem/Com Funil Start, planos, cronograma. A versão com a copy v6 está em `/movex/funilstart2/` (fora do menu).
 - `/movex/projetos/` (filtros + prints reais `assets/proj-*.webp` que rolam no hover).
 - `/movex/` (home) é uma árvore de links: só logo, redes e 5 botões arredondados, com o fundo Velaris da página do Funil Start.
 - CSS comum: `assets/movex.css`; JS comum: `assets/movex-ui.js` (barra de cookies `mx_ck`, revelação `.rv`). Fundo animado: `assets/velaris-v4.js`. WhatsApp da Movex: 55 45 99943-0100, uma mensagem pronta por página. Tudo com `noindex` até ir para movex.ag (canonical já aponta para movex.ag).
