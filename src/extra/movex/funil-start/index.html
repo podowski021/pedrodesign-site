@@ -604,7 +604,7 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:560px){.gx{padding:12px;border-radius:20px}.gx-tab{font-size:12px}.gx-title{font-size:15.5px}}
 
 
-.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:21ch;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);opacity:0;animation:fsTitle 1.2s cubic-bezier(.22,1,.36,1) .9s forwards}
+.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:none;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);opacity:0;animation:fsTitle 1.2s cubic-bezier(.22,1,.36,1) .9s forwards}
 .hero .fs-title em{font-style:normal;font-weight:300;color:#9cc8ff}
 @keyframes fsTitle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.hero .fs-title{animation:none;opacity:1}}
@@ -623,9 +623,10 @@ section{position:relative;scroll-margin-top:84px}
 /* botão com gradiente girando na borda (azul) */
 @property --r{syntax:"<angle>";inherits:false;initial-value:0deg}
 .btn-rg{position:relative;isolation:isolate;background:transparent!important;border:0!important;box-shadow:0 18px 40px -16px rgba(37,99,235,.85)!important;overflow:hidden}
-.btn-rg::before{content:"";position:absolute;inset:0;z-index:-2;border-radius:inherit;background:conic-gradient(from var(--r),#0b2a8a,#2563eb,#7cc0ff,#ffffff,#7cc0ff,#2563eb,#0b2a8a);animation:rgSpin 3s linear infinite}
-.btn-rg::after{content:"";position:absolute;inset:3px;z-index:-1;border-radius:inherit;background:linear-gradient(180deg,#1f63f0,#0b4fd8);transition:opacity .3s linear}
-.btn-rg:hover::after{opacity:.82}
+.btn-rg::before{content:"";position:absolute;inset:0;z-index:-2;border-radius:inherit;background:conic-gradient(from var(--r),#2b63e6 0%,#2b63e6 55%,#4f8dff 70%,#8cc4ff 82%,#b9dcff 88%,#8cc4ff 92%,#4f8dff 96%,#2b63e6 100%);animation:rgSpin 3.4s linear infinite}
+.btn-rg::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:inherit;background:linear-gradient(180deg,#1f63f0,#0b4fd8);transition:opacity .3s linear}
+.btn-rg:hover::after{opacity:.88}
+.btn-rg:hover{box-shadow:0 20px 46px -14px rgba(79,141,255,.95)!important}
 @keyframes rgSpin{to{--r:360deg}}
 @media (prefers-reduced-motion:reduce){.btn-rg::before{animation:none}}
 
