@@ -67,7 +67,7 @@ em{font-style:italic}
   box-shadow:inset 0 0 0 1px rgba(10,21,48,.08),0 10px 30px -14px rgba(10,21,48,.18);
   transition:max-width 1.2s cubic-bezier(.45,0,.2,1),padding 1.1s cubic-bezier(.45,0,.2,1),background .35s ease,box-shadow .35s ease}
 .site-header[data-tone="dark"] .hdr{background:rgba(9,16,36,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 10px 30px -14px rgba(0,0,0,.5)}
-.site-header.is-scrolled .hdr{max-width:1120px}
+.site-header.is-scrolled .hdr{max-width:calc(var(--wrap) - 32px)}
 .logo-pill{justify-self:start;display:flex;align-items:center;height:46px;padding:0 18px;border-radius:999px;flex:none}
 .logo-pill img{height:17px;width:auto;max-width:none;flex:none;transform:translateY(1.5px);transition:height 1.1s cubic-bezier(.45,0,.2,1)}
 .logo-pill .logo-w{display:none}
@@ -630,6 +630,7 @@ section{position:relative;scroll-margin-top:84px}
 @keyframes rgSpin{to{--r:360deg}}
 @media (prefers-reduced-motion:reduce){.btn-rg::before{animation:none}}
 
+@media (min-width:981px){.hero .hud-zone{padding-right:0}}
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -734,9 +735,8 @@ section{position:relative;scroll-margin-top:84px}
         <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Engenharia de performance para <strong>dominar o mercado local</strong>, atrair leads e transformar intenção de busca em <strong>lucro real.</strong></p>
         <div class="hero-ctas">
-          <a class="btn btn-primary btn-rg" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero o Funil Start
+          <a class="btn btn-primary btn-rg" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero estar no topo do Google
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost" href="#planos">Ver os planos</a>
           <div class="seals hero-seals" aria-label="Parceiro oficial Google e Meta">
           <img src="../assets/selo-google-partner-v1.webp" alt="Google Partner" width="236" height="176">
           <img src="../assets/selo-meta-business-partner-v1.webp" alt="Meta Business Partner" width="332" height="176">
