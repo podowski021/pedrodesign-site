@@ -945,6 +945,14 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 @media (max-width:560px){.ip-pills li{padding:8px 16px 8px 8px}.ip-ic{width:30px;height:30px}}
 @media (prefers-reduced-motion:reduce){.ip-pills li{animation:none;opacity:1;transform:none}}
 
+
+/* entrada suave da segunda seção */
+.rvx{transition:opacity .9s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1),filter .9s ease;transition-delay:var(--d,0s)}
+.rvx.rvx-wait{opacity:0;transform:translateY(28px);filter:blur(8px)}
+.bt.rvx.rvx-wait{transform:translateY(46px) scale(.97);filter:blur(4px)}
+@media (max-width:900px){.bt.rvx{--d:0s!important}}
+@media (prefers-reduced-motion:reduce){.rvx{transition:none}.rvx.rvx-wait{opacity:1;transform:none;filter:none}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -1468,6 +1476,19 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 (function(){ var el = document.querySelector('.ip'); if (!el) return;
   if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
   var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { el.classList.add('is-in'); io.disconnect(); } }, {threshold: .25}); io.observe(el);
+})();
+</script>
+<script>
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  var sec = document.querySelector('.fs-prob'); if (!sec) return;
+  var els = [sec.querySelector('.prob-h'), sec.querySelector('.pb-lead')].concat([].slice.call(sec.querySelectorAll('.bt-grid > .bt')));
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.remove('rvx-wait'); io.unobserve(e.target); } }); }, {threshold: .15, rootMargin: '0px 0px -6% 0px'});
+  els.forEach(function(el, i){ if (!el) return;
+    el.classList.add('rvx');
+    el.style.setProperty('--d', el.classList.contains('bt') ? (.1 + (i - 2) * .14) + 's' : (i * .12) + 's');
+    if (el.getBoundingClientRect().top > innerHeight * .94) { el.classList.add('rvx-wait'); io.observe(el); }
+  });
 })();
 </script>
 <script src="../assets/velaris-v4.js"></script>
