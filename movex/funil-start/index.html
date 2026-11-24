@@ -731,6 +731,16 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:820px){.pf-grid{grid-template-columns:1fr;max-width:460px}}
 @media (max-width:560px){.pf{text-align:center;align-items:center;padding:22px 20px}.pf-top{flex-direction:column;gap:10px;margin-bottom:2px}.pf-n{order:-1}}
 
+
+/* "Sua Empresa" em destaque no estado Sem Funil Start (lá embaixo, em último) */
+.gx[data-state="antes"] .gx-me{opacity:1!important;color:#fff!important;background:linear-gradient(90deg,rgba(239,68,68,.22),rgba(239,68,68,.08))!important;box-shadow:inset 0 0 0 1.5px rgba(248,113,113,.75),0 0 0 4px rgba(239,68,68,.12),0 14px 30px -16px rgba(239,68,68,.7)!important;animation:meWarn 2.4s ease-in-out infinite}
+.gx[data-state="antes"] .gx-me .gx-fav{background:#ef4444!important;color:#fff!important}
+.gx[data-state="antes"] .gx-me .gx-meta b{color:#fff;font-weight:700}
+.gx[data-state="antes"] .gx-me .gx-meta small{color:#fecaca;opacity:.9}
+.gx[data-state="antes"] .gx-me .gx-rk{color:#fca5a5!important;font-weight:700}
+@keyframes meWarn{0%,100%{box-shadow:inset 0 0 0 1.5px rgba(248,113,113,.75),0 0 0 4px rgba(239,68,68,.12),0 14px 30px -16px rgba(239,68,68,.7)}50%{box-shadow:inset 0 0 0 1.5px rgba(248,113,113,.95),0 0 0 7px rgba(239,68,68,.06),0 14px 30px -16px rgba(239,68,68,.7)}}
+@media (prefers-reduced-motion:reduce){.gx[data-state="antes"] .gx-me{animation:none}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
