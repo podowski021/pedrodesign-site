@@ -604,10 +604,11 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:560px){.gx{padding:12px;border-radius:20px}.gx-tab{font-size:12px}.gx-title{font-size:15.5px}}
 
 
-.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:none;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);opacity:0;animation:fsTitle 1.2s cubic-bezier(.22,1,.36,1) .9s forwards}
+.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:none;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);animation:fsTxt 2.2s cubic-bezier(.22,1,.36,1) .2s both}
 .hero .fs-title em{font-style:normal;font-weight:300;color:#9cc8ff}
-@keyframes fsTitle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.hero .fs-title{animation:none;opacity:1}}
+@keyframes fsTxt{from{opacity:0;filter:blur(10px);transform:translateY(10px) scale(.985)}to{opacity:1;filter:blur(0);transform:none}}
+.hero .fs-title em{display:inline-block;animation:fsTxt 2.2s cubic-bezier(.22,1,.36,1) .45s both}
+@media (prefers-reduced-motion:reduce){.hero .fs-title,.hero .fs-title em{animation:none;opacity:1}}
 
 
 /* logo menor, selos ao lado dos botões, painel sem mexer o texto */
