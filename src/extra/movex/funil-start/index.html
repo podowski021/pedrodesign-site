@@ -713,8 +713,9 @@ section{position:relative;scroll-margin-top:84px}
 
 /* seção O problema (centralizada) */
 .fs-prob{padding-block:clamp(72px,9vw,120px)}
-.pb-head{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:1100px;margin:0 auto}
-.pb-head .prob-h{margin-top:0;max-width:none;text-wrap:balance;font-size:clamp(30px,4vw,56px);line-height:1.08}
+.pb-head{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:1180px;margin:0 auto}
+.pb-head .prob-h{margin-top:0;max-width:none;text-wrap:wrap;font-size:clamp(30px,3.55vw,52px);line-height:1.08;white-space:nowrap}
+@media (max-width:1100px){.pb-head .prob-h{white-space:normal;text-wrap:balance}.pb-br{display:none}}
 @media (max-width:560px){.pb-br{display:none}}
 @media (max-width:560px){.pb-head .prob-h{max-width:none;text-wrap:pretty;font-size:clamp(28px,8vw,36px)}}
 .pb-lead{margin-top:22px;max-width:60ch;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--muted);text-wrap:pretty}
@@ -741,6 +742,7 @@ section{position:relative;scroll-margin-top:84px}
 @keyframes meWarn{0%,100%{box-shadow:inset 0 0 0 1.5px rgba(248,113,113,.75),0 0 0 4px rgba(239,68,68,.12),0 14px 30px -16px rgba(239,68,68,.7)}50%{box-shadow:inset 0 0 0 1.5px rgba(248,113,113,.95),0 0 0 7px rgba(239,68,68,.06),0 14px 30px -16px rgba(239,68,68,.7)}}
 @media (prefers-reduced-motion:reduce){.gx[data-state="antes"] .gx-me{animation:none}}
 
+.gx-rk{font-family:var(--display)!important;font-weight:700!important;font-size:16px!important;letter-spacing:-.02em!important;font-variant-numeric:normal!important;color:rgba(255,255,255,.6)}
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -890,7 +892,7 @@ section{position:relative;scroll-margin-top:84px}
     <div class="ig-hot" aria-hidden="true"><svg width="100%" height="100%"><defs><pattern id="ig2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#ig2)"/></svg></div>
     <div class="wrap">
       <div class="pb-head">
-        <h2 class="prob-h" id="t-prob">Quem não aparece no Google<br class="pb-br"> não existe para <em>quem está<br class="pb-br"> pronto para comprar.</em></h2>
+        <h2 class="prob-h" id="t-prob">Quem não aparece no Google não existe para<br class="pb-br"> <em>quem está pronto para comprar.</em></h2>
         <p class="pb-lead">Quando alguém pesquisa <strong>“dentista perto de mim”</strong> ou <strong>“oficina em <span data-cidade>sua cidade</span>”</strong>, a decisão acontece nos primeiros resultados. Se a sua empresa não está lá, o cliente liga para o concorrente, <strong>mesmo que o seu serviço seja melhor.</strong></p>
       </div>
       <ul class="pf-grid">
