@@ -604,7 +604,7 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:560px){.gx{padding:12px;border-radius:20px}.gx-tab{font-size:12px}.gx-title{font-size:15.5px}}
 
 
-.hero .fs-title{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:none;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);animation:fsTxt 2.2s cubic-bezier(.22,1,.36,1) .2s both}
+.hero .fs-title{text-wrap:pretty!important;margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.03em;color:#fff;max-width:none;text-wrap:balance;text-shadow:0 2px 26px rgba(0,8,30,.4);animation:fsTxt 2.2s cubic-bezier(.22,1,.36,1) .2s both}
 .hero .fs-title em{font-style:normal;font-weight:300;color:#9cc8ff}
 @keyframes fsTxt{from{opacity:0;filter:blur(10px);transform:translateY(10px) scale(.985)}to{opacity:1;filter:blur(0);transform:none}}
 .hero .fs-title em{display:inline-block;animation:fsTxt 2.2s cubic-bezier(.22,1,.36,1) .45s both}
@@ -753,14 +753,54 @@ section{position:relative;scroll-margin-top:84px}
 .btn-rg{font-family:var(--display)!important;font-weight:700!important;letter-spacing:-.01em}
 .btn-rg svg{color:#1b2a4e}
 .btn-rg:hover{box-shadow:0 22px 48px -14px rgba(222,197,111,.85)!important}
-/* topo maior em telas grandes: título aproveita a largura */
-@media (min-width:981px){
-  .hero>.wrap{max-width:1320px}
-  .hero .fs-title{font-size:clamp(30px,3.1vw,45px)!important;line-height:1.06}
-  .hero .fs-logo{width:clamp(220px,17vw,300px)!important}
-  .hero .lead{font-size:clamp(15px,1.15vw,19px)!important;max-width:58ch}
-}
 
+
+/* tópicos em blocos ilustrados (bento) */
+.bt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1120px;margin:clamp(40px,5vw,64px) auto 0}
+.bt{position:relative;display:flex;flex-direction:column;min-height:300px;overflow:hidden;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px rgba(15,23,42,.07),0 1px 2px rgba(16,24,40,.04),0 30px 60px -44px rgba(11,40,120,.35);transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s}
+.bt:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px rgba(37,99,235,.18),0 36px 70px -40px rgba(11,79,216,.45)}
+.bt-vis{position:relative;flex:1;min-height:170px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 50% 0,#eef4ff,#fff 70%);overflow:hidden}
+.bt-txt{padding:4px 24px 26px;text-align:center}
+.bt-txt h3{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.bt-txt p{margin-top:6px;font-size:15px;line-height:1.55;color:var(--muted)}
+/* 1: busca */
+.bt-search{flex-direction:column;gap:14px;padding:0 22px}
+.bt-sbar{display:flex;align-items:center;gap:10px;width:100%;max-width:290px;height:48px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.08),0 14px 30px -18px rgba(11,79,216,.55);color:#64748b}
+.bt-sbar svg{width:18px;height:18px;flex:none;color:#2563eb}
+.bt-q{font-size:15px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden}
+.bt-caret{width:2px;height:18px;background:#2563eb;animation:btBlink 1s steps(2,start) infinite}
+@keyframes btBlink{50%{opacity:0}}
+.bt-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.bt-chips span{padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#1d4ed8;background:#e8efff}
+/* 2: mapa */
+.bt-map{background:linear-gradient(90deg,rgba(37,99,235,.07) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(rgba(37,99,235,.07) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(120% 90% at 50% 0,#eef4ff,#fff 70%)}
+.bt-map::before{content:"";position:absolute;left:-10%;right:-10%;top:58%;height:10px;background:rgba(37,99,235,.1);transform:rotate(-8deg)}
+.bt-pin{position:absolute;width:26px;height:26px;color:#94a3b8}
+.bt-pin svg{width:100%;height:100%}
+.bt-pin.p1{left:16%;top:22%}.bt-pin.p2{right:18%;top:16%}
+.bt-pin.p3{left:46%;top:18%;width:36px;height:36px;color:#2563eb;filter:drop-shadow(0 8px 12px rgba(37,99,235,.45));animation:btPin 2.6s ease-in-out infinite}
+@keyframes btPin{50%{transform:translateY(-5px)}}
+.bt-place{position:relative;margin-top:62px;padding:12px 14px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.07),0 16px 30px -18px rgba(11,40,120,.45);text-align:left;min-width:210px}
+.bt-place b{display:block;font-size:14px;color:var(--ink)}
+.bt-stars{font-size:12px;letter-spacing:1px;color:#f5b301}
+.bt-acts{display:flex;gap:6px;margin-top:8px}
+.bt-acts span{padding:4px 9px;border-radius:999px;font-size:11px;font-weight:600;color:#334155;box-shadow:inset 0 0 0 1px rgba(15,23,42,.12)}
+.bt-acts .wa{color:#fff;background:#19c463;box-shadow:none}
+/* 3: barras */
+.bt-bars{align-items:flex-end;gap:14px;padding:26px 30px 34px}
+.bt-bar{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.bt-bar i{display:block;width:44px;border-radius:10px 10px 4px 4px;background:#dbe5f7;transform-origin:bottom;transform:scaleY(var(--s,1));transition:transform 1.4s cubic-bezier(.22,1,.36,1)}
+.bt-bar span{font-family:var(--display);font-size:13px;font-weight:700;color:#64748b}
+.bt-bar.b1 i{height:118px;background:linear-gradient(180deg,#3b82f6,#1d4ed8);box-shadow:0 14px 26px -12px rgba(29,78,216,.7)}
+.bt-bar.b1 span{color:#1d4ed8}
+.bt-bar.b2 i{height:58px}.bt-bar.b3 i{height:36px}.bt-bar.b4 i{height:18px}
+.bt-cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:#94a3b8}
+.bt-grid.is-pending .bt-bar i{--s:0}
+.bt-bar.b2 i{transition-delay:.12s}.bt-bar.b3 i{transition-delay:.24s}.bt-bar.b4 i{transition-delay:.36s}
+@media (max-width:900px){.bt-grid{grid-template-columns:1fr;max-width:460px}}
+@media (prefers-reduced-motion:reduce){.bt-caret,.bt-pin.p3{animation:none}}
+
+@media (max-width:980px){.tt-br{display:none}}
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -862,7 +902,7 @@ section{position:relative;scroll-margin-top:84px}
     <div class="wrap hero-grid">
       <div>
         <div class="fs-logo"><img src="../assets/funil-start-logo-branco-v1.png" alt="Funil Start" width="1000" height="109"></div>
-        <h1 class="fs-title">Coloque sua empresa no topo do Google e receba clientes <em>que já querem comprar.</em></h1>
+        <h1 class="fs-title">Coloque sua empresa no topo<br class="tt-br"> do Google e receba clientes <em>que já querem comprar.</em></h1>
         <p class="lead">Implementamos seu Google Meu Negócio e sua campanha no Google Ads para que sua empresa seja a <strong>primeira opção na sua região.</strong></p>
         <div class="hero-ctas">
           <a class="btn btn-primary btn-rg" href="https://wa.me/5545999430100?text=Ol%C3%A1%2C%20Movex%21%20Quero%20saber%20mais%20sobre%20o%20Funil%20Start." target="_blank" rel="noopener">Quero estar no topo do Google
@@ -912,11 +952,29 @@ section{position:relative;scroll-margin-top:84px}
         <h2 class="prob-h" id="t-prob">Quem não aparece no Google não existe para<br class="pb-br"> <em>quem está pronto para comprar.</em></h2>
         <p class="pb-lead">Quando alguém pesquisa <strong>“dentista perto de mim”</strong> ou <strong>“oficina em <span data-cidade>sua cidade</span>”</strong>, a decisão acontece nos primeiros resultados. Se a sua empresa não está lá, o cliente liga para o concorrente, <strong>mesmo que o seu serviço seja melhor.</strong></p>
       </div>
-      <ul class="pf-grid">
-          <li class="pf"><div class="pf-top"><span class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/><path d="M11 8v6M8 11h6"/></svg></span><span class="pf-n">01</span></div><b>A busca já tem intenção</b><span>Quem pesquisa no Google está pronto para comprar.</span></li>
-          <li class="pf"><div class="pf-top"><span class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></span><span class="pf-n">02</span></div><b>O mapa decide</b><span>Avaliações, fotos, rota e WhatsApp em um toque.</span></li>
-          <li class="pf"><div class="pf-top"><span class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0Z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4"/></svg></span><span class="pf-n">03</span></div><b>Os primeiros levam</b><span>A maioria dos cliques fica nos primeiros resultados.</span></li>
-      </ul>
+      <div class="bt-grid">
+        <article class="bt">
+          <div class="bt-vis bt-search" aria-hidden="true">
+            <div class="bt-sbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span class="bt-q" data-bt-q>dentista perto de mim</span><i class="bt-caret"></i></div>
+            <div class="bt-chips"><span>perto de mim</span><span>aberto agora</span><span>melhor avaliado</span></div>
+          </div>
+          <div class="bt-txt"><h3>A busca já tem intenção</h3><p>Quem pesquisa no Google está pronto para comprar.</p></div>
+        </article>
+        <article class="bt">
+          <div class="bt-vis bt-map" aria-hidden="true">
+            <span class="bt-pin p1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span><span class="bt-pin p2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span><span class="bt-pin p3"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span>
+            <div class="bt-place"><b>Sua Empresa</b><span class="bt-stars">★★★★★</span><div class="bt-acts"><span>Rota</span><span>Fotos</span><span class="wa">WhatsApp</span></div></div>
+          </div>
+          <div class="bt-txt"><h3>O mapa decide</h3><p>Avaliações, fotos, rota e WhatsApp em um toque.</p></div>
+        </article>
+        <article class="bt">
+          <div class="bt-vis bt-bars" aria-hidden="true">
+            <div class="bt-bar b1"><i></i><span>1º</span></div><div class="bt-bar b2"><i></i><span>2º</span></div><div class="bt-bar b3"><i></i><span>3º</span></div><div class="bt-bar b4"><i></i><span>4º+</span></div>
+            <em class="bt-cap">cliques por posição</em>
+          </div>
+          <div class="bt-txt"><h3>Os primeiros levam</h3><p>A maioria dos cliques fica nos primeiros resultados.</p></div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -1216,6 +1274,27 @@ section{position:relative;scroll-margin-top:84px}
   var a = document.getElementById('hdr-cta'), t = a && a.querySelector('.cta-txt-m'); if (!t) return;
   function m(){ a.style.setProperty('--cta-w', Math.ceil(14.5 + 17 + 10 + t.scrollWidth + 20) + 'px'); }
   m(); addEventListener('resize', m); if (document.fonts && document.fonts.ready) document.fonts.ready.then(m);
+})();
+</script>
+<script>
+(function(){
+  var g = document.querySelector('.bt-grid'); if (!g) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window && g.getBoundingClientRect().top > innerHeight) {
+    g.classList.add('is-pending');
+    var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { g.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .3}); io.observe(g);
+  }
+  var q = g.querySelector('[data-bt-q]'); if (!q || reduce) return;
+  var city = function(){ var c = document.querySelector('[data-cidade]'); var t = c && c.textContent; return t && t !== 'sua cidade' ? t.toLowerCase() : 'minha cidade'; };
+  var list = function(){ return ['dentista perto de mim', 'oficina em ' + city(), 'pizzaria aberta agora', 'advogado trabalhista']; };
+  var i = 0, n = 0, del = false;
+  function tick(){
+    var L = list(), w = L[i % L.length];
+    if (!del) { n++; q.textContent = w.slice(0, n); if (n >= w.length) { del = true; return setTimeout(tick, 1600); } }
+    else { n--; q.textContent = w.slice(0, n); if (n <= 0) { del = false; i++; } }
+    setTimeout(tick, del ? 35 : 75);
+  }
+  setTimeout(tick, 1200);
 })();
 </script>
 <script src="../assets/velaris-v4.js"></script>
