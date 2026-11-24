@@ -675,14 +675,15 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:560px){
   .hnav{display:none!important}
   .hdr{grid-template-columns:auto 1fr auto!important}
-  .hdr-cta{grid-column:3;width:auto!important;min-width:46px;padding:0 14px!important;gap:0!important}
-  .cta-txt-m{display:inline-block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;margin-left:0;transition:max-width .55s cubic-bezier(.22,1,.36,1),opacity .35s,margin-left .55s cubic-bezier(.22,1,.36,1)}
-  .site-header.is-scrolled .cta-txt-m{max-width:180px;opacity:1;margin-left:9px}
-  .site-header.is-scrolled .hdr-cta{padding:0 18px!important}
+  .hdr-cta{grid-column:3;width:46px!important;padding:0 0 0 14px!important;gap:0!important;justify-content:flex-start!important;overflow:hidden;transition:width .7s cubic-bezier(.65,0,.35,1),background .25s!important;will-change:width}
+  .hdr-cta .cta-wa{flex:none}
+  .cta-txt-m{display:inline-block;margin-left:10px;white-space:nowrap;opacity:0;transform:translateX(-6px);transition:opacity .3s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+  .site-header.is-scrolled .hdr-cta{width:var(--cta-w,214px)!important}
+  .site-header.is-scrolled .cta-txt-m{opacity:1;transform:none;transition-delay:.28s}
   /* textos centralizados */
   .hero-grid>:first-child{text-align:center;display:flex;flex-direction:column;align-items:center}
   .hero .fs-logo{margin-inline:auto}
-  .hero .fs-title{margin-inline:auto}
+  .hero .fs-title{margin-inline:auto;font-size:clamp(28px,8.4vw,38px);line-height:1.08;text-wrap:pretty}
   .hero .lead{margin-inline:auto}
   .hero-ctas{justify-content:center;width:100%}
   .hx-pts{justify-content:center}
@@ -1153,6 +1154,13 @@ section{position:relative;scroll-margin-top:84px}
   fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){ return r.json(); }).then(function(d){
     if (d && d.country_code === 'BR' && d.city) { put(d.city); try { sessionStorage.setItem('mx_cidade', d.city); } catch(e) {} }
   }).catch(function(){});
+})();
+</script>
+<script>
+(function(){
+  var a = document.getElementById('hdr-cta'), t = a && a.querySelector('.cta-txt-m'); if (!t) return;
+  function m(){ a.style.setProperty('--cta-w', Math.ceil(14 + 17 + 10 + t.scrollWidth + 18) + 'px'); }
+  m(); addEventListener('resize', m); if (document.fonts && document.fonts.ready) document.fonts.ready.then(m);
 })();
 </script>
 <script src="../assets/velaris-v4.js"></script>
