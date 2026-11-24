@@ -859,6 +859,26 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 .fs-prob .bt-pin.p3{top:9%}
 .fs-prob .bt-pin.p1{top:30%}.fs-prob .bt-pin.p2{top:24%}
 .fs-prob .bt-place{margin-top:58px}
+/* blocos na cor da seção "ideal para" (claro + linha azul) */
+.fs-prob .bt,.fs-prob .bt:hover{background:#f3f6fc!important;box-shadow:inset 0 0 0 1px #e3e9f6,0 24px 50px -38px rgba(11,40,120,.35)!important}
+.fs-prob .bt::before{left:24px;right:24px;top:0;height:3px;border-radius:0 0 3px 3px;background:#0b4fd8}
+.fs-prob .bt::after,.fs-prob .bt:hover::after{display:none}
+.fs-prob .bt-vis,.fs-prob .bt-map{background:radial-gradient(55% 60% at 50% 45%,rgba(11,79,216,.08),rgba(11,79,216,0) 72%)!important}
+.fs-prob .bt-vis::after{display:none}
+.fs-prob .bt-txt{background:none;border-top:1px solid #e3e9f6}
+.fs-prob .bt-txt h3{color:var(--ink)}
+.fs-prob .bt-txt p{color:var(--muted)}
+.bt-k{color:#0b4fd8!important;background:#fff!important;box-shadow:0 0 0 1px #e3e9f6,0 6px 14px -8px rgba(11,40,120,.35)!important}
+.fs-prob .bt-sbar,.fs-prob .bt-place{box-shadow:0 0 0 1px #e3e9f6,0 16px 30px -20px rgba(11,40,120,.4)!important}
+.fs-prob .bt-chips span{background:#fff;color:#0b4fd8;box-shadow:0 0 0 1px #e3e9f6}
+.fs-prob .bt-pin{color:#b8c4dc}
+.fs-prob .bt-pin.p3{color:#0b4fd8;filter:drop-shadow(0 8px 12px rgba(11,79,216,.4))}
+.fs-prob .bt-bar:not(.b1) i{background:#dbe3f3}
+.fs-prob .bt-bar.b1 i{background:linear-gradient(180deg,#3b82f6,#0b4fd8);box-shadow:0 14px 26px -12px rgba(11,79,216,.6)}
+.fs-prob .bt-bar span{color:#8a97b6}
+.fs-prob .bt-bar.b1 span{color:#0b4fd8}
+.fs-prob .bt-cap{color:#8a97b6}
+.fs-prob .bt-bars::before{background:linear-gradient(90deg,transparent,#cfd9ee,transparent)}
 /* sem animação ao passar o mouse nos blocos */
 .fs-prob .bt,.fs-prob .bt:hover{transform:none!important;transition:none}
 .fs-prob .bt:hover{box-shadow:0 34px 70px -40px rgba(8,18,48,.85)}
