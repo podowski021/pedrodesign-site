@@ -675,14 +675,13 @@ section{position:relative;scroll-margin-top:84px}
 @media (max-width:560px){
   .hnav{display:none!important}
   .hdr{grid-template-columns:auto 1fr auto!important}
-  .hdr-cta{grid-column:3;width:var(--cta-w,214px)!important;padding:0 0 0 14px!important;gap:0!important;justify-content:flex-start!important;transform:none!important;
-    clip-path:inset(0 0 0 calc(100% - 46px) round 999px);-webkit-clip-path:inset(0 0 0 calc(100% - 46px) round 999px);
-    transition:clip-path .75s cubic-bezier(.65,0,.35,1),-webkit-clip-path .75s cubic-bezier(.65,0,.35,1),background .25s!important}
-  .hdr-cta .cta-wa{flex:none;transform:translateX(calc(var(--cta-w,214px) - 46px));transition:transform .75s cubic-bezier(.65,0,.35,1)}
-  .cta-txt-m{display:inline-block;margin-left:10px;white-space:nowrap;opacity:0;transform:translateX(24px);transition:opacity .35s ease,transform .75s cubic-bezier(.65,0,.35,1)}
-  .site-header.is-scrolled .hdr-cta{clip-path:inset(0 0 0 0 round 999px);-webkit-clip-path:inset(0 0 0 0 round 999px)}
-  .site-header.is-scrolled .hdr-cta .cta-wa{transform:none}
-  .site-header.is-scrolled .cta-txt-m{opacity:1;transform:none;transition:opacity .4s ease .3s,transform .75s cubic-bezier(.65,0,.35,1)}
+  .hdr-cta{grid-column:3;width:var(--cta-w,214px)!important;padding:0 14.5px 0 0!important;gap:0!important;flex-direction:row-reverse;justify-content:flex-start!important;transform:none!important;
+    -webkit-clip-path:inset(0 0 0 calc(100% - 46px) round 23px);clip-path:inset(0 0 0 calc(100% - 46px) round 23px);
+    transition:-webkit-clip-path 1s cubic-bezier(.45,0,.15,1),clip-path 1s cubic-bezier(.45,0,.15,1),background .25s!important}
+  .hdr-cta .cta-wa{flex:none;transform:none!important}
+  .cta-txt-m{display:inline-block;margin:0 10px 0 0;white-space:nowrap;opacity:0;transform:translateX(14px);transition:opacity .3s ease,transform .8s cubic-bezier(.45,0,.15,1)}
+  .site-header.is-scrolled .hdr-cta{-webkit-clip-path:inset(0 0 0 0 round 23px);clip-path:inset(0 0 0 0 round 23px)}
+  .site-header.is-scrolled .cta-txt-m{opacity:1;transform:none;transition:opacity .5s ease .35s,transform .9s cubic-bezier(.45,0,.15,1) .15s}
   /* textos centralizados */
   .hero-grid>:first-child{text-align:center;display:flex;flex-direction:column;align-items:center}
   .hero .fs-logo{margin-inline:auto}
@@ -1162,7 +1161,7 @@ section{position:relative;scroll-margin-top:84px}
 <script>
 (function(){
   var a = document.getElementById('hdr-cta'), t = a && a.querySelector('.cta-txt-m'); if (!t) return;
-  function m(){ a.style.setProperty('--cta-w', Math.ceil(14 + 17 + 10 + t.scrollWidth + 18) + 'px'); }
+  function m(){ a.style.setProperty('--cta-w', Math.ceil(14.5 + 17 + 10 + t.scrollWidth + 20) + 'px'); }
   m(); addEventListener('resize', m); if (document.fonts && document.fonts.ready) document.fonts.ready.then(m);
 })();
 </script>
