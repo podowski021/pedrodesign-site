@@ -919,6 +919,29 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 .fs-prob .bt-map .bt-pin{filter:drop-shadow(0 4px 6px rgba(11,40,120,.25))}
 @media (prefers-reduced-motion:reduce){.bt-mappan,.bt-route{animation:none}}
 
+
+/* seção ideal para (azul-marinho) */
+.ip{position:relative;overflow:hidden;isolation:isolate;text-align:center;color:#fff;background:radial-gradient(60% 70% at 50% 0,rgba(61,134,255,.35),transparent 70%),radial-gradient(40% 50% at 90% 100%,rgba(99,102,241,.18),transparent 70%),linear-gradient(180deg,#0b1a44,#06102b);padding-block:clamp(72px,9vw,120px)}
+.ip::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 1px 1px,rgba(170,200,255,.12) 1px,transparent 1.5px) 0 0/22px 22px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+.ip-h{font-family:var(--display);font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.03em;color:#fff}
+.ip-h em{font-style:normal;color:#8fbaff}
+.ip-pills{list-style:none;margin:clamp(28px,4vw,44px) auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:1000px}
+.ip-pills li{display:inline-flex;align-items:center;gap:10px;padding:10px 20px 10px 10px;border-radius:999px;font-family:var(--display);font-size:clamp(15px,1.4vw,18px);font-weight:700;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));box-shadow:inset 0 0 0 1px rgba(160,195,255,.28),0 14px 30px -18px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;transform:translateY(14px);animation:ipIn .8s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.1s + var(--i) * .09s);animation-play-state:paused}
+.ip.is-in .ip-pills li{animation-play-state:running}
+@keyframes ipIn{to{opacity:1;transform:none}}
+.ip-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#3d86ff,#0b4fd8);box-shadow:0 6px 14px -6px rgba(61,134,255,.9)}
+.ip-ic svg{width:17px;height:17px}
+.ip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1120px;margin:clamp(40px,5vw,60px) auto 0}
+.ip-card{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:30px 26px 32px;border-radius:22px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.ip-card::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(160deg,rgba(150,190,255,.6),rgba(120,160,255,.1) 40%,rgba(120,160,255,.05) 65%,rgba(150,190,255,.3));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.ip-cic{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;color:#cfe0ff;background:rgba(61,134,255,.16);box-shadow:inset 0 0 0 1px rgba(150,190,255,.3),0 0 30px -6px rgba(61,134,255,.6)}
+.ip-cic svg{width:24px;height:24px}
+.ip-card h3{font-family:var(--display);font-size:19px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.ip-card p{font-size:15.5px;line-height:1.6;color:#b9cbef;max-width:32ch;text-wrap:balance}
+@media (max-width:900px){.ip-grid{grid-template-columns:1fr;max-width:460px}}
+@media (max-width:560px){.ip-pills li{padding:8px 16px 8px 8px}.ip-ic{width:30px;height:30px}}
+@media (prefers-reduced-motion:reduce){.ip-pills li{animation:none;opacity:1;transform:none}}
+
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -1102,6 +1125,19 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
           </div>
           <div class="bt-txt"><span class="bt-k">03</span><h3>Os primeiros levam</h3><p>A maioria dos cliques fica nos<br> primeiros resultados.</p></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDEAL PARA -->
+  <section class="sec ip" id="ideal" aria-labelledby="t-ideal">
+    <div class="wrap">
+      <h2 class="ip-h" id="t-ideal">O <b>Funil Start</b> é <em>ideal para:</em></h2>
+      <ul class="ip-pills"><li style="--i:0"><span class="ip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span>Clínicas</li><li style="--i:1"><span class="ip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>Consultórios</li><li style="--i:2"><span class="ip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5l3 3 5.8-5.8a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.8-.6-.6-2.8Z"/></svg></span>Oficinas</li><li style="--i:3"><span class="ip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>Lojas</li><li style="--i:4"><span class="ip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18"/></svg></span>Prestadores de serviço</li></ul>
+      <div class="ip-grid">
+        <article class="ip-card"><span class="ip-cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></span><h3>Atende uma região</h3><p>Empresas que atendem uma região e querem começar no Google com quem é Google Partner</p></article>
+        <article class="ip-card"><span class="ip-cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M16 15h2"/></svg></span><h3>Investe uma vez</h3><p>Quem prefere investir uma vez na estrutura, sem mensalidade de agência</p></article>
+        <article class="ip-card"><span class="ip-cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M8 21h8M12 18v3M7.5 11l3 3 6-6"/></svg></span><h3>Quer mais clientes</h3><p>Quem já tem site (ou quer uma página nova) e quer transformar buscas em clientes</p></article>
       </div>
     </div>
   </section>
@@ -1425,6 +1461,12 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
   setTimeout(tick, 1200);
 })();
 </script>
+<script>
+(function(){ var el = document.querySelector('.ip'); if (!el) return;
+  if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+  var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { el.classList.add('is-in'); io.disconnect(); } }, {threshold: .25}); io.observe(el);
+})();
+</script>
 <script src="../assets/velaris-v4.js"></script>
 <script>
 (function(){
@@ -1434,7 +1476,7 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
   function place(){ var el = items[current]; if (!el) return; pill.style.width = el.offsetWidth + 'px'; pill.style.transform = 'translateX(' + el.offsetLeft + 'px)'; pill.style.opacity = 1; }
   function setActive(i){ if (i === current && pill.style.opacity === '1') return; items[current].removeAttribute('aria-current'); current = i; items[i].setAttribute('aria-current', 'page'); place(); }
   var ids = ['topo','incluso','como-funciona','planos','diagnostico'].map(function(id){ return document.getElementById(id); });
-  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, .ft'));
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, .ft, .ip'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
   function update(){
