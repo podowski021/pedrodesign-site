@@ -762,7 +762,7 @@ section{position:relative;scroll-margin-top:84px}
 .bt-vis{position:relative;flex:none;height:190px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 50% 0,#eef4ff,#fff 70%);overflow:hidden}
 .bt-txt{padding:24px 26px 28px;text-align:center;border-top:1px solid rgba(15,23,42,.06)}
 .bt-txt h3{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
-.bt-txt p{margin:6px auto 0;max-width:30ch;font-size:15px;line-height:1.55;color:var(--muted);text-wrap:balance}
+.bt-txt p{margin:6px auto 0;max-width:none;font-size:15px;line-height:1.55;color:var(--muted);white-space:nowrap}
 /* 1: busca */
 .bt-search{flex-direction:column;gap:14px;padding:0 22px}
 .bt-sbar{display:flex;align-items:center;gap:10px;width:100%;max-width:290px;height:48px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.08),0 14px 30px -18px rgba(11,79,216,.55);color:#64748b}
@@ -809,6 +809,13 @@ section{position:relative;scroll-margin-top:84px}
 .pb-head .prob-h{font-weight:500!important}
 .pb-head .prob-h b{font-weight:800}
 .pb-head .prob-h em{font-weight:500!important}
+/* blocos um pouco mais escuros que o fundo */
+.fs-prob .bt{background:#eef2f9;box-shadow:inset 0 0 0 1px rgba(15,40,100,.09),0 30px 60px -44px rgba(11,40,120,.4)}
+.fs-prob .bt-vis{background:radial-gradient(120% 90% at 50% 0,#dfe8f8,#eaf0fa 75%)}
+.fs-prob .bt-map{background:linear-gradient(90deg,rgba(37,99,235,.09) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(rgba(37,99,235,.09) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(120% 90% at 50% 0,#dfe8f8,#eaf0fa 75%)}
+.fs-prob .bt-txt{border-top-color:rgba(15,40,100,.08)}
+.fs-prob .bt-bar:not(.b1) i{background:#cbd8f0}
+.fs-prob .bt-chips span{background:#dbe6fd}
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -966,21 +973,21 @@ section{position:relative;scroll-margin-top:84px}
             <div class="bt-sbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span class="bt-q" data-bt-q>dentista perto de mim</span><i class="bt-caret"></i></div>
             <div class="bt-chips"><span>perto de mim</span><span>aberto agora</span><span>melhor avaliado</span></div>
           </div>
-          <div class="bt-txt"><h3>A busca já tem intenção</h3><p>Quem pesquisa no Google está pronto para comprar.</p></div>
+          <div class="bt-txt"><h3>A busca já tem intenção</h3><p>Quem pesquisa no Google está<br> pronto para comprar.</p></div>
         </article>
         <article class="bt">
           <div class="bt-vis bt-map" aria-hidden="true">
             <span class="bt-pin p1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span><span class="bt-pin p2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span><span class="bt-pin p3"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></span>
             <div class="bt-place"><b>Sua Empresa</b><span class="bt-stars">★★★★★</span><div class="bt-acts"><span>Rota</span><span>Fotos</span><span class="wa">WhatsApp</span></div></div>
           </div>
-          <div class="bt-txt"><h3>O mapa decide</h3><p>Avaliações, fotos, rota e WhatsApp em um toque.</p></div>
+          <div class="bt-txt"><h3>O mapa decide</h3><p>Avaliações, fotos, rota e WhatsApp<br> em um toque.</p></div>
         </article>
         <article class="bt">
           <div class="bt-vis bt-bars" aria-hidden="true">
             <div class="bt-bar b1"><i></i><span>1º</span></div><div class="bt-bar b2"><i></i><span>2º</span></div><div class="bt-bar b3"><i></i><span>3º</span></div><div class="bt-bar b4"><i></i><span>4º+</span></div>
             <em class="bt-cap">cliques por posição</em>
           </div>
-          <div class="bt-txt"><h3>Os primeiros levam</h3><p>A maioria dos cliques fica nos primeiros resultados.</p></div>
+          <div class="bt-txt"><h3>Os primeiros levam</h3><p>A maioria dos cliques fica nos<br> primeiros resultados.</p></div>
         </article>
       </div>
     </div>
