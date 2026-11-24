@@ -741,13 +741,16 @@ section{position:relative;scroll-margin-top:84px}
 
 .gx-rk{font-family:var(--display)!important;font-weight:700!important;font-size:16px!important;letter-spacing:-.02em!important;font-variant-numeric:normal!important;color:rgba(255,255,255,.6)}
 
-.agp{position:absolute;left:0;right:0;top:-30%;width:100%;height:160%;z-index:0;pointer-events:none;color:#3b6fd8;fill:rgba(59,111,216,.35);stroke:rgba(100,116,139,.22);transform:skewY(12deg);-webkit-mask-image:radial-gradient(560px circle at center,#fff,transparent);mask-image:radial-gradient(560px circle at center,#fff,transparent)}
+.agp{position:absolute;left:0;right:0;top:-30%;width:100%;height:160%;z-index:0;pointer-events:none;color:#3b6fd8;fill:rgba(59,111,216,.35);stroke:rgba(100,116,139,.22);transform:skewY(12deg);-webkit-mask-image:radial-gradient(ellipse 95% 75% at center,#fff 45%,transparent 100%);mask-image:radial-gradient(ellipse 95% 75% at center,#fff 45%,transparent 100%)}
 .agp .agp-sq rect{fill:currentColor}
-@media (max-width:560px){.agp{-webkit-mask-image:radial-gradient(320px circle at center,#fff,transparent);mask-image:radial-gradient(320px circle at center,#fff,transparent)}}
+
 /* botão principal dourado */
 .btn-rg{color:#1b2a4e!important;box-shadow:0 18px 40px -16px rgba(222,197,111,.6)!important}
 .btn-rg::before{background:conic-gradient(from var(--r),#c9a94e 0%,#c9a94e 55%,#dec56f 70%,#ffeba5 82%,#fffbe8 88%,#ffeba5 92%,#dec56f 96%,#c9a94e 100%)!important}
-.btn-rg::after{background:linear-gradient(90deg,#dec56f 0%,#ebd485 20%,#f6e197 34%,#ffeba5 45%,#fae59c 54%,#f2dc8f 66%,#e7cf7d 84%,#dfc771 100%)!important}
+.btn-rg::after{background:linear-gradient(90deg,#dec56f 0%,#ebd485 10%,#ffeba5 25%,#ebd485 40%,#dec56f 50%,#ebd485 60%,#ffeba5 75%,#ebd485 90%,#dec56f 100%)!important;background-size:200% 100%!important;animation:goldShine 6s linear infinite}
+@keyframes goldShine{from{background-position:0% 0}to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.btn-rg::after{animation:none}}
+.btn-rg{font-family:var(--display)!important;font-weight:700!important;letter-spacing:-.01em}
 .btn-rg svg{color:#1b2a4e}
 .btn-rg:hover{box-shadow:0 22px 48px -14px rgba(222,197,111,.85)!important}
 /* topo maior em telas grandes: título aproveita a largura */
@@ -1186,7 +1189,7 @@ section{position:relative;scroll-margin-top:84px}
 <script>
 (function(){
   var svg = document.querySelector('.fs-prob .agp'); if (!svg) return;
-  var NS = 'http://www.w3.org/2000/svg', W = 40, N = 30, MAX = .1, DUR = 3000;
+  var NS = 'http://www.w3.org/2000/svg', W = 40, N = innerWidth < 600 ? 30 : 70, MAX = .12, DUR = 3000;
   svg.innerHTML = '<defs><pattern id="agp-p" width="40" height="40" patternUnits="userSpaceOnUse" x="-1" y="-1"><path d="M.5 40V.5H40" fill="none"/></pattern></defs><rect width="100%" height="100%" fill="url(#agp-p)"/><svg x="-1" y="-1" overflow="visible" class="agp-sq"></svg>';
   var g = svg.querySelector('.agp-sq'), reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function pos(r){ var b = svg.getBoundingClientRect(); r.setAttribute('x', Math.floor(Math.random() * b.width / W) * W + 1); r.setAttribute('y', Math.floor(Math.random() * b.height / W) * W + 1); }
