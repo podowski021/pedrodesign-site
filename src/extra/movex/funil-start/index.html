@@ -11,7 +11,7 @@
 <meta name="description" content="Movex, agência de performance em Cascavel/PR. Tráfego pago, Funil Start, mentoria e páginas que transformam clique em cliente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: página branca com faixas azul-marinho; HUD futurista no hero; grid de serviços em bento levando às 4 páginas */
 :root{
@@ -806,6 +806,9 @@ section{position:relative;scroll-margin-top:84px}
 .fs-prob .bt-grid{position:relative}
 .fs-prob .bt-grid::before{content:"";position:absolute;inset:-36px -60px;z-index:-1;background:radial-gradient(closest-side,rgba(255,255,255,.95) 60%,rgba(255,255,255,0));pointer-events:none}
 .fs-prob .bt{z-index:0}
+.pb-head .prob-h{font-weight:500!important}
+.pb-head .prob-h b{font-weight:800}
+.pb-head .prob-h em{font-weight:500!important}
 /* Responsivo */
 @media (max-width:980px){
   .hero-grid,.google-grid,.about-grid,.diag-grid,.concept,.conv-grid{grid-template-columns:minmax(0,1fr)}
@@ -954,7 +957,7 @@ section{position:relative;scroll-margin-top:84px}
     <svg class="agp" aria-hidden="true"></svg>
     <div class="wrap">
       <div class="pb-head">
-        <h2 class="prob-h" id="t-prob">Quem não aparece no Google não existe para<br class="pb-br"> <em>quem está pronto para comprar.</em></h2>
+        <h2 class="prob-h" id="t-prob">Quem <b>não aparece no Google</b> <b>não existe</b> para<br class="pb-br"> <em>quem está <b>pronto para comprar.</b></em></h2>
         <p class="pb-lead">Quando alguém pesquisa <strong>“dentista perto de mim”</strong> ou <strong>“oficina em <span data-cidade>sua cidade</span>”</strong>, a decisão acontece nos primeiros resultados. Se a sua empresa não está lá, o cliente liga para o concorrente, <strong>mesmo que o seu serviço seja melhor.</strong></p>
       </div>
       <div class="bt-grid">
