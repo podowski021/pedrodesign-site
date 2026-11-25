@@ -955,8 +955,8 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 /* entrada suave da segunda seção */
 .rvx{transition:opacity .9s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1),filter .9s ease;transition-delay:var(--d,0s)}
 .rvx.rvx-wait{opacity:0;transform:translateY(28px);filter:blur(8px)}
-.bt.rvx.rvx-wait{transform:translateY(46px) scale(.97);filter:blur(4px)}
-@media (max-width:900px){.bt.rvx{--d:0s!important}}
+.bt.rvx.rvx-wait,.bn.rvx.rvx-wait,.sol-media.rvx.rvx-wait{transform:translateY(46px) scale(.97);filter:blur(4px)}
+@media (max-width:900px){.bt.rvx,.bn.rvx{--d:0s!important}}
 @media (prefers-reduced-motion:reduce){.rvx{transition:none}.rvx.rvx-wait{opacity:1;transform:none;filter:none}}
 
 html,body{overflow-x:clip}
@@ -972,7 +972,7 @@ html,body{overflow-x:clip}
 .bn-t{position:relative;z-index:2;flex:1;margin-top:-56px;padding:22px 24px 26px;color:#fff;background:linear-gradient(180deg,rgba(10,20,48,.35),rgba(10,20,48,.8) 45%,#0a1430);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08)}
 .bn-k{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.18em;color:#a9c4ff}
 .bn-ln{display:block;height:1px;margin:12px 0 14px;background:linear-gradient(90deg,rgba(255,255,255,.28),rgba(255,255,255,.08),transparent)}
-.bn-t p{font-family:var(--display);font-size:clamp(17px,1.45vw,19px);font-weight:500;line-height:1.38;letter-spacing:-.015em;color:#fff;max-width:none!important;text-wrap:pretty}
+.bn-t p{font-family:var(--display);font-size:17px;font-weight:500;line-height:1.38;letter-spacing:-.015em;color:#fff;max-width:none!important;text-wrap:pretty}
 .bn-t p b{font-weight:800;color:#fff}
 /* g1 mapa */
 .bn-map{position:absolute;inset:-20px;background:radial-gradient(circle at 1px 1px,rgba(160,195,255,.35) 1.1px,transparent 1.6px) 0 0/14px 14px;-webkit-mask-image:radial-gradient(60% 60% at 50% 45%,#000,transparent);mask-image:radial-gradient(60% 60% at 50% 45%,#000,transparent);animation:bnPan 18s linear infinite}
@@ -1017,7 +1017,9 @@ html,body{overflow-x:clip}
 .bn-lead.l1{background:#25d366;box-shadow:0 10px 22px -10px rgba(37,211,102,.8)}
 .bn-lead.l2{animation-delay:.35s}.bn-lead.l3{animation-delay:.7s}
 @keyframes bnLead{0%,8%{opacity:0;transform:translateY(10px) scale(.9)}22%,82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4px)}}
-@media (max-width:900px){.bn,.bn-1,.bn-3{border-radius:28px}}
+@media (max-width:1099px){.ip-grid{grid-template-columns:1fr!important;max-width:460px!important}.bn,.bn-1,.bn-3{border-radius:28px}.bn-t p{max-width:310px!important}.bn.rvx{--d:0s!important}}
+@media (max-width:370px){.bn-t p{font-size:15.5px}}
+@media (max-width:340px){.bn-t p{font-size:14px}.bn-t{padding-inline:18px}}
 @media (max-width:380px){.bn-leads{gap:5px}.bn-lead{font-size:10.5px;padding:6px 9px 6px 7px}}
 @media (prefers-reduced-motion:reduce){.bn *{animation:none!important}.bn-dot,.bn-lead{opacity:1}}
 
@@ -1050,6 +1052,23 @@ html,body{overflow-x:clip}
 .ft-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:10px;font-size:13px;color:var(--on-navy)}
 .ft-contact a{color:inherit;text-decoration:none}
 .ft-contact a:hover{color:#fff}
+
+
+/* domínio total do Google (fundo azul-marinho) */
+.sol{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(50% 60% at 85% 40%,rgba(37,99,235,.22),transparent 70%),radial-gradient(40% 50% at 0% 100%,rgba(61,134,255,.10),transparent 70%),#08132e;padding-block:clamp(80px,10vw,140px)}
+.sol-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,5vw,72px);align-items:center}
+.sol-k{display:inline-block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#8fb6ff}
+.sol h2{margin-top:18px;font-family:var(--display);font-size:clamp(34px,4.4vw,60px);line-height:1.04;letter-spacing:-.035em;color:#fff;text-wrap:balance}
+.sol h2 em{font-style:normal;color:#6ea8ff}
+@media (min-width:981px){.sol h2 em{display:block}}
+.sol-txt p{margin-top:22px;font-size:clamp(16px,1.25vw,18px);line-height:1.7;color:#b9c8ea;max-width:54ch}
+.sol-txt p strong{color:#fff;font-weight:700}
+.sol-shot{position:relative;margin:0;padding:8px;border-radius:26px;background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.04));box-shadow:inset 0 0 0 1px rgba(160,195,255,.22),0 40px 80px -36px rgba(37,99,235,.65)}
+.sol-shot img{display:block;width:100%;height:auto;border-radius:19px}
+.sol-cap{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:15px;color:#b9c8ea}
+.sol-dot{width:8px;height:8px;border-radius:50%;background:#3d86ff;box-shadow:0 0 0 4px rgba(61,134,255,.2);flex:none;animation:solPulse 2.4s ease-in-out infinite}
+@keyframes solPulse{50%{box-shadow:0 0 0 8px rgba(61,134,255,0)}}
+@media (max-width:980px){.sol-grid{grid-template-columns:1fr;text-align:center}.sol-txt p{margin-inline:auto}.sol-cap{justify-content:center;text-wrap:balance}.sol-dot{display:none}}
 
 /* Responsivo */
 @media (max-width:980px){
@@ -1255,20 +1274,17 @@ html,body{overflow-x:clip}
   </section>
 
   <!-- DOMÍNIO DO GOOGLE -->
-  <section class="sec" id="como-funciona" aria-labelledby="t-goo">
-    <div class="wrap">
-      <div class="google-grid">
-        <div class="txt">
-          <span class="mono tag">Domínio total do Google</span>
-          <h2 class="h2" id="t-goo"><b>Autoridade e atração:</b> sua empresa onde a <em><b>intenção de compra</b></em> acontece.</h2>
-          <p>Otimizamos a sua presença local <strong>através do Google Meu Negócio</strong> e também compramos os termos de quem busca pelo seu <strong>serviço ou produto</strong>, garantindo que <strong>sua empresa seja a primeira opção do cliente.</strong></p>
-          <p>O resultado é simples: <strong>sua marca se torna a primeira e mais confiável opção</strong> no momento exato em que o cliente decide comprar.</p>
-        </div>
-        <div class="shot shot-gmn"><img src="../assets/fs-google-perfil-v1.webp" alt="Perfil da Movex no Google com nota 5,0 e anúncio patrocinado" width="600" height="1076"></div>
+  <section class="sol" id="como-funciona" aria-labelledby="t-sol">
+    <div class="wrap sol-grid">
+      <div class="sol-txt">
+        <span class="mono sol-k">Implementação // Funil Start</span>
+        <h2 id="t-sol"><b>Domínio total</b> do Google <em>na sua <b>região.</b></em></h2>
+        <p>O Funil Start é a implementação completa para sua empresa aparecer onde a <strong>intenção de compra</strong> acontece. Otimizamos sua presença local no <strong>Google Meu Negócio</strong> e criamos sua campanha no <strong>Google Ads</strong> com as palavras que o seu cliente realmente pesquisa.</p>
+        <p>O resultado: sua marca vira a <strong>primeira e a mais confiável opção</strong> no momento exato em que o cliente decide comprar.</p>
       </div>
-      <div class="map-block">
-        <div class="map-head"><h3>Exemplo de como <em>funciona:</em></h3><span class="mono">Busca real · "agência de marketing" · Cascavel/PR</span></div>
-        <div class="shot shot-map"><img src="../assets/fs-mapa-v1.webp" alt="Busca por agência de marketing no Google Maps em Cascavel, com a Movex em primeiro como patrocinado" width="1600" height="779"></div>
+      <div class="sol-media">
+        <figure class="sol-shot"><img src="../assets/fs-mapa-v1.webp" alt="Busca no Google Maps com o anúncio patrocinado no topo da lista e no mapa" width="1600" height="779" loading="lazy"></figure>
+        <p class="sol-cap"><span class="sol-dot" aria-hidden="true"></span>Anúncio patrocinado no topo da busca e destacado no mapa.</p>
       </div>
     </div>
   </section>
@@ -1337,9 +1353,12 @@ html,body{overflow-x:clip}
 (function(){
   var g = document.querySelector('.bt-grid'); if (!g) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce && 'IntersectionObserver' in window && g.getBoundingClientRect().top > innerHeight) {
-    g.classList.add('is-pending');
-    var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { g.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .3}); io.observe(g);
+  if (!reduce && 'IntersectionObserver' in window) {
+    if (g.getBoundingClientRect().top > innerHeight) g.classList.add('is-pending');
+    new IntersectionObserver(function(es){ var e = es[0];
+      if (e.intersectionRatio >= .3) g.classList.remove('is-pending');
+      else if (!e.isIntersecting) g.classList.add('is-pending');
+    }, {threshold: [0, .3]}).observe(g);
   }
   var q = g.querySelector('[data-bt-q]'); if (!q || reduce) return;
   var city = function(){ var c = document.querySelector('[data-cidade]'); var t = c && c.textContent; return t && t !== 'sua cidade' ? t.toLowerCase() : 'minha cidade'; };
@@ -1357,19 +1376,24 @@ html,body{overflow-x:clip}
 <script>
 (function(){ var el = document.querySelector('.ip'); if (!el) return;
   if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
-  var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { el.classList.add('is-in'); io.disconnect(); } }, {threshold: .25}); io.observe(el);
+  new IntersectionObserver(function(es){ el.classList.toggle('is-in', es[0].isIntersecting); }, {threshold: .1}).observe(el);
 })();
 </script>
 <script>
 (function(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   var sec = document.querySelector('.fs-prob'); if (!sec) return;
-  var els = [sec.querySelector('.prob-h'), sec.querySelector('.pb-lead')].concat([].slice.call(sec.querySelectorAll('.bt-grid > .bt')));
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.remove('rvx-wait'); io.unobserve(e.target); } }); }, {threshold: .15, rootMargin: '0px 0px -6% 0px'});
+  var groups = [['.fs-prob .prob-h','.fs-prob .pb-lead'],['.fs-prob .bt-grid > .bt'],['.ip-h'],['.ip-grid > .bn'],['.sol-txt > *','.sol-media'],['.fs-end h2','.fs-end .hero-ctas']];
+  var els = [];
+  groups.forEach(function(g){ var k = 0; g.forEach(function(sel){ [].forEach.call(document.querySelectorAll(sel), function(el){ el.style.setProperty('--d', (k++ * .12) + 's'); els.push(el); }); }); });
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+    if (e.intersectionRatio >= .15) e.target.classList.remove('rvx-wait');
+    else if (!e.isIntersecting) e.target.classList.add('rvx-wait');
+  }); }, {threshold: [0, .15]});
   els.forEach(function(el, i){ if (!el) return;
     el.classList.add('rvx');
-    el.style.setProperty('--d', el.classList.contains('bt') ? (.1 + (i - 2) * .14) + 's' : (i * .12) + 's');
-    if (el.getBoundingClientRect().top > innerHeight * .94) { el.classList.add('rvx-wait'); io.observe(el); }
+    if (el.getBoundingClientRect().top > innerHeight * .94) el.classList.add('rvx-wait');
+    io.observe(el);
   });
 })();
 </script>
@@ -1394,7 +1418,7 @@ html,body{overflow-x:clip}
   function place(){ var el = items[current]; if (!el) return; pill.style.width = el.offsetWidth + 'px'; pill.style.transform = 'translateX(' + el.offsetLeft + 'px)'; pill.style.opacity = 1; }
   function setActive(i){ if (i === current && pill.style.opacity === '1') return; items[current].removeAttribute('aria-current'); current = i; items[i].setAttribute('aria-current', 'page'); place(); }
   var ids = ['topo','como-funciona'].map(function(id){ return document.getElementById(id); });
-  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, .fs-end, .ft'));
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .clients, .about, .final, .sol, .fs-end, .ft'));
   var lock = false, lockTimer = 0, ticking = false;
   function isDarkAt(y){ return dark.some(function(el){ var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; }); }
   function update(){
@@ -1458,16 +1482,6 @@ html,body{overflow-x:clip}
     setTimeout(tick, del ? 45 : 95);
   }
   setTimeout(tick, 2600);
-})();
-</script>
-<script>
-(function(){
-  var sec = document.querySelector('.pricing'); if (!sec) return;
-  if (!('IntersectionObserver' in window) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-  if (sec.getBoundingClientRect().top < innerHeight) return;
-  sec.classList.add('is-pending');
-  var io = new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })) { sec.classList.remove('is-pending'); io.disconnect(); } }, {threshold: .15});
-  io.observe(sec);
 })();
 </script>
 <script>
