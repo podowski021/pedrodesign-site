@@ -927,8 +927,7 @@ h1 b,h2 b,h1 em b,h2 em b{font-weight:800!important}
 
 
 /* seção ideal para (fundo claro) */
-.ip{position:relative;overflow:hidden;isolation:isolate;text-align:center;color:#0b1a44;background:#f3f6fc;padding-block:clamp(72px,9vw,120px)}
-.ip::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(circle,rgba(51,65,105,.13) 1.1px,transparent 1.6px);background-size:20px 20px;background-position:center top;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.ip{position:relative;overflow:hidden;isolation:isolate;text-align:center;color:#0b1a44;background-color:#eef3fc;background-image:repeating-linear-gradient(135deg,rgba(11,79,216,.07) 0 1px,transparent 1px 10px);padding-block:clamp(72px,9vw,120px)}
 .ip::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 50% 60%,rgba(61,118,240,.16) 0%,rgba(99,102,241,.06) 40%,transparent 70%)}
 .ip-h{font-family:var(--display);font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.03em;color:#0b1a44}
 .ip-h em{font-style:normal;color:#1f56d8}
