@@ -1034,7 +1034,9 @@ html,body{overflow-x:clip}
 .fs-end h2{font-family:var(--display);font-size:clamp(30px,4.4vw,58px);line-height:1.06;letter-spacing:-.04em;max-width:20ch;margin:0 auto;text-wrap:balance;color:#fff}
 .fs-end h2 em{font-style:normal;color:#6ea8ff}
 .fs-end .hero-ctas{justify-content:center;margin-top:36px}
-.fs-end .btn-rg{justify-content:center;gap:10px;text-align:center}
+.fs-end .btn-rg{justify-content:center;gap:10px;text-align:center;transition:none}
+.fs-end .btn-rg::before,.fs-end .btn-rg::after{animation:none!important}
+.fs-end .btn-rg:hover{transform:none}.fs-end .btn-rg svg{transition:none;transform:none!important}
 @media (max-width:380px){.fs-end .hero-ctas .btn-rg{white-space:normal;line-height:1.3}}
 @media (max-width:560px){.fs-end .hero-ctas .btn-rg{width:100%;font-size:13.5px!important;padding:15px 18px!important;gap:8px;letter-spacing:-.01em}}
 .upsell{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 12px;margin-top:clamp(64px,9vw,100px);padding:22px 16px;border-top:1px solid rgba(255,255,255,.12);font-size:15px;color:#b9c8ea;background:rgba(9,18,43,.4)}
@@ -1383,7 +1385,7 @@ html,body{overflow-x:clip}
 (function(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   var sec = document.querySelector('.fs-prob'); if (!sec) return;
-  var groups = [['.fs-prob .prob-h','.fs-prob .pb-lead'],['.fs-prob .bt-grid > .bt'],['.ip-h'],['.ip-grid > .bn'],['.sol-txt > *','.sol-media'],['.fs-end h2','.fs-end .hero-ctas']];
+  var groups = [['.fs-prob .prob-h','.fs-prob .pb-lead'],['.fs-prob .bt-grid > .bt'],['.ip-h'],['.ip-grid > .bn'],['.sol-txt > *','.sol-media'],['.fs-end h2']];
   var els = [];
   groups.forEach(function(g){ var k = 0; g.forEach(function(sel){ [].forEach.call(document.querySelectorAll(sel), function(el){ el.style.setProperty('--d', (k++ * .12) + 's'); els.push(el); }); }); });
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){
